@@ -11,6 +11,7 @@ import {
   ProductPortionListScene,
   EditPortionsScene,
 } from 'scenes/restaurant/admin';
+import { QrCodeScene } from 'scenes/restaurant/admin/qrcode.scene';
 
 export const RouterComponent: React.FunctionComponent = () => {
   return (
@@ -22,6 +23,7 @@ export const RouterComponent: React.FunctionComponent = () => {
         <Route exact={true} path={switchRoutes.categoriesList} component={CategoriesListScene} />
         <Route exact={true} path={switchRoutes.productList} component={ProductListScene} />
         <Route exact={true} path={switchRoutes.editProduct} component={EditProductScene} />
+        <Route exact={true} path={switchRoutes.qrCode} component={QrCodeScene} />
         <Route
           exact={true}
           path={switchRoutes.productPortionList}

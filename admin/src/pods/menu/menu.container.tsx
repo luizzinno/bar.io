@@ -10,6 +10,7 @@ import FolderIcon from '@material-ui/icons/Folder';
 import RestaurantMenuIcon from '@material-ui/icons/RestaurantMenu';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import { routes } from 'core/router';
+import { QrCodeIcon } from './icons';
 
 export const MenuContainer: React.FunctionComponent = () => {
   const items: DashboardItemProps[] = React.useMemo(
@@ -33,6 +34,11 @@ export const MenuContainer: React.FunctionComponent = () => {
         title: 'Raciones',
         linkTo: routes.productPortionList,
         icon: LocalOfferIcon,
+      },
+      {
+        title: 'Código QR',
+        linkTo: routes.qrCode,
+        icon: QrCodeIcon,
       },
     ],
     [],
