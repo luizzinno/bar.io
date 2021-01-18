@@ -10,6 +10,7 @@ interface SwitchRoutes {
   editProduct: string;
   productPortionList: string;
   editPortions: string;
+  qrCode: string;
 }
 
 export const switchRoutes: SwitchRoutes = {
@@ -22,6 +23,7 @@ export const switchRoutes: SwitchRoutes = {
   editProduct: '/product/:productId?',
   productPortionList: '/productPortionList',
   editPortions: '/editPortions/:typeId',
+  qrCode: '/qrCode',
 };
 
 interface Routes extends Omit<SwitchRoutes, 'editProduct' | 'editPortions'> {
