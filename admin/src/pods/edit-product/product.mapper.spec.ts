@@ -8,6 +8,7 @@ describe('Product mapper tests', () => {
     const apiModel: ApiModel = {
       id: 1,
       name: 'Test model',
+      description: 'New description',
       portionTypeId: 10,
       portions: [
         {
@@ -27,6 +28,7 @@ describe('Product mapper tests', () => {
     const expectedResult: ViewModel = {
       id: 1,
       name: 'Test model',
+      description: 'New description',
       portionTypeId: 10,
       categoryId: 0,
       portionPrices: portionPrices,
@@ -40,6 +42,7 @@ describe('Product mapper tests', () => {
     const apiModel: ApiModel = {
       id: 1,
       name: 'Test model',
+      description: 'New description',
       portionTypeId: 10,
       portions: [],
       visible: true,
@@ -52,6 +55,7 @@ describe('Product mapper tests', () => {
     const expectedResult: ViewModel = {
       id: 1,
       name: 'Test model',
+      description: 'New description',
       portionTypeId: 10,
       categoryId: 0,
       portionPrices: initPortionPrices(),
@@ -65,6 +69,7 @@ describe('Product mapper tests', () => {
     const apiModel: ApiModel = {
       id: 1,
       name: 'Test model',
+      description: 'New description',
       portionTypeId: 10,
       portions: null,
       visible: true,
@@ -77,6 +82,7 @@ describe('Product mapper tests', () => {
     const expectedResult: ViewModel = {
       id: 1,
       name: 'Test model',
+      description: 'New description',
       portionTypeId: 10,
       categoryId: 0,
       portionPrices: initPortionPrices(),
@@ -90,6 +96,7 @@ describe('Product mapper tests', () => {
     const apiModel: ApiModel = {
       id: 1,
       name: 'Test model',
+      description: 'New description',
       portionTypeId: 10,
       portions: undefined,
       visible: true,
@@ -102,6 +109,7 @@ describe('Product mapper tests', () => {
     const expectedResult: ViewModel = {
       id: 1,
       name: 'Test model',
+      description: 'New description',
       portionTypeId: 10,
       categoryId: 0,
       portionPrices: initPortionPrices(),
@@ -117,6 +125,7 @@ describe('Product mapper tests', () => {
     const viewModel: ViewModel = {
       id: 1,
       name: 'Test model',
+      description: 'New description',
       portionTypeId: 10,
       categoryId: 0,
       portionPrices: portionPrices,
@@ -130,6 +139,7 @@ describe('Product mapper tests', () => {
     const expectedResult: ApiModel = {
       id: 1,
       name: 'Test model',
+      description: 'New description',
       portionTypeId: 10,
       portions: [{ id: 1, price: 15 }],
       visible: true,
@@ -144,6 +154,7 @@ describe('Product mapper tests', () => {
     const viewModel: ViewModel = {
       id: 1,
       name: 'Test model',
+      description: 'New description',
       portionTypeId: 10,
       categoryId: 0,
       portionPrices: [],
@@ -157,11 +168,12 @@ describe('Product mapper tests', () => {
     const expectedResult: ApiModel = {
       id: 1,
       name: 'Test model',
+      description: 'New description',
       portionTypeId: 10,
       portions: [],
       visible: true,
     };
 
     expect(result).toStrictEqual(expectedResult);
-  });  
+  });
 });

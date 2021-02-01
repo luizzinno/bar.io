@@ -8,6 +8,7 @@ export const mockedMenuCategories: Array<MenuCategory> = [
       {
         id: 1,
         name: 'Jamón Ibérico de Bellota',
+        description: 'Bodega de osborne',
         visible: true,
         portionTypeId: 2,
         portions: [
@@ -28,6 +29,7 @@ export const mockedMenuCategories: Array<MenuCategory> = [
       {
         id: 2,
         name: 'Queso Manchego',
+        description: 'De Villanueva del Rosario',
         portionTypeId: 2,
         visible: false,
         portions: [
@@ -48,6 +50,7 @@ export const mockedMenuCategories: Array<MenuCategory> = [
       {
         id: 3,
         name: 'Alcachofas con jamón',
+        description: 'Receta casera',
         visible: true,
         portionTypeId: 1,
         portions: [{ id: 1, price: 6 }],

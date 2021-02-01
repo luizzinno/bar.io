@@ -9,6 +9,12 @@ export const product = css`
   flex-direction: row;
 `;
 
+export const description = css`
+  margin: 0;
+  margin-bottom: 1em;
+  font-size: 12px;
+`;
+
 export const portion = css`
   width: 75%;
 `;

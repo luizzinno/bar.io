@@ -16,6 +16,7 @@ export interface MenuCategory {
 
 export interface Product {
   name: string;
+  description: string;
   portions: Array<Portion>;
 }
 

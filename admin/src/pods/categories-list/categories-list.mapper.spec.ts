@@ -68,9 +68,30 @@ describe('Categories List mapper tests', () => {
   it('should map to the expected item list when passing valid products', () => {
     // Arrange
     const products: Array<Product> = [
-      { id: 1, name: 'Flamenquín', visible: true, portionTypeId: 0, portions: []},
-      { id: 2, name: 'Salmorejo', visible: false, portionTypeId: 0, portions: []},
-      { id: 3, name: 'Tortilla de patata', visible: true, portionTypeId: 0, portions: []},
+      {
+        id: 1,
+        name: 'Flamenquín',
+        description: 'Con jamón y queso',
+        visible: true,
+        portionTypeId: 0,
+        portions: [],
+      },
+      {
+        id: 2,
+        name: 'Salmorejo',
+        description: 'Malagueño',
+        visible: false,
+        portionTypeId: 0,
+        portions: [],
+      },
+      {
+        id: 3,
+        name: 'Tortilla de patata',
+        description: 'Poco hecha',
+        visible: true,
+        portionTypeId: 0,
+        portions: [],
+      },
     ];
 
     const expectedListItems: Array<ListItem> = [

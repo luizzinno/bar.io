@@ -13,6 +13,7 @@ describe('Menu category mappers tests', () => {
           {
             id: 21,
             name: 'Test product I',
+            description: 'Description 1',
             portionTypeId: 0,
             portions: [],
             visible: true,
@@ -26,6 +27,7 @@ describe('Menu category mappers tests', () => {
           {
             id: 25,
             name: 'Test product II',
+            description: 'Description 2',
             portionTypeId: 0,
             portions: [],
             visible: false,

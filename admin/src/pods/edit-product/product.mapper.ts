@@ -6,6 +6,7 @@ export const mapProductApiModelToViewModel = (product: apiModel.Product): viewMo
   id: product.id,
   categoryId: 0,
   name: product.name,
+  description: product.description,
   portionTypeId: product.portionTypeId,
   portionPrices: mapApiModelPortionsToPortionPrices(product.portions),
   visible: product.visible,
@@ -14,6 +15,7 @@ export const mapProductApiModelToViewModel = (product: apiModel.Product): viewMo
 export const mapProductViewModelToApiModel = (product: viewModel.Product): apiModel.Product => ({
   id: product.id,
   name: product.name,
+  description: product.description,
   portionTypeId: product.portionTypeId,
   portions: mapPortionPricesToPortionApiModels(product.portionPrices),
   visible: product.visible,
@@ -23,6 +25,7 @@ export const createEmptyProductVm = (): viewModel.Product => ({
   id: 0,
   categoryId: 0,
   name: '',
+  description: '',
   portionTypeId: 0,
   portionPrices: new Array<number>(10).fill(0),
   visible: false,
@@ -36,10 +39,8 @@ const mapPortionPricesToPortionApiModels = (
   return portions;
 };
 
-const mapApiModelPortionsToPortionPrices = (
-  portions: Array<apiModel.Portion>,
-): Array<number> => {
+const mapApiModelPortionsToPortionPrices = (portions: Array<apiModel.Portion>): Array<number> => {
   const portionPrices = initPortionPrices();
-  !!portions && portions.map((p) => portionPrices[p.id] = p.price);
+  !!portions && portions.map((p) => (portionPrices[p.id] = p.price));
   return portionPrices;
 };
