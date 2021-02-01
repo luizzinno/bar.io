@@ -28,7 +28,6 @@ describe('ProductComponent tests', () => {
       },
     };
 
-    console.log(props.product.portions[0].price);
     //Act
     render(<ProductComponent {...props} />);
 
