@@ -1,7 +1,6 @@
 import { List, ListItem } from '@material-ui/core';
 import React from 'react';
 import { Product } from '../menu.vm';
-import * as classes from './submenu-category.styles';
 import { ProductComponent } from './product.component';
 
 interface SubmenuCategoryComponentProps {

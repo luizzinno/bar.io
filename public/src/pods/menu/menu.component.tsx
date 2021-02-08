@@ -3,7 +3,6 @@ import { MenuCategory, RestaurantInfo } from './menu.vm';
 import { HeaderComponent, MenuListComponent } from './components';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import { Theme } from 'core/theme/theme.vm';
 
 interface MenuComponentProps {
   restaurantInfo: RestaurantInfo;

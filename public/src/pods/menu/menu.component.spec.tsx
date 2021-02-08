@@ -33,6 +33,9 @@ describe('MenuComponent tests', () => {
           ],
         },
       ],
+      onHandleChange: jest.fn(),
+      themes: ['Meat', 'Fish'],
+      theme: 'Meat',
     };
 
     // Act
