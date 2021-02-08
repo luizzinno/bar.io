@@ -35,6 +35,9 @@ describe('EditProductComponent tests', () => {
       onChangeName: (name: string) => {
         return;
       },
+      onChangeDescription: (description: string) => {
+        return;
+      },
       onChangePortionPrice: (id: number, price: number) => {
         return;
       },
@@ -54,6 +57,8 @@ describe('EditProductComponent tests', () => {
     expect(title).toHaveTextContent('Añadir producto');
     const name = screen.getByText('Nombre');
     expect(name).toBeInTheDocument();
+    const description = screen.getByText('Descripción');
+    expect(description).toBeInTheDocument();
     const category = screen.getByText('Categoría');
     expect(category).toBeInTheDocument();
     const portionType = screen.getByText('Ración');
@@ -83,6 +88,7 @@ describe('EditProductComponent tests', () => {
       product: {
         id: 12,
         name: 'Test product',
+        description: 'New description',
         visible: true,
         categoryId: 2,
         portionTypeId: 1,
@@ -97,6 +103,9 @@ describe('EditProductComponent tests', () => {
         return;
       },
       onChangeName: (name: string) => {
+        return;
+      },
+      onChangeDescription: (description: string) => {
         return;
       },
       onChangePortionPrice: (id: number, price: number) => {
@@ -118,8 +127,11 @@ describe('EditProductComponent tests', () => {
     expect(title).toHaveTextContent("Editar 'Test product'");
     const name = screen.getByText('Nombre');
     expect(name).toBeInTheDocument();
-    const nameField = screen.getByRole('textbox');
-    expect(nameField).toHaveValue('Test product');
+    const description = screen.getByText('Descripción');
+    expect(description).toBeInTheDocument();
+    const fields = screen.getAllByRole('textbox');
+    expect(fields[0]).toHaveValue('Test product');
+    expect(fields[1]).toHaveValue('New description');
     const category = screen.getByText('Categoría');
     expect(category).toBeInTheDocument();
     const portionType = screen.getByText('Ración');
@@ -155,6 +167,7 @@ describe('EditProductComponent tests', () => {
       product: {
         id: 12,
         name: 'Test product',
+        description: 'New description',
         visible: true,
         categoryId: 2,
         portionTypeId: 1,
@@ -167,6 +180,9 @@ describe('EditProductComponent tests', () => {
         return;
       },
       onChangeName: (name: string) => {
+        return;
+      },
+      onChangeDescription: (description: string) => {
         return;
       },
       onChangePortionPrice: (id: number, price: number) => {
@@ -211,6 +227,7 @@ describe('EditProductComponent tests', () => {
       product: {
         id: 12,
         name: 'Test product',
+        description: 'New description',
         visible: true,
         categoryId: 2,
         portionTypeId: 1,
@@ -223,6 +240,9 @@ describe('EditProductComponent tests', () => {
         return;
       },
       onChangeName: (name: string) => {
+        return;
+      },
+      onChangeDescription: (description: string) => {
         return;
       },
       onChangePortionPrice: (id: number, price: number) => {

@@ -38,7 +38,8 @@ export const EditProductContainer: React.FunctionComponent = () => {
   const history = useHistory();
 
   const onChangeName = (name: string) => setProduct({ ...product, name: name });
-
+  const onChangeDescription = (description: string) =>
+    setProduct({ ...product, description: description });
   const onChangePortionPrice = (id: number, price: number) =>
     setProduct({
       ...product,
@@ -56,7 +57,6 @@ export const EditProductContainer: React.FunctionComponent = () => {
   const onChangePortionType = (portionTypeId: number) => {
     setProduct({ ...product, portionTypeId, portionPrices: initPortionPrices() });
   };
-
 
   const onSave = (p: Product) => {
     saveProduct(mapProductViewModelToApiModel({ ...p, visible: false }), p.categoryId).then(() =>
@@ -111,6 +111,7 @@ export const EditProductContainer: React.FunctionComponent = () => {
         onChangeCategory={onChangeCategory}
         onChangePortionType={onChangePortionType}
         onChangeName={onChangeName}
+        onChangeDescription={onChangeDescription}
         onChangePortionPrice={onChangePortionPrice}
       />
     </div>

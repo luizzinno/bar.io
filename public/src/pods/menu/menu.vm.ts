@@ -16,6 +16,7 @@ export interface MenuCategory {
 
 export interface Product {
   name: string;
+  description: string;
   portions: Array<Portion>;
 }
 
@@ -31,4 +32,5 @@ export const createEmptyMenu = (): Menu => ({
 
 export const createEmptyRestaurantInfo = (): RestaurantInfo => ({
   name: '',
+  description: '',
 });

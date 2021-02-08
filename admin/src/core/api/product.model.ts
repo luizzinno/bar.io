@@ -1,6 +1,7 @@
 export interface Product {
   id: number;
   name: string;
+  description: string;
   visible: boolean;
   portionTypeId: number;
   portions: Array<Portion>;

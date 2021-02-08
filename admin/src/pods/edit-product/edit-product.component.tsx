@@ -14,6 +14,7 @@ interface EditProductProps {
   product: Product;
   onSave: (product: Product) => void;
   onChangeName: (name: string) => void;
+  onChangeDescription: (description: string) => void;
   onChangePortionPrice: (portionId: number, price: number) => void;
   onChangeCategory: (categoryId: number) => void;
   onChangePortionType: (portionTypeId: number) => void;
@@ -27,6 +28,7 @@ export const EditProductComponent: FunctionComponent<EditProductProps> = (props)
     product,
     portions,
     onChangeName,
+    onChangeDescription,
     onChangePortionPrice,
     onChangeCategory,
     onChangePortionType,
@@ -36,6 +38,7 @@ export const EditProductComponent: FunctionComponent<EditProductProps> = (props)
   const handleChangeCategory = (e) => onChangeCategory(e.target.value);
   const handlePortionTypeChange = (e) => onChangePortionType(e.target.value);
   const handleChangeName = (e) => onChangeName(e.target.value);
+  const handleChangeDescription = (e) => onChangeDescription(e.target.value);
   const handleChangePortionPrice = (e) =>
     onChangePortionPrice(e.target.getAttribute('name').split(/[\[\]]/)[1], e.target.value);
 
@@ -56,6 +59,11 @@ export const EditProductComponent: FunctionComponent<EditProductProps> = (props)
               <Field type='hidden' name='id' />
               <Field type='hidden' name='visible' />
               <TextFieldComponent name='name' label='Nombre' onKeyUp={handleChangeName} />
+              <TextFieldComponent
+                name='description'
+                label='Descripción'
+                onKeyUp={handleChangeDescription}
+              />
               <DropDownComponent
                 label='Categoría'
                 labelId='categoryIdLabel'

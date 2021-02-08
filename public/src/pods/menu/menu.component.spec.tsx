@@ -17,14 +17,17 @@ describe('MenuComponent tests', () => {
           products: [
             {
               name: 'Chorizo criollo',
+              description: 'Muy picante',
               portions: [{ name: 'Única', price: '5,50 €' }],
             },
             {
               name: 'Queso provolone',
+              description: '',
               portions: [{ name: 'Única', price: '5,50 €' }],
             },
             {
               name: 'Jamón ibérico',
+              description: '',
               portions: [{ name: 'Única', price: '5,50 €' }],
             },
           ],

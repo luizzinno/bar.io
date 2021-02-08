@@ -15,14 +15,16 @@ export const SubmenuCategoryComponent: React.FunctionComponent<SubmenuCategoryCo
 }) => (
   <List component='ul' className={classes.container}>
     {!!products &&
-      products.filter(p => !!p.portions).map((product, index) => (
-        <ListItem
-          key={`product-${categoryIndex}-${index}`}
-          id={`product-${categoryIndex}-${index}`}
-          aria-label={`${product.name}`}
-          component='li'>
+      products
+        .filter((p) => !!p.portions)
+        .map((product, index) => (
+          <ListItem
+            key={`product-${categoryIndex}-${index}`}
+            id={`product-${categoryIndex}-${index}`}
+            aria-label={`${product.name}`}
+            component='li'>
             <ProductComponent productIndex={`${categoryIndex}-${index}`} product={product} />
-        </ListItem>
-      ))}
+          </ListItem>
+        ))}
   </List>
 );

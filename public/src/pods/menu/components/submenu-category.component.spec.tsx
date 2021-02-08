@@ -9,15 +9,18 @@ describe('SubmenuCategoryComponentTest', () => {
       products: [
         {
           name: 'Chorizo criollo',
-          portions: [{name: 'Única', price: '5,00 €'}]
+          description: 'Muy picante',
+          portions: [{ name: 'Única', price: '5,00 €' }],
         },
         {
           name: 'Queso provolone',
-          portions: [{name: 'Única', price: '5,00 €'}]
+          description: '',
+          portions: [{ name: 'Única', price: '5,00 €' }],
         },
         {
           name: 'Jamón ibérico',
-          portions: [{name: 'Única', price: '5,00 €'}]
+          description: '',
+          portions: [{ name: 'Única', price: '5,00 €' }],
         },
       ],
     };
