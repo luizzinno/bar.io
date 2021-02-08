@@ -18,10 +18,17 @@ import { ProductPortionListComponent } from './product-portion.component';
 //Method
 import { reorder } from 'common/utils/array';
 
+//Router
+import { useHistory } from 'react-router-dom';
+import { routes } from 'core/router';
+
 export const ProductPortionListContainer: React.FunctionComponent = () => {
+  const history = useHistory();
+
   const [productPortionList, setproductPortionList] = React.useState<ProductPortion[]>([
     createEmptyProductPortion(),
   ]);
+
   const [editProductPortionId, setEditProductPortionIdId] = React.useState<number | false>(false);
 
   React.useEffect(() => {
@@ -44,7 +51,12 @@ export const ProductPortionListContainer: React.FunctionComponent = () => {
     setproductPortionList(reorder(productPortionList, startIndex, endIndex));
 
   const handleSave = (value: string, id: number) => {
-    const newproductPortionAPI = mapProductPortionFromVmToApi({ id, value });
+    const newId: number =
+      productPortionList
+        .map((c) => c.id)
+        .reduce((max, current) => (!!!max || current > max ? current : max)) + 1;
+
+    const newproductPortionAPI = mapProductPortionFromVmToApi({ id: newId, value });
 
     api
       .saveProductPortion(newproductPortionAPI)
@@ -55,10 +67,10 @@ export const ProductPortionListContainer: React.FunctionComponent = () => {
         const index = productPortionList.findIndex((productPortion) => productPortion.id === id);
         if (index !== -1) {
           const newArray = [...productPortionList];
-          newArray[index].value = value;
+          newArray[newId].value = value;
           setproductPortionList(newArray);
         } else {
-          setproductPortionList([...productPortionList, { id, value }]);
+          setproductPortionList([...productPortionList, { id: newId, value }]);
         }
       })
       .catch((error) => {
@@ -85,7 +97,7 @@ export const ProductPortionListContainer: React.FunctionComponent = () => {
   };
 
   const handleEdit = (id: number) => {
-    setEditProductPortionIdId(id);
+    history.push(routes.editPortions(id.toString()));
   };
 
   const handleCancel = () => setEditProductPortionIdId(false);
