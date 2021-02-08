@@ -41,10 +41,10 @@ export const mapProductApiModelToViewModel = (product: apiModel.Product): viewMo
 const mapPortionApiModelsToPortionViewModels = (
   portions: Array<apiModel.Portion>,
 ): Array<viewModel.Portion> =>
-  portions
+  (portions
     ?.filter((p) => !!p.price)
     .map((p) => mapPortionApiModelToPortionViewModel(p))
-    .filter((p) => !!p) as Array<viewModel.Portion> ?? [];
+    .filter((p) => !!p) as Array<viewModel.Portion>) ?? [];
 
 const mapPortionApiModelToPortionViewModel = (
   portion: apiModel.Portion,

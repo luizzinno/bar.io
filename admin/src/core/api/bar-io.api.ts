@@ -68,6 +68,7 @@ export const saveProduct = async (prod: Product, categoryId?: number): Promise<v
       const newProduct = {
         ...product,
         name: prod.name,
+        description: prod.description,
         portionTypeId: prod.portionTypeId,
         portions: prod.portions,
       };
@@ -88,8 +89,8 @@ export const saveProducts = async (categoryId: number, products: Array<Product>)
   (async () => {
     const category = mockedMenuCategories.find((c) => c.id === categoryId);
     const index = mockedMenuCategories.findIndex((c) => c.id === categoryId);
-    const newCategory = { ...category, products };    
-    mockedMenuCategories[index] = newCategory;        
+    const newCategory = { ...category, products };
+    mockedMenuCategories[index] = newCategory;
   })();
 };
 

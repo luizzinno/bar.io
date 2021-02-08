@@ -14,6 +14,7 @@ const mockedMenu: Menu = {
       products: [
         {
           name: 'Chorizo criollo',
+          description: 'A la parrilla',
           portions: [
             { name: 'Tapa', price: 4.5 },
             { name: 'Media', price: 7.5 },
@@ -22,6 +23,7 @@ const mockedMenu: Menu = {
         },
         {
           name: 'Queso provolone',
+          description: '',
           portions: [
             { name: 'Tapa', price: 0 },
             { name: 'Media', price: 7.5 },
@@ -30,6 +32,7 @@ const mockedMenu: Menu = {
         },
         {
           name: 'Jamón ibérico',
+          description: 'De bellota',
           portions: [
             { name: 'Tapa', price: 0 },
             { name: 'Media', price: 7.5 },
@@ -38,6 +41,7 @@ const mockedMenu: Menu = {
         },
         {
           name: 'Queso de oveja viejo',
+          description: '',
           portions: [
             { name: 'Tapa', price: 3.5 },
             { name: 'Media', price: 6.5 },
@@ -46,6 +50,7 @@ const mockedMenu: Menu = {
         },
         {
           name: 'Surtido ibérico',
+          description: '',
           portions: [
             { name: 'Tapa', price: 0 },
             { name: 'Media', price: 0 },
@@ -54,6 +59,7 @@ const mockedMenu: Menu = {
         },
         {
           name: 'Morcilla de Burgos',
+          description: '',
           portions: [
             { name: 'Tapa', price: 4.5 },
             { name: 'Media', price: 7.5 },
@@ -62,6 +68,7 @@ const mockedMenu: Menu = {
         },
         {
           name: 'Croquetas',
+          description: 'Caseras de puchero',
           portions: [
             { name: 'Tapa', price: 2.5 },
             { name: 'Media', price: 4.5 },
@@ -70,6 +77,7 @@ const mockedMenu: Menu = {
         },
         {
           name: 'Cogollos de Tudela',
+          description: '',
           portions: [
             { name: 'Tapa', price: 0 },
             { name: 'Media', price: 4.5 },
@@ -78,6 +86,7 @@ const mockedMenu: Menu = {
         },
         {
           name: 'Anchoas del Cantábrico',
+          description: '',
           portions: [
             { name: 'Tapa', price: 3.5 },
             { name: 'Media', price: 6.5 },
@@ -86,6 +95,7 @@ const mockedMenu: Menu = {
         },
         {
           name: 'Aceitunas',
+          description: 'Chupadedos',
           portions: [
             { name: 'Tapa', price: 3 },
             { name: 'Media', price: 0 },
@@ -99,18 +109,22 @@ const mockedMenu: Menu = {
       products: [
         {
           name: 'Flamenquín cordobés',
+          description: '',
           portions: [{ name: 'Única', price: 9.5 }],
         },
         {
           name: 'Carrillada ibérica al Predro Ximénez',
+          description: '',
           portions: [{ name: 'Única', price: 10.5 }],
         },
         {
           name: 'Huevos rotos con chorizo y patatas fritas',
+          description: '',
           portions: [{ name: 'Única', price: 8.5 }],
         },
         {
           name: 'Patatas bravas',
+          description: 'Muy picantes',
           portions: [{ name: 'Única', price: 6.5 }],
         },
       ],
@@ -120,18 +134,22 @@ const mockedMenu: Menu = {
       products: [
         {
           name: 'Tomate en rodajas y ventresca',
+          description: '',
           portions: [{ name: 'Única', price: 8 }],
         },
         {
           name: 'Ensalada de la casa',
+          description: '',
           portions: [{ name: 'Única', price: 6.5 }],
         },
         {
           name: 'Ensalada mixta',
+          description: '',
           portions: [{ name: 'Única', price: 6 }],
         },
         {
           name: 'Ensalada de pimientos',
+          description: '',
           portions: [{ name: 'Única', price: 7.5 }],
         },
       ],
@@ -141,18 +159,22 @@ const mockedMenu: Menu = {
       products: [
         {
           name: 'Torrijas',
+          description: '',
           portions: [{ name: 'Única', price: 6.5 }],
         },
         {
           name: 'Coulant de chocolate negro con helado de vainilla',
+          description: '',
           portions: [{ name: 'Única', price: 8.5 }],
         },
         {
           name: 'Flan de huevo',
+          description: '',
           portions: [{ name: 'Única', price: 5.5 }],
         },
         {
           name: 'Crema catalana',
+          description: '',
           portions: [{ name: 'Única', price: 6.5 }],
         },
       ],
@@ -162,22 +184,27 @@ const mockedMenu: Menu = {
       products: [
         {
           name: 'Refrescos',
+          description: '',
           portions: [{ name: 'Única', price: 2.5 }],
         },
         {
           name: 'Cerveza (caña)',
+          description: '',
           portions: [{ name: 'Única', price: 2.5 }],
         },
         {
           name: 'Cerveza (Jarra)',
+          description: '',
           portions: [{ name: 'Única', price: 3.5 }],
         },
         {
           name: 'Rioja (Copa)',
+          description: '',
           portions: [{ name: 'Única', price: 3.5 }],
         },
         {
           name: 'Agua mineral (1l)',
+          description: '',
           portions: [{ name: 'Única', price: 2.5 }],
         },
       ],

@@ -13,6 +13,7 @@ describe('useMenuCategories hook tests', () => {
           {
             id: 1,
             name: ' Prod 1.1',
+            description: 'New Description 1',
             portionTypeId: 0,
             portions: [],
             visible: false,
@@ -20,6 +21,7 @@ describe('useMenuCategories hook tests', () => {
           {
             id: 2,
             name: ' Prod 1.2',
+            description: 'New Description 2',
             portionTypeId: 0,
             portions: [],
             visible: true,
@@ -33,6 +35,7 @@ describe('useMenuCategories hook tests', () => {
           {
             id: 3,
             name: ' Prod 2.1',
+            description: 'New Description 3',
             portionTypeId: 0,
             portions: [],
             visible: false,
@@ -40,6 +43,7 @@ describe('useMenuCategories hook tests', () => {
           {
             id: 4,
             name: ' Prod 2.2',
+            description: 'New Description 4',
             portionTypeId: 0,
             portions: [],
             visible: true,
@@ -74,6 +78,7 @@ describe('useMenuCategories hook tests', () => {
           {
             id: 1,
             name: ' Prod 1.1',
+            description: 'New Description 1',
             portionTypeId: 0,
             portions: [],
             visible: false,
@@ -81,6 +86,7 @@ describe('useMenuCategories hook tests', () => {
           {
             id: 2,
             name: ' Prod 1.2',
+            description: 'New Description 2',
             portionTypeId: 0,
             portions: [],
             visible: true,
@@ -94,6 +100,7 @@ describe('useMenuCategories hook tests', () => {
           {
             id: 3,
             name: ' Prod 2.1',
+            description: 'New Description 3',
             portionTypeId: 0,
             portions: [],
             visible: false,
@@ -101,6 +108,7 @@ describe('useMenuCategories hook tests', () => {
           {
             id: 4,
             name: ' Prod 2.2',
+            description: 'New Description 4',
             portionTypeId: 0,
             portions: [],
             visible: true,
@@ -133,6 +141,7 @@ describe('useMenuCategories hook tests', () => {
           {
             id: 1,
             name: ' Prod 1.1',
+            description: 'New Description 1',
             portionTypeId: 0,
             portions: [],
             visible: false,
@@ -140,6 +149,7 @@ describe('useMenuCategories hook tests', () => {
           {
             id: 2,
             name: ' Prod 1.2',
+            description: 'New Description 2',
             portionTypeId: 0,
             portions: [],
             visible: true,
@@ -153,6 +163,7 @@ describe('useMenuCategories hook tests', () => {
           {
             id: 3,
             name: ' Prod 2.1',
+            description: 'New Description 3',
             portionTypeId: 0,
             portions: [],
             visible: false,
@@ -160,6 +171,7 @@ describe('useMenuCategories hook tests', () => {
           {
             id: 4,
             name: ' Prod 2.2',
+            description: 'New Description 4',
             portionTypeId: 0,
             portions: [],
             visible: true,
@@ -192,6 +204,7 @@ describe('useMenuCategories hook tests', () => {
           {
             id: 1,
             name: ' Prod 1.1',
+            description: 'New Description 1',
             portionTypeId: 0,
             portions: [],
             visible: false,
@@ -199,6 +212,7 @@ describe('useMenuCategories hook tests', () => {
           {
             id: 2,
             name: ' Prod 1.2',
+            description: 'New Description 2',
             portionTypeId: 0,
             portions: [],
             visible: true,
@@ -212,6 +226,7 @@ describe('useMenuCategories hook tests', () => {
           {
             id: 3,
             name: ' Prod 2.1',
+            description: 'New Description 3',
             portionTypeId: 0,
             portions: [],
             visible: false,
@@ -219,6 +234,7 @@ describe('useMenuCategories hook tests', () => {
           {
             id: 4,
             name: ' Prod 2.2',
+            description: 'New Description 4',
             portionTypeId: 0,
             portions: [],
             visible: true,
@@ -236,6 +252,7 @@ describe('useMenuCategories hook tests', () => {
       {
         id: 3,
         name: ' Prod 2.1',
+        description: 'New description 3',
         portionTypeId: 0,
         portions: [],
         visible: false,
@@ -243,6 +260,8 @@ describe('useMenuCategories hook tests', () => {
       {
         id: 4,
         name: ' Prod 2.2',
+
+        description: 'New description 4',
         portionTypeId: 0,
         portions: [],
         visible: true,
@@ -250,6 +269,7 @@ describe('useMenuCategories hook tests', () => {
       {
         id: 5,
         name: ' Prod 2.3',
+        description: 'New description 5',
         portionTypeId: 0,
         portions: [],
         visible: false,
@@ -275,6 +295,7 @@ describe('useMenuCategories hook tests', () => {
           {
             id: 1,
             name: ' Prod 1.1',
+            description: 'New Description 1',
             portionTypeId: 0,
             portions: [],
             visible: false,
@@ -282,6 +303,7 @@ describe('useMenuCategories hook tests', () => {
           {
             id: 2,
             name: ' Prod 1.2',
+            description: 'New Description 2',
             portionTypeId: 0,
             portions: [],
             visible: true,
@@ -295,6 +317,7 @@ describe('useMenuCategories hook tests', () => {
           {
             id: 3,
             name: ' Prod 2.1',
+            description: 'New Description 3',
             portionTypeId: 0,
             portions: [],
             visible: false,
@@ -302,6 +325,7 @@ describe('useMenuCategories hook tests', () => {
           {
             id: 4,
             name: ' Prod 2.2',
+            description: 'New Description 4',
             portionTypeId: 0,
             portions: [],
             visible: true,
@@ -334,6 +358,7 @@ describe('useMenuCategories hook tests', () => {
           {
             id: 1,
             name: ' Prod 1.1',
+            description: 'New Description 1',
             portionTypeId: 0,
             portions: [],
             visible: false,
@@ -341,6 +366,7 @@ describe('useMenuCategories hook tests', () => {
           {
             id: 2,
             name: ' Prod 1.2',
+            description: 'New Description 2',
             portionTypeId: 0,
             portions: [],
             visible: true,
@@ -354,6 +380,7 @@ describe('useMenuCategories hook tests', () => {
           {
             id: 3,
             name: ' Prod 2.1',
+            description: 'New Description 3',
             portionTypeId: 0,
             portions: [],
             visible: false,
@@ -361,6 +388,7 @@ describe('useMenuCategories hook tests', () => {
           {
             id: 4,
             name: ' Prod 2.2',
+            description: 'New Description 4',
             portionTypeId: 0,
             portions: [],
             visible: true,
