@@ -1,5 +1,7 @@
 import React from 'react';
 import * as classes from './header.styles';
+import { Typography } from '@material-ui/core';
+import RestaurantIcon from '@material-ui/icons/Restaurant';
 
 interface HeaderProps {
   name: string;
@@ -11,13 +13,13 @@ export const HeaderComponent: React.FunctionComponent<HeaderProps> = (props: Hea
   const { name, description, telephone } = props;
   return (
     <div className={classes.header}>
-      <h1 className={classes.title}>{name}</h1>
-      {!!description && <h2 role='heading'>{description}</h2>}
+      <Typography variant="h1" color={'primary'}>{name}</Typography>
+      {!!description && <Typography variant="h2" color={'secondary'}><RestaurantIcon /> {description}</Typography>}
       {!!telephone && (
-        <p>
-          Teléfono de reservas:&nbsp;
-          <span aria-label={telephone.split('').join('.')}>{telephone}</span>
-        </p>
+        <dl className={classes.telephone}>
+          <dt>Teléfono de reservas:</dt>
+          <dd aria-label={telephone.split('').join('.')}>{telephone}</dd>
+        </dl>
       )}
     </div>
   );

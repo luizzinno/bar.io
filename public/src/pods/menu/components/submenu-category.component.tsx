@@ -1,7 +1,6 @@
-import { Card, CardContent, CardHeader, List, ListItem } from '@material-ui/core';
+import { List, ListItem } from '@material-ui/core';
 import React from 'react';
 import { Product } from '../menu.vm';
-import * as classes from './submenu-category.styles';
 import { ProductComponent } from './product.component';
 
 interface SubmenuCategoryComponentProps {
@@ -13,7 +12,7 @@ export const SubmenuCategoryComponent: React.FunctionComponent<SubmenuCategoryCo
   categoryIndex,
   products,
 }) => (
-  <List component='ul' className={classes.container}>
+  <List component='ul'>
     {!!products &&
       products
         .filter((p) => !!p.portions)
