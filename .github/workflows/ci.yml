@@ -37,3 +37,17 @@ jobs:
         run: npm run build
       - name: Tests
         run: npm test
+  ci-superAdmin:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: superAdmin
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Install
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Tests
+        run: npm test
