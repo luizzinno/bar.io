@@ -1,11 +1,11 @@
 export interface MenuCategory {
-  id: string;
+  _id: any;
   name: string;
   products: Array<Product>;
 }
 
 export interface Product {
-  id: string;
+  _id: any;
   name: string;
   visible: boolean;
   description: string;
@@ -14,6 +14,6 @@ export interface Product {
 }
 
 export interface Portion {
-  id: string;
+  _id: any;
   price: number;
 }

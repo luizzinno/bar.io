@@ -1,5 +1,5 @@
 export interface BarInfo {
-    id: string;
+    _id: any;
     infoA: string;
     infoB: string;
     infoC: string;

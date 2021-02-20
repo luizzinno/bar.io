@@ -1,5 +1,12 @@
 import { GraphQLResolver } from 'common/models';
-import { MenuCategory, MenuCategoryRepository, Product } from 'dals';
+import { MenuCategoryRepository } from 'dals';
+import {
+  mapFromMenuCategoryApiModelToModel,
+  mapFromMenuCategoryModelToApiModel,
+  mapFromProductApiModelToModel,
+  mapFromProductModelToApiModel,
+} from './menu-category.mapper';
+import { MenuCategory, Product } from './menu-category.model';
 
 interface MenuCategoryResolver {
   Query: {
@@ -33,21 +40,29 @@ export const menuCategoryResolver: MenuCategoryResolver = {
       {},
       context
     ): Promise<Array<MenuCategory>> =>
-      await MenuCategoryRepository.getMenuCategories(),
+      (await MenuCategoryRepository.getMenuCategories())?.map((mc) =>
+        mapFromMenuCategoryModelToApiModel(mc)
+      ) ?? [],
     getMenuCategoryById: async (
       parent,
       { id },
       context
     ): Promise<MenuCategory> =>
-      await MenuCategoryRepository.getMenuCategoryById(id),
+      mapFromMenuCategoryModelToApiModel(
+        await MenuCategoryRepository.getMenuCategoryById(id)
+      ),
     getMenuCategoryByProductId: async (
       parent,
       { id },
       context
     ): Promise<MenuCategory> =>
-      await MenuCategoryRepository.getMenuCategoryByProductId(id),
+      mapFromMenuCategoryModelToApiModel(
+        await MenuCategoryRepository.getMenuCategoryByProductId(id)
+      ),
     getProductById: async (parent, { id }, context): Promise<Product> =>
-      await MenuCategoryRepository.getProductById(id),
+      mapFromProductModelToApiModel(
+        await MenuCategoryRepository.getProductById(id)
+      ),
   },
   Mutation: {
     saveMenuCategory: async (
@@ -55,26 +70,44 @@ export const menuCategoryResolver: MenuCategoryResolver = {
       { menuCategory },
       context
     ): Promise<MenuCategory> =>
-      await MenuCategoryRepository.saveMenuCategory(menuCategory),
+      mapFromMenuCategoryModelToApiModel(
+        await MenuCategoryRepository.saveMenuCategory(
+          mapFromMenuCategoryApiModelToModel(menuCategory)
+        )
+      ),
     saveProduct: async (
       parent,
       { product, categoryId },
       context
     ): Promise<Product> =>
-      await MenuCategoryRepository.saveProduct(product, categoryId),
+      mapFromProductModelToApiModel(
+        await MenuCategoryRepository.saveProduct(
+          mapFromProductApiModelToModel(product),
+          categoryId
+        )
+      ),
     saveProducts: async (
       parent,
       { categoryId, products },
       context
     ): Promise<Array<Product>> =>
-      await MenuCategoryRepository.saveProducts(categoryId, products),
+      (
+        await MenuCategoryRepository.saveProducts(
+          categoryId,
+          products.map((p) => mapFromProductApiModelToModel(p))
+        )
+      )?.map((p) => mapFromProductModelToApiModel(p)) ?? [],
     deleteMenuCategory: async (
       parent,
       { id },
       context
     ): Promise<Array<MenuCategory>> =>
-      await MenuCategoryRepository.deleteMenuCategory(id),
+      (await MenuCategoryRepository.deleteMenuCategory(id))?.map((mc) =>
+        mapFromMenuCategoryModelToApiModel(mc)
+      ) ?? [],
     deleteProduct: async (parent, { id }, context): Promise<Array<Product>> =>
-      await MenuCategoryRepository.deleteProduct(id),
+      (await MenuCategoryRepository.deleteProduct(id))?.map((p) =>
+        mapFromProductModelToApiModel(p)
+      ) ?? [],
   },
 };

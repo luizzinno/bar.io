@@ -1,10 +1,12 @@
 import { GraphQLResolver } from 'common/models';
+import { ProductPortionTypeRepository, MenuCategoryRepository } from 'dals';
 import {
-  ProductPortionType,
-  ProductPortionTypeRepository,
-  ProductPortion,
-  MenuCategoryRepository,
-} from 'dals';
+  mapFromProductPortionApiModelToModel,
+  mapFromProductPortionModelToApiModel,
+  mapFromProductPortionTypeApiModelToModel,
+  mapFromProductPortionTypeModelToApiModel,
+} from './product-portion.mapper';
+import { ProductPortion, ProductPortionType } from './product-portion.model';
 
 interface ProductPortionTypeResolver {
   Query: {
@@ -41,14 +43,17 @@ export const productPortionTypeResolver: ProductPortionTypeResolver = {
       {},
       context
     ): Promise<Array<ProductPortionType>> =>
-      await ProductPortionTypeRepository.getProductPortionTypes(),
-
+      (await ProductPortionTypeRepository.getProductPortionTypes())?.map((p) =>
+        mapFromProductPortionTypeModelToApiModel(p)
+      ) ?? [],
     getProductPortionTypeById: async (
       parent,
       { id },
       context
     ): Promise<ProductPortionType> =>
-      await ProductPortionTypeRepository.getProductPortionTypeById(id),
+      mapFromProductPortionTypeModelToApiModel(
+        await ProductPortionTypeRepository.getProductPortionTypeById(id)
+      ),
   },
   Mutation: {
     saveProductPortionType: async (
@@ -56,35 +61,46 @@ export const productPortionTypeResolver: ProductPortionTypeResolver = {
       { productPortionType },
       context
     ): Promise<ProductPortionType> =>
-      await ProductPortionTypeRepository.saveProductPortionType(
-        productPortionType
+      mapFromProductPortionTypeModelToApiModel(
+        await ProductPortionTypeRepository.saveProductPortionType(
+          mapFromProductPortionTypeApiModelToModel(productPortionType)
+        )
       ),
     saveProductPortion: async (
       parent,
       { productPortion, productPortionTypeId },
       context
     ): Promise<ProductPortion> =>
-      await ProductPortionTypeRepository.saveProductPortion(
-        productPortion,
-        productPortionTypeId
+      mapFromProductPortionModelToApiModel(
+        await ProductPortionTypeRepository.saveProductPortion(
+          mapFromProductPortionApiModelToModel(productPortion),
+          productPortionTypeId
+        )
       ),
     deleteProductPortionType: async (
       parent,
       { id },
       context
     ): Promise<Array<ProductPortionType>> => {
-      const result = await ProductPortionTypeRepository.deleteProductPortionType(id);
-      !!result && MenuCategoryRepository.removeProductPortionTypeFromProducts(id);
-      return result;
+      const result = await ProductPortionTypeRepository.deleteProductPortionType(
+        id
+      );
+      if (!!result || result?.length === 0)
+        MenuCategoryRepository.removeProductPortionTypeFromProducts(id);
+      return result?.map((t) => mapFromProductPortionTypeModelToApiModel(t));
     },
     deleteProductPortion: async (
       parent,
       { id },
       context
     ): Promise<Array<ProductPortion>> => {
-      const result = await ProductPortionTypeRepository.deleteProductPortion(id);
-      !!result && MenuCategoryRepository.removeProductPortionFromProducts(id);
-      return result;
-    }
+      const result = await ProductPortionTypeRepository.deleteProductPortion(
+        id
+      );
+
+      if (!!result || result?.length === 0)
+        MenuCategoryRepository.removeProductPortionFromProducts(id);
+      return result?.map((p) => mapFromProductPortionModelToApiModel(p));
+    },
   },
 };

@@ -1,56 +1,55 @@
 import { MenuCategory, MenuCategoryContext, Product } from 'dals';
-import { UpdateQuery } from 'mongoose';
+import { mongo, UpdateQuery } from 'mongoose';
 
 export const getMenuCategories = async (): Promise<Array<MenuCategory>> =>
-  await MenuCategoryContext.find();
+  await MenuCategoryContext.find().lean();
 
 export const getMenuCategoryById = async (
   id: string
 ): Promise<MenuCategory> => {
-  if (!!!id) throw 'id cannot be empty';
-  return await MenuCategoryContext.findById(id);
+  if (!id) throw 'id cannot be empty';
+  return await MenuCategoryContext.findById(id).lean();
 };
 
 export const getMenuCategoryByProductId = async (
   productId: string
 ): Promise<MenuCategory> => {
-  if (!!!productId) throw 'productId cannot be empty';
+  if (!productId) throw 'productId cannot be empty';
   return await MenuCategoryContext.findOne({
     products: { $elemMatch: [{ _id: { $eq: productId } }] },
-  });
+  }).lean();
 };
 
 export const saveMenuCategory = async (
   menuCategory: MenuCategory
 ): Promise<MenuCategory> => {
-  if (!!!menuCategory) throw 'menuCategory cannot be null or undefined';
-  if (!!!menuCategory.id) return await MenuCategoryContext.create(menuCategory);
+  if (!menuCategory) throw 'menuCategory cannot be null or undefined';
+  if (!menuCategory._id) menuCategory._id = new mongo.ObjectID();
 
   return await MenuCategoryContext.findByIdAndUpdate(
-    menuCategory.id,
+    menuCategory._id,
     menuCategory,
     {
       new: true,
-      upsert: false,
-      overwrite: true,
+      upsert: true,
     }
-  );
+  ).lean();
 };
 
 export const deleteMenuCategory = async (
   id: string
 ): Promise<Array<MenuCategory>> => {
-  if (!!!id) throw 'id cannot be empty';
+  if (!id) throw 'id cannot be empty';
   await MenuCategoryContext.findByIdAndDelete(id);
   return await getMenuCategories();
 };
 
 export const getProductById = async (id: string): Promise<Product> => {
-  if (!!!id) throw 'id cannot be empty';
+  if (!id) throw 'id cannot be empty';
   const result: MenuCategory = await MenuCategoryContext.findOne(
     { products: { $elemMatch: { _id: { $eq: id } } } },
     { products: { $elemMatch: { _id: { $eq: id } } } }
-  );
+  ).lean();
 
   return !!result ? result.products[0] : null;
 };
@@ -59,25 +58,24 @@ export const saveProduct = async (
   product: Product,
   categoryId?: string
 ): Promise<Product> => {
-  if (!!!product) throw 'product cannot be null or undefined';
+  if (!product) throw 'product cannot be null or undefined';
   let result: MenuCategory;
   if (!!categoryId) {
-    if (!!product.id) {
+    if (!!product._id) {
       result = await MenuCategoryContext.findOneAndUpdate(
         {
           _id: categoryId,
-          products: { $elemMatch: { _id: { $eq: product.id } } },
+          products: { $elemMatch: { _id: { $eq: product._id } } },
         },
         {
           $set: {
-            'products.$': { ...product, _id: product.id },
+            'products.$': { ...product, _id: product._id },
           },
         },
         {
           new: true,
-          overwrite: true,
         }
-      );
+      ).lean();
     } else {
       result = await MenuCategoryContext.findByIdAndUpdate(
         categoryId,
@@ -88,23 +86,21 @@ export const saveProduct = async (
         },
         {
           new: true,
-          upsert: false,
         }
-      );
+      ).lean();
     }
   } else {
     result = await MenuCategoryContext.findOneAndUpdate(
-      { products: { $elemMatch: { _id: { $eq: product.id } } } },
+      { products: { $elemMatch: { _id: { $eq: product._id } } } },
       {
         $set: {
-          'products.$': { ...product, _id: product.id },
+          'products.$': { ...product, _id: product._id },
         },
       },
       {
-        new: true,
-        upsert: false,
+        new: true,        
       }
-    );
+    ).lean();
   }
   return result?.products.find((p) => p.name === product.name) ?? null;
 };
@@ -113,9 +109,9 @@ export const saveProducts = async (
   categoryId: string,
   products: Array<Product>
 ): Promise<Array<Product>> => {
-  if (!!!categoryId) throw 'categoryId cannot be empty';
-  if (!!!products) throw 'products cannot be null or undefined';
-  const updatedProducts = products.map((p) => ({ ...p, _id: p.id }));
+  if (!categoryId) throw 'categoryId cannot be empty';
+  if (!products) throw 'products cannot be null or undefined';
+  const updatedProducts = products.map((p) => ({ ...p, _id: p._id }));
   const result = await MenuCategoryContext.findOneAndUpdate(
     {
       _id: categoryId,
@@ -127,16 +123,14 @@ export const saveProducts = async (
     },
     {
       new: true,
-      upsert: false,
-      overwrite: true,
     }
-  );
+  ).lean();
 
   return result?.products ?? null;
 };
 
 export const deleteProduct = async (id: string): Promise<Array<Product>> => {
-  if (!!!id) throw 'id cannot be empty';
+  if (!id) throw 'id cannot be empty';
   const result = await MenuCategoryContext.findOneAndUpdate(
     { products: { $elemMatch: { _id: { $eq: id } } } },
     {
@@ -147,7 +141,7 @@ export const deleteProduct = async (id: string): Promise<Array<Product>> => {
     {
       new: true,
     }
-  );
+  ).lean();
 
   return result?.products ?? null;
 };
@@ -169,6 +163,8 @@ export const removeProductPortionFromProducts = async (
       },
     }
   );
+  console.log(productPortionId);
+  console.log(result);
   return !!result.nModified;
 };
 
@@ -179,7 +175,7 @@ export const removeProductPortionTypeFromProducts = async (
     {
       products: {
         $elemMatch: {
-          portionTypeId: { $eq: productPortionTypeId } ,
+          portionTypeId: { $eq: productPortionTypeId },
         },
       },
     },

@@ -1,5 +1,10 @@
 import { GraphQLResolver } from 'common/models';
-import { BarInfo, barInfoRepository } from 'dals';
+import { barInfoRepository } from 'dals';
+import { BarInfo } from './bar-info.model';
+import {
+  mapFromBarInfoApiModelToModel,
+  mapFromBarInfoModelToApiModel,
+} from './bar-info.mapper';
 
 interface BarInfoResolver {
   Query: {
@@ -13,10 +18,12 @@ interface BarInfoResolver {
 export const barInfoResolver: BarInfoResolver = {
   Query: {
     getBarInfoById: async (parent, { id }, context): Promise<BarInfo> =>
-      await barInfoRepository.getBarInfoById(id),
+      mapFromBarInfoModelToApiModel(await barInfoRepository.getBarInfoById(id)),
   },
   Mutation: {
     saveBarInfo: async (parent, { barInfo }, context): Promise<BarInfo> =>
-      await barInfoRepository.saveBarInfo(barInfo),
+      mapFromBarInfoModelToApiModel(
+        await barInfoRepository.saveBarInfo(mapFromBarInfoApiModelToModel(barInfo))
+      ),
   },
 };

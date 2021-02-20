@@ -1,8 +1,8 @@
-import { createArrayRepository } from 'core';
+import { createMockRepository } from 'core';
 import { MenuCategory, Product } from 'dals';
 import { v4 as uuid4 } from 'uuid';
 
-const menuCategoryRepository = createArrayRepository<MenuCategory>(() =>
+const menuCategoryRepository = createMockRepository<MenuCategory>(() =>
   uuid4()
 );
 
@@ -21,7 +21,7 @@ export const getMenuCategoryByProductId = async (
 ): Promise<MenuCategory> => {
   const category = menuCategoryRepository
     .getCollection()
-    .find((c) => c.products.some((p) => p.id == productId));
+    .find((c) => c.products.some((p) => p._id == productId));
 
   return !!category ? { ...category } : null;
 };
@@ -37,8 +37,8 @@ export const deleteMenuCategory = async (
 export const getProductById = async (id: string): Promise<Product> => {
   const product = menuCategoryRepository
     .getCollection()
-    .find((c) => c.products.some((p) => p.id == id))
-    ?.products?.find((p) => p.id == id);
+    .find((c) => c.products.some((p) => p._id == id))
+    ?.products?.find((p) => p._id == id);
 
   return !!product ? { ...product } : null;
 };
@@ -50,12 +50,12 @@ export const saveProduct = async (
   let menuCategory: MenuCategory;
   if (!!categoryId) {
     menuCategory = await getMenuCategoryById(categoryId);
-  } else if (!!product.id) {
-    menuCategory = await getMenuCategoryByProductId(product.id);
+  } else if (!!product._id) {
+    menuCategory = await getMenuCategoryByProductId(product._id);
   }
 
   if (!!menuCategory) {
-    const productRepository = createArrayRepository<Product>(
+    const productRepository = createMockRepository<Product>(
       () => uuid4(),
       menuCategory.products
     );
@@ -91,7 +91,7 @@ export const deleteProduct = async (id: string): Promise<Array<Product>> => {
   const category = await getMenuCategoryByProductId(id);
 
   if (!!category) {
-    const productRepository = createArrayRepository<Product>(
+    const productRepository = createMockRepository<Product>(
       () => false,
       category.products
     );
@@ -114,7 +114,7 @@ export const removeProductPortionFromProducts = async (
     ...mc,
     products: mc.products?.map((p) => ({
       ...p,
-      portions: p.portions?.filter((pr) => pr.id != productPortionId),
+      portions: p.portions?.filter((pr) => pr._id != productPortionId),
     })),
   }));
   return !!menuCategoryRepository.setItems(updatedMenuCategories);

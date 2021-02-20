@@ -1,28 +1,28 @@
 import { produce } from 'immer';
 
-export interface IEntity {
-  id: any;
+export interface Entity {
+  _id: any;
 }
 
-export interface IArrayRepository<IEntity> {
-  getCollection: () => IEntity[];
-  saveItem: (item: IEntity) => IEntity;
-  getItemById: (id: any) => IEntity;
-  getItemByPropValue: (propName: string, value: any) => IEntity;
-  setItems: (items: IEntity[]) => IEntity[];
-  deleteItem: (id: any) => IEntity[];
+export interface IMockRepository<Entity> {
+  getCollection: () => Entity[];
+  saveItem: (item: Entity) => Entity;
+  getItemById: (id: any) => Entity;
+  getItemByPropValue: (propName: string, value: any) => Entity;
+  setItems: (items: Entity[]) => Entity[];
+  deleteItem: (id: any) => Entity[];
 }
 
-export function createArrayRepository<T extends IEntity>(
+export function createMockRepository<T extends Entity>(
   idGenerator: () => any,
   initialCollection?: Array<T>
-): IArrayRepository<T> {
-  if (!!!idGenerator) throw 'An id generator must be provided';
+): IMockRepository<T> {
+  if (!idGenerator) throw 'An id generator must be provided';
   let collection = !!initialCollection ? [...initialCollection] : new Array();
   const getCollection = (): T[] => [...collection];
 
   const getItemById = (id: any): T => {
-    if (!!!id) throw 'id cannot be empty';
+    if (!id) throw 'id cannot be empty';
     const item = collection.find((i) => i.id == id);
     return !!item ? { ...item } : null;
   };
@@ -31,24 +31,24 @@ export function createArrayRepository<T extends IEntity>(
     collection.find((o) => o[propName] == value);
 
   const saveItem = (item: T): T => {
-    if (!!!item) throw 'item cannot be null or undefined';
-    if (!!item.id && !!getItemById(item.id)) {
+    if (!item) throw 'item cannot be null or undefined';
+    if (!!item._id && !!getItemById(item._id)) {
       collection = produce(collection, (newCollection) => {
-        const index = newCollection.findIndex((c) => c.id === item.id);
+        const index = newCollection.findIndex((c) => c.id === item._id);
         newCollection.splice(index, 1, { ...item });
       });
     } else {
       collection = produce(collection, (newCollection) => {
-        item.id = idGenerator();
+        item._id = idGenerator();
         newCollection.push({ ...item });
       });
     }
 
-    return getItemById(item.id);
+    return getItemById(item._id);
   };
 
   const setItems = (items: T[]): T[] => {
-    if (!!!items) items = [];
+    if (!items) items = [];
     collection = produce(
       collection,
       (newCollection) => (newCollection = [...items])
@@ -57,7 +57,7 @@ export function createArrayRepository<T extends IEntity>(
   };
 
   const deleteItem = (id: any): T[] => {
-    if (!!!id) throw 'id cannot be empty';
+    if (!id) throw 'id cannot be empty';
     collection = produce(collection, (newCollection) => {
       newCollection.splice(
         newCollection.indexOf((i) => i.id == id),

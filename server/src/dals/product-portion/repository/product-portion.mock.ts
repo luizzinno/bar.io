@@ -1,8 +1,8 @@
-import { createArrayRepository } from 'core';
+import { createMockRepository } from 'core';
 import { ProductPortion, ProductPortionType } from 'dals';
 import { v4 as uuid4 } from 'uuid';
 
-const productPortionTypeRepository = createArrayRepository<ProductPortionType>(
+const productPortionTypeRepository = createMockRepository<ProductPortionType>(
   () => uuid4()
 );
 
@@ -29,13 +29,13 @@ export const saveProductPortion = async (
     productPortionType = productPortionTypeRepository.getItemById(
       productPortionTypeId
     );
-  } else if (!!productPortion.id) {
+  } else if (!!productPortion._id) {
     productPortionType = productPortionTypeRepository
       .getCollection()
-      .find((t) => t.portions.some((p) => p.id));
+      .find((t) => t.portions.some((p) => p._id));
   }
   if (!!productPortionType) {
-    const productPortionRepository = createArrayRepository<ProductPortion>(
+    const productPortionRepository = createMockRepository<ProductPortion>(
       () => uuid4(),
       productPortionType.portions
     );
@@ -56,14 +56,14 @@ export const deleteProductPortionType = async (id: string): Promise<Array<Produc
 export const deleteProductPortion = async (
   id: string
 ): Promise<Array<ProductPortion>> => {
-  if (!!!id) throw 'id cannot be empty';
+  if (!id) throw 'id cannot be empty';
   const types = await getProductPortionTypes();
-  const type = types.find((t) => t.portions.some((p) => p.id === id));
+  const type = types.find((t) => t.portions.some((p) => p._id === id));
 
   if (!!type) {
     const updatedType = productPortionTypeRepository.saveItem({
       ...type,
-      portions: type.portions.filter((p) => p.id !== id),
+      portions: type.portions.filter((p) => p._id !== id),
     });
     return !!updatedType ? [...updatedType.portions] : [];
   }
