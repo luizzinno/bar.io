@@ -41,7 +41,7 @@ export const saveCategory = async (name: string, id?: number): Promise<boolean> 
     const newId =
       mockedMenuCategories
         .map((c) => c.id)
-        .reduce((max, current) => (!!!max || current > max ? current : max)) + 1;
+        .reduce((max, current) => (!max || current > max ? current : max)) + 1;
     mockedMenuCategories.unshift({
       id: newId,
       name: name,
@@ -134,7 +134,7 @@ export const saveProductPortion = async (
       mockedProductPortionTypes
         .map((ps) => ps.portions.map((s) => s.id))
         .reduce((acc, val) => acc.concat(val))
-        .reduce((max, current) => (!!!max || current > max ? current : max)) + 1;
+        .reduce((max, current) => (!max || current > max ? current : max)) + 1;
     mockedProductPortionTypes
       .find((ppt) => ppt.id === typeId)
       ?.portions.unshift({
