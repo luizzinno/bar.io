@@ -4,7 +4,7 @@ export interface Entity {
   _id: any;
 }
 
-export interface IMockRepository<Entity> {
+export interface MockRepository<Entity> {
   getCollection: () => Entity[];
   saveItem: (item: Entity) => Entity;
   getItemById: (id: any) => Entity;
@@ -16,7 +16,7 @@ export interface IMockRepository<Entity> {
 export function createMockRepository<T extends Entity>(
   idGenerator: () => any,
   initialCollection?: Array<T>
-): IMockRepository<T> {
+): MockRepository<T> {
   if (!idGenerator) throw 'An id generator must be provided';
   let collection = !!initialCollection ? [...initialCollection] : new Array();
   const getCollection = (): T[] => [...collection];

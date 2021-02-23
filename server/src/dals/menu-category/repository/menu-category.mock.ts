@@ -1,4 +1,5 @@
-import { createMockRepository } from 'core';
+
+import { createMockRepository } from 'common/helpers';
 import { MenuCategory, Product } from 'dals';
 import { v4 as uuid4 } from 'uuid';
 

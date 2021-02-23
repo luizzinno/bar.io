@@ -1,4 +1,5 @@
-import { createMockRepository } from 'core';
+
+import { createMockRepository } from 'common/helpers';
 import { BarInfo } from 'dals';
 import { v4 as uuidv4 } from 'uuid';
 
