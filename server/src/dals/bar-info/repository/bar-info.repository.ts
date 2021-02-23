@@ -3,7 +3,7 @@ import { mongo } from 'mongoose';
 
 export const getBarInfoById = async (id: string): Promise<BarInfo> => {
   if (!id) throw 'id cannot be empty';
-  return await BarInfoContext.findById(id);
+  return await BarInfoContext.findById(id).lean();
 };
 
 export const saveBarInfo = async (barInfo: BarInfo): Promise<BarInfo> => {  
