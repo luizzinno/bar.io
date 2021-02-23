@@ -23,7 +23,7 @@ const menuCategorySchema = new Schema({
   products: [productSchema],
 });
 
-export const MenuCategoryContext = model<MenuCategory & Document>(
+export const menuCategoryContext = model<MenuCategory & Document>(
   'MenuCategory',
   menuCategorySchema
 );

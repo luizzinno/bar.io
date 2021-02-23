@@ -61,12 +61,10 @@ export const saveProduct = async (
       menuCategory.products
     );
     const savedProduct = productRepository.saveItem(product);
-    console.debug(savedProduct);
     const result = menuCategoryRepository.saveItem({
       ...menuCategory,
       products: productRepository.getCollection(),
     });
-    console.debug(result);
     return !!result ? savedProduct : null;
   }
   return null;

@@ -22,8 +22,8 @@ export function createMockRepository<T extends Entity>(
   const getCollection = (): T[] => [...collection];
 
   const getItemById = (id: any): T => {
-    if (!id) throw 'id cannot be empty';
-    const item = collection.find((i) => i.id == id);
+    if (!id) throw 'id cannot be empty';    
+    const item = collection.find((i) => i._id == id);
     return !!item ? { ...item } : null;
   };
 
@@ -34,7 +34,7 @@ export function createMockRepository<T extends Entity>(
     if (!item) throw 'item cannot be null or undefined';
     if (!!item._id && !!getItemById(item._id)) {
       collection = produce(collection, (newCollection) => {
-        const index = newCollection.findIndex((c) => c.id === item._id);
+        const index = newCollection.findIndex((c) => c._id === item._id);
         newCollection.splice(index, 1, { ...item });
       });
     } else {
@@ -60,7 +60,7 @@ export function createMockRepository<T extends Entity>(
     if (!id) throw 'id cannot be empty';
     collection = produce(collection, (newCollection) => {
       newCollection.splice(
-        newCollection.indexOf((i) => i.id == id),
+        newCollection.indexOf((i) => i._id == id),
         1
       );
       return newCollection;

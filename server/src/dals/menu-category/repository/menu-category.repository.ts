@@ -1,21 +1,21 @@
-import { MenuCategory, MenuCategoryContext, Product } from 'dals';
+import { MenuCategory, menuCategoryContext, Product } from 'dals';
 import { mongo, UpdateQuery } from 'mongoose';
 
 export const getMenuCategories = async (): Promise<Array<MenuCategory>> =>
-  await MenuCategoryContext.find().lean();
+  await menuCategoryContext.find().lean();
 
 export const getMenuCategoryById = async (
   id: string
 ): Promise<MenuCategory> => {
   if (!id) throw 'id cannot be empty';
-  return await MenuCategoryContext.findById(id).lean();
+  return await menuCategoryContext.findById(id).lean();
 };
 
 export const getMenuCategoryByProductId = async (
   productId: string
 ): Promise<MenuCategory> => {
   if (!productId) throw 'productId cannot be empty';
-  return await MenuCategoryContext.findOne({
+  return await menuCategoryContext.findOne({
     products: { $elemMatch: [{ _id: { $eq: productId } }] },
   }).lean();
 };
@@ -26,7 +26,7 @@ export const saveMenuCategory = async (
   if (!menuCategory) throw 'menuCategory cannot be null or undefined';
   if (!menuCategory._id) menuCategory._id = new mongo.ObjectID();
 
-  return await MenuCategoryContext.findByIdAndUpdate(
+  return await menuCategoryContext.findByIdAndUpdate(
     menuCategory._id,
     menuCategory,
     {
@@ -40,13 +40,13 @@ export const deleteMenuCategory = async (
   id: string
 ): Promise<Array<MenuCategory>> => {
   if (!id) throw 'id cannot be empty';
-  await MenuCategoryContext.findByIdAndDelete(id);
+  await menuCategoryContext.findByIdAndDelete(id);
   return await getMenuCategories();
 };
 
 export const getProductById = async (id: string): Promise<Product> => {
   if (!id) throw 'id cannot be empty';
-  const result: MenuCategory = await MenuCategoryContext.findOne(
+  const result: MenuCategory = await menuCategoryContext.findOne(
     { products: { $elemMatch: { _id: { $eq: id } } } },
     { products: { $elemMatch: { _id: { $eq: id } } } }
   ).lean();
@@ -62,7 +62,7 @@ export const saveProduct = async (
   let result: MenuCategory;
   if (!!categoryId) {
     if (!!product._id) {
-      result = await MenuCategoryContext.findOneAndUpdate(
+      result = await menuCategoryContext.findOneAndUpdate(
         {
           _id: categoryId,
           products: { $elemMatch: { _id: { $eq: product._id } } },
@@ -77,7 +77,7 @@ export const saveProduct = async (
         }
       ).lean();
     } else {
-      result = await MenuCategoryContext.findByIdAndUpdate(
+      result = await menuCategoryContext.findByIdAndUpdate(
         categoryId,
         {
           $push: {
@@ -90,7 +90,7 @@ export const saveProduct = async (
       ).lean();
     }
   } else {
-    result = await MenuCategoryContext.findOneAndUpdate(
+    result = await menuCategoryContext.findOneAndUpdate(
       { products: { $elemMatch: { _id: { $eq: product._id } } } },
       {
         $set: {
@@ -112,7 +112,7 @@ export const saveProducts = async (
   if (!categoryId) throw 'categoryId cannot be empty';
   if (!products) throw 'products cannot be null or undefined';
   const updatedProducts = products.map((p) => ({ ...p, _id: p._id }));
-  const result = await MenuCategoryContext.findOneAndUpdate(
+  const result = await menuCategoryContext.findOneAndUpdate(
     {
       _id: categoryId,
     },
@@ -131,7 +131,7 @@ export const saveProducts = async (
 
 export const deleteProduct = async (id: string): Promise<Array<Product>> => {
   if (!id) throw 'id cannot be empty';
-  const result = await MenuCategoryContext.findOneAndUpdate(
+  const result = await menuCategoryContext.findOneAndUpdate(
     { products: { $elemMatch: { _id: { $eq: id } } } },
     {
       $pull: {
@@ -149,7 +149,7 @@ export const deleteProduct = async (id: string): Promise<Array<Product>> => {
 export const removeProductPortionFromProducts = async (
   productPortionId: string
 ): Promise<boolean> => {
-  const result = await MenuCategoryContext.updateMany(
+  const result = await menuCategoryContext.updateMany(
     {
       products: {
         $elemMatch: {
@@ -171,7 +171,7 @@ export const removeProductPortionFromProducts = async (
 export const removeProductPortionTypeFromProducts = async (
   productPortionTypeId: string
 ): Promise<boolean> => {
-  const result = await MenuCategoryContext.updateMany(
+  const result = await menuCategoryContext.updateMany(
     {
       products: {
         $elemMatch: {

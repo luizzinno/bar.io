@@ -7,4 +7,4 @@ const barInfoSchema = new Schema({
   infoC: Schema.Types.String, 
 });
 
-export const BarInfoContext = model<BarInfo & Document>('BarInfo', barInfoSchema);
+export const barInfoContext = model<BarInfo & Document>('BarInfo', barInfoSchema);
