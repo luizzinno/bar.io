@@ -61,23 +61,21 @@ export const EditPortionsContainer: React.FunctionComponent = () => {
   const onAdd = () => setEditProductPortionId(0);
 
   return (
-    <div className={classes.container}>
-      <Card>
-        <CardHeader component='h1' title={`Editar ${productPortionType}`} />
-        <CardContent>
-          <SortableListComponent
-            items={listItems}
-            itemTypeName={`${productPortionType}`}
-            editItemId={editProductPortionId}
-            onSave={onSave}
-            onEdit={onEdit}
-            onDelete={onDelete}
-            onReorder={onReorder}
-            onCancel={onCancel}
-            onAdd={onAdd}
-          />
-        </CardContent>
-      </Card>
-    </div>
+    <Card className={classes.container}>
+      <CardHeader component='h1' title={`Editar ${productPortionType}`} />
+      <CardContent>
+        <SortableListComponent
+          items={listItems}
+          itemTypeName={`${productPortionType}`}
+          editItemId={editProductPortionId}
+          onSave={onSave}
+          onEdit={onEdit}
+          onDelete={onDelete}
+          onReorder={onReorder}
+          onCancel={onCancel}
+          onAdd={onAdd}
+        />
+      </CardContent>
+    </Card>
   );
 };

@@ -8,7 +8,6 @@ import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { ProductListComponent } from './product-list.component';
 import { useMenuCategories } from './use-menu-categories.hook';
-import * as classes from './product-list.styles';
 import { reorder } from 'common/utils/array';
 
 interface Params {
@@ -45,7 +44,7 @@ export const ProductListContainer: React.FunctionComponent = () => {
 
   const onReorderProducts = async (startIndex: number, endIndex: number) => {
     const products = getProductsByCategoryId(selectedCategoryId);
-    const newProducts = reorder(products, startIndex, endIndex);    
+    const newProducts = reorder(products, startIndex, endIndex);
     updateSelectedCategoryProducts(newProducts);
     await saveProducts(selectedCategoryId, newProducts);
   };
@@ -71,19 +70,17 @@ export const ProductListContainer: React.FunctionComponent = () => {
   }, []);
 
   return (
-    <div className={classes.container}>
-      <ProductListComponent
-        categories={mapMenuCategoriesToListItems(categories)}
-        products={mapProductsToListItems(getProductsByCategoryId(selectedCategoryId))}
-        selectedCategoryId={selectedCategoryId}
-        onAddProduct={onAddProduct}
-        onCancelProductEdit={onCancelProductEdit}
-        onChangeCategory={onChangeCategory}
-        onChangeProductVisibility={onChangeProductVisibility}
-        onDeleteProduct={onDeleteProduct}
-        onEditProduct={onEditProduct}
-        onReorderProducts={onReorderProducts}
-      />
-    </div>
+    <ProductListComponent
+      categories={mapMenuCategoriesToListItems(categories)}
+      products={mapProductsToListItems(getProductsByCategoryId(selectedCategoryId))}
+      selectedCategoryId={selectedCategoryId}
+      onAddProduct={onAddProduct}
+      onCancelProductEdit={onCancelProductEdit}
+      onChangeCategory={onChangeCategory}
+      onChangeProductVisibility={onChangeProductVisibility}
+      onDeleteProduct={onDeleteProduct}
+      onEditProduct={onEditProduct}
+      onReorderProducts={onReorderProducts}
+    />
   );
 };

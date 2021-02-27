@@ -1,7 +1,21 @@
 import { css } from 'emotion';
+import { theme } from 'core/theme';
 
 export const card = css`
-  width: 90%;
+  width: 100%;
+
+  @media (min-width: ${theme.breakpoints.values.sm}px) {
+    /* width: 60%; */
+    max-width: 480px;
+  }
+
+  @media (min-width: ${theme.breakpoints.values.md}px) {
+    /* width: 50%; */
+  }
+
+  @media (min-width: ${theme.breakpoints.values.lg}px) {
+    /* width: 40%; */
+  }
 `;
 
 export const title = css`

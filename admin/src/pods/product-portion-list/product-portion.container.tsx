@@ -14,6 +14,12 @@ import {
 
 //Component
 import { ProductPortionListComponent } from './product-portion.component';
+import {
+  AlertSnackbarComponent,
+  HorizontalPosition,
+  Severity,
+  VerticalPosition,
+} from 'common-app/components/alert-snackbar';
 
 //Method
 import { reorder } from 'common/utils/array';
@@ -24,6 +30,7 @@ import { routes } from 'core/router';
 
 export const ProductPortionListContainer: React.FunctionComponent = () => {
   const history = useHistory();
+  const [error, setError] = React.useState<string>(null);
 
   const [productPortionList, setproductPortionList] = React.useState<ProductPortion[]>([
     createEmptyProductPortion(),
@@ -43,7 +50,8 @@ export const ProductPortionListContainer: React.FunctionComponent = () => {
       })
       .catch((error) => {
         // Snackbar error
-        alert('Error to load productPortion list');
+        // alert('Error to load productPortion list');
+        setError('Error to load productPortion list');
       });
   };
 
@@ -103,16 +111,31 @@ export const ProductPortionListContainer: React.FunctionComponent = () => {
   const handleCancel = () => setEditProductPortionIdId(false);
   const handleAdd = () => setEditProductPortionIdId(0);
 
+  const onCloseErrorAlert = () => {
+    setError(null);
+  };
+
   return (
-    <ProductPortionListComponent
-      listItem={productPortionList}
-      editID={editProductPortionId}
-      onSave={handleSave}
-      onEdit={handleEdit}
-      onDelete={handleDelete}
-      onCancel={handleCancel}
-      onAdd={handleAdd}
-      onReorder={handleReorder}
-    />
+    <>
+      <ProductPortionListComponent
+        listItem={productPortionList}
+        editID={editProductPortionId}
+        onSave={handleSave}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+        onCancel={handleCancel}
+        onAdd={handleAdd}
+        onReorder={handleReorder}
+      />
+      <AlertSnackbarComponent
+        open={!!error}
+        message={error}
+        onClose={onCloseErrorAlert}
+        severity={Severity.ERROR}
+        autoHideDuration={6000}
+        vertical={VerticalPosition.TOP}
+        horizontal={HorizontalPosition.CENTER}
+      />
+    </>
   );
 };

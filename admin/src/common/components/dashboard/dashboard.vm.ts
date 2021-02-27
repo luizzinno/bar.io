@@ -5,3 +5,9 @@ export interface DashboardItemProps {
   image?: string;
   subtitle?: string;
 }
+
+export interface ClassNameProps {
+  root?: string;
+  items?: string;
+  item?: ClassesProps;
+}

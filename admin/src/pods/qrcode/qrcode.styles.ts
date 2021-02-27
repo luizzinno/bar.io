@@ -1,7 +1,8 @@
 import { css } from 'emotion';
 
 export const container = css`
-  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
 `;
 
 export const text = css`

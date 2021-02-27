@@ -1,7 +1,8 @@
 import { css } from 'emotion';
 
-export const card = css`
-  width: 90%;
+export const container = css`
+  width: 100%;
+  box-sizing: border-box;
 `;
 
 export const title = css`

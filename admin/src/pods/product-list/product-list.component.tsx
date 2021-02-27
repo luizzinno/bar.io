@@ -1,6 +1,17 @@
-import { ListItem, SortableListComponent } from 'common/components';
 import React from 'react';
-import { Card, CardContent, CardHeader, InputLabel, MenuItem, Select } from '@material-ui/core';
+import { ListItem, SortableListComponent } from 'common/components';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  InputLabel,
+  MenuItem,
+  Select,
+  Button,
+} from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
+import { switchRoutes } from 'core/router';
+import * as classes from './product-list.styles';
 
 interface ProductListComponentProps {
   selectedCategoryId: number;
@@ -30,9 +41,10 @@ export const ProductListComponent: React.FunctionComponent<ProductListComponentP
   } = props;
   const handleChangeCategory = (e: React.ChangeEvent<{ value: number }>) =>
     onChangeCategory(e.target.value);
+  const history = useHistory();
 
   return (
-    <Card>
+    <Card className={classes.container}>
       <CardHeader component='h1' title='Productos' />
       <CardContent>
         <InputLabel id='categorySelectLabel'>Seleccione una categoría</InputLabel>
@@ -48,9 +60,6 @@ export const ProductListComponent: React.FunctionComponent<ProductListComponentP
             </MenuItem>
           ))}
         </Select>
-
-        <br></br>
-        <br></br>
         {!!selectedCategoryId && (
           <SortableListComponent
             itemTypeName='productos'
@@ -63,6 +72,9 @@ export const ProductListComponent: React.FunctionComponent<ProductListComponentP
             onCancel={onCancelProductEdit}
           />
         )}
+        <Button variant='outlined' color='primary' onClick={() => history.push(switchRoutes.dashboard)}>
+          Back to home
+        </Button>
       </CardContent>
     </Card>
   );

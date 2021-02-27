@@ -28,7 +28,7 @@ export const BarInfoComponent: React.FunctionComponent<Props> = (props) => {
   const { info, onSave, onCancel } = props;
 
   return (
-    <Card className={classes.card}>
+    <Card className={classes.container}>
       <CardHeader title='Bar info' className={classes.title} />
       <CardContent>
         <Formik

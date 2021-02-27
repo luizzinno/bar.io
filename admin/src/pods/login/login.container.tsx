@@ -12,9 +12,16 @@ import { Login } from './login.vm';
 
 //Component
 import { LoginComponent } from './login.component';
+import {
+  AlertSnackbarComponent,
+  HorizontalPosition,
+  Severity,
+  VerticalPosition,
+} from 'common-app/components/alert-snackbar';
 
 export const LoginContainer: React.FunctionComponent = () => {
   const history = useHistory();
+  const [error, setError] = React.useState<string>(null);
 
   const loginSucceeded = (userName: string, isValid: boolean): void => {
     if (isValid) {
@@ -22,7 +29,8 @@ export const LoginContainer: React.FunctionComponent = () => {
       history.push(routes.dashboard);
     } else {
       // Snackbar error
-      alert('Invalid login');
+      // alert('Invalid login');
+      setError('Invalid login');
     }
   };
 
@@ -32,9 +40,22 @@ export const LoginContainer: React.FunctionComponent = () => {
     });
   };
 
+  const onCloseErrorAlert = () => {
+    setError(null);
+  };
+
   return (
     <>
       <LoginComponent onLogin={handleLogin} />
+      <AlertSnackbarComponent
+        open={!!error}
+        message={error}
+        onClose={onCloseErrorAlert}
+        severity={Severity.ERROR}
+        autoHideDuration={6000}
+        vertical={VerticalPosition.TOP}
+        horizontal={HorizontalPosition.CENTER}
+      />
     </>
   );
 };
