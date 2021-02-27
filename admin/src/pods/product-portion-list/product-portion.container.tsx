@@ -62,7 +62,7 @@ export const ProductPortionListContainer: React.FunctionComponent = () => {
     const newId: number =
       productPortionList
         .map((c) => c.id)
-        .reduce((max, current) => (!!!max || current > max ? current : max)) + 1;
+        .reduce((max, current) => (!max || current > max ? current : max)) + 1;
 
     const newproductPortionAPI = mapProductPortionFromVmToApi({ id: newId, value });
 

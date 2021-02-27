@@ -47,7 +47,7 @@ export const SortableListComponent: React.FunctionComponent<SortableListComponen
         onSave={onSave}
         onCancel={onCancel}
       />
-      {(!!!items || items.length === 0) && editItemId !== 0 && (
+      {(!items || items.length === 0) && editItemId !== 0 && (
         <Typography align='center' component='span'>{`No existen ${
           itemTypeName ?? 'elementos'
         }`}</Typography>
