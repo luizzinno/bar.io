@@ -22,31 +22,31 @@ interface Props {
   items: DashboardItemProps[];
   classes?: ClassNameProps;
   dataTestId?: string;
-  openDrawer?: boolean;
+  hasDrawer?: boolean;
 }
 
 export const DashboardComponent: React.FC<Props> = (props) => {
-  const { items, classes, dataTestId, openDrawer } = props;
+  const { items, classes, dataTestId, hasDrawer } = props;
   return (
     <List
       data-testid={dataTestId}
       component='ul'
       aria-label='menu options'
-      className={cx(!openDrawer && innerClasses.root, openDrawer && innerClasses.rootDrawer)}>
+      className={cx(!hasDrawer && innerClasses.root, hasDrawer && innerClasses.rootDrawer)}>
       {items.map(
         (item) =>
           Boolean(item) && (
             <ListItem
               className={cx(
-                !openDrawer && innerClasses.items,
-                openDrawer && innerClasses.itemsDrawer,
+                !hasDrawer && innerClasses.items,
+                hasDrawer && innerClasses.itemsDrawer,
               )}>
               <ItemComponent
-                openDrawer={openDrawer}
+                hasDrawer={hasDrawer}
                 key={item.title}
                 classes={{
                   ...classes.item,
-                  root: cx(!openDrawer && innerClasses.item, openDrawer && innerClasses.itemDrawer),
+                  root: cx(!hasDrawer && innerClasses.item, hasDrawer && innerClasses.itemDrawer),
                 }}
                 item={item}
               />

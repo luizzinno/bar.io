@@ -1,5 +1,5 @@
-import { List, ListItem, RootRef, Typography } from '@material-ui/core';
 import React from 'react';
+import { List, ListItem, RootRef, Typography, Grid } from '@material-ui/core';
 import { AddItemComponent, ItemCardComponent } from './components';
 import { ListItem as Item } from './list-item.vm';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
@@ -41,17 +41,21 @@ export const SortableListComponent: React.FunctionComponent<SortableListComponen
 
   return (
     <>
-      <AddItemComponent
-        isAdding={editItemId === 0}
-        onAdd={onAdd}
-        onSave={onSave}
-        onCancel={onCancel}
-      />
-      {(!items || items.length === 0) && editItemId !== 0 && (
-        <Typography align='center' component='span'>{`No existen ${
-          itemTypeName ?? 'elementos'
-        }`}</Typography>
-      )}
+      <Grid container spacing={3}>
+        <Grid item xs={12} className={classes.column}>
+          <AddItemComponent
+            isAdding={editItemId === 0}
+            onAdd={onAdd}
+            onSave={onSave}
+            onCancel={onCancel}
+          />
+          {(!items || items.length === 0) && editItemId !== 0 && (
+            <Typography align='center' component='p' className={classes.message}>{`No existen ${
+              itemTypeName ?? 'elementos'
+            }`}</Typography>
+          )}
+        </Grid>
+      </Grid>
       {!!items && items.length > 0 ? (
         <DragDropContext onDragEnd={handleDragEnd}>
           <Droppable droppableId='droppable'>

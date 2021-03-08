@@ -10,6 +10,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { DrawerComponent } from 'common-app/components';
 import { MenuContainer } from 'pods/menu';
 import * as classes from './header.styles';
+import { switchRoutes } from 'core/router';
+import { useHistory } from 'react-router-dom';
 import { cx } from 'emotion';
 
 interface Props {
@@ -22,6 +24,7 @@ export const HeaderComponent: React.FunctionComponent<Props> = (props) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [openDrawer, setOpenDrawer] = React.useState(false);
   const open = Boolean(anchorEl);
+  const history = useHistory();
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -31,12 +34,9 @@ export const HeaderComponent: React.FunctionComponent<Props> = (props) => {
     setAnchorEl(null);
   };
 
-  const drawerOpen = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
-    setOpenDrawer(true);
-  };
-
-  const drawerClose = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
-    setOpenDrawer(false);
+  const handleLogOut = () => {
+    localStorage.clear();
+    history.push(switchRoutes.login);
   };
 
   const handleDrawerToggle = () => {
@@ -83,16 +83,14 @@ export const HeaderComponent: React.FunctionComponent<Props> = (props) => {
               }}
               open={open}
               onClose={handleClose}>
-              <MenuItem onClick={handleClose}>Profile</MenuItem>
-              <MenuItem onClick={handleClose}>My account</MenuItem>
-              <MenuItem onClick={handleClose}>Logout</MenuItem>
+              <MenuItem onClick={handleLogOut}>Logout</MenuItem>
             </Menu>
           </div>
         </Toolbar>
       </AppBar>
       {hasDrawer && (
         <DrawerComponent open={openDrawer} close={handleDrawerToggle}>
-          <MenuContainer openDrawer={hasDrawer} />
+          <MenuContainer hasDrawer={hasDrawer} />
         </DrawerComponent>
       )}
     </>

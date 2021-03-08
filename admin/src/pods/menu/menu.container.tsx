@@ -13,11 +13,11 @@ import { routes } from 'core/router';
 import { QrCodeIcon } from './icons';
 
 interface Props {
-  openDrawer?: boolean;
+  hasDrawer?: boolean;
 }
 
 export const MenuContainer: React.FunctionComponent<Props> = (props) => {
-  const { openDrawer } = props;
+  const { hasDrawer } = props;
   const items: DashboardItemProps[] = React.useMemo(
     (): DashboardItemProps[] => [
       {
@@ -49,5 +49,5 @@ export const MenuContainer: React.FunctionComponent<Props> = (props) => {
     [],
   );
 
-  return <MenuComponent items={items} openDrawer={openDrawer} />;
+  return <MenuComponent items={items} hasDrawer={hasDrawer} />;
 };

@@ -1,15 +1,23 @@
 import React from 'react';
+
 //Material ui
-import { Card, CardContent, CardHeader, Button } from '@material-ui/core';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 //Components
 import { SortableListComponent } from 'common/components/sortable-list';
 import { ListItem } from 'common/components/sortable-list';
 
-//CSS
-import * as classes from './product-portion-list.styles';
+//Router
 import { useHistory } from 'react-router-dom';
 import { switchRoutes } from 'core/router';
+
+//CSS
+import * as classes from './product-portion-list.styles';
+
 
 interface Props {
   listItem: ListItem[];
@@ -27,7 +35,19 @@ export const ProductPortionListComponent: React.FunctionComponent<Props> = (prop
   const history = useHistory();
   return (
     <Card className={classes.container}>
-      <CardHeader component='h1' title='Raciones' />
+      <CardHeader
+        component='h1'
+        title='Raciones'
+        action={
+          <IconButton
+            color='primary'
+            aria-label='back home'
+            className={classes.icon}
+            onClick={() => history.push(switchRoutes.dashboard)}>
+            <CloseIcon fontSize='large' />
+          </IconButton>
+        }
+      />
       <CardContent>
         <SortableListComponent
           items={listItem}
@@ -41,12 +61,6 @@ export const ProductPortionListComponent: React.FunctionComponent<Props> = (prop
           onAdd={onAdd}
         />
       </CardContent>
-      <Button
-        variant='outlined'
-        color='primary'
-        onClick={() => history.push(switchRoutes.dashboard)}>
-        Back to home
-      </Button>
     </Card>
   );
 };

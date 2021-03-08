@@ -13,6 +13,7 @@ export const iconDrawer = css`
 
 export const title = css`
   margin-top: 1.5rem;
+  font-size: 1.25rem;
   text-align: center;
 `;
 
@@ -21,12 +22,12 @@ export const titleDrawer = css`
   width: auto;
   margin-top: 0;
   padding-left: 0.5rem;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   text-align: left;
 `;
 
 export const subtitle = css`
-  margin-top: 20px;
+  margin-top: 1.25rem;
 `;
 
 export const subtitleDrawer = css`

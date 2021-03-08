@@ -3,7 +3,6 @@ import QRCode from 'qrcode';
 import React from 'react';
 import { QrCodeComponent } from './qrcode.component';
 import * as api from 'pods/bar-info/api/bar-info.api';
-import { useHistory } from 'react-router-dom';
 
 interface QrCodeContainerProps {
   url: string;
@@ -17,7 +16,6 @@ interface QrCodeInfo {
 export const QrCodeContainer: React.FunctionComponent<QrCodeContainerProps> = (props) => {
   const { url } = props;
   const [qrCodeInfo, setQrCodeInfo] = React.useState<QrCodeInfo>({ url: '', text: [] });
-  const history = useHistory();
 
   const generatePdf = () => {
     const img = new Image();

@@ -8,11 +8,16 @@ export const root = css`
   align-items: flex-start;
   height: 100%;
   box-sizing: border-box;
-  margin-top: 4rem;
-  padding: 2rem;
+  margin-top: 3.5rem;
+  padding: 1rem;
 
-  @media (min-width: ${theme.breakpoints.values.sm}px) {
+  ${theme.breakpoints.up('sm')} {
     align-items: center;
-    height: calc(100vh - 4rem);
+    min-height: calc(100vh - 13rem);
+    margin-top: 4rem;
+    padding: 1.5rem;
+  }
+
+  ${theme.breakpoints.up('md')} {
   }
 `;

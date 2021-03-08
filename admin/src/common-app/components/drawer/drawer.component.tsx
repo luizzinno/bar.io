@@ -4,7 +4,6 @@ import Hidden from '@material-ui/core/Hidden';
 import { useTheme } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import CloseIcon from '@material-ui/icons/Close';
 import { cx } from 'emotion';
 import * as classes from './drawer.styles';
@@ -63,26 +62,6 @@ export const DrawerComponent: React.FunctionComponent<Props> = ({
           {children}
         </Drawer>
       </Hidden>
-
-      {/* <Hidden xsDown implementation='css'>
-        <Drawer
-          open={open}
-          className={cx(classes.drawer)}
-          variant='persistent'
-          anchor='left'
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-          {...otherProps}>
-          <div className={classes.drawerHeader}>
-            <IconButton onClick={close}>
-              <CloseIcon />
-            </IconButton>
-          </div>
-          <Divider />
-          {children}
-        </Drawer>
-      </Hidden> */}
     </nav>
   );
 };

@@ -201,7 +201,7 @@ describe('EditProductComponent tests', () => {
 
     //Act
     render(<EditProductComponent {...props} />);
-    const saveButton = screen.getAllByRole('button')[2];
+    const saveButton = screen.getAllByRole('button')[1];
     userEvent.click(saveButton);
 
     //Assert

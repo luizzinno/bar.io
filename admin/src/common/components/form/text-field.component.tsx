@@ -17,7 +17,7 @@ export const TextFieldComponent: React.FunctionComponent<TextFieldProps> = (prop
       error={hasError}
       helperText={hasError ? meta.error : ''}
       fullWidth={true}
-      margin='normal'
+      margin='none'
     />
   );
 };

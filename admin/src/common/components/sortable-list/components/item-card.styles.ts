@@ -2,10 +2,18 @@ import { css } from 'emotion';
 
 export const container = css`
   display: flex;
-  flex-direction: row;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
 `;
 
 export const card = css`
-  width: 92%;
+  flex: 1 1 auto;
+  width: auto;
+  padding: 1.5rem;
+`;
+
+export const input = css`
+  width: 100%;
 `;

@@ -2,6 +2,8 @@ import { css } from 'emotion';
 import { theme } from 'core/theme';
 
 export const appBar = css`
+  flex: 1 1 100%;
+  width: 100%;
   z-index: ${theme.zIndex.drawer + 1};
 `;
 
@@ -14,9 +16,9 @@ export const user = css`
 `;
 
 export const menuButton = css`
-  margin-right: ${theme.spacing(2)}px;
+  margin-right: 1rem;
 
-  @media (min-width: ${theme.breakpoints.values.md}px) {
+  ${theme.breakpoints.up('md')} {
     display: none;
   }
 `;

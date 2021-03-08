@@ -1,21 +1,21 @@
 import { css } from 'emotion';
 import { theme } from 'core/theme';
 
-const drawerWidth = 320;
+const drawerWidth = 20;
 
 export const drawer = css`
-  @media (min-width: ${theme.breakpoints.values.md}px) {
-    width: ${drawerWidth}px;
-    flex-shrink: 0;
+  ${theme.breakpoints.up('md')} {
+    flex: 0 0 ${drawerWidth}rem;
+    width: ${drawerWidth}rem;
   }
 `;
 
 export const dockedPaper = css`
   border: 1px solid #000;
-`
+`;
 
 export const drawerPaper = css`
-  width: ${drawerWidth}px;
+  width: ${drawerWidth}rem;
 `;
 
 export const drawerHeader = css`
@@ -23,5 +23,9 @@ export const drawerHeader = css`
   align-items: center;
   padding: ${theme.spacing(0, 1)};
   justify-content: flex-end;
-  min-height: 64px;
+  min-height: 3.5rem;
+
+  ${theme.breakpoints.up('sm')} {
+    min-height: 4rem;
+  }
 `;

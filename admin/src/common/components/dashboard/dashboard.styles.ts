@@ -4,13 +4,18 @@ import { theme } from 'core/theme';
 export const root = css`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  grid-gap: 2rem;
+  grid-gap: 1rem;
 
-  @media (min-width: ${theme.breakpoints.values.sm}px) {
+  ${theme.breakpoints.up('sm')} {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.5rem;
+  }
+
+  ${theme.breakpoints.up('md')} {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @media (min-width: ${theme.breakpoints.values.lg}px) {
+  ${theme.breakpoints.up('lg')} {
     width: 75%;
   }
 `;
@@ -20,12 +25,12 @@ export const rootDrawer = css`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  height: 100%;
+  height: calc(100% - 13rem);
 `;
 
 export const items = css`
   background-color: ${theme.palette.background.paper};
-  border-radius: 4px;
+  border-radius: ${theme.shape.borderRadius}px;
   overflow: hidden;
   box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%),
     0px 1px 3px 0px rgb(0 0 0 / 12%);
@@ -58,7 +63,7 @@ export const item = css`
     padding: 1.6rem 1.5rem 1.4rem;
   }
 
-  @media (min-width: ${theme.breakpoints.values.sm}px) {
+  ${theme.breakpoints.up('sm')} {
     padding: 2rem;
 
     &:hover {
@@ -71,9 +76,9 @@ export const itemDrawer = css`
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   color: ${theme.palette.grey[700]};
-  padding: 1rem 2rem;
+  padding: 1rem 1.5rem;
   text-decoration: none;
 
   &:hover {

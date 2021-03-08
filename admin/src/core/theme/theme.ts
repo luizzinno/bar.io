@@ -1,9 +1,7 @@
 import { Theme } from './theme.vm';
 import { createMuiTheme } from '@material-ui/core/styles';
-import createPalette from '@material-ui/core/styles/createPalette';
-import createTypography from '@material-ui/core/styles/createTypography';
-import merge from 'lodash.merge';
 import { deepOrange, brown, teal, amber } from '@material-ui/core/colors';
+import { Palette } from '@material-ui/icons';
 
 export const theme: Theme = createMuiTheme({
   palette: {
@@ -29,6 +27,9 @@ export const theme: Theme = createMuiTheme({
     fontWeightLight: 400,
     fontWeightRegular: 400,
     fontWeightMedium: 700,
+    h5: {
+      textTransform: 'uppercase',
+    },
     body2: {
       fontSize: '1rem',
     },
@@ -50,40 +51,37 @@ export const theme: Theme = createMuiTheme({
       divider: true,
     },
     MuiTextField: {
-      size: 'small',
+      size: 'medium',
       variant: 'outlined',
       color: 'primary',
     },
   },
   overrides: {
-    MuiAccordion: {
-      root: {
-        borderBottom: `1px solid ${brown[100]}`,
-        '&$expanded': {
-          margin: 'auto',
-        },
+    MuiGrid: {
+      'spacing-xs-3': {
+        margin: '0 -0.75rem',
+
         '&:last-of-type': {
-          borderBottom: '0',
-        },
-        '&::before': {
-          content: 'none',
-        },
+          margin: '0 -0.75rem -0.75rem'
+        }
+      }
+    },
+    MuiCardHeader: {
+      root: {
+        color: `${teal[500]}`,
+        margin: '0',
+        padding: '1.5rem',
+      },
+      action : {
+        marginTop: '0',
       },
     },
-    MuiAccordionDetails: {
+    MuiCardContent: {
       root: {
-        padding: '0 1rem 1rem',
-      },
-    },
-    MuiAccordionSummary: {
-      root: {
-        minHeight: '64px',
-      },
-      content: {
-        '&$expanded': {
-          margin: 'inherit',
-          color: teal[500],
-        },
+        padding: '0 1.5rem 1.5rem',
+        '&:last-child': {
+          paddingBottom: '1.5rem',
+        }
       },
     },
     MuiList: {
@@ -101,16 +99,7 @@ export const theme: Theme = createMuiTheme({
         margin: '0',
       },
       divider: {
-        borderBottom: `1px solid ${brown[50]}`,
-      },
-    },
-    MuiFormControl: {
-      root: {
-        minWidth: '120px',
-        marginBottom: '10%',
-        '@media (min-width: 576px)': {
-          marginBottom: '2rem',
-        },
+        borderBottom: '0',
       },
     },
     MuiMenuItem: {

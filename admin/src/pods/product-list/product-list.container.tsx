@@ -1,10 +1,10 @@
+import React from 'react';
 import { getMenuCategories, saveProducts } from 'core/api';
 import { routes } from 'core/router';
 import {
   mapMenuCategoriesToListItems,
   mapProductsToListItems,
 } from 'pods/categories-list/categories-list.mapper';
-import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { ProductListComponent } from './product-list.component';
 import { useMenuCategories } from './use-menu-categories.hook';

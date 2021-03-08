@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Card,
   CardActions,
@@ -6,8 +7,12 @@ import {
   TextField,
   Typography,
 } from '@material-ui/core';
-import { Clear, Create, Delete, SaveAlt, Visibility, VisibilityOff } from '@material-ui/icons';
-import React from 'react';
+import DoneIcon from '@material-ui/icons/Done';
+import EditIcon from '@material-ui/icons/Edit';
+import ClearIcon from '@material-ui/icons/Clear';
+import DeleteIcon from '@material-ui/icons/Delete';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import * as classes from './item-card.styles';
 
 interface ItemCardComponentProps {
@@ -64,35 +69,40 @@ export const ItemCardComponent: React.FunctionComponent<ItemCardComponentProps> 
       <Card className={classes.container}>
         <CardContent className={classes.card}>
           {edit ? (
-            <TextField name='itemValue' value={itemValue} onChange={handleValueChange} />
+            <TextField
+              name='itemValue'
+              value={itemValue}
+              onChange={handleValueChange}
+              className={classes.input}
+            />
           ) : (
             <Typography>{value}</Typography>
           )}
         </CardContent>
         <CardActions disableSpacing>
           {edit ? (
-            <IconButton aria-label='Guardar' onClick={handleClickSave} disabled={disableSave}>
-              <SaveAlt />
+            <IconButton aria-label='Cancelar' onClick={handleClickCancel}>
+              <ClearIcon />
             </IconButton>
           ) : (
             <IconButton aria-label={`Editar ${value}`} onClick={handleClickEdit}>
-              <Create />
+              <EditIcon />
             </IconButton>
           )}
           {visible !== undefined && !edit && (
             <IconButton
               aria-label={`Hacer ${visible ? 'invisible' : 'visible'} ${value}`}
               onClick={handleChangeVisibility}>
-              {visible ? <Visibility /> : <VisibilityOff />}
+              {visible ? <VisibilityIcon /> : <VisibilityOffIcon />}
             </IconButton>
           )}
           {edit ? (
-            <IconButton aria-label='Cancelar' onClick={handleClickCancel}>
-              <Clear />
+            <IconButton aria-label='Guardar' onClick={handleClickSave} disabled={disableSave}>
+              <DoneIcon />
             </IconButton>
           ) : (
             <IconButton aria-label={`Borrar ${value}`} onClick={handleClickDelete}>
-              <Delete />
+              <DeleteIcon />
             </IconButton>
           )}
         </CardActions>

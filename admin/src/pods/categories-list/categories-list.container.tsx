@@ -13,6 +13,11 @@ import { mapMenuCategoriesToListItems } from './categories-list.mapper';
 import { useHistory } from 'react-router-dom';
 import { switchRoutes } from 'core/router';
 import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import HomeIcon from '@material-ui/icons/Home';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import CancelIcon from '@material-ui/icons/Cancel';
+import CloseIcon from '@material-ui/icons/Close';
 import * as classes from './categories-list.styles';
 
 export const CategoriesListContainer: React.FunctionComponent = () => {
@@ -58,8 +63,20 @@ export const CategoriesListContainer: React.FunctionComponent = () => {
 
   return (
     <Card className={classes.container}>
-      <CardHeader component='h1' title='Categorías' />
-      <CardContent>
+      <CardHeader
+        component='h1'
+        title='Categorías'
+        action={
+          <IconButton
+          color='primary'
+          aria-label='back home'
+          className={classes.icon}
+            onClick={() => history.push(switchRoutes.dashboard)}>
+            <CloseIcon fontSize='large' />
+          </IconButton>
+        }
+      />
+      <CardContent className={classes.content}>
         <SortableListComponent
           items={listItems}
           itemTypeName='categorías'
@@ -72,12 +89,6 @@ export const CategoriesListContainer: React.FunctionComponent = () => {
           onAdd={onAdd}
         />
       </CardContent>
-      <Button
-        variant='outlined'
-        color='primary'
-        onClick={() => history.push(switchRoutes.dashboard)}>
-        Back to home
-      </Button>
     </Card>
   );
 };

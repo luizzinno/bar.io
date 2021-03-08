@@ -24,7 +24,7 @@ interface Props {
   item: DashboardItemProps;
   classes?: ClassesProps;
   dataTestId?: string;
-  openDrawer?: boolean;
+  hasDrawer?: boolean;
 }
 
 export const ItemComponent: React.FC<Props> = (props) => {
@@ -32,15 +32,15 @@ export const ItemComponent: React.FC<Props> = (props) => {
     item: { icon: Icon, title, linkTo, subtitle },
     classes,
     dataTestId,
-    openDrawer
+    hasDrawer
   } = props;
   return (
     <Link className={classes.root} to={linkTo} data-testid={dataTestId}>
-      <Icon className={cx(!openDrawer && innerClasses.icon, openDrawer && innerClasses.iconDrawer)} />
-      <Typography variant='h5' className={cx(!openDrawer && innerClasses.title, openDrawer && innerClasses.titleDrawer)}>
+      <Icon className={cx(!hasDrawer && innerClasses.icon, hasDrawer && innerClasses.iconDrawer)} />
+      <Typography variant='h5' className={cx(!hasDrawer && innerClasses.title, hasDrawer && innerClasses.titleDrawer)}>
         {title}
       </Typography>
-      <Typography variant='h6' className={cx(!openDrawer && innerClasses.subtitle, openDrawer && innerClasses.subtitleDrawer)}>
+      <Typography variant='h6' className={cx(!hasDrawer && innerClasses.subtitle, hasDrawer && innerClasses.subtitleDrawer)}>
         {subtitle}
       </Typography>
     </Link>
