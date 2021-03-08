@@ -32,15 +32,33 @@ export const ItemComponent: React.FC<Props> = (props) => {
     item: { icon: Icon, title, linkTo, subtitle },
     classes,
     dataTestId,
-    hasDrawer
+    hasDrawer,
   } = props;
   return (
     <Link className={classes.root} to={linkTo} data-testid={dataTestId}>
-      <Icon className={cx(!hasDrawer && innerClasses.icon, hasDrawer && innerClasses.iconDrawer)} />
-      <Typography variant='h5' className={cx(!hasDrawer && innerClasses.title, hasDrawer && innerClasses.titleDrawer)}>
+      <Icon
+        className={cx(
+          !hasDrawer && innerClasses.icon,
+          hasDrawer && innerClasses.iconDrawer,
+          classes.icon,
+        )}
+      />
+      <Typography
+        variant='h5'
+        className={cx(
+          !hasDrawer && innerClasses.title,
+          hasDrawer && innerClasses.titleDrawer,
+          classes.title,
+        )}>
         {title}
       </Typography>
-      <Typography variant='h6' className={cx(!hasDrawer && innerClasses.subtitle, hasDrawer && innerClasses.subtitleDrawer)}>
+      <Typography
+        variant='h6'
+        className={cx(
+          !hasDrawer && innerClasses.subtitle,
+          hasDrawer && innerClasses.subtitleDrawer,
+          classes.subtitle,
+        )}>
         {subtitle}
       </Typography>
     </Link>
