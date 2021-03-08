@@ -32,21 +32,30 @@ export const DashboardComponent: React.FC<Props> = (props) => {
       data-testid={dataTestId}
       component='ul'
       aria-label='menu options'
-      className={cx(!hasDrawer && innerClasses.root, hasDrawer && innerClasses.rootDrawer)}>
+      className={cx(
+        !hasDrawer && innerClasses.root,
+        hasDrawer && innerClasses.rootDrawer,
+        classes.root,
+      )}>
       {items.map(
         (item) =>
           Boolean(item) && (
             <ListItem
+              key={item.title}
               className={cx(
                 !hasDrawer && innerClasses.items,
                 hasDrawer && innerClasses.itemsDrawer,
+                classes.items,
               )}>
               <ItemComponent
                 hasDrawer={hasDrawer}
-                key={item.title}
                 classes={{
                   ...classes.item,
-                  root: cx(!hasDrawer && innerClasses.item, hasDrawer && innerClasses.itemDrawer),
+                  root: cx(
+                    !hasDrawer && innerClasses.item,
+                    hasDrawer && innerClasses.itemDrawer,
+                    classes.item.root,
+                  ),
                 }}
                 item={item}
               />
