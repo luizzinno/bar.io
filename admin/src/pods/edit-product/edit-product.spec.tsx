@@ -55,18 +55,18 @@ describe('EditProductComponent tests', () => {
     //Assert
     const title = screen.getByRole('heading');
     expect(title).toHaveTextContent('Añadir producto');
-    const name = screen.getByText('Nombre');
+    const name = screen.getAllByText('Nombre')[0];
     expect(name).toBeInTheDocument();
-    const description = screen.getByText('Descripción');
+    const description = screen.getAllByText('Descripción')[0];
     expect(description).toBeInTheDocument();
-    const category = screen.getByText('Categoría');
+    const category = screen.getAllByText('Categoría')[0];
     expect(category).toBeInTheDocument();
-    const portionType = screen.getByText('Ración');
+    const portionType = screen.getAllByText('Ración')[0];
     expect(portionType).toBeInTheDocument();
     const buttons = screen.getAllByRole('button');
-    expect(buttons.length).toBe(4);
-    expect(buttons[2]).toHaveTextContent('Guardar');
+    expect(buttons.length).toBe(5);
     expect(buttons[3]).toHaveTextContent('Cancelar');
+    expect(buttons[4]).toHaveTextContent('Guardar');
   });
   it('should be in edit mode when an existing product is passed', () => {
     //Arrange
@@ -125,27 +125,27 @@ describe('EditProductComponent tests', () => {
     //Assert
     const title = screen.getByRole('heading');
     expect(title).toHaveTextContent("Editar 'Test product'");
-    const name = screen.getByText('Nombre');
+    const name = screen.getAllByText('Nombre')[0];
     expect(name).toBeInTheDocument();
-    const description = screen.getByText('Descripción');
+    const description = screen.getAllByText('Descripción')[0];
     expect(description).toBeInTheDocument();
     const fields = screen.getAllByRole('textbox');
     expect(fields[0]).toHaveValue('Test product');
     expect(fields[1]).toHaveValue('New description');
-    const category = screen.getByText('Categoría');
+    const category = screen.getAllByText('Categoría')[0];
     expect(category).toBeInTheDocument();
-    const portionType = screen.getByText('Ración');
+    const portionType = screen.getAllByText('Ración')[0];
     expect(portionType).toBeInTheDocument();
     const price = screen.getByText('Precio - Única');
     expect(price).toBeInTheDocument();
     const priceField = screen.getByDisplayValue('15');
     expect(priceField).toBeInTheDocument();
     const buttons = screen.getAllByRole('button');
-    expect(buttons.length).toBe(4);
-    expect(buttons[0]).toHaveTextContent('Category II');
-    expect(buttons[1]).toHaveTextContent('Única');
-    expect(buttons[2]).toHaveTextContent('Guardar');
+    expect(buttons.length).toBe(5);
+    expect(buttons[1]).toHaveTextContent('Category II');
+    expect(buttons[2]).toHaveTextContent('Única');
     expect(buttons[3]).toHaveTextContent('Cancelar');
+    expect(buttons[4]).toHaveTextContent('Guardar');
   });
   it('should call onSave when the save button is clicked in', async () => {
     //Arrange
@@ -201,7 +201,7 @@ describe('EditProductComponent tests', () => {
 
     //Act
     render(<EditProductComponent {...props} />);
-    const saveButton = screen.getAllByRole('button')[1];
+    const saveButton = screen.getAllByRole('button')[4];
     userEvent.click(saveButton);
 
     //Assert
