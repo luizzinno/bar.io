@@ -45,7 +45,7 @@ describe('Footer component spec', () => {
 
   it('"img" attributes should have expected values', () => {
     // Arrange
-    const expectedSrcValue: string = 'http://localhost/assets/logo-lemon.png';
+    const expectedSrcValue: string = 'http://localhost/img/logo-lemon.png';
     const expectedAltValue: string = 'lemoncode';
 
     // Act
