@@ -94,7 +94,7 @@ describe('QrCodeComponent tests', () => {
 
     //Act
     render(<QrCodeComponent {...props} />);
-    const downloadImageButton = screen.getAllByRole('button')[0];
+    const downloadImageButton = screen.getAllByRole('button')[1];
     userEvent.click(downloadImageButton);
 
     //Assert
@@ -111,7 +111,7 @@ describe('QrCodeComponent tests', () => {
 
     //Act
     render(<QrCodeComponent {...props} />);
-    const downloadPdfButton = screen.getAllByRole('button')[1];
+    const downloadPdfButton = screen.getAllByRole('button')[2];
     userEvent.click(downloadPdfButton);
 
     //Assert
