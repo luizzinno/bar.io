@@ -6,8 +6,3 @@ export interface DashboardItemProps {
   subtitle?: string;
 }
 
-export interface ClassNameProps {
-  root?: string;
-  items?: string;
-  item?: ClassesProps;
-}
