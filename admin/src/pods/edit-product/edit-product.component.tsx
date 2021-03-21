@@ -125,9 +125,8 @@ export const EditProductComponent: FunctionComponent<EditProductProps> = (props)
                 </Grid>
                 {!!portions &&
                   portions.map((p) => (
-                    <Grid item xs={6} md={3}>
+                    <Grid item xs={6} md={3} key={`portionPrices[${p.id}]`}>
                       <TextFieldComponent
-                        key={`portionPrices[${p.id}]`}
                         name={`portionPrices[${p.id}]`}
                         label={`Precio - ${p.name}`}
                         type='number'

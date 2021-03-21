@@ -4,6 +4,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import Logo from 'assets/logo-lemon.png';
 import * as classes from './footer.styles';
 
 export const FooterComponent: React.FC = () => {
@@ -20,7 +21,7 @@ export const FooterComponent: React.FC = () => {
               className={classes.imgFooter}
               target='blank'
               rel='noopener'>
-              <img className={classes.imgFooter} src='img/logo-lemon.png' alt='lemoncode' />
+              <img className={classes.imgFooter} src={Logo} alt='lemoncode' />
             </Link>
           </Typography>
         </Grid>
