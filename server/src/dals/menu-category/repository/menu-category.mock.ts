@@ -1,4 +1,3 @@
-
 import { createMockRepository } from 'common/helpers';
 import { MenuCategory, Product } from 'dals';
 import { v4 as uuid4 } from 'uuid';
@@ -7,7 +6,7 @@ const menuCategoryRepository = createMockRepository<MenuCategory>(() =>
   uuid4()
 );
 
-export const getMenuCategories = async (): Promise<Array<MenuCategory>> =>
+export const getMenuCategories = async (): Promise<MenuCategory[]> =>
   menuCategoryRepository.getCollection();
 
 export const getMenuCategoryById = async (id: string): Promise<MenuCategory> =>
@@ -15,7 +14,11 @@ export const getMenuCategoryById = async (id: string): Promise<MenuCategory> =>
 
 export const saveMenuCategory = async (
   menuCategory: MenuCategory
-): Promise<MenuCategory> => menuCategoryRepository.saveItem(menuCategory);
+): Promise<void> => menuCategoryRepository.saveItem(menuCategory);
+
+export const saveMenuCategories = async (
+  categories: MenuCategory[]
+): Promise<void> => menuCategoryRepository.setItems(categories);
 
 export const getMenuCategoryByProductId = async (
   productId: string
@@ -27,13 +30,8 @@ export const getMenuCategoryByProductId = async (
   return !!category ? { ...category } : null;
 };
 
-export const saveCategories = async (
-  categories: Array<MenuCategory>
-): Promise<Array<MenuCategory>> => menuCategoryRepository.setItems(categories);
-
-export const deleteMenuCategory = async (
-  id: string
-): Promise<Array<MenuCategory>> => menuCategoryRepository.deleteItem(id);
+export const deleteMenuCategory = async (id: string): Promise<void> =>
+  menuCategoryRepository.deleteItem(id);
 
 export const getProductById = async (id: string): Promise<Product> => {
   const product = menuCategoryRepository
@@ -47,7 +45,7 @@ export const getProductById = async (id: string): Promise<Product> => {
 export const saveProduct = async (
   product: Product,
   categoryId?: string
-): Promise<Product> => {
+): Promise<string> => {
   let menuCategory: MenuCategory;
   if (!!categoryId) {
     menuCategory = await getMenuCategoryById(categoryId);
@@ -60,33 +58,29 @@ export const saveProduct = async (
       () => uuid4(),
       menuCategory.products
     );
-    const savedProduct = productRepository.saveItem(product);
-    const result = menuCategoryRepository.saveItem({
+    productRepository.saveItem(product);
+    menuCategoryRepository.saveItem({
       ...menuCategory,
       products: productRepository.getCollection(),
     });
-    return !!result ? savedProduct : null;
   }
-  return null;
+
+  return product._id;
 };
 
 export const saveProducts = async (
   categoryId: string,
-  products: Array<Product>
-): Promise<Array<Product>> => {
+  products: Product[]
+): Promise<void> => {
   const menuCategory = await getMenuCategoryById(categoryId);
 
   if (!!menuCategory) {
     const updatedMenuCategory = { ...menuCategory, products: products };
-    return !!menuCategoryRepository.saveItem(updatedMenuCategory)
-      ? updatedMenuCategory.products
-      : [];
+    menuCategoryRepository.saveItem(updatedMenuCategory);
   }
-
-  return [];
 };
 
-export const deleteProduct = async (id: string): Promise<Array<Product>> => {
+export const deleteProduct = async (id: string): Promise<void> => {
   const category = await getMenuCategoryByProductId(id);
 
   if (!!category) {
@@ -94,20 +88,17 @@ export const deleteProduct = async (id: string): Promise<Array<Product>> => {
       () => false,
       category.products
     );
-    const updatedProducts = productRepository.deleteItem(id);
+    productRepository.deleteItem(id);
     const updatedMenuCategory = menuCategoryRepository.saveItem({
       ...category,
-      products: [...updatedProducts],
+      products: [...productRepository.getCollection()],
     });
-    return updatedMenuCategory?.products ?? [];
   }
-
-  return [];
 };
 
 export const removeProductPortionFromProducts = async (
   productPortionId: string
-): Promise<boolean> => {
+): Promise<void> => {
   const menuCategories = menuCategoryRepository.getCollection();
   const updatedMenuCategories = menuCategories.map((mc) => ({
     ...mc,
@@ -116,12 +107,12 @@ export const removeProductPortionFromProducts = async (
       portions: p.portions?.filter((pr) => pr._id != productPortionId),
     })),
   }));
-  return !!menuCategoryRepository.setItems(updatedMenuCategories);
+  menuCategoryRepository.setItems(updatedMenuCategories);
 };
 
 export const removeProductPortionTypeFromProducts = async (
   productPortionTypeId: string
-): Promise<boolean> => {
+): Promise<void> => {
   const menuCategories = menuCategoryRepository.getCollection();
   const updatedMenuCategories = menuCategories.map((mc) => ({
     ...mc,
@@ -132,5 +123,5 @@ export const removeProductPortionTypeFromProducts = async (
       portions: p.portionTypeId === productPortionTypeId ? null : p.portions,
     })),
   }));
-  return !!menuCategoryRepository.setItems(updatedMenuCategories);
+  menuCategoryRepository.setItems(updatedMenuCategories);
 };

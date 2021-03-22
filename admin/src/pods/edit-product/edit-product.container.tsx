@@ -1,7 +1,8 @@
 import {
   getMenuCategories,
-  getPoductCategoryId,
+  getMenuCategoryByProductId,
   getProductById,
+  getProductPortionTypeById,
   getProductPortionTypes as getProductPortionTypes,
   ProductPortionType,
   saveProduct,
@@ -11,19 +12,15 @@ import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { EditProductComponent } from './edit-product.component';
 import * as classes from './edit-product.styles';
-import { mapMenuCategoryApiModelsToViewModels } from './menu-category.mapper';
+import { mapMenuCategoryListFromApiToViewModel } from './menu-category.mapper';
 import { MenuCategory } from './menu-category.vm';
-import {
-  mapProductPortionApiModelsToViewModels,
-  mapProductPortionTypeApiModelsToViewModels,
-} from './product-portion.mapper';
-import { ProductPortion } from './product-portion.vm';
+import { mapProductPortionTypeListFromApiToViewModels } from './product-portion.mapper';
 import {
   createEmptyProductVm,
-  mapProductApiModelToViewModel,
-  mapProductViewModelToApiModel,
+  mapProductFromApiToViewModel,
+  mapProductFromViewToApiModel,
 } from './product.mapper';
-import { initPortionPrices, Product } from './product.vm';
+import { Product } from './product.vm';
 import produce from 'immer';
 
 interface Params {
@@ -32,34 +29,38 @@ interface Params {
 
 export const EditProductContainer: React.FunctionComponent = () => {
   const { productId } = useParams<Params>();
-  const [categories, setCategories] = React.useState<Array<MenuCategory>>([]);
+  const [categories, setCategories] = React.useState<MenuCategory[]>([]);
   const [product, setProduct] = React.useState<Product>(createEmptyProductVm());
-  const [portionTypes, setPortionTypes] = React.useState<Array<ProductPortionType>>([]);
+  const [portionTypes, setPortionTypes] = React.useState<ProductPortionType[]>([]);
   const history = useHistory();
 
   const onChangeName = (name: string) => setProduct({ ...product, name: name });
   const onChangeDescription = (description: string) =>
     setProduct({ ...product, description: description });
-  const onChangePortionPrice = (id: number, price: number) =>
+  const onChangePortionPrice = (id: string, price: number) => {
     setProduct({
       ...product,
-      portionPrices: produce(product.portionPrices, (draft) => {
-        const newPortionPrices = [...draft];
-        newPortionPrices[id] = !!price ? price : 0;
-        return newPortionPrices;
+      portions: produce(product.portions, (newPortionPrices) => {
+        newPortionPrices.find((p) => p.id === id).price = +price;
       }),
     });
+  };
 
-  const onChangeCategory = (categoryId: number) => {
+  const onChangeCategory = (categoryId: string) => {
     setProduct({ ...product, categoryId });
   };
 
-  const onChangePortionType = (portionTypeId: number) => {
-    setProduct({ ...product, portionTypeId, portionPrices: initPortionPrices() });
+  const onChangePortionType = async (portionTypeId: string) => {
+    const productPortionType = await getProductPortionTypeById(portionTypeId);
+    setProduct({
+      ...product,
+      portionTypeId,
+      portions: productPortionType.portions.map((p) => ({ ...p, price: 0.0 })),
+    });
   };
 
   const onSave = (p: Product) => {
-    saveProduct(mapProductViewModelToApiModel({ ...p, visible: false }), p.categoryId).then(() =>
+    saveProduct(mapProductFromViewToApiModel({ ...p, visible: false }), p.categoryId).then(() =>
       history.push(routes.productList),
     );
   };
@@ -68,29 +69,29 @@ export const EditProductContainer: React.FunctionComponent = () => {
 
   const getProductInfo = async () => {
     if (!!productId) {
-      const prod = await getProductById(+productId);
-      const prodCategoryId = !!prod ? await getPoductCategoryId(prod.id) : 0;
+      const product = await getProductById(productId);
+      if (!!product) {
+        const categoryId = (await getMenuCategoryByProductId(product.id))?.id;
+        const productPortionType = await getProductPortionTypeById(product.portionTypeId);
+        const productViewModel = mapProductFromApiToViewModel(product);
 
-      !!prod &&
+        productViewModel.portions.map(
+          (p) => (p.name = productPortionType.portions?.find((s) => s.id === p.id)?.name ?? ''),
+        );
+
         setProduct({
-          ...mapProductApiModelToViewModel(prod),
-          categoryId: prodCategoryId,
+          ...productViewModel,
+          categoryId: categoryId,
         });
+      }
     }
 
     const menuCategories = await getMenuCategories();
-    setCategories(mapMenuCategoryApiModelsToViewModels(menuCategories));
+    setCategories(mapMenuCategoryListFromApiToViewModel(menuCategories));
 
     const portionTypes = await getProductPortionTypes();
     setPortionTypes(portionTypes);
   };
-
-  const getPortions = (): Array<ProductPortion> =>
-    !!product.portionTypeId
-      ? mapProductPortionApiModelsToViewModels(
-          portionTypes.find((pt) => pt.id === product.portionTypeId)?.portions ?? [],
-        )
-      : [];
 
   React.useEffect(() => {
     async function loadProductInfo() {
@@ -103,8 +104,7 @@ export const EditProductContainer: React.FunctionComponent = () => {
     <div className={classes.container}>
       <EditProductComponent
         categories={categories}
-        portionTypes={mapProductPortionTypeApiModelsToViewModels(portionTypes)}
-        portions={getPortions()}
+        portionTypes={mapProductPortionTypeListFromApiToViewModels(portionTypes)}
         product={product}
         onSave={onSave}
         onCancel={onCancel}

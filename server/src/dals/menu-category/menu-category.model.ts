@@ -1,7 +1,7 @@
 export interface MenuCategory {
   _id: any;
   name: string;
-  products: Array<Product>;
+  products: Product[];
 }
 
 export interface Product {
@@ -10,7 +10,7 @@ export interface Product {
   visible: boolean;
   description: string;
   portionTypeId: string;
-  portions: Array<Portion>;
+  portions: Portion[];
 }
 
 export interface Portion {

@@ -1,10 +1,10 @@
 export interface ListItem {
-  id: number;
+  id: string;
   value: string;
   visible?: boolean;
 }
 
 export const createEmptyListItem = (): ListItem => ({
-  id: 0,
+  id: '',
   value: '',
 });

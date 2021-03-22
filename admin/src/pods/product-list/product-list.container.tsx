@@ -1,8 +1,15 @@
-import { getMenuCategories, saveProducts } from 'core/api';
+import {
+  deleteProduct,
+  getMenuCategories,
+  getMenuCategoryById,
+  getProductById,
+  saveProduct,
+  saveProducts,
+} from 'core/api';
 import { routes } from 'core/router';
 import {
-  mapMenuCategoriesToListItems,
-  mapProductsToListItems,
+  mapMenuCategorieListFromApiModelToListItem,
+  mapProductListFromApiModelToListItem,
 } from 'pods/categories-list/categories-list.mapper';
 import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
@@ -24,7 +31,7 @@ export const ProductListContainer: React.FunctionComponent = () => {
     setSelectedCategoryId,
     updateSelectedCategoryProducts,
     getProductsByCategoryId,
-  } = useMenuCategories([], +categoryId);
+  } = useMenuCategories([], categoryId);
   const history = useHistory();
 
   const onAddProduct = () => {
@@ -35,31 +42,35 @@ export const ProductListContainer: React.FunctionComponent = () => {
     history.push(routes.productList);
   };
 
-  const onChangeCategory = (id: number) => setSelectedCategoryId(id);
+  const onChangeCategory = (id: string) => {
+    setSelectedCategoryId(id);
+  };
 
-  const onChangeProductVisibility = (id: number) => {
-    const products = getProductsByCategoryId(selectedCategoryId);
-    const newProducts = products.map((p) => (p.id === id ? { ...p, visible: !p.visible } : p));
-    updateSelectedCategoryProducts(newProducts);
+  const onChangeProductVisibility = async (id: string) => {
+    const product = await getProductById(id);
+    product.visible = !product.visible;
+    await saveProduct(product);
+    const category = await getMenuCategoryById(selectedCategoryId);
+    updateSelectedCategoryProducts(category.products);
   };
 
   const onReorderProducts = async (startIndex: number, endIndex: number) => {
     const products = getProductsByCategoryId(selectedCategoryId);
-    const newProducts = reorder(products, startIndex, endIndex);    
+    const newProducts = reorder(products, startIndex, endIndex);
     updateSelectedCategoryProducts(newProducts);
     await saveProducts(selectedCategoryId, newProducts);
   };
 
-  const onDeleteProduct = (id: number) => {
-    const products = getProductsByCategoryId(selectedCategoryId);
-    const newProducts = products.filter((p) => p.id !== id);
-    updateSelectedCategoryProducts(newProducts);
+  const onDeleteProduct = async (id: string) => {
+    await deleteProduct(id);
+    const menuCategory = await getMenuCategoryById(selectedCategoryId);
+    updateSelectedCategoryProducts(menuCategory.products);
   };
 
-  const onEditProduct = (productId: number) => history.push(routes.editProduct(`${productId}`));
+  const onEditProduct = (productId: string) => history.push(routes.editProduct(`${productId}`));
 
   const loadData = async () => {
-    const menuCategories = await getMenuCategories();
+    const menuCategories = await getMenuCategories(true);
     setCategories(menuCategories);
   };
 
@@ -73,8 +84,8 @@ export const ProductListContainer: React.FunctionComponent = () => {
   return (
     <div className={classes.container}>
       <ProductListComponent
-        categories={mapMenuCategoriesToListItems(categories)}
-        products={mapProductsToListItems(getProductsByCategoryId(selectedCategoryId))}
+        categories={mapMenuCategorieListFromApiModelToListItem(categories)}
+        products={mapProductListFromApiModelToListItem(getProductsByCategoryId(selectedCategoryId))}
         selectedCategoryId={selectedCategoryId}
         onAddProduct={onAddProduct}
         onCancelProductEdit={onCancelProductEdit}

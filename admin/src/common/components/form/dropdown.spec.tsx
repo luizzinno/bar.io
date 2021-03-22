@@ -1,7 +1,7 @@
 import React from 'react';
 import { screen, render } from '@testing-library/react';
 import { DropDownComponent } from './dropdown.component';
-import { Field, Form, Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import userEvent from '@testing-library/user-event';
 
 describe('DropDownComponent tests', () => {

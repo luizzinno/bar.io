@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { CenteredLayout } from 'layouts';
 import { EditPortionsContainer } from 'pods/edit-portions';
 
-export const EditPortionsScene: FC = () => {
+export const EditPortionsScene: React.FC = () => {
   return (
     <>
       <CenteredLayout>
@@ -11,4 +11,3 @@ export const EditPortionsScene: FC = () => {
     </>
   );
 };
-

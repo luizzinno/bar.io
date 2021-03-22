@@ -4,11 +4,12 @@ import { ListItem } from 'common/components/sortable-list';
 import { reorder } from 'common/utils/array';
 import React from 'react';
 import * as classes from './edit-portions.styles';
-import { mapProductPortionsToListItems } from './edit-portions.mapper';
+import { mapProductPortionListFromApiModelToListItem } from './edit-portions.mapper';
 import {
+  createEmptyProductPortionType,
   deleteProductPortion,
   getProductPortionTypeById,
-  ProductPortion,
+  ProductPortionType,
   saveProductPortion,
   saveProductPortionType,
 } from 'core/api';
@@ -19,56 +20,66 @@ interface Params {
 }
 
 export const EditPortionsContainer: React.FunctionComponent = () => {
-  const [productPortions, setProductPortions] = React.useState<Array<ProductPortion>>([]);
-  const [listItems, setListItems] = React.useState<Array<ListItem>>([]);
-  const [editProductPortionId, setEditProductPortionId] = React.useState<number | false>(false);
-  const [productPortionType, setProductPortionType] = React.useState<string>('');
+  const [listItems, setListItems] = React.useState<ListItem[]>([]);
+  const [productPortionType, setProductPortionType] = React.useState<ProductPortionType>(
+    createEmptyProductPortionType(),
+  );
+  const [editedProductPortionId, setEditedProductPortionId] = React.useState<string>('');
+  const [isAdding, setAdding] = React.useState<boolean>(false);
   const { typeId } = useParams<Params>();
 
   const getProductPortionType = async () => {
-    const productPortionType = await getProductPortionTypeById(+typeId);
-    setProductPortionType(productPortionType.name);
-    setProductPortions(productPortionType.portions);
-    setListItems(mapProductPortionsToListItems(productPortionType.portions));
+    const productPortionType = await getProductPortionTypeById(typeId);
+    setProductPortionType(productPortionType);
+    setListItems(mapProductPortionListFromApiModelToListItem(productPortionType.portions));
   };
 
   React.useEffect(() => {
-    async function loadProductPortions() {
+    async function loadProductPortionType() {
       await getProductPortionType();
     }
-    loadProductPortions();
+    loadProductPortionType();
   }, []);
 
   const onReorder = async (startIndex, endIndex) => {
+    const productPortions = productPortionType.portions;
     const reorderedPortions = reorder(productPortions, startIndex, endIndex);
-    setProductPortions(reorderedPortions);
-    await saveProductPortionType(+typeId, reorderedPortions);
+    await saveProductPortionType({ ...productPortionType, portions: reorderedPortions });
+    await getProductPortionType();
   };
 
-  const onSave = (name: string, id?: number) => {
-    setEditProductPortionId(false);
-    (async () => await saveProductPortion(name, +typeId, id))();
-    (async () => await getProductPortionType())();
+  const onSave = async (name: string, id?: string) => {
+    setAdding(false);
+    setEditedProductPortionId('');
+    await saveProductPortion({ id: id, name: name }, productPortionType.id);
+    await getProductPortionType();
   };
 
-  const onEdit = (id: number) => setEditProductPortionId(id);
-  const onDelete = (id: number) => {
-    (async () => await deleteProductPortion(+typeId, id))();
-    (async () => await getProductPortionType())();
+  const onEdit = (id: string) => setEditedProductPortionId(id);
+  const onDelete = async (id: string) => {
+    await deleteProductPortion(id);
+    await getProductPortionType();
   };
 
-  const onCancel = () => setEditProductPortionId(false);
-  const onAdd = () => setEditProductPortionId(0);
+  const onCancel = () => {
+    setAdding(false);
+    setEditedProductPortionId('');
+  };
+  const onAdd = () => {
+    setAdding(true);
+    setEditedProductPortionId('');
+  };
 
   return (
     <div className={classes.container}>
       <Card>
-        <CardHeader component='h1' title={`Editar ${productPortionType}`} />
+        <CardHeader component='h1' title={`Editar ${productPortionType.name}`} />
         <CardContent>
           <SortableListComponent
+            isAdding={isAdding}
             items={listItems}
-            itemTypeName={`${productPortionType}`}
-            editItemId={editProductPortionId}
+            itemTypeName={`${productPortionType.name}`}
+            editItemId={editedProductPortionId}
             onSave={onSave}
             onEdit={onEdit}
             onDelete={onDelete}

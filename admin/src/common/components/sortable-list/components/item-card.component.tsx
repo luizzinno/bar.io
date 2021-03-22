@@ -11,15 +11,15 @@ import React from 'react';
 import * as classes from './item-card.styles';
 
 interface ItemCardComponentProps {
-  id?: number;
+  id?: string;
+  value?: string;
   visible?: boolean;
-  value: string;
   edit: boolean;
-  onDelete: (id: number) => void;
-  onEdit: (id: number) => void;
-  onSave?: (value: string, id?: number) => void;
+  onDelete?: (id: string) => void;
+  onEdit?: (id: string) => void;
+  onSave?: (value: string, id?: string) => void;
   onCancel?: () => void;
-  onChangeVisibility?: (id: number) => void;
+  onChangeVisibility?: (id: string) => void;
 }
 
 export const ItemCardComponent: React.FunctionComponent<ItemCardComponentProps> = (props) => {
@@ -35,16 +35,16 @@ export const ItemCardComponent: React.FunctionComponent<ItemCardComponentProps> 
     onCancel,
     onChangeVisibility,
   } = props;
-  const [itemValue, itesetItemValue] = React.useState<string>(value);
+  const [itemValue, setItemValue] = React.useState<string>(value);
   const [disableSave, setDisableSave] = React.useState<boolean>(false);
-  const handleClickEdit = () => onEdit(id);
-  const handleClickDelete = () => onDelete(id);
+  const handleClickEdit = () => (!!onEdit ? onEdit(id) : {});
+  const handleClickDelete = () => (onDelete ? onDelete(id) : {});
   const handleClickSave = () => {
     onSave(itemValue.trim(), id);
-    itesetItemValue(itemValue.trim());
+    setItemValue(itemValue.trim());
   };
   const handleClickCancel = () => {
-    itesetItemValue(value);
+    setItemValue(value.trim());
     onCancel();
   };
   const handleValueChange = (e) => {
@@ -52,51 +52,46 @@ export const ItemCardComponent: React.FunctionComponent<ItemCardComponentProps> 
     if (newItemName.trim().length === 0 || newItemName.length < minValueLength)
       setDisableSave(true);
     else if (newItemName.length >= minValueLength) setDisableSave(false);
-    itesetItemValue(newItemName);
+    setItemValue(newItemName);
   };
   const handleChangeVisibility = () => onChangeVisibility(id);
 
   return (
-    id !== null &&
-    id !== undefined &&
-    value !== null &&
-    value !== undefined && (
-      <Card className={classes.container}>
-        <CardContent className={classes.card}>
-          {edit ? (
-            <TextField name='itemValue' value={itemValue} onChange={handleValueChange} />
-          ) : (
-            <Typography>{value}</Typography>
-          )}
-        </CardContent>
-        <CardActions disableSpacing>
-          {edit ? (
-            <IconButton aria-label='Guardar' onClick={handleClickSave} disabled={disableSave}>
-              <SaveAlt />
-            </IconButton>
-          ) : (
-            <IconButton aria-label={`Editar ${value}`} onClick={handleClickEdit}>
-              <Create />
-            </IconButton>
-          )}
-          {visible !== undefined && !edit && (
-            <IconButton
-              aria-label={`Hacer ${visible ? 'invisible' : 'visible'} ${value}`}
-              onClick={handleChangeVisibility}>
-              {visible ? <Visibility /> : <VisibilityOff />}
-            </IconButton>
-          )}
-          {edit ? (
-            <IconButton aria-label='Cancelar' onClick={handleClickCancel}>
-              <Clear />
-            </IconButton>
-          ) : (
-            <IconButton aria-label={`Borrar ${value}`} onClick={handleClickDelete}>
-              <Delete />
-            </IconButton>
-          )}
-        </CardActions>
-      </Card>
-    )
+    <Card className={classes.container}>
+      <CardContent className={classes.card}>
+        {edit ? (
+          <TextField name='itemValue' value={itemValue} onChange={handleValueChange} />
+        ) : (
+          <Typography>{value ?? ''}</Typography>
+        )}
+      </CardContent>
+      <CardActions disableSpacing>
+        {edit ? (
+          <IconButton aria-label='Guardar' onClick={handleClickSave} disabled={disableSave}>
+            <SaveAlt />
+          </IconButton>
+        ) : (
+          <IconButton aria-label={`Editar ${value}`} onClick={handleClickEdit}>
+            <Create />
+          </IconButton>
+        )}
+        {visible !== undefined && !edit && (
+          <IconButton
+            aria-label={`Hacer ${visible ? 'invisible' : 'visible'} ${value}`}
+            onClick={handleChangeVisibility}>
+            {visible ? <Visibility /> : <VisibilityOff />}
+          </IconButton>
+        )}
+        {edit ? (
+          <IconButton aria-label='Cancelar' onClick={handleClickCancel}>
+            <Clear />
+          </IconButton>
+        ) : (
+          <IconButton aria-label={`Borrar ${value}`} onClick={handleClickDelete}>
+            <Delete />
+          </IconButton>
+        )}
+      </CardActions>
+    </Card>
   );
 };

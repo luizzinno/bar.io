@@ -4,20 +4,19 @@ import { Field, Form, Formik } from 'formik';
 import React, { FunctionComponent } from 'react';
 import { formValidation } from './edit-product.validation';
 import { MenuCategory } from './menu-category.vm';
-import { ProductPortion, ProductPortionType } from './product-portion.vm';
+import { ProductPortionType } from './product-portion.vm';
 import { Product } from './product.vm';
 
 interface EditProductProps {
-  categories: Array<MenuCategory>;
-  portionTypes: Array<ProductPortionType>;
-  portions: Array<ProductPortion>;
+  categories: MenuCategory[];
+  portionTypes: ProductPortionType[];
   product: Product;
   onSave: (product: Product) => void;
   onChangeName: (name: string) => void;
   onChangeDescription: (description: string) => void;
-  onChangePortionPrice: (portionId: number, price: number) => void;
-  onChangeCategory: (categoryId: number) => void;
-  onChangePortionType: (portionTypeId: number) => void;
+  onChangePortionPrice: (portionId: string, price: number) => void;
+  onChangeCategory: (categoryId: string) => void;
+  onChangePortionType: (portionTypeId: string) => void;
   onCancel: () => void;
 }
 
@@ -26,7 +25,6 @@ export const EditProductComponent: FunctionComponent<EditProductProps> = (props)
     categories,
     portionTypes,
     product,
-    portions,
     onChangeName,
     onChangeDescription,
     onChangePortionPrice,
@@ -40,7 +38,7 @@ export const EditProductComponent: FunctionComponent<EditProductProps> = (props)
   const handleChangeName = (e) => onChangeName(e.target.value);
   const handleChangeDescription = (e) => onChangeDescription(e.target.value);
   const handleChangePortionPrice = (e) =>
-    onChangePortionPrice(e.target.getAttribute('name').split(/[\[\]]/)[1], e.target.value);
+    onChangePortionPrice(e.target.getAttribute('id'), e.target.value);
 
   return (
     <Card>
@@ -64,45 +62,49 @@ export const EditProductComponent: FunctionComponent<EditProductProps> = (props)
                 label='Descripción'
                 onKeyUp={handleChangeDescription}
               />
-              <DropDownComponent
-                label='Categoría'
-                labelId='categoryIdLabel'
-                name='categoryId'
-                onChange={handleChangeCategory}
-                disabled={!!product?.id}
-                value={!!categories && !!product.categoryId ? product.categoryId ?? '' : ''}>
-                {categories.map((c) => (
-                  <MenuItem key={`category-${c.id}`} value={c.id}>
-                    {c.name}
-                  </MenuItem>
-                ))}
-              </DropDownComponent>
-              <DropDownComponent
-                label='Ración'
-                labelId='portionTypeIdLabel'
-                name='portionTypeId'
-                onChange={handlePortionTypeChange}
-                value={!!portionTypes && !!product.portionTypeId ? product.portionTypeId : ''}>
-                {!!portionTypes ? (
-                  portionTypes.map((t) => (
-                    <MenuItem key={`portionType-${t.id}`} value={t.id}>
+              {!!categories.length ? (
+                <DropDownComponent
+                  label='Categoría'
+                  labelId='categoryIdLabel'
+                  name='categoryId'
+                  onChange={handleChangeCategory}
+                  disabled={!!product?.id}>
+                  {categories.map((c) => (
+                    <MenuItem key={`category-${c.id}`} value={c.id}>
+                      {c.name}
+                    </MenuItem>
+                  ))}
+                </DropDownComponent>
+              ) : (
+                ''
+              )}
+
+              {!!portionTypes.length ? (
+                <DropDownComponent
+                  label='Ración'
+                  labelId='portionTypeIdLabel'
+                  name='portionTypeId'
+                  onChange={handlePortionTypeChange}>
+                  {portionTypes?.map((t) => (
+                    <MenuItem key={t.id} value={t.id}>
                       {t.name}
                     </MenuItem>
-                  ))
-                ) : (
-                  <MenuItem key='portionType-0' value='0'>
-                    Única
-                  </MenuItem>
-                )}
-              </DropDownComponent>
-              {!!portions &&
-                portions.map((p) => (
+                  ))}
+                </DropDownComponent>
+              ) : (
+                ''
+              )}
+              {!!product.portions.length &&
+                product.portions.map((p, index) => (
                   <TextFieldComponent
-                    key={`portionPrices[${p.id}]`}
-                    name={`portionPrices[${p.id}]`}
+                    id={p.id}
+                    key={`portions[${index}].price`}
+                    name={`portions[${index}].price`}
                     label={`Precio - ${p.name}`}
                     type='number'
-                    onKeyUp={handleChangePortionPrice}
+                    inputProps={{ step: 0.01 }}
+                    value={p.price}
+                    onChange={handleChangePortionPrice}
                   />
                 ))}
               <Button type='submit'>Guardar</Button>

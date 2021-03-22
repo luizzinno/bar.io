@@ -17,8 +17,8 @@ export const mapRestaurantInfoApiModelToViewModel = (
   restaurantInfo ? { ...restaurantInfo } : viewModel.createEmptyRestaurantInfo();
 
 export const mapMenuCategoryApiModelsToViewModels = (
-  menuCategories: Array<apiModel.MenuCategory>,
-): Array<viewModel.MenuCategory> =>
+  menuCategories: apiModel.MenuCategory[],
+): viewModel.MenuCategory[] =>
   menuCategories?.map((mc) => mapMenuCategoryApiModelToViewModel(mc)) ?? [];
 
 export const mapMenuCategoryApiModelToViewModel = (
@@ -29,8 +29,8 @@ export const mapMenuCategoryApiModelToViewModel = (
 });
 
 export const mapProductApiModelsToViewModels = (
-  products: Array<apiModel.Product>,
-): Array<viewModel.Product> =>
+  products: apiModel.Product[],
+): viewModel.Product[] =>
   products?.map((p) => mapProductApiModelToViewModel(p)).filter((p) => p.portions.length > 0) ?? [];
 
 export const mapProductApiModelToViewModel = (product: apiModel.Product): viewModel.Product => ({
@@ -39,19 +39,19 @@ export const mapProductApiModelToViewModel = (product: apiModel.Product): viewMo
 });
 
 const mapPortionApiModelsToPortionViewModels = (
-  portions: Array<apiModel.Portion>,
-): Array<viewModel.Portion> =>
+  portions: apiModel.Portion[],
+): viewModel.Portion[] =>
   (portions
     ?.filter((p) => !!p.price)
     .map((p) => mapPortionApiModelToPortionViewModel(p))
-    .filter((p) => !!p) as Array<viewModel.Portion>) ?? [];
+    .filter((p) => !!p) as viewModel.Portion[]) ?? [];
 
 const mapPortionApiModelToPortionViewModel = (
   portion: apiModel.Portion,
 ): viewModel.Portion | false =>
   !!portion
     ? {
-        name: portion.name,
-        price: formatToEuros(portion.price),
-      }
+      name: portion.name,
+      price: formatToEuros(portion.price),
+    }
     : false;

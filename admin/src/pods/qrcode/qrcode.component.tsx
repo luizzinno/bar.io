@@ -4,7 +4,7 @@ import * as classes from './qrcode.styles';
 
 interface QrCodeComponentProps {
   qrCodeUrl: string;
-  text: Array<string>;
+  text: string[];
   onDownloadPdf: () => void;
   onDownloadImage: () => void;
 }
@@ -17,12 +17,32 @@ export const QrCodeComponent: React.FunctionComponent<QrCodeComponentProps> = (p
       <CardHeader component='h1' title='Código QR'></CardHeader>
       <CardContent>
         <div className={classes.container}>
-            {!!qrCodeUrl && (<img src={qrCodeUrl} alt="Código QR"/>)}
-            {!!text && (<p className={classes.text}>{text.map((t, index) => !!t && (<span key={index}>{t}<br/></span>))}</p>)}
+          {!!qrCodeUrl && <img src={qrCodeUrl} alt='Código QR' />}
+          {!!text && (
+            <p className={classes.text}>
+              {text.map(
+                (t, index) =>
+                  !!t && (
+                    <span key={index}>
+                      {t}
+                      <br />
+                    </span>
+                  ),
+              )}
+            </p>
+          )}
         </div>
-        {!!qrCodeUrl && (<Button onClick={onDownloadImage} variant='contained' color='primary'>Descargar imagen</Button>)}
+        {!!qrCodeUrl && (
+          <Button onClick={onDownloadImage} variant='contained' color='primary'>
+            Descargar imagen
+          </Button>
+        )}
         &nbsp;
-        {!!qrCodeUrl && (<Button onClick={onDownloadPdf} variant='contained' color='secondary'>Descargar Pdf</Button>)}
+        {!!qrCodeUrl && (
+          <Button onClick={onDownloadPdf} variant='contained' color='secondary'>
+            Descargar Pdf
+          </Button>
+        )}
       </CardContent>
     </Card>
   );

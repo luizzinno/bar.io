@@ -1,13 +1,13 @@
 export interface Product {
-  id: number;
+  id: string;
   name: string;
   description: string;
   visible: boolean;
-  portionTypeId: number;
-  portions: Array<Portion>;
+  portionTypeId: string;
+  portions: Portion[];
 }
 
 export interface Portion {
-  id: number;
+  id: string;
   price: number;
 }
