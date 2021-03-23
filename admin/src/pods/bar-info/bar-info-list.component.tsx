@@ -5,8 +5,11 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 
+//VM
+import { BarInfo } from './bar-info.vm';
+
 //CSS
-import * as classes from './bar-info.styles';
+import * as classes from './bar-info-list.styles';
 
 export interface Props {
   infoList: BarInfo[];
@@ -15,9 +18,9 @@ export interface Props {
 export const BarInfoListComponent: React.FunctionComponent<Props> = (props) => {
   const { infoList, onSelect } = props;
 
-  React.useEffect(() => {
-    console.log(infoList);
-  });
+  const handleClick = (bar: BarInfo) => {
+    onSelect(bar);
+  };
 
   return (
     <Card className={classes.card}>
@@ -27,11 +30,14 @@ export const BarInfoListComponent: React.FunctionComponent<Props> = (props) => {
         <CardContent
           key={index}
           onClick={() => {
-            onSelect(bar);
-          }}>
-          <p>{bar.infoA}</p>
-          <p>{bar.infoB}</p>
-          <p>{bar.infoC}</p>
+            handleClick(bar);
+          }}
+          className={classes.list}>
+          <ul>
+            <li>{bar.infoA}</li>
+            <li>{bar.infoB}</li>
+            <li>{bar.infoC}</li>
+          </ul>
         </CardContent>
       ))}
     </Card>

@@ -16,7 +16,7 @@ export const MenuContainer: React.FunctionComponent = () => {
   const [items, setItems] = React.useState<DashboardItemProps[]>([]);
   React.useEffect(() => {
     //User is superadmin
-    if (false) {
+    if (true) {
       setItems(itemsSuperAdmin);
     } else {
       setItems(itemsAdmin);
