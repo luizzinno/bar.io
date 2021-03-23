@@ -18,4 +18,5 @@ export const items = css`
 
 export const item = css`
   padding: 2rem 0rem;
+  text-align: center;
 `;

@@ -5,6 +5,7 @@ interface SwitchRoutes {
   login: string;
   dashboard: string;
   barInfo: string;
+  barInfoList: string;
   categoriesList: string;
   productList: string;
   editProduct: string;
@@ -18,6 +19,7 @@ export const switchRoutes: SwitchRoutes = {
   login: '/login',
   dashboard: '/dashboard',
   barInfo: '/barInfo',
+  barInfoList: '/barInfoList',
   categoriesList: '/categories',
   productList: '/products',
   editProduct: '/product/:productId?',
