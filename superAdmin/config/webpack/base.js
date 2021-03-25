@@ -30,35 +30,9 @@ module.exports = merge(
         },
         {
           test: /\.(svg|eot|ttf|woff|woff2)$/i,
-          loader: 'url-loader',
-          options: {
-            limit: 8192,
-            // esModule: false,
-          },
+          type: 'asset/resource',
         },
       ],
-    },
-    optimization: {
-      minimize: true,
-      emitOnErrors: true,
-      moduleIds: 'named',
-      runtimeChunk: 'single',
-      splitChunks: {
-        cacheGroups: {
-          vendor: {
-            chunks: 'all',
-            name: 'vendor',
-            test: /[\\/]node_modules[\\/]/,
-            enforce: true,
-            maxSize: 200000,
-          },
-          commons: {
-            name: 'commons',
-            chunks: 'initial',
-            minChunks: 2,
-          },
-        },
-      },
     },
     plugins: [
       new HtmlWebpackPlugin({
