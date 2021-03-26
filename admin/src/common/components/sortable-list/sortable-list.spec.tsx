@@ -7,26 +7,25 @@ describe('SortableListComponent test', () => {
     // Arrange
     const props = {
       items: [
-        { id: 1, value: 'Entrantes' },
-        { id: 2, value: 'Primeros' },
-        { id: 3, value: 'Segundos' },
-        { id: 4, value: 'Postres' },
-        { id: 5, value: 'Bebidas' },
+        { id: '1', value: 'Entrantes' },
+        { id: '2', value: 'Primeros' },
+        { id: '3', value: 'Segundos' },
+        { id: '4', value: 'Postres' },
+        { id: '5', value: 'Bebidas' },
       ],
-      editItemId: false,
       onAdd: () => {
         return;
       },
       onCancel: () => {
         return;
       },
-      onEdit: (id: number) => {
+      onEdit: (id: string) => {
         return;
       },
-      onDelete: (id: number) => {
+      onDelete: (id: string) => {
         return;
       },
-      onSave: (value: string, id?: number) => {
+      onSave: (value: string, id?: string) => {
         return;
       },
       onReorder: (startIndex: number, endIndex: number) => {
@@ -48,20 +47,19 @@ describe('SortableListComponent test', () => {
     // Arrange
     const props = {
       items: undefined,
-      editItemId: false,
       onAdd: () => {
         return;
       },
       onCancel: () => {
         return;
       },
-      onEdit: (id: number) => {
+      onEdit: (id: string) => {
         return;
       },
-      onDelete: (id: number) => {
+      onDelete: (id: string) => {
         return;
       },
-      onSave: (value: string, id?: number) => {
+      onSave: (value: string, id?: string) => {
         return;
       },
       onReorder: (startIndex: number, endIndex: number) => {
@@ -82,20 +80,19 @@ describe('SortableListComponent test', () => {
     // Arrange
     const props = {
       items: undefined,
-      editItemId: false,
       onAdd: () => {
         return;
       },
       onCancel: () => {
         return;
       },
-      onEdit: (id: number) => {
+      onEdit: (id: string) => {
         return;
       },
-      onDelete: (id: number) => {
+      onDelete: (id: string) => {
         return;
       },
-      onSave: (value: string, id?: number) => {
+      onSave: (value: string, id?: string) => {
         return;
       },
       onReorder: (startIndex: number, endIndex: number) => {
@@ -116,20 +113,19 @@ describe('SortableListComponent test', () => {
     // Arrange
     const props = {
       items: undefined,
-      editItemId: false,
       onAdd: () => {
         return;
       },
       onCancel: () => {
         return;
       },
-      onEdit: (id: number) => {
+      onEdit: (id: string) => {
         return;
       },
-      onDelete: (id: number) => {
+      onDelete: (id: string) => {
         return;
       },
-      onSave: (value: string, id?: number) => {
+      onSave: (value: string, id?: string) => {
         return;
       },
       onReorder: (startIndex: number, endIndex: number) => {

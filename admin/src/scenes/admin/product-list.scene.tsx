@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { AppLayout } from 'layouts';
 import { ProductListContainer } from 'pods/product-list';
 
-export const ProductListScene: FC = () => {
+export const ProductListScene: React.FC = () => {
   return (
     <>
       <AppLayout>

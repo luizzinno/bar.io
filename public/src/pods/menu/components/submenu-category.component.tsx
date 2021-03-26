@@ -5,7 +5,7 @@ import { ProductComponent } from './product.component';
 
 interface SubmenuCategoryComponentProps {
   categoryIndex: number;
-  products: Array<Product>;
+  products: Product[];
 }
 
 export const SubmenuCategoryComponent: React.FunctionComponent<SubmenuCategoryComponentProps> = ({

@@ -6,7 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 interface MenuComponentProps {
   restaurantInfo: RestaurantInfo;
-  categories: Array<MenuCategory>;
+  categories: MenuCategory[];
   onHandleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   themes: string[];
   theme: string;

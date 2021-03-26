@@ -16,22 +16,32 @@ import { useHistory } from 'react-router-dom';
 import { switchRoutes } from 'core/router';
 
 //CSS
-import * as classes from './product-portion-list.styles';
-
+import * as classes from './product-portion-types.styles';
 
 interface Props {
-  listItem: ListItem[];
-  editID: number | false;
-  onSave: (value: string, id: number) => void;
-  onEdit: (id: number) => void;
-  onDelete: (id: number) => void;
+  items: ListItem[];
+  editItemId: string;
+  isAdding: boolean;
+  onSave: (value: string, id?: string) => void;
+  onEdit: (id: string) => void;
+  onDelete: (id: string) => void;
   onReorder: (start: number, end: number) => void;
   onCancel: () => void;
   onAdd: () => void;
 }
 
-export const ProductPortionListComponent: React.FunctionComponent<Props> = (props) => {
-  const { listItem, editID, onSave, onEdit, onDelete, onReorder, onCancel, onAdd } = props;
+export const ProductPortionTypesComponent: React.FunctionComponent<Props> = (props) => {
+  const {
+    items,
+    editItemId,
+    isAdding,
+    onSave,
+    onEdit,
+    onDelete,
+    onReorder,
+    onCancel,
+    onAdd,
+  } = props;
   const history = useHistory();
   return (
     <Card className={classes.container}>
@@ -50,9 +60,10 @@ export const ProductPortionListComponent: React.FunctionComponent<Props> = (prop
       />
       <CardContent>
         <SortableListComponent
-          items={listItem}
+          isAdding={isAdding}
+          items={items}
           itemTypeName='raciones'
-          editItemId={editID}
+          editItemId={editItemId}
           onSave={onSave}
           onEdit={onEdit}
           onDelete={onDelete}

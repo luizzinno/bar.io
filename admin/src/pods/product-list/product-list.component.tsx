@@ -14,13 +14,13 @@ import { switchRoutes } from 'core/router';
 import * as classes from './product-list.styles';
 
 interface ProductListComponentProps {
-  selectedCategoryId: number;
-  categories: Array<ListItem>;
-  products: Array<ListItem>;
-  onChangeCategory: (id: number) => void;
-  onEditProduct: (id: number) => void;
-  onDeleteProduct: (id: number) => void;
-  onChangeProductVisibility: (id: number) => void;
+  selectedCategoryId: string;
+  categories: ListItem[];
+  products: ListItem[];
+  onChangeCategory: (id: string) => void;
+  onEditProduct: (id: string) => void;
+  onDeleteProduct: (id: string) => void;
+  onChangeProductVisibility: (id: string) => void;
   onReorderProducts: (startIndex: number, endIndex: number) => void;
   onAddProduct: () => void;
   onCancelProductEdit: () => void;
@@ -39,10 +39,8 @@ export const ProductListComponent: React.FunctionComponent<ProductListComponentP
     onAddProduct,
     onCancelProductEdit,
   } = props;
-  // const handleChangeCategory = (e: React.ChangeEvent<{ value: number }>) =>
-  //   onChangeCategory(e.target.value);
-  const handleChangeCategory = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-    onChangeCategory(parseInt(e.target.value));
+  const handleChangeCategory = (e: React.ChangeEvent<{ value: string }>) =>
+    onChangeCategory(e.target.value);
   const history = useHistory();
 
   return (

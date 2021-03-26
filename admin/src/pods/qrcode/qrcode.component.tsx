@@ -12,7 +12,7 @@ import * as classes from './qrcode.styles';
 
 interface QrCodeComponentProps {
   qrCodeUrl: string;
-  text: Array<string>;
+  text: string[];
   onDownloadPdf: () => void;
   onDownloadImage: () => void;
 }
@@ -79,11 +79,6 @@ export const QrCodeComponent: React.FunctionComponent<QrCodeComponentProps> = (p
             </Grid>
           </Grid>
         )}
-        {/* {!!qrCodeUrl && (
-          <Button onClick={onDownloadPdf} variant='contained' color='secondary'>
-            Descargar Pdf
-          </Button>
-        )} */}
       </CardContent>
     </Card>
   );

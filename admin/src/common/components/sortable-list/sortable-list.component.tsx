@@ -6,15 +6,16 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import * as classes from './sortable-list.styles';
 
 interface SortableListComponentProps {
-  items: Array<Item>;
+  items: Item[];
   itemTypeName?: string;
-  editItemId?: number | boolean;
-  onDelete: (id: number) => void;
-  onEdit: (id: number) => void;
-  onSave?: (value: string, id?: number) => void;
+  editItemId?: string;
+  isAdding?: boolean;
+  onDelete: (id: string) => void;
+  onEdit: (id: string) => void;
+  onSave?: (value: string, id?: string) => void;
   onAdd: () => void;
   onCancel?: () => void;
-  onChangeVisibility?: (id: number) => void;
+  onChangeVisibility?: (id: string) => void;
   onReorder: (startIndex: number, endIndex: number) => void;
 }
 
@@ -25,6 +26,7 @@ export const SortableListComponent: React.FunctionComponent<SortableListComponen
     items,
     itemTypeName,
     editItemId,
+    isAdding,
     onSave,
     onCancel,
     onEdit,
@@ -38,18 +40,17 @@ export const SortableListComponent: React.FunctionComponent<SortableListComponen
     if (!!result.destination) onReorder(result.source.index, result.destination.index);
     else return;
   };
-
   return (
     <>
       <Grid container spacing={3}>
         <Grid item xs={12} className={classes.column}>
           <AddItemComponent
-            isAdding={editItemId === 0}
+            isAdding={isAdding}
             onAdd={onAdd}
             onSave={onSave}
             onCancel={onCancel}
           />
-          {(!items || items.length === 0) && editItemId !== 0 && (
+          {(!items || items.length === 0) && !isAdding && !editItemId && (
             <Typography align='center' component='p' className={classes.message}>{`No existen ${
               itemTypeName ?? 'elementos'
             }`}</Typography>
@@ -64,7 +65,7 @@ export const SortableListComponent: React.FunctionComponent<SortableListComponen
                 <List>
                   {items.map((i, index) => (
                     <Draggable
-                      isDragDisabled={editItemId !== false && editItemId !== undefined}
+                      isDragDisabled={isAdding || !!editItemId}
                       key={i.id}
                       draggableId={`${i.id}`}
                       index={index}>

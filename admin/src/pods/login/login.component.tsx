@@ -45,7 +45,7 @@ export const LoginComponent: React.FunctionComponent<Props> = (props) => {
                   <TextFieldComponent name='password' label='Clave' type='password' />
                 </Grid>
                 <Grid item xs={12}>
-                  <Button type='submit' variant='contained' color='primary' fullWidth={true}>
+                  <Button type='submit' variant='contained' color='primary' size='large' fullWidth={true}>
                     Login
                   </Button>
                 </Grid>

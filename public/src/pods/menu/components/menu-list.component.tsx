@@ -4,7 +4,7 @@ import { MenuCategory } from '../menu.vm';
 import { SubmenuCategoryComponent } from './submenu-category.component';
 
 interface MenuListProps {
-  categories: Array<MenuCategory>;
+  categories: MenuCategory[];
 }
 
 export const MenuListComponent: React.FunctionComponent<MenuListProps> = (props) => {

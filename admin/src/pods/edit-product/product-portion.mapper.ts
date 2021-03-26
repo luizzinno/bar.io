@@ -1,23 +1,23 @@
-import * as apiModel from 'core/api/product-portion.model';
+import * as apiModel from 'core/api/product-portions/product-portions.model';
 import * as viewModel from './product-portion.vm';
 
-export const mapProductPortionApiModelsToViewModels = (
-  productPortions: Array<apiModel.ProductPortion>,
-): Array<viewModel.ProductPortion> =>
-  productPortions?.map((p) => mapProductPortionApiModelToViewModel(p)) ?? [];
+export const mapProductPortionListFromApiToViewModel = (
+  productPortions: apiModel.ProductPortion[],
+): viewModel.ProductPortion[] =>
+  productPortions?.map((p) => mapProductPortionFromApiToViewModel(p)) ?? [];
 
-const mapProductPortionApiModelToViewModel = (
+const mapProductPortionFromApiToViewModel = (
   productPortion: apiModel.ProductPortion,
-): viewModel.ProductPortion => ({ ...productPortion });
+): viewModel.ProductPortion => !!productPortion ? ({ ...productPortion, price: 0 }) : viewModel.createEmptyProductPortionVm();
 
-export const mapProductPortionTypeApiModelsToViewModels = (
-  productPortionTypes: Array<apiModel.ProductPortionType>,
-): Array<viewModel.ProductPortionType> =>
-  productPortionTypes?.map((t) => mapProductPortionTypeApiModelToViewModel(t)) ?? [];
+export const mapProductPortionTypeListFromApiToViewModels = (
+  productPortionTypes: apiModel.ProductPortionType[],
+): viewModel.ProductPortionType[] =>
+  productPortionTypes?.map((t) => mapProductPortionTypeApiToViewModel(t)) ?? [];
 
-const mapProductPortionTypeApiModelToViewModel = (
+const mapProductPortionTypeApiToViewModel = (
   productPortionType: apiModel.ProductPortionType,
-): viewModel.ProductPortionType => ({
+): viewModel.ProductPortionType => !!productPortionType ? ({
   id: productPortionType.id,
   name: productPortionType.name,
-});
+}) : viewModel.createEmptyProductPortionTypeVm();

@@ -10,7 +10,7 @@ interface QrCodeContainerProps {
 
 interface QrCodeInfo {
   url: string;
-  text: Array<string>;
+  text: string[];
 }
 
 export const QrCodeContainer: React.FunctionComponent<QrCodeContainerProps> = (props) => {

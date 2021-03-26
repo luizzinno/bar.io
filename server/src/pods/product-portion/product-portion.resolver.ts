@@ -2,7 +2,6 @@ import { GraphQLResolver } from 'common/models';
 import { productPortionTypeRepository, menuCategoryRepository } from 'dals';
 import {
   mapFromProductPortionApiModelToModel,
-  mapFromProductPortionModelToApiModel,
   mapFromProductPortionTypeApiModelToModel,
   mapFromProductPortionTypeModelToApiModel,
 } from './product-portion.mapper';
@@ -10,7 +9,7 @@ import { ProductPortion, ProductPortionType } from './product-portion.model';
 
 interface ProductPortionTypeResolver {
   Query: {
-    getProductPortionTypes: GraphQLResolver<Array<ProductPortionType>>;
+    getProductPortionTypes: GraphQLResolver<ProductPortionType[]>;
     getProductPortionTypeById: GraphQLResolver<
       ProductPortionType,
       { id: string }
@@ -18,21 +17,19 @@ interface ProductPortionTypeResolver {
   };
   Mutation: {
     saveProductPortionType: GraphQLResolver<
-      ProductPortionType,
+      boolean,
       { productPortionType: ProductPortionType }
     >;
+    saveProductPortionTypes: GraphQLResolver<
+      boolean,
+      { productPortionTypes: ProductPortionType[] }
+    >;
     saveProductPortion: GraphQLResolver<
-      ProductPortion,
+      boolean,
       { productPortion: ProductPortion; productPortionTypeId?: string }
     >;
-    deleteProductPortionType: GraphQLResolver<
-      Array<ProductPortionType>,
-      { id: string }
-    >;
-    deleteProductPortion: GraphQLResolver<
-      Array<ProductPortion>,
-      { id: string }
-    >;
+    deleteProductPortionType: GraphQLResolver<boolean, { id: string }>;
+    deleteProductPortion: GraphQLResolver<boolean, { id: string }>;
   };
 }
 
@@ -40,9 +37,9 @@ export const productPortionTypeResolver: ProductPortionTypeResolver = {
   Query: {
     getProductPortionTypes: async (
       parent,
-      {},
+      { },
       context
-    ): Promise<Array<ProductPortionType>> =>
+    ): Promise<ProductPortionType[]> =>
       (await productPortionTypeRepository.getProductPortionTypes())?.map((p) =>
         mapFromProductPortionTypeModelToApiModel(p)
       ) ?? [],
@@ -60,47 +57,46 @@ export const productPortionTypeResolver: ProductPortionTypeResolver = {
       parent,
       { productPortionType },
       context
-    ): Promise<ProductPortionType> =>
-      mapFromProductPortionTypeModelToApiModel(
-        await productPortionTypeRepository.saveProductPortionType(
-          mapFromProductPortionTypeApiModelToModel(productPortionType)
-        )
-      ),
+    ): Promise<boolean> => {
+      await productPortionTypeRepository.saveProductPortionType(
+        mapFromProductPortionTypeApiModelToModel(productPortionType)
+      );
+      return true;
+    },
+    saveProductPortionTypes: async (
+      parent,
+      { productPortionTypes },
+      context
+    ): Promise<boolean> => {
+      await productPortionTypeRepository.saveProductPortionTypes(
+        productPortionTypes?.map((t) =>
+          mapFromProductPortionTypeApiModelToModel(t)
+        ) ?? []
+      );
+      return true;
+    },
     saveProductPortion: async (
       parent,
       { productPortion, productPortionTypeId },
       context
-    ): Promise<ProductPortion> =>
-      mapFromProductPortionModelToApiModel(
-        await productPortionTypeRepository.saveProductPortion(
-          mapFromProductPortionApiModelToModel(productPortion),
-          productPortionTypeId
-        )
-      ),
+    ): Promise<boolean> => {
+      await productPortionTypeRepository.saveProductPortion(
+        mapFromProductPortionApiModelToModel(productPortion),
+        productPortionTypeId
+      );
+      return true;
+    },
     deleteProductPortionType: async (
       parent,
       { id },
       context
-    ): Promise<Array<ProductPortionType>> => {
-      const result = await productPortionTypeRepository.deleteProductPortionType(
-        id
-      );
-      if (!!result || result?.length === 0)
-        menuCategoryRepository.removeProductPortionTypeFromProducts(id);
-      return result?.map((t) => mapFromProductPortionTypeModelToApiModel(t));
+    ): Promise<boolean> => {
+      await productPortionTypeRepository.deleteProductPortionType(id);
+      return true;
     },
-    deleteProductPortion: async (
-      parent,
-      { id },
-      context
-    ): Promise<Array<ProductPortion>> => {
-      const result = await productPortionTypeRepository.deleteProductPortion(
-        id
-      );
-
-      if (!!result || result?.length === 0)
-        menuCategoryRepository.removeProductPortionFromProducts(id);
-      return result?.map((p) => mapFromProductPortionModelToApiModel(p));
+    deleteProductPortion: async (parent, { id }, context): Promise<boolean> => {
+      await productPortionTypeRepository.deleteProductPortion(id);
+      return true;
     },
   },
 };

@@ -1,6 +1,6 @@
 export interface Menu {
   restaurantInfo: RestaurantInfo;
-  categories: Array<MenuCategory>;
+  categories: MenuCategory[];
 }
 
 export interface RestaurantInfo {
@@ -11,13 +11,13 @@ export interface RestaurantInfo {
 
 export interface MenuCategory {
   name: string;
-  products: Array<Product>;
+  products: Product[];
 }
 
 export interface Product {
   name: string;
   description: string;
-  portions: Array<Portion>;
+  portions: Portion[];
 }
 
 export interface Portion {

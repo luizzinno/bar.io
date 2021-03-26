@@ -21,7 +21,8 @@ export const DropDownComponent: React.FunctionComponent<SelectProps> = (props) =
         onBlur={props.onBlur ?? field.onBlur}
         value={props.value ?? field.value}
         disabled={props.disabled}
-        error={hasError}>
+        error={hasError}
+        fullWidth={true}>
         {children}
       </Select>
     </FormControl>
