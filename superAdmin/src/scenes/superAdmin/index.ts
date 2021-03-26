@@ -1,1 +1,2 @@
-export * from './root.scene';
+export * from './login.scene';
+export * from './administrator-list.scene';
