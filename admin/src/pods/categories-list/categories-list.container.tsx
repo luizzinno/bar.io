@@ -20,7 +20,7 @@ export const CategoriesListContainer: React.FunctionComponent = () => {
   const [categories, setCategories] = React.useState<MenuCategory[]>([]);
   const [listItems, setListItems] = React.useState<ListItem[]>([]);
   const [editCategoryId, setEditCategoryId] = React.useState<string>('');
-  const [isAdding, setAdding] = React.useState<boolean>(false);
+  const [isAdding, setIsAdding] = React.useState<boolean>(false);
   const history = useHistory();
 
   const getCategories = async () => {
@@ -45,14 +45,14 @@ export const CategoriesListContainer: React.FunctionComponent = () => {
 
   const onSave = async (name: string, id?: string) => {
     setEditCategoryId('');
-    setAdding(false);
+    setIsAdding(false);
     await saveMenuCategory(name, id);
     await getCategories();
   };
 
   const onEdit = (id: string) => {
     setEditCategoryId(id);
-    setAdding(false);
+    setIsAdding(false);
   };
   const onDelete = async (id: string) => {
     await deleteMenuCategory(id);
@@ -61,12 +61,12 @@ export const CategoriesListContainer: React.FunctionComponent = () => {
 
   const onCancel = () => {
     setEditCategoryId('');
-    setAdding(false);
+    setIsAdding(false);
   };
 
   const onAdd = () => {
     setEditCategoryId('');
-    setAdding(true);
+    setIsAdding(true);
   };
 
   return (
@@ -95,6 +95,7 @@ export const CategoriesListContainer: React.FunctionComponent = () => {
           onReorder={onReorder}
           onCancel={onCancel}
           onAdd={onAdd}
+          isAdding={isAdding}
         />
       </CardContent>
     </Card>
