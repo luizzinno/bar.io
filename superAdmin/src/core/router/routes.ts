@@ -38,5 +38,5 @@ interface LinkRoutes extends Omit<BaseRoutes, | 'editAdministrator' | 'editResta
 export const linkRoutes: LinkRoutes = {
   ...baseRoutes,
   editAdministrator: (id) => generatePath(baseRoutes.editAdministrator, { id }),
-  editRestaurant: (id) => generatePath(baseRoutes.restaurantList, { id }),
+  editRestaurant: (id) => generatePath(baseRoutes.editRestaurant, { id }),
 }
