@@ -1,8 +1,11 @@
-import { Card, CardContent, CardHeader } from '@material-ui/core';
-import { SortableListComponent } from 'common/components/sortable-list';
-import { ListItem } from 'common/components/sortable-list';
-import { reorder } from 'common/utils/array';
 import React from 'react';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardHeader from '@material-ui/core/CardHeader';
+import IconButton from '@material-ui/core/IconButton';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import { SortableListComponent, ListItem } from 'common/components/sortable-list';
+import { reorder } from 'common/utils/array';
 import * as classes from './edit-portions.styles';
 import { mapProductPortionListFromApiModelToListItem } from './edit-portions.mapper';
 import {
@@ -13,7 +16,8 @@ import {
   saveProductPortion,
   saveProductPortionType,
 } from 'core/api';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
+import { switchRoutes } from 'core/router';
 
 interface Params {
   typeId: string;
@@ -27,6 +31,7 @@ export const EditPortionsContainer: React.FunctionComponent = () => {
   const [editedProductPortionId, setEditedProductPortionId] = React.useState<string>('');
   const [isAdding, setAdding] = React.useState<boolean>(false);
   const { typeId } = useParams<Params>();
+  const history = useHistory();
 
   const getProductPortionType = async () => {
     const productPortionType = await getProductPortionTypeById(typeId);
@@ -71,24 +76,34 @@ export const EditPortionsContainer: React.FunctionComponent = () => {
   };
 
   return (
-    <div className={classes.container}>
-      <Card>
-        <CardHeader component='h1' title={`Editar ${productPortionType.name}`} />
-        <CardContent>
-          <SortableListComponent
-            isAdding={isAdding}
-            items={listItems}
-            itemTypeName={`${productPortionType.name}`}
-            editItemId={editedProductPortionId}
-            onSave={onSave}
-            onEdit={onEdit}
-            onDelete={onDelete}
-            onReorder={onReorder}
-            onCancel={onCancel}
-            onAdd={onAdd}
-          />
-        </CardContent>
-      </Card>
-    </div>
+    <Card className={classes.container}>
+      <CardHeader
+        component='h1'
+        title={`Editar ${productPortionType.name}`}
+        action={
+          <IconButton
+            color='primary'
+            aria-label='back home'
+            className={classes.icon}
+            onClick={() => history.goBack()}>
+            <ArrowBackIcon fontSize='large' />
+          </IconButton>
+        }
+      />
+      <CardContent>
+        <SortableListComponent
+          isAdding={isAdding}
+          items={listItems}
+          itemTypeName={`${productPortionType.name}`}
+          editItemId={editedProductPortionId}
+          onSave={onSave}
+          onEdit={onEdit}
+          onDelete={onDelete}
+          onReorder={onReorder}
+          onCancel={onCancel}
+          onAdd={onAdd}
+        />
+      </CardContent>
+    </Card>
   );
 };

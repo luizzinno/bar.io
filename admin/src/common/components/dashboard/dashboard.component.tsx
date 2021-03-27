@@ -1,5 +1,7 @@
 import React from 'react';
 import { cx } from 'emotion';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
 
 //VM
 import { DashboardItemProps } from './dashboard.vm';
@@ -20,28 +22,47 @@ interface Props {
   items: DashboardItemProps[];
   classes?: ClassNameProps;
   dataTestId?: string;
+  hasDrawer?: boolean;
 }
 
 export const DashboardComponent: React.FC<Props> = (props) => {
-  const { items, classes, dataTestId } = props;
+  const { items, classes, dataTestId, hasDrawer } = props;
   return (
-    <div data-testid={dataTestId} className={cx(innerClasses.root, classes.root)}>
-      <div className={cx(innerClasses.items, classes.items)}>
-        {items.map(
-          (item) =>
-            Boolean(item) && (
+    <List
+      data-testid={dataTestId}
+      component='ul'
+      aria-label='menu options'
+      className={cx(
+        !hasDrawer && innerClasses.root,
+        hasDrawer && innerClasses.rootDrawer,
+        classes.root,
+      )}>
+      {items.map(
+        (item) =>
+          Boolean(item) && (
+            <ListItem
+              key={item.title}
+              className={cx(
+                !hasDrawer && innerClasses.items,
+                hasDrawer && innerClasses.itemsDrawer,
+                classes.items,
+              )}>
               <ItemComponent
-                key={item.title}
+                hasDrawer={hasDrawer}
                 classes={{
                   ...classes.item,
-                  root: cx(innerClasses.item, classes.item.root),
+                  root: cx(
+                    !hasDrawer && innerClasses.item,
+                    hasDrawer && innerClasses.itemDrawer,
+                    classes.item.root,
+                  ),
                 }}
                 item={item}
               />
-            ),
-        )}
-      </div>
-    </div>
+            </ListItem>
+          ),
+      )}
+    </List>
   );
 };
 

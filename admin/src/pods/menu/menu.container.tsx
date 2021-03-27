@@ -12,7 +12,12 @@ import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import { routes } from 'core/router';
 import { QrCodeIcon } from './icons';
 
-export const MenuContainer: React.FunctionComponent = () => {
+interface Props {
+  hasDrawer?: boolean;
+}
+
+export const MenuContainer: React.FunctionComponent<Props> = (props) => {
+  const { hasDrawer } = props;
   const items: DashboardItemProps[] = React.useMemo(
     (): DashboardItemProps[] => [
       {
@@ -44,5 +49,5 @@ export const MenuContainer: React.FunctionComponent = () => {
     [],
   );
 
-  return <MenuComponent items={items} />;
+  return <MenuComponent items={items} hasDrawer={hasDrawer} />;
 };

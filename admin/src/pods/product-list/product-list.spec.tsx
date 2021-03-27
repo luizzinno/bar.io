@@ -63,7 +63,7 @@ describe('ProductListComponent tests', () => {
 
     //Assert
     expect(select).toBeInTheDocument();
-    expect(buttons.length).toBe(1);
+    expect(buttons.length).toBe(2);
   });
   it('should show the selected category, the add product button and a message saying there are not items \
       when selected a category without products', () => {

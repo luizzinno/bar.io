@@ -1,13 +1,13 @@
 import React from 'react';
-import { CenteredLayout } from 'layouts';
+import { AppLayout } from 'layouts';
 import { BarInfoContainer } from 'pods/bar-info';
 
 export const BarInfoScene: React.FC = () => {
   return (
     <>
-      <CenteredLayout>
+      <AppLayout>
         <BarInfoContainer />
-      </CenteredLayout>
+      </AppLayout>
     </>
   );
 };

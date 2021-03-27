@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   deleteProduct,
   getMenuCategories,
@@ -11,11 +12,9 @@ import {
   mapMenuCategorieListFromApiModelToListItem,
   mapProductListFromApiModelToListItem,
 } from 'pods/categories-list/categories-list.mapper';
-import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { ProductListComponent } from './product-list.component';
 import { useMenuCategories } from './use-menu-categories.hook';
-import * as classes from './product-list.styles';
 import { reorder } from 'common/utils/array';
 
 interface Params {
@@ -82,19 +81,17 @@ export const ProductListContainer: React.FunctionComponent = () => {
   }, []);
 
   return (
-    <div className={classes.container}>
-      <ProductListComponent
-        categories={mapMenuCategorieListFromApiModelToListItem(categories)}
-        products={mapProductListFromApiModelToListItem(getProductsByCategoryId(selectedCategoryId))}
-        selectedCategoryId={selectedCategoryId}
-        onAddProduct={onAddProduct}
-        onCancelProductEdit={onCancelProductEdit}
-        onChangeCategory={onChangeCategory}
-        onChangeProductVisibility={onChangeProductVisibility}
-        onDeleteProduct={onDeleteProduct}
-        onEditProduct={onEditProduct}
-        onReorderProducts={onReorderProducts}
-      />
-    </div>
+    <ProductListComponent
+      categories={mapMenuCategorieListFromApiModelToListItem(categories)}
+      products={mapProductListFromApiModelToListItem(getProductsByCategoryId(selectedCategoryId))}
+      selectedCategoryId={selectedCategoryId}
+      onAddProduct={onAddProduct}
+      onCancelProductEdit={onCancelProductEdit}
+      onChangeCategory={onChangeCategory}
+      onChangeProductVisibility={onChangeProductVisibility}
+      onDeleteProduct={onDeleteProduct}
+      onEditProduct={onEditProduct}
+      onReorderProducts={onReorderProducts}
+    />
   );
 };

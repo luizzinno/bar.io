@@ -1,6 +1,7 @@
 import { css } from 'emotion';
 
-export const container = css`
-  padding: 1em 0;
+export const root = css`
+  height: 100vh;
+  padding: 2rem;
   box-sizing: border-box;
 `;

@@ -1,13 +1,13 @@
 import React from 'react';
-import { CenteredLayout } from 'layouts';
+import { AppLayout } from 'layouts';
 import { ProductListContainer } from 'pods/product-list';
 
 export const ProductListScene: React.FC = () => {
   return (
     <>
-      <CenteredLayout>
+      <AppLayout>
         <ProductListContainer />
-      </CenteredLayout>
+      </AppLayout>
     </>
   );
 };

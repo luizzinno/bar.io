@@ -19,7 +19,7 @@ describe('QrCodeComponent tests', () => {
     const textA = screen.getByText(props.text[0]);
     const textB = screen.getByText(props.text[1]);
     const textC = screen.getByText(props.text[2]);
-    const downloadButtons = screen.getAllByRole('button');
+    const buttons = screen.getAllByRole('button');
 
     //Assert
     expect(qr).toBeInTheDocument();
@@ -27,7 +27,7 @@ describe('QrCodeComponent tests', () => {
     expect(textA).toBeInTheDocument();
     expect(textB).toBeInTheDocument();
     expect(textC).toBeInTheDocument();
-    expect(downloadButtons.length).toBe(2);
+    expect(buttons.length).toBe(3);
   });
   it('should not render the qrcode neither the buttons when passing an empty url', () => {
     //Arrange
@@ -41,11 +41,11 @@ describe('QrCodeComponent tests', () => {
     //Act
     render(<QrCodeComponent {...props} />);
     const qr = screen.queryByRole('img');
-    const downloadButtons = screen.queryAllByRole('button');
+    const buttons = screen.queryAllByRole('button');
 
     //Assert
     expect(qr).not.toBeInTheDocument();
-    expect(downloadButtons.length).toBe(0);
+    expect(buttons.length).toBe(1);
   });
   it('should not render the qrcode when passing a null url', () => {
     //Arrange
@@ -59,16 +59,16 @@ describe('QrCodeComponent tests', () => {
     //Act
     render(<QrCodeComponent {...props} />);
     const qr = screen.queryByRole('img');
-    const downloadButtons = screen.queryAllByRole('button');
+    const buttons = screen.queryAllByRole('button');
 
     //Assert
     expect(qr).not.toBeInTheDocument();
-    expect(downloadButtons.length).toBe(0);
+    expect(buttons.length).toBe(1);
   });
   it('should not render the qrcode when passing an undefined url', () => {
     //Arrange
     const props = {
-      qrCodeUrl: null,
+      qrCodeUrl: undefined,
       text: [],
       onDownloadImage: () => {},
       onDownloadPdf: () => {},
@@ -77,11 +77,11 @@ describe('QrCodeComponent tests', () => {
     //Act
     render(<QrCodeComponent {...props} />);
     const qr = screen.queryByRole('img');
-    const downloadButtons = screen.queryAllByRole('button');
+    const buttons = screen.queryAllByRole('button');
 
     //Assert
     expect(qr).not.toBeInTheDocument();
-    expect(downloadButtons.length).toBe(0);
+    expect(buttons.length).toBe(1);
   });
   it('should call onDownloadImage when clicking the download image button', () => {
     //Arrange
@@ -94,7 +94,7 @@ describe('QrCodeComponent tests', () => {
 
     //Act
     render(<QrCodeComponent {...props} />);
-    const downloadImageButton = screen.getAllByRole('button')[0];
+    const downloadImageButton = screen.getAllByRole('button')[1];
     userEvent.click(downloadImageButton);
 
     //Assert
@@ -111,7 +111,7 @@ describe('QrCodeComponent tests', () => {
 
     //Act
     render(<QrCodeComponent {...props} />);
-    const downloadPdfButton = screen.getAllByRole('button')[1];
+    const downloadPdfButton = screen.getAllByRole('button')[2];
     userEvent.click(downloadPdfButton);
 
     //Assert

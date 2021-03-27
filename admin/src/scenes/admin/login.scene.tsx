@@ -1,13 +1,13 @@
 import React from 'react';
 import { LoginContainer } from 'pods/login';
-import { CenteredLayout } from 'layouts';
+import { LoginLayout } from 'layouts';
 
 export const LoginScene: React.FC = () => {
   return (
     <>
-      <CenteredLayout>
+      <LoginLayout>
         <LoginContainer />
-      </CenteredLayout>
+      </LoginLayout>
     </>
   );
 };

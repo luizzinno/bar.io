@@ -38,7 +38,7 @@ describe('DropDownComponent tests', () => {
     );
 
     //Assert
-    const label = screen.getByText('Test');
+    const label = screen.getAllByText('Test')[0];
     expect(label).toBeInTheDocument();
     const option1 = screen.queryByText('Item I');
     expect(option1).not.toBeInTheDocument();
@@ -80,7 +80,7 @@ describe('DropDownComponent tests', () => {
     );
 
     //Assert
-    const label = screen.getByText('Test');
+    const label = screen.getAllByText('Test')[0];
     expect(label).toBeInTheDocument();
     const selectedOption = screen.getByRole('button');
     expect(selectedOption).toHaveTextContent('Item II');
