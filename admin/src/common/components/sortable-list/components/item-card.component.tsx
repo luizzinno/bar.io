@@ -75,7 +75,7 @@ export const ItemCardComponent: React.FunctionComponent<ItemCardComponentProps> 
           <Typography>{value ?? ''}</Typography>
         )}
       </CardContent>
-      <CardActions disableSpacing>
+      <CardActions disableSpacing className={classes.actions}>
         {edit ? (
           <IconButton aria-label='Cancelar' onClick={handleClickCancel}>
             <ClearIcon />
