@@ -1,22 +1,14 @@
 import { Theme as DefaultTheme } from '@material-ui/core/styles';
-import { Palette as DefaultPalette, PaletteColor } from '@material-ui/core/styles/createPalette';
-import { Overrides as DefaultOverrides } from '@material-ui/core/styles/overrides';
-import { CssBaselineClassKey } from '@material-ui/core';
+import { Palette } from '@material-ui/core/styles/createPalette';
+import { Overrides } from '@material-ui/core/styles/overrides';
+import { ComponentsProps } from '@material-ui/core/styles/props';
+import { Typography } from '@material-ui/core/styles/createTypography';
+import { Breakpoints } from '@material-ui/core/styles/createBreakpoints';
 
-interface Palette extends DefaultPalette {
-  table: {
-    row: PaletteColor;
-  };
-}
-
-interface Overrides extends DefaultOverrides {
-  overrides: CssBaselineClassKey;
-}
-
-export interface ThemePalete extends Omit<DefaultTheme, 'palette'> {
+export interface Theme extends DefaultTheme {
   palette: Palette;
-}
-
-export interface Theme extends Omit<ThemePalete, 'overrides'> {
-  overrides: Overrides;
+  breakpoints: Breakpoints;
+  typography: Typography;
+  overrides?: Overrides;
+  props?: ComponentsProps;
 }
