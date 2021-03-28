@@ -53,11 +53,11 @@ describe('pods/bar-info-list/bar-info-list.component specs', () => {
     // Act
     render(<BarInfoListComponent {...props} />);
 
-    //const list = screen.getAllByRole('list');
+    const list = screen.getAllByRole('list');
+
+    userEvent.click(list[0]);
 
     // Assert
-    waitFor(() => {
-      expect(props.onSelect).toHaveBeenCalled();
-    });
+    expect(props.onSelect).toHaveBeenCalled();
   });
 });
