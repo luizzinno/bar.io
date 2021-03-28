@@ -19,7 +19,13 @@ export const LoginContainer: React.FunctionComponent = () => {
   const loginSucceeded = (userName: string, isValid: boolean): void => {
     if (isValid) {
       // Need to save user in session
-      history.push(routes.dashboard);
+
+      //User is superadmin
+      if (false) {
+        history.push(routes.barInfoList);
+      } else {
+        history.push(routes.dashboard);
+      }
     } else {
       // Snackbar error
       alert('Invalid login');

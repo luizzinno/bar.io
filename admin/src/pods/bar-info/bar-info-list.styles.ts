@@ -21,6 +21,7 @@ export const list = css`
 
   ul {
     list-style: none;
+    cursor: pointer;
   }
 
   li {

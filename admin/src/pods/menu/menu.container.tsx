@@ -13,51 +13,11 @@ import { routes } from 'core/router';
 import { QrCodeIcon } from './icons';
 
 export const MenuContainer: React.FunctionComponent = () => {
-  const [items, setItems] = React.useState<DashboardItemProps[]>([]);
-  React.useEffect(() => {
-    //User is superadmin
-    if (true) {
-      setItems(itemsSuperAdmin);
-    } else {
-      setItems(itemsAdmin);
-    }
-  }, []);
-
-  const itemsAdmin: DashboardItemProps[] = React.useMemo(
+  const items: DashboardItemProps[] = React.useMemo(
     (): DashboardItemProps[] => [
       {
         title: 'Información del bar',
         linkTo: routes.barInfo,
-        icon: InfoIcon,
-      },
-      {
-        title: 'Categorías',
-        linkTo: routes.categoriesList,
-        icon: FolderIcon,
-      },
-      {
-        title: 'Productos',
-        linkTo: routes.productList,
-        icon: RestaurantMenuIcon,
-      },
-      {
-        title: 'Raciones',
-        linkTo: routes.productPortionList,
-        icon: LocalOfferIcon,
-      },
-      {
-        title: 'Código QR',
-        linkTo: routes.qrCode,
-        icon: QrCodeIcon,
-      },
-    ],
-    [],
-  );
-  const itemsSuperAdmin: DashboardItemProps[] = React.useMemo(
-    (): DashboardItemProps[] => [
-      {
-        title: 'Información de los bares',
-        linkTo: routes.barInfoList,
         icon: InfoIcon,
       },
       {
