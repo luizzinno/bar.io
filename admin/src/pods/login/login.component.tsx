@@ -15,6 +15,7 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
 //CSS
 import * as classes from './login.styles';
@@ -36,13 +37,19 @@ export const LoginComponent: React.FunctionComponent<Props> = (props) => {
           validate={formValidation.validateForm}>
           {() => (
             <Form>
-              <div className={classes.formLogin}>
-                <TextFieldComponent name='email' label='EMail' />
-                <TextFieldComponent name='password' label='Clave' type='password' />
-                <Button type='submit' variant='contained' color='primary'>
-                  Login
-                </Button>
-              </div>
+              <Grid container spacing={3}>
+                <Grid item xs={12}>
+                  <TextFieldComponent name='email' label='EMail' />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextFieldComponent name='password' label='Clave' type='password' />
+                </Grid>
+                <Grid item xs={12}>
+                  <Button type='submit' variant='contained' color='primary' size='large' fullWidth={true}>
+                    Login
+                  </Button>
+                </Grid>
+              </Grid>
             </Form>
           )}
         </Formik>

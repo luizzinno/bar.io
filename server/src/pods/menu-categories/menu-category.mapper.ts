@@ -6,12 +6,12 @@ export const mapFromMenuCategoryModelToApiModel = (
 ): apiModel.MenuCategory =>
   !!menuCategory
     ? {
-        id: menuCategory._id,
-        name: menuCategory.name,
-        products:
-          menuCategory.products?.map((p) => mapFromProductModelToApiModel(p)) ??
-          [],
-      }
+      id: menuCategory._id,
+      name: menuCategory.name,
+      products:
+        menuCategory.products?.map((p) => mapFromProductModelToApiModel(p)) ??
+        [],
+    }
     : null;
 
 export const mapFromProductModelToApiModel = (
@@ -19,14 +19,14 @@ export const mapFromProductModelToApiModel = (
 ): apiModel.Product =>
   !!product
     ? {
-        id: product._id,
-        description: product.description,
-        name: product.name,
-        portionTypeId: product.portionTypeId,
-        visible: product.visible,
-        portions:
-          product.portions?.map((p) => mapFromPortionModelToApiModel(p)) ?? [],
-      }
+      id: product._id,
+      description: product.description,
+      name: product.name,
+      portionTypeId: product.portionTypeId,
+      visible: product.visible,
+      portions:
+        product.portions?.map((p) => mapFromPortionModelToApiModel(p)) ?? [],
+    }
     : null;
 
 export const mapFromPortionModelToApiModel = (
@@ -34,9 +34,9 @@ export const mapFromPortionModelToApiModel = (
 ): apiModel.Portion =>
   !!portion
     ? {
-        id: portion._id,
-        price: portion.price,
-      }
+      id: portion._id,
+      price: portion.price,
+    }
     : null;
 
 export const mapFromMenuCategoryApiModelToModel = (
@@ -44,12 +44,12 @@ export const mapFromMenuCategoryApiModelToModel = (
 ): model.MenuCategory =>
   !!menuCategory
     ? {
-        _id: menuCategory.id,
-        name: menuCategory.name,
-        products:
-          menuCategory.products?.map((p) => mapFromProductApiModelToModel(p)) ??
-          [],
-      }
+      _id: menuCategory.id,
+      name: menuCategory.name,
+      products:
+        menuCategory.products?.map((p) => mapFromProductApiModelToModel(p)) ??
+        [],
+    }
     : null;
 
 export const mapFromProductApiModelToModel = (
@@ -57,14 +57,14 @@ export const mapFromProductApiModelToModel = (
 ): model.Product =>
   !!product
     ? {
-        _id: product.id,
-        description: product.description,
-        name: product.name,
-        portionTypeId: product.portionTypeId,
-        visible: product.visible,
-        portions:
-          product.portions?.map((p) => mapFromPortionApiModelToModel(p)) ?? [],
-      }
+      _id: product.id,
+      description: product.description,
+      name: product.name,
+      portionTypeId: product.portionTypeId,
+      visible: product.visible,
+      portions:
+        product.portions?.map((p) => mapFromPortionApiModelToModel(p)) ?? [],
+    }
     : null;
 
 export const mapFromPortionApiModelToModel = (
@@ -72,7 +72,7 @@ export const mapFromPortionApiModelToModel = (
 ): model.Portion =>
   !!portion
     ? {
-        _id: portion.id,
-        price: portion.price,
-      }
+      _id: portion.id,
+      price: portion.price,
+    }
     : null;

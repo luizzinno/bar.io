@@ -4,19 +4,19 @@ import { AddItemComponent } from './add-item.component';
 import userEvent from '@testing-library/user-event';
 
 describe('AddItemComponent tests', () => {
-  it('should show the edition component when adding', () => {
+  it('should show the edition component when isAdding', () => {
     // Arrange
     const props = {
+      isAdding: true,
       onCancel: () => {
         return;
       },
-      onSave: (value: string, id?: number) => {
+      onSave: (value: string, id?: string) => {
         return;
       },
       onAdd: () => {
         return;
       },
-      isAdding: true,
     };
 
     // Act
@@ -32,19 +32,19 @@ describe('AddItemComponent tests', () => {
     expect(saveButton).toBeInTheDocument();
     expect(cancelButton).toBeInTheDocument();
   });
-  it('should not show the edition component when not adding', () => {
+  it('should not show the edition component when not isAdding', () => {
     // Arrange
-    const props = {
+    const props = {  
+      isAdding: false,    
       onCancel: () => {
         return;
       },
-      onSave: (value: string, id?: number) => {
+      onSave: (value: string, id?: string) => {
         return;
       },
       onAdd: () => {
         return;
       },
-      isAdding: false,
     };
 
     // Act
@@ -60,19 +60,19 @@ describe('AddItemComponent tests', () => {
     expect(saveButton).toBeNull();
     expect(cancelButton).toBeNull();
   });
-  it('should enable the add button when not adding', () => {
+  it('should enable the add button when not isAdding', () => {
     // Arrange
     const props = {
+      isAdding: false,
       onCancel: () => {
         return;
       },
-      onSave: (value: string, id?: number) => {
+      onSave: (value: string, id?: string) => {
         return;
       },
       onAdd: () => {
         return;
       },
-      isAdding: false,
     };
 
     // Act
@@ -82,19 +82,19 @@ describe('AddItemComponent tests', () => {
     // Assert
     expect(addButton).not.toBeDisabled();
   });
-  it('should disable the add button when adding', () => {
+  it('should disable the add button when isAdding', () => {
     // Arrange
     const props = {
+      isAdding: true,
       onCancel: () => {
         return;
       },
-      onSave: (value: string, id?: number) => {
+      onSave: (value: string, id?: string) => {
         return;
       },
       onAdd: () => {
         return;
       },
-      isAdding: true,
     };
 
     // Act
@@ -110,7 +110,7 @@ describe('AddItemComponent tests', () => {
       onCancel: () => {
         return;
       },
-      onSave: (value: string, id?: number) => {
+      onSave: (value: string, id?: string) => {
         return;
       },
       onAdd: jest.fn(),
@@ -128,6 +128,7 @@ describe('AddItemComponent tests', () => {
   it('should call onSave when clicking the save button', () => {
     // Arrange
     const props = {
+      value: '',
       onCancel: () => {
         return;
       },
@@ -146,11 +147,13 @@ describe('AddItemComponent tests', () => {
     userEvent.click(saveButton);
 
     // Assert
-    expect(props.onSave).toHaveBeenCalledWith('Test', 0);
+    expect(props.onSave).toHaveBeenCalledWith('Test', undefined);
   });
   it('should call onCancel when clicking the cancel button', () => {
     // Arrange
     const props = {
+      id: '1',
+      value: '',
       onCancel: jest.fn(),
       onSave: () => {
         return;

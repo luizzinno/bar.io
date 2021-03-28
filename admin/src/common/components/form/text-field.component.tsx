@@ -11,13 +11,12 @@ export const TextFieldComponent: React.FunctionComponent<TextFieldProps> = (prop
       {...props}
       name={props.name ?? field.name}
       onChange={props.onChange ?? field.onChange}
-      onKeyUp={props.onKeyUp}
       onBlur={props.onBlur ?? field.onBlur}
       value={props.value ?? field.value}
       error={hasError}
       helperText={hasError ? meta.error : ''}
       fullWidth={true}
-      margin='normal'
+      margin='none'
     />
   );
 };

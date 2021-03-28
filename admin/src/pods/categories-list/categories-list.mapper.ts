@@ -2,20 +2,20 @@ import { MenuCategory, Product } from 'core/api';
 import { ListItem } from 'common/components/sortable-list/list-item.vm';
 import { createEmptyListItem } from 'common/components/sortable-list/list-item.vm';
 
-export const mapMenuCategoriesToListItems = (categories: Array<MenuCategory>): Array<ListItem> =>
-  !!categories ? categories.map((c) => mapMenuCategoryToListItem(c)) : [];
+export const mapMenuCategorieListFromApiModelToListItem = (categories: MenuCategory[]): ListItem[] =>
+  !!categories ? categories.map((c) => mapMenuCategoryApiModelToListItem(c)) : [];
 
-export const mapMenuCategoryToListItem = (menuCategory: MenuCategory): ListItem =>
+export const mapMenuCategoryApiModelToListItem = (menuCategory: MenuCategory): ListItem =>
   !!menuCategory ? { id: menuCategory.id, value: menuCategory.name } : createEmptyListItem();
 
-export const mapProductsToListItems = (products: Array<Product>): Array<ListItem> =>
-  !!products ? products.map((d) => mapProductToListItem(d)) : [];
+export const mapProductListFromApiModelToListItem = (products: Product[]): ListItem[] =>
+  !!products ? products?.map((d) => mapProductApiModelToListItem(d)) : [];
 
-export const mapProductToListItem = (product: Product): ListItem =>
+export const mapProductApiModelToListItem = (product: Product): ListItem =>
   !!product
     ? {
-        id: product.id,
-        value: product.name,
-        visible: product.visible,
-      }
+      id: product.id,
+      value: product.name,
+      visible: product.visible,
+    }
     : { ...createEmptyListItem(), visible: true };
