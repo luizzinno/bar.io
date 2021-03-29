@@ -1,13 +1,13 @@
 import React from 'react';
-import { AppLayout } from 'layouts';
+import { LoginLayout } from 'layouts';
 import { LoginContainer } from 'pods/login';
 
 export const LoginScene: React.FunctionComponent = () => {
   return (
     <>
-      <AppLayout>
+      <LoginLayout>
         <LoginContainer />
-      </AppLayout>
+      </LoginLayout>
     </>
   );
 };

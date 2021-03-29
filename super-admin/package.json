@@ -59,6 +59,7 @@
     "@lemoncode/fonk-formik": "^4.0.1",
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.57",
     "emotion": "^10.0.27",
     "formik": "^2.2.6",
     "http-server": "^0.12.3",

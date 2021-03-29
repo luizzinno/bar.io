@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: superAdmin
+        working-directory: super-admin
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
