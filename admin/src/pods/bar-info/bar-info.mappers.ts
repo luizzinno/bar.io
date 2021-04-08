@@ -6,6 +6,9 @@ export const mapBarInfoFromApiToVm = (barInfo: apiModel.BarInfo): viewModel.BarI
   ...barInfo,
 });
 
+export const mapBarInfoListFromApiToVm = (barInfoList: apiModel.BarInfo[]): viewModel.BarInfo[] =>
+  barInfoList.map((e) => mapBarInfoFromApiToVm(e));
+
 export const mapBarInfoFromVmToApi = (barInfo: viewModel.BarInfo): apiModel.BarInfo => ({
   ...barInfo,
 });

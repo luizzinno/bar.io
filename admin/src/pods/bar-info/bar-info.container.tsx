@@ -28,13 +28,19 @@ export const BarInfoContainer: React.FunctionComponent = () => {
   const [barInfo, setbarInfo] = React.useState<BarInfo>(createEmptyBarInfo());
 
   React.useEffect(() => {
-    onLoadInfoBar();
+    if (history.location.state !== undefined) {
+      const bar: BarInfo = history.location.state as BarInfo;
+      setbarInfo(bar);
+    } else {
+      onLoadBarInfo();
+    }
   }, []);
 
-  const onLoadInfoBar = async () => {
+  const onLoadBarInfo = async () => {
     api
       .getBarInfo()
       .then((result) => {
+        //Mock....
         setbarInfo(mapBarInfoFromApiToVm(result));
       })
       .catch((error) => {
