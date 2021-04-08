@@ -11,10 +11,6 @@ export const root = css`
     grid-gap: 1.5rem;
   }
 
-  ${theme.breakpoints.up('md')} {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
   ${theme.breakpoints.up('lg')} {
     width: 75%;
   }

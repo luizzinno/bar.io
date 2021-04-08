@@ -6,9 +6,7 @@ import { DashboardItemProps } from 'common/components';
 
 //Material UI
 import RestaurantIcon from '@material-ui/icons/Restaurant';
-import RestaurantMenuIcon from '@material-ui/icons/RestaurantMenu';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
-import SupervisorAccountOutlinedIcon from '@material-ui/icons/SupervisorAccountOutlined';
 import { linkRoutes } from 'core/router';
 
 interface Props {
@@ -20,24 +18,14 @@ export const SelectionModuleContainer: React.FunctionComponent<Props> = (props) 
   const items: DashboardItemProps[] = React.useMemo(
     (): DashboardItemProps[] => [
       {
-        title: 'Añadir restaurante',
-        linkTo: linkRoutes.createRestaurant,
+        title: 'Restaurantes',
+        linkTo: linkRoutes.restaurantList,
         icon: RestaurantIcon,
       },
       {
-        title: 'Editar restaurante',
-        linkTo: linkRoutes.editRestaurant('1'),
-        icon: RestaurantMenuIcon,
-      },
-      {
-        title: 'Añadir administrador',
-        linkTo: linkRoutes.createAdministrator,
+        title: 'Gestionar administradores',
+        linkTo: linkRoutes.administratorList,
         icon: SupervisorAccountIcon,
-      },
-      {
-        title: 'Editar administrador',
-        linkTo: linkRoutes.editAdministrator('1'),
-        icon: SupervisorAccountOutlinedIcon,
       },
     ],
     [],
