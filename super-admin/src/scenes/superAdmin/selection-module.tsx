@@ -1,13 +1,13 @@
 import React from 'react';
-import { AppLayout } from 'layouts';
-import { SelectionModule } from 'pods/selection-module';
+import { CenteredLayout } from 'layouts';
+import { SelectionModuleContainer } from 'pods/selection-module';
 
 export const SelectionModuleScene: React.FunctionComponent = () => {
   return (
     <>
-      <AppLayout>
-        <SelectionModule />
-      </AppLayout>
+      <CenteredLayout>
+        <SelectionModuleContainer />
+      </CenteredLayout>
     </>
   );
 };

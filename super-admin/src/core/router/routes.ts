@@ -15,7 +15,7 @@ interface BaseRoutes {
 export const baseRoutes: BaseRoutes = {
   root: '/',
   login: '/login',
-  selectionModule: '/selectionModul',
+  selectionModule: '/selectionModule',
   administratorList: '/administrator-list',
   restaurantList: '/restaurant-list',
   createAdministrator: '/create-administrator',
