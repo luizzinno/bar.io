@@ -23,7 +23,7 @@ export const AdministratorListComponent: React.FunctionComponent = () => {
     <Card className={container}>
       <CardHeader
         component='h1'
-        title='Restaurantes'
+        title='Administradores'
         action={
           <IconButton
           color='primary'
