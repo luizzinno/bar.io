@@ -3,10 +3,10 @@ import { theme } from 'core/theme';
 
 export const root = css`
   display: flex;
-  flex: row nowrap;
+  flex: column nowrap;
   justify-content: center;
   align-items: flex-start;
-  height: 100%;
+  min-height: calc(100vh - 13.5625rem);
   box-sizing: border-box;
   margin-top: 3.5rem;
   padding: 1rem;
@@ -19,5 +19,10 @@ export const root = css`
   }
 
   ${theme.breakpoints.up('md')} {
+  }
+
+  @media (max-width: 320px) {
+    min-height: calc(100vh - 14.0625rem);
+    margin-top: 4rem;
   }
 `;
