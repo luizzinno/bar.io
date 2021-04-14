@@ -19,8 +19,8 @@ const useStyles = makeStyles({
 
 interface Props {
   list: Object[];
-  onEdit: (event: any) => void;
-  onDelete: (event: any) => void;
+  onEdit: (row: object) => void;
+  onDelete: (row: object) => void;
 }
 
 export const TableBodyComponent: React.FC<Props> = (props) => {
@@ -34,15 +34,28 @@ export const TableBodyComponent: React.FC<Props> = (props) => {
     <TableBody>
       {list.map((row, index) => (
         <TableRow key={index}>
-          {Object.keys(row).map((cell, index2) => (
-            <TableCell align='center' className={classes.cell} key={index2}>
-              {cell}
-            </TableCell>
-          ))}
+          {Object.values(row).map((cell, index2) => {
+            console.log(row);
+            return (
+              index2 > 0 && (
+                <TableCell align='center' className={classes.cell} key={index2}>
+                  {cell}
+                </TableCell>
+              )
+            );
+          })}
           <TableCell align='center' className={classes.cell}>
-            <EditIcon onClick={onEdit} />
+            <EditIcon
+              onClick={() => {
+                onEdit(row);
+              }}
+            />
 
-            <DeleteIcon onClick={onDelete} />
+            <DeleteIcon
+              onClick={() => {
+                onDelete(row);
+              }}
+            />
           </TableCell>
         </TableRow>
       ))}

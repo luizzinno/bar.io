@@ -14,8 +14,7 @@ import { TableContainer } from 'common/components/table';
 import * as classes from 'common/styles/modules.styles';
 
 //Router
-import { Link } from 'react-router-dom';
-import { switchRoutes, linkRoutes } from 'core/router';
+import { switchRoutes } from 'core/router';
 import { useHistory } from 'react-router-dom';
 
 //Model
@@ -23,20 +22,26 @@ import { Restaurant } from './restaurant.vm';
 
 interface Props {
   headers: string[];
+  restaurants: Restaurant[];
+  onEdit: (event: any) => void;
+  onDelete: (event: any) => void;
 }
 
 export const RestaurantListComponent: React.FunctionComponent<Props> = (props) => {
-  const { headers } = props;
+  const { headers, restaurants, onEdit, onDelete } = props;
   const { container, icon } = classes;
   const history = useHistory();
   //Search
-  const [name, setName] = React.useState('');
-
-  //Table
-  const [restaurants, setRestaurants] = React.useState<Restaurant[]>([]);
+  const [filter, setFilter] = React.useState('');
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
+  React.useEffect(() => {
+    setList([...restaurants]);
+  }, [restaurants]);
+
+  const [list, setList] = React.useState([...restaurants]);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -47,25 +52,15 @@ export const RestaurantListComponent: React.FunctionComponent<Props> = (props) =
     setPage(0);
   };
 
-  //Controlar la lista de miembros devuelta de la busqueda
-  const handleSearch = (restaurantsFilter: Restaurant[], nameFilter: string) => {
-    setPage(0);
-    setRestaurants(restaurantsFilter);
-    console.log(restaurantsFilter);
-    console.log(restaurantsFilter.length);
-    if (restaurantsFilter.length > 0) {
-      setName(nameFilter);
+  const handleSearch = (searchValue: string) => {
+    if (searchValue !== '') {
+      const newList = restaurants.filter((restaurant) => {
+        return restaurant['name'] === searchValue;
+      });
+      setList([...newList]);
     } else {
-      alert('no hay restaurantes');
+      setList([...restaurants]);
     }
-  };
-
-  const handleEdit = () => {
-    alert('Editar');
-  };
-
-  const handleDelete = () => {
-    alert('Borrar');
   };
 
   return (
@@ -84,16 +79,16 @@ export const RestaurantListComponent: React.FunctionComponent<Props> = (props) =
         }
       />
       <CardContent>
-        <SearchContainer onSearch={handleSearch} name={name} />
+        <SearchContainer onSearch={handleSearch} filter={filter} />
         <TableContainer
           headers={headers}
-          list={restaurants}
+          list={list}
           rowsPerPage={rowsPerPage}
           page={page}
           onchangePage={handleChangePage}
           onchangeRowsPerPage={handleChangeRowsPerPage}
-          onEdit={handleEdit}
-          onDelete={handleDelete}
+          onEdit={onEdit}
+          onDelete={onDelete}
         />
       </CardContent>
     </Card>

@@ -12,7 +12,6 @@ import { TableFooterContainer } from './components/footer';
 
 //CSS
 import { makeStyles } from '@material-ui/core/styles';
-import { List } from '@material-ui/core';
 
 //Sobreescribir CSS de los componentes
 const useStyles = makeStyles({
@@ -28,8 +27,8 @@ interface Props {
   page: number;
   onchangePage: (event: any, page: number) => void;
   onchangeRowsPerPage: (event: any) => void;
-  onEdit: (event: any) => void;
-  onDelete: (event: any) => void;
+  onEdit: (row: object) => void;
+  onDelete: (row: object) => void;
 }
 
 export const TableComponent: React.FC<Props> = (props) => {

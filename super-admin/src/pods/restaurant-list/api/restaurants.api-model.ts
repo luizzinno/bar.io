@@ -5,10 +5,3 @@ export interface Restaurant {
   email: string;
   numberPhone: string;
 }
-
-export const createEmpyRestaurant = (): Restaurant[] => ([{
-  id: '',
-  name: '',
-  email: '',
-  numberPhone: '',
-}]);

@@ -3,7 +3,6 @@ import React from 'react';
 //Componentes material UI
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 
 //CSS
 import * as classesPropias from './search.styles';
@@ -26,33 +25,34 @@ const useStyles = makeStyles({
 });
 
 interface Props {
-  name: string;
-  onSearch: (nameFilter: string) => void;
+  filter: string;
+  onSearch: (filter: string) => void;
 }
 
 export const SearchComponent: React.FC<Props> = (props) => {
   //Props
-  const { name, onSearch } = props;
+  const { filter, onSearch } = props;
 
-  const [nameFilter, setNameFilter] = React.useState(name);
+  const [filterValue, setFilterValue] = React.useState(filter);
 
   //CSS para sobreescribir en los componentes
   const classes = useStyles();
+
   return (
     <>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          onSearch(nameFilter);
+          onSearch(filterValue);
         }}>
         <div className={classesPropias.container}>
           <TextField
             id='company'
             label='Buscar por nombre...'
             className={classes.input}
-            value={nameFilter}
+            value={filterValue}
             onChange={(e) => {
-              setNameFilter(e.target.value);
+              setFilterValue(e.target.value);
             }}
           />
           <Button type='submit' variant='contained' color='primary'>

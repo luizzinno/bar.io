@@ -7,8 +7,8 @@ interface Props {
   list: object[];
   rowsPerPage: number;
   page: number;
-  onEdit: (event: any) => void;
-  onDelete: (event: any) => void;
+  onEdit: (row: object) => void;
+  onDelete: (row: object) => void;
 }
 export const TableBodyContainer: React.FC<Props> = (props) => {
   //Props
