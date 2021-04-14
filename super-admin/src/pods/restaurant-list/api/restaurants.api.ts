@@ -9,7 +9,6 @@ export const getRestaurants = async (): Promise<Restaurant[]> =>
  return await new Promise((resolve) => {
      setTimeout(() => {
       // mock call
-      console.log(restaurantList)
        resolve(restaurantList);
     }, 500);
   });

@@ -35,7 +35,6 @@ export const TableBodyComponent: React.FC<Props> = (props) => {
       {list.map((row, index) => (
         <TableRow key={index}>
           {Object.values(row).map((cell, index2) => {
-            console.log(row);
             return (
               index2 > 0 && (
                 <TableCell align='center' className={classes.cell} key={index2}>

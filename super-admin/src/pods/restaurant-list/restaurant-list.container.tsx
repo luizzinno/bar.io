@@ -39,7 +39,6 @@ export const RestaurantListContainer: React.FunctionComponent = () => {
       .getRestaurants()
       .then((result) => {
         //Mock....
-        console.log(result);
         setRestaurants([...result]);
       })
       .catch((error) => {
