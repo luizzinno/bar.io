@@ -50,7 +50,7 @@ export const EditRestaurantComponent: React.FunctionComponent = () => {
               onCancel={() => {}}
               onSave={() => {}}
             />,
-            <ResetPassword />,
+            <ResetPassword onCancel={() => {}} onSave={() => {}} />,
           ]}
         />
       </CardContent>

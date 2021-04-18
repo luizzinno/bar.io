@@ -17,7 +17,7 @@ import Grid from '@material-ui/core/Grid';
 //CSS
 //import * as classes from './restaurant-info.styles';
 
-export interface Props {
+interface Props {
   info: RestaurantInfo;
   onSave: (restaurantInfo: RestaurantInfo) => void;
   onCancel: () => void;
