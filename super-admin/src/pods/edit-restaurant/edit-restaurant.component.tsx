@@ -14,6 +14,7 @@ import * as classes from 'common/styles/modules.styles';
 import { Link } from 'react-router-dom';
 import { switchRoutes, linkRoutes } from 'core/router';
 import { useHistory } from 'react-router-dom';
+import { RestaurantInfoComponent, ResetPassword } from './components';
 
 export const EditRestaurantComponent: React.FunctionComponent = () => {
   const { container, icon } = classes;
@@ -36,15 +37,8 @@ export const EditRestaurantComponent: React.FunctionComponent = () => {
       />
       <CardContent>
         <TabsPanel
-          namesTabs={['Juanito', 'Pepito']}
-          scenesTabs={[
-            <div>
-              <p>Hola</p>
-            </div>,
-            <div>
-              <span>adios</span>
-            </div>,
-          ]}
+          namesTabs={['Datos', 'Resetear Clave']}
+          scenesTabs={[<RestaurantInfoComponent />, <ResetPassword />]}
         />
       </CardContent>
     </Card>
