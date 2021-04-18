@@ -38,7 +38,20 @@ export const EditRestaurantComponent: React.FunctionComponent = () => {
       <CardContent>
         <TabsPanel
           namesTabs={['Datos', 'Resetear Clave']}
-          scenesTabs={[<RestaurantInfoComponent />, <ResetPassword />]}
+          scenesTabs={[
+            <RestaurantInfoComponent
+              info={{
+                cif: '123131',
+                name: 'My restaurant',
+                email: 'test@gmail.com',
+                numberPhone: '6271831947',
+                initialPassword: 'Kjdasa12',
+              }}
+              onCancel={() => {}}
+              onSave={() => {}}
+            />,
+            <ResetPassword />,
+          ]}
         />
       </CardContent>
     </Card>
