@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 //Api
 import * as api from './api';
 import { createEmptyRestaurantInfo, RestaurantInfo } from './restaurant-info.vm';
+import { Credential } from './components/reset-password/credential.vm';
 
 interface Params {
   id: string;
@@ -61,11 +62,25 @@ export const EditRestaurantContainer: React.FunctionComponent = () => {
       });
   };
 
+  const handleReset = (id: string, password: Credential) => {
+    api
+      .resetPasswordRestaurantInfo(id, password)
+      .then((result) => {
+        // Snackbar error
+        alert('Reset Password Restaurant info');
+      })
+      .catch((error) => {
+        // Snackbar error
+        alert('Error to reset password restaurant info');
+      });
+  };
+
   return (
     <EditRestaurantComponent
       restaurantsInfo={restaurantInfo}
       onEdit={handleEdit}
       onDelete={handleDelete}
+      onResetPassword={handleReset}
     />
   );
 };

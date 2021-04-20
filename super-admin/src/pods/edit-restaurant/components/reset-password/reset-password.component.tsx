@@ -17,16 +17,19 @@ import Grid from '@material-ui/core/Grid';
 //import * as classes from './restaurant-info.styles';
 
 interface Props {
-  onSave: (newPassword: Credential) => void;
+  id: string;
+  onResetPassword: (id: string, password: Credential) => void;
   onCancel: () => void;
 }
 
 export const ResetPassword: React.FC<Props> = (props) => {
-  const { onSave, onCancel } = props;
+  const { id, onResetPassword, onCancel } = props;
   return (
     <>
       <Formik
-        onSubmit={onSave}
+        onSubmit={(value) => {
+          onResetPassword(id, value);
+        }}
         initialValues={createEmptyCredential()}
         enableReinitialize={true}
         validate={formValidation.validateForm}>

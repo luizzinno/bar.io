@@ -15,14 +15,16 @@ import { switchRoutes } from 'core/router';
 import { useHistory } from 'react-router-dom';
 import { RestaurantInfoComponent, ResetPassword } from './components';
 import { RestaurantInfo } from './restaurant-info.vm';
+import { Credential } from './components/reset-password/credential.vm';
 
 interface Props {
   restaurantsInfo: RestaurantInfo;
   onEdit: (restaurantInfo: RestaurantInfo) => void;
   onDelete: (id: string) => void;
+  onResetPassword: (id: string, password: Credential) => void;
 }
 export const EditRestaurantComponent: React.FunctionComponent<Props> = (props) => {
-  const { restaurantsInfo, onEdit, onDelete } = props;
+  const { restaurantsInfo, onEdit, onDelete, onResetPassword } = props;
   const { container, icon } = classes;
   const history = useHistory();
 
@@ -46,7 +48,11 @@ export const EditRestaurantComponent: React.FunctionComponent<Props> = (props) =
           namesTabs={['Datos', 'Resetear Clave']}
           scenesTabs={[
             <RestaurantInfoComponent info={restaurantsInfo} onDelete={onDelete} onEdit={onEdit} />,
-            <ResetPassword onCancel={() => {}} onSave={() => {}} />,
+            <ResetPassword
+              onCancel={() => {}}
+              id={restaurantsInfo.id}
+              onResetPassword={onResetPassword}
+            />,
           ]}
         />
       </CardContent>

@@ -4,7 +4,7 @@ import { createFormikValidation } from '@lemoncode/fonk-formik';
 const validationSchema: ValidationSchema = {
   field: {
     newPassword: [Validators.required],
-    reseatPassword: [Validators.required],
+    repeatPassword: [Validators.required],
   },
 };
 

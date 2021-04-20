@@ -1,5 +1,6 @@
 //VM Api
 import { RestaurantInfo } from './restaurant.api-model';
+import { Credential } from './credential.api-model';
 
 //Mock
 import { mockRestaurantInfo } from './restaurant.mock.data';
@@ -19,7 +20,19 @@ export const updateRestaurantInfo = async (restaurantInfo: RestaurantInfo): Prom
       resolve(true);
     }, 500);
   });
+
 export const deleteRestaurantInfo = async (id: string): Promise<boolean> =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      // mock call
+      resolve(true);
+    }, 500);
+  });
+
+export const resetPasswordRestaurantInfo = async (
+  id: string,
+  newPassword: Credential,
+): Promise<boolean> =>
   new Promise((resolve) => {
     setTimeout(() => {
       // mock call
