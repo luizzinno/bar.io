@@ -11,12 +11,18 @@ import { TabsPanel } from 'common/components';
 import * as classes from 'common/styles/modules.styles';
 
 //Router
-import { Link } from 'react-router-dom';
-import { switchRoutes, linkRoutes } from 'core/router';
+import { switchRoutes } from 'core/router';
 import { useHistory } from 'react-router-dom';
 import { RestaurantInfoComponent, ResetPassword } from './components';
+import { RestaurantInfo } from './restaurant-info.vm';
 
-export const EditRestaurantComponent: React.FunctionComponent = () => {
+interface Props {
+  restaurantsInfo: RestaurantInfo;
+  onEdit: (restaurantInfo: RestaurantInfo) => void;
+  onDelete: (id: string) => void;
+}
+export const EditRestaurantComponent: React.FunctionComponent<Props> = (props) => {
+  const { restaurantsInfo, onEdit, onDelete } = props;
   const { container, icon } = classes;
   const history = useHistory();
 
@@ -39,17 +45,7 @@ export const EditRestaurantComponent: React.FunctionComponent = () => {
         <TabsPanel
           namesTabs={['Datos', 'Resetear Clave']}
           scenesTabs={[
-            <RestaurantInfoComponent
-              info={{
-                cif: '123131',
-                name: 'My restaurant',
-                email: 'test@gmail.com',
-                numberPhone: '6271831947',
-                initialPassword: 'Kjdasa12',
-              }}
-              onCancel={() => {}}
-              onSave={() => {}}
-            />,
+            <RestaurantInfoComponent info={restaurantsInfo} onDelete={onDelete} onEdit={onEdit} />,
             <ResetPassword onCancel={() => {}} onSave={() => {}} />,
           ]}
         />
