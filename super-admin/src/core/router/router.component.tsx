@@ -7,7 +7,8 @@ import {
   AdministratorListScene,
   AdministratorScene,
   RestaurantListScene,
-  RestaurantScene
+  RestaurantScene,
+  EditRestaurantScene,
 } from 'scenes/superAdmin';
 
 export const RouterComponent: React.FunctionComponent = () => {
@@ -16,12 +17,20 @@ export const RouterComponent: React.FunctionComponent = () => {
       <Switch>
         <Route exact={true} path={[switchRoutes.root, switchRoutes.login]} component={LoginScene} />
         <Route exact={true} path={switchRoutes.selectionModule} component={SelectionModuleScene} />
-        <Route exact={true} path={switchRoutes.administratorList} component={AdministratorListScene} />
-        <Route exact={true} path={switchRoutes.createAdministrator} component={AdministratorScene} />
+        <Route
+          exact={true}
+          path={switchRoutes.administratorList}
+          component={AdministratorListScene}
+        />
+        <Route
+          exact={true}
+          path={switchRoutes.createAdministrator}
+          component={AdministratorScene}
+        />
         <Route exact={true} path={switchRoutes.editAdministrator} component={AdministratorScene} />
         <Route exact={true} path={switchRoutes.restaurantList} component={RestaurantListScene} />
         <Route exact={true} path={switchRoutes.createRestaurant} component={RestaurantScene} />
-        <Route exact={true} path={switchRoutes.editRestaurant} component={RestaurantScene} />
+        <Route exact={true} path={switchRoutes.editRestaurant} component={EditRestaurantScene} />
       </Switch>
     </Router>
   );
