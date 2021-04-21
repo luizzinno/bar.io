@@ -1,8 +1,7 @@
 import { css } from 'emotion';
 
 export const container = css`
-  width: 100%;
-  max-width: 48rem;
+  width: 85%;
   box-sizing: border-box;
 `;
 
