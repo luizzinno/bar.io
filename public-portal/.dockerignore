@@ -1,0 +1,16 @@
+.github
+.next
+public/robots.txt
+public/sitemap.xml
+.vscode
+node_modules
+dist
+.editorconfig
+.env
+.env.example
+.env.local
+.gitignore
+.prettierrc
+create-dev-env.sh
+LICENSE
+README.md
