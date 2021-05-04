@@ -1,7 +1,8 @@
 import React from 'react';
+import { BarListContainer } from 'pods/bar-list';
 
-const HomePage: React.FunctionComponent = (props) => {
-  return <h1>Hello from nextjs</h1>;
+const BarListPage: React.FunctionComponent = (props) => {
+  return <BarListContainer />;
 };
 
-export default HomePage;
+export default BarListPage;
