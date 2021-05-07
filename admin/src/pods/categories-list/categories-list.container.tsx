@@ -54,6 +54,7 @@ export const CategoriesListContainer: React.FunctionComponent = () => {
     setEditCategoryId(id);
     setIsAdding(false);
   };
+
   const onDelete = async (id: string) => {
     await deleteMenuCategory(id);
     await getCategories();

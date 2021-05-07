@@ -3,10 +3,10 @@ import { produce } from 'immer';
 export interface Entity {
   _id: any;
 }
-
 export interface MockRepository<Entity> {
   getCollection: () => Entity[];
   saveItem: (item: Entity) => void;
+  getFirstItem: () => Entity;
   getItemById: (id: any) => Entity;
   getItemByPropValue: (propName: string, value: any) => Entity;
   setItems: (items: Entity[]) => void;
@@ -22,7 +22,7 @@ export function createMockRepository<T extends Entity>(
   const getCollection = (): T[] => [...collection];
 
   const getItemById = (id: any): T => {
-    if (!id) throw 'id cannot be empty';    
+    if (!id) throw 'id cannot be empty';
     const item = collection.find((i) => i._id == id);
     return !!item ? { ...item } : null;
   };
@@ -60,6 +60,8 @@ export function createMockRepository<T extends Entity>(
     });
   };
 
+  const getFirstItem = (): T => collection[0] ?? null;
+
   return {
     getCollection,
     getItemById,
@@ -67,5 +69,6 @@ export function createMockRepository<T extends Entity>(
     saveItem,
     setItems,
     deleteItem,
+    getFirstItem,
   };
 }

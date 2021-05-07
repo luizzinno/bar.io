@@ -25,12 +25,12 @@ import {
 export const BarInfoContainer: React.FunctionComponent = () => {
   const history = useHistory();
   const [error, setError] = React.useState<string>(null);
-  const [barInfo, setbarInfo] = React.useState<BarInfo>(createEmptyBarInfo());
+  const [barInfo, setBarInfo] = React.useState<BarInfo>(createEmptyBarInfo());
 
   React.useEffect(() => {
     if (history.location.state !== undefined) {
       const bar: BarInfo = history.location.state as BarInfo;
-      setbarInfo(bar);
+      setBarInfo(bar);
     } else {
       onLoadBarInfo();
     }
@@ -40,12 +40,9 @@ export const BarInfoContainer: React.FunctionComponent = () => {
     api
       .getBarInfo()
       .then((result) => {
-        //Mock....
-        setbarInfo(mapBarInfoFromApiToVm(result));
+        setBarInfo(mapBarInfoFromApiToVm(result));
       })
       .catch((error) => {
-        // Snackbar error
-        // alert('Error to load bar info');
         setError('Error to load bar info');
       });
   };
@@ -54,13 +51,9 @@ export const BarInfoContainer: React.FunctionComponent = () => {
     api
       .saveBarInfo(barInfo)
       .then((result) => {
-        // Snackbar error
-        // alert('Updated Bar info');
         setError('Updated Bar info');
       })
       .catch((error) => {
-        // Snackbar error
-        // alert('Error to update bar info');
         setError('Error to update bar info');
       });
   };

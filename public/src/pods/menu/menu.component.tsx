@@ -28,7 +28,11 @@ export const MenuComponent: React.FunctionComponent<MenuComponentProps> = (props
           </MenuItem>
         ))}
       </TextField>
-      <HeaderComponent {...restaurantInfo} />
+      <HeaderComponent
+        line1={restaurantInfo.infoA}
+        line2={restaurantInfo.infoB}
+        line3={restaurantInfo.infoC}
+      />
       <MenuListComponent categories={categories} />
     </>
   );

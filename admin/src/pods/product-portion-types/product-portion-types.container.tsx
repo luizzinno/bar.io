@@ -3,7 +3,12 @@ import { mapProductPortionTypeListFromApiModelToListItem } from './product-porti
 import { reorder } from 'common/utils/array';
 import { useHistory } from 'react-router-dom';
 import { routes } from 'core/router';
-import { deleteProductPortionType, getProductPortionTypes, saveProductPortionType } from 'core/api';
+import {
+  deleteProductPortionType,
+  getProductPortionTypes,
+  saveProductPortionType,
+  saveProductPortionTypes,
+} from 'core/api';
 import { ListItem } from 'common/components';
 import { ProductPortionTypesComponent } from './product-portion-types.component';
 
@@ -24,22 +29,24 @@ export const ProductPortionTypesContainer: React.FunctionComponent = () => {
     setItems(mapProductPortionTypeListFromApiModelToListItem(productPortionTypes));
   };
 
-  const handleReorder = (startIndex: number, endIndex: number) =>
-    setItems(reorder(items, startIndex, endIndex));
+  const handleReorder = async (startIndex: number, endIndex: number) => {
+    const types = await getProductPortionTypes();
+    const reorderedTypes = reorder(types, startIndex, endIndex);
+    await saveProductPortionTypes(reorderedTypes);
+    await reloadTypes();
+  };
 
   const handleSave = async (name: string, id?: string) => {
     await saveProductPortionType({ id: id, name: name });
-    const types = await getProductPortionTypes();
     setAdding(false);
     setSelectedProductPortionTypeId('');
-    setItems(mapProductPortionTypeListFromApiModelToListItem(types));
+    await reloadTypes();
   };
 
   const handleDelete = async (id: string) => {
     await deleteProductPortionType(id);
-    const types = await getProductPortionTypes();
     setSelectedProductPortionTypeId('');
-    setItems(mapProductPortionTypeListFromApiModelToListItem(types));
+    await reloadTypes();
   };
 
   const handleEdit = (id: string) => {
@@ -50,6 +57,11 @@ export const ProductPortionTypesContainer: React.FunctionComponent = () => {
   const handleAdd = () => {
     setSelectedProductPortionTypeId('');
     setAdding(true);
+  };
+
+  const reloadTypes = async () => {
+    const types = await getProductPortionTypes();
+    setItems(mapProductPortionTypeListFromApiModelToListItem(types));
   };
 
   return (

@@ -45,7 +45,6 @@ export const saveProductPortion = async (
   productPortionTypeId?: string
 ): Promise<void> => {
   if (!productPortion) throw 'productPortion cannot be null or undefined';
-  let result: ProductPortionType;
   if (!!productPortionTypeId) {
     if (!!productPortion._id) {
       await ProductPortionTypeContext.findOneAndUpdate(

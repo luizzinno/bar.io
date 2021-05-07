@@ -1,5 +1,5 @@
 import { createEmptyListItem, ListItem } from 'common/components';
-import { ProductPortionType, } from 'core/api/product-portions/product-portions.model';
+import { createEmptyProductPortionType, ProductPortion, ProductPortionType, } from 'core/api/product-portions/product-portions.model';
 
 export const mapProductPortionTypeListFromApiModelToListItem = (
   productPortionTypes: ProductPortionType[],

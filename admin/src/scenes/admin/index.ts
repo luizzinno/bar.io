@@ -1,7 +1,6 @@
 export * from './login.scene';
 export * from './login.scene';
 export * from './bar-info.scene';
-export * from './bar-info-list.scene';
 export * from './categories-list.scene';
 export * from './dashboard.scene';
 export * from './edit-product.scene';

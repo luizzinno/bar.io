@@ -44,12 +44,7 @@ export const SortableListComponent: React.FunctionComponent<SortableListComponen
     <>
       <Grid container spacing={3}>
         <Grid item xs={12} className={classes.column}>
-          <AddItemComponent
-            isAdding={isAdding}
-            onAdd={onAdd}
-            onSave={onSave}
-            onCancel={onCancel}
-          />
+          <AddItemComponent isAdding={isAdding} onAdd={onAdd} onSave={onSave} onCancel={onCancel} />
           {(!items || items.length === 0) && !isAdding && !editItemId && (
             <Typography align='center' component='p' className={classes.message}>{`No existen ${
               itemTypeName ?? 'elementos'

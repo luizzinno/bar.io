@@ -4,9 +4,9 @@ export interface Menu {
 }
 
 export interface RestaurantInfo {
-  name: string;
-  description?: string;
-  telephone?: string;
+  infoA: string;
+  infoB?: string;
+  infoC?: string;
 }
 
 export interface MenuCategory {
@@ -31,6 +31,6 @@ export const createEmptyMenu = (): Menu => ({
 });
 
 export const createEmptyRestaurantInfo = (): RestaurantInfo => ({
-  name: '',
-  description: '',
+  infoA: '',
+  infoB: '',
 });

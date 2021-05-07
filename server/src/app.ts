@@ -6,12 +6,13 @@ import lodashMerge from 'lodash.merge';
 import { barInfoTypeDefs, barInfoResolver } from 'pods/bar-info';
 import { menuCategoryResolver, menuCategoryTypeDefs } from 'pods/menu-categories';
 import { productPortionTypeResolver, productPortionTypeTypeDefs } from 'pods/product-portion';
+import { menuResolver, menuTypeDefs } from 'pods/menu';
 
 const app = createApp();
 
 const graphQlServer = createGraphQlServer(app, {
-  typeDefs : [typeDefs, barInfoTypeDefs, menuCategoryTypeDefs, productPortionTypeTypeDefs ],
-  resolvers: lodashMerge(coreResolvers, barInfoResolver, menuCategoryResolver, productPortionTypeResolver),
+  typeDefs: [typeDefs, barInfoTypeDefs, menuCategoryTypeDefs, productPortionTypeTypeDefs, menuTypeDefs],
+  resolvers: lodashMerge(coreResolvers, barInfoResolver, menuCategoryResolver, productPortionTypeResolver, menuResolver),
 });
 
 app.listen(envConstants.PORT, async () => {
@@ -19,8 +20,7 @@ app.listen(envConstants.PORT, async () => {
     await connectToDB(envConstants.MONGODB_URI);
   }
   console.log(
-    `Using ${
-      envConstants.isMockRepository ? 'Mock' : 'DataBase'
+    `Using ${envConstants.isMockRepository ? 'Mock' : 'DataBase'
     } for session storage`
   );
   console.log(

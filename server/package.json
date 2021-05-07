@@ -58,7 +58,7 @@
     "graphql": "^15.4.0",
     "immer": "^8.0.1",
     "lodash.merge": "^4.6.2",
-    "mongoose": "^5.10.11",
+    "mongoose": "^5.11.15",
     "regenerator-runtime": "^0.13.7"
   }
 }

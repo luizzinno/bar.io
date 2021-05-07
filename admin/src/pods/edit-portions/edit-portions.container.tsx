@@ -17,7 +17,6 @@ import {
   saveProductPortionType,
 } from 'core/api';
 import { useHistory, useParams } from 'react-router-dom';
-import { switchRoutes } from 'core/router';
 
 interface Params {
   typeId: string;

@@ -9,7 +9,7 @@ export const barInfoTypeDefs = gql`
   }
 
   extend type Query {
-    getBarInfoById(id: ID!): BarInfo
+    getBarInfo: BarInfo
   }
 
   input BarInfoInput {
@@ -20,6 +20,6 @@ export const barInfoTypeDefs = gql`
   }
 
   extend type Mutation {
-    saveBarInfo(barInfo: BarInfoInput!): BarInfo
+    saveBarInfo(barInfo: BarInfoInput!): Boolean
   }
 `;

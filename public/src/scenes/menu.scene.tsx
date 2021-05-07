@@ -7,7 +7,7 @@ export const MenuScene: FC = () => {
   return (
     <>
       <CenteredLayout>
-        <MenuContainer menuId={process.env.MENU_ID} />
+        <MenuContainer />
       </CenteredLayout>
     </>
   );

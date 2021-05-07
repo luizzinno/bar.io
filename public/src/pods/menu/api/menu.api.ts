@@ -1,10 +1,28 @@
 import { Menu } from './menu.api.model';
-import { mockedMenus } from './menu.mock-data';
+import { gql } from 'graphql-request';
+import * as apiClient from 'core/api';
 
-export const loadMenu = async (menuId: string): Promise<Menu> => {
-  if (!!menuId && mockedMenus.has(menuId)) {
-    return await mockedMenus.get(menuId);
-  } else {
-    throw new Error('Menu not found');
-  }
-};
+export const getMenu = async (): Promise<Menu> =>
+  await apiClient.request<Menu>(
+    gql`
+      query { 
+        getMenu {
+          restaurantInfo {
+            infoA
+            infoB
+            infoC
+          }
+          categories {
+            name
+            products {
+              name
+              description
+              portions {
+                name
+                price
+              }
+            }
+          }
+        }
+      }`
+  );
