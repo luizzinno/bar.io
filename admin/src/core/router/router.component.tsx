@@ -13,25 +13,27 @@ import {
   EditPortionsScene,
   QrCodeScene,
 } from 'scenes/admin';
+import { AuthRoute } from './authroute';
+import { SuperAdminRoute } from './superadminroute';
 
 export const RouterComponent: React.FunctionComponent = () => {
   return (
     <Router>
       <Switch>
         <Route exact={true} path={[switchRoutes.root, switchRoutes.login]} component={LoginScene} />
-        <Route exact={true} path={switchRoutes.dashboard} component={DashboardScene} />
-        <Route exact={true} path={switchRoutes.barInfo} component={BarInfoScene} />
-        <Route exact={true} path={switchRoutes.barInfoList} component={BarInfoListScene} />
-        <Route exact={true} path={switchRoutes.categoriesList} component={CategoriesListScene} />
-        <Route exact={true} path={switchRoutes.productList} component={ProductListScene} />
-        <Route exact={true} path={switchRoutes.editProduct} component={EditProductScene} />
-        <Route exact={true} path={switchRoutes.qrCode} component={QrCodeScene} />
-        <Route
+        <AuthRoute exact={true} path={switchRoutes.dashboard} component={DashboardScene} />
+        <AuthRoute exact={true} path={switchRoutes.barInfo} component={BarInfoScene} />
+        <SuperAdminRoute exact={true} path={switchRoutes.barInfoList} component={BarInfoListScene} />
+        <AuthRoute exact={true} path={switchRoutes.categoriesList} component={CategoriesListScene} />
+        <AuthRoute exact={true} path={switchRoutes.productList} component={ProductListScene} />
+        <AuthRoute exact={true} path={switchRoutes.editProduct} component={EditProductScene} />
+        <AuthRoute exact={true} path={switchRoutes.qrCode} component={QrCodeScene} />
+        <AuthRoute
           exact={true}
           path={switchRoutes.productPortionTypes}
           component={ProductPortionTypesScene}
         />
-        <Route exact={true} path={switchRoutes.editPortions} component={EditPortionsScene} />
+        <AuthRoute exact={true} path={switchRoutes.editPortions} component={EditPortionsScene} />
       </Switch>
     </Router>
   );

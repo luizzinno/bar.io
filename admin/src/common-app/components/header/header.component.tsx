@@ -13,6 +13,7 @@ import * as classes from './header.styles';
 import { switchRoutes } from 'core/router';
 import { useHistory } from 'react-router-dom';
 import { cx } from 'emotion';
+import { userContext, createDefaultUser } from 'core/user';
 
 interface Props {
   name: string;
@@ -25,6 +26,7 @@ export const HeaderComponent: React.FunctionComponent<Props> = (props) => {
   const [openDrawer, setOpenDrawer] = React.useState(false);
   const open = Boolean(anchorEl);
   const history = useHistory();
+  const { setUser } = React.useContext(userContext);
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -36,6 +38,7 @@ export const HeaderComponent: React.FunctionComponent<Props> = (props) => {
 
   const handleLogOut = () => {
     localStorage.clear();
+    setUser(createDefaultUser());
     history.push(switchRoutes.login);
   };
 
