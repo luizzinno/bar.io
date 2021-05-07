@@ -1,0 +1,15 @@
+node_modules
+dist
+coverage
+.awcache
+test-report.*
+junit.xml
+*.log
+*.orig
+yarn.lock
+.cache
+.env
+.env.local
+.next
+public/robots.txt
+public/sitemap.xml
