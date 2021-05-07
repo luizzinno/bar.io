@@ -8,14 +8,23 @@ export const administratorList = () => {
     AdministratorEntityVm[]
   >([]);
 
-  const handleloadAdministratorList = async () => {
-    try {
-      const administratorListModel = await getAdministratorList();
-      const administrationListVm = mapAdministratorListFromApiToVm(administratorListModel);
-      setAdministratorListCollection(administrationListVm);
-    } catch (error) {
-      console.log(error);
-    }
+  const handleloadAdministratorList = () => {
+    // try {
+    //   const administratorListModel = await getAdministratorList();
+    //   const administrationListVm = mapAdministratorListFromApiToVm(administratorListModel);
+    //   setAdministratorListCollection(administrationListVm);
+    // } catch (error) {
+    //   console.log(error);
+    // }
+
+    getAdministratorList()
+      .then((administratorList) => {
+        const administrationListVm = mapAdministratorListFromApiToVm(administratorList);
+        setAdministratorListCollection(administrationListVm);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return {
