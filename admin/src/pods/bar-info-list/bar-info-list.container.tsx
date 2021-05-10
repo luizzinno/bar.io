@@ -8,10 +8,10 @@ import { useHistory } from 'react-router-dom';
 
 import { routes } from 'core/router';
 //VM
-import { BarInfo } from './bar-info.vm';
+import { BarInfo } from '../bar-info/bar-info.vm';
 
 //Mapper
-import { mapBarInfoListFromApiToVm } from './bar-info.mappers';
+import { mapBarInfoListFromApiToVm } from '../bar-info/bar-info.mappers';
 
 //Components
 import { BarInfoListComponent } from './bar-info-list.component';

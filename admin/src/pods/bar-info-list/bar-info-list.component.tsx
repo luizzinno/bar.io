@@ -6,7 +6,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 
 //VM
-import { BarInfo } from './bar-info.vm';
+import { BarInfo } from '../bar-info/bar-info.vm';
 
 //CSS
 import * as classes from './bar-info-list.styles';
