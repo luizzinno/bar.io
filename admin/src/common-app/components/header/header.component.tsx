@@ -7,6 +7,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuIcon from '@material-ui/icons/Menu';
+import HomeIcon from '@material-ui/icons/Home';
 import { DrawerComponent } from 'common-app/components';
 import { MenuContainer } from 'pods/menu';
 import * as classes from './header.styles';
@@ -18,10 +19,11 @@ import { userContext, createDefaultUser } from 'core/user';
 interface Props {
   name: string;
   hasDrawer: boolean;
+  hasReturnToList: boolean;
 }
 
 export const HeaderComponent: React.FunctionComponent<Props> = (props) => {
-  const { name, hasDrawer } = props;
+  const { name, hasDrawer, hasReturnToList } = props;
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [openDrawer, setOpenDrawer] = React.useState(false);
   const open = Boolean(anchorEl);
@@ -46,6 +48,10 @@ export const HeaderComponent: React.FunctionComponent<Props> = (props) => {
     setOpenDrawer(!openDrawer);
   };
 
+  const handleNavigateToBarList = () => {
+    history.push(switchRoutes.barInfoList);
+  };
+
   return (
     <>
       <AppBar position='fixed' className={cx(classes.appBar)}>
@@ -64,6 +70,15 @@ export const HeaderComponent: React.FunctionComponent<Props> = (props) => {
             {name}
           </Typography>
           <div className={classes.user}>
+            {hasReturnToList && (
+              <IconButton
+                aria-label="return to bar list"
+                color='inherit'  
+                onClick={handleNavigateToBarList}
+              >
+                <HomeIcon />
+              </IconButton>
+            )}
             <IconButton
               aria-label='account of current user'
               aria-controls='menu-appbar'

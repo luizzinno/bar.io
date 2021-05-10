@@ -33,6 +33,7 @@ export const LoginContainer: React.FunctionComponent = () => {
       setUser({
         email,
         role,
+        barId: 0, //mocked bar id
       });
 
       //User is superadmin
