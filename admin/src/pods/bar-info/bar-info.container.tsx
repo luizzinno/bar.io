@@ -1,7 +1,7 @@
 import React from 'react';
 
 //Api
-import * as api from './api';
+import { getBarInfo, saveBarInfo } from 'core/api';
 
 //Router
 import { useHistory } from 'react-router-dom';
@@ -37,32 +37,30 @@ export const BarInfoContainer: React.FunctionComponent = () => {
   }, []);
 
   const onLoadBarInfo = async () => {
-    api
-      .getBarInfo()
-      .then((result) => {
-        //Mock....
-        setbarInfo(mapBarInfoFromApiToVm(result));
-      })
-      .catch((error) => {
-        // Snackbar error
-        // alert('Error to load bar info');
-        setError('Error to load bar info');
-      });
+    getBarInfo()
+    .then((result) => {
+      //Mock....
+      setbarInfo(mapBarInfoFromApiToVm(result));
+    })
+    .catch((error) => {
+      // Snackbar error
+      // alert('Error to load bar info');
+      setError('Error to load bar info');
+    });
   };
 
   const handleSave = (barInfo: BarInfo) => {
-    api
-      .saveBarInfo(barInfo)
-      .then((result) => {
-        // Snackbar error
-        // alert('Updated Bar info');
-        setError('Updated Bar info');
-      })
-      .catch((error) => {
-        // Snackbar error
-        // alert('Error to update bar info');
-        setError('Error to update bar info');
-      });
+    saveBarInfo(barInfo)
+    .then((result) => {
+      // Snackbar error
+      // alert('Updated Bar info');
+      setError('Updated Bar info');
+    })
+    .catch((error) => {
+      // Snackbar error
+      // alert('Error to update bar info');
+      setError('Error to update bar info');
+    });
   };
 
   const handleCancel = () => {

@@ -1,5 +1,5 @@
 //VM
-import * as apiModel from './api/bar-info.api-model';
+import * as apiModel from 'core/api/bar-info/bar-info.model';
 import * as viewModel from './bar-info.vm';
 
 export const mapBarInfoFromApiToVm = (barInfo: apiModel.BarInfo): viewModel.BarInfo => ({

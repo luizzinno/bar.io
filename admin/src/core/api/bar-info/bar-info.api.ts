@@ -1,14 +1,14 @@
 //VM Api
-import { BarInfo } from './bar-info.api-model';
+import { BarInfo } from './bar-info.model';
 
 //Mock
-import { mockBarInfo, mockBarInfoList } from './bar-info.mock.data';
+import { mockBarInfoList } from './bar-info.mock.data';
 
 export const getBarInfo = async (): Promise<BarInfo> =>
   new Promise((resolve) => {
     setTimeout(() => {
       // mock call
-      resolve(mockBarInfo);
+      resolve(mockBarInfoList[0]);
     }, 500);
   });
 

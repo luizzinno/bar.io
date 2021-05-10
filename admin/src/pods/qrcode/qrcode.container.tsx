@@ -2,7 +2,7 @@ import jsPDF from 'jspdf';
 import QRCode from 'qrcode';
 import React from 'react';
 import { QrCodeComponent } from './qrcode.component';
-import * as api from 'pods/bar-info/api/bar-info.api';
+import { getBarInfo } from 'core/api';
 
 interface QrCodeContainerProps {
   url: string;
@@ -45,7 +45,7 @@ export const QrCodeContainer: React.FunctionComponent<QrCodeContainerProps> = (p
     (async () => {
       const canvas = await QRCode.toCanvas(url);
       const qrCodeUrl = canvas.toDataURL();
-      const barInfo = await api.getBarInfo();
+      const barInfo = await getBarInfo();
       const qrText = [barInfo.infoA, barInfo.infoB, barInfo.infoC];
       setQrCodeInfo({
         url: qrCodeUrl,
