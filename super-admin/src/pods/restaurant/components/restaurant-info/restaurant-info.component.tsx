@@ -53,19 +53,23 @@ export const RestaurantInfoComponent: React.FC<Props> = (props) => {
             </Grid>
 
             <Grid container spacing={3}>
-              <Grid item xs={12} sm={6}>
-                <Button
-                  type='button'
-                  variant='contained'
-                  color='secondary'
-                  size='large'
-                  fullWidth={true}
-                  onClick={() => {
-                    onDelete(info.id);
-                  }}>
-                  Cancel
-                </Button>
-              </Grid>
+              {info.id ? (
+                <Grid item xs={12} sm={6}>
+                  <Button
+                    type='button'
+                    variant='contained'
+                    color='secondary'
+                    size='large'
+                    fullWidth={true}
+                    onClick={() => {
+                      onDelete(info.id);
+                    }}>
+                    Delete
+                  </Button>
+                </Grid>
+              ) : (
+                <></>
+              )}
               <Grid item xs={12} sm={6}>
                 <Button
                   type='submit'

@@ -8,12 +8,23 @@ import * as api from './api';
 import { createEmptyRestaurantInfo, RestaurantInfo } from './restaurant-info.vm';
 import { Credential } from './components/reset-password/credential.vm';
 
+//Mapping
+import {
+  mapRestaurantInfoFromApiToViewModel,
+  mapRestaurantInfoFromViewModelToApi,
+} from './restaurant.mapper';
+
+//Router
+import { switchRoutes } from 'core/router';
+import { useHistory } from 'react-router-dom';
+
 interface Params {
   id: string;
 }
 
 export const RestaurantContainer: React.FunctionComponent = () => {
   const { id } = useParams<Params>();
+  const history = useHistory();
 
   const [restaurantInfo, setRestaurantInfo] = React.useState<RestaurantInfo>(
     createEmptyRestaurantInfo(),
@@ -29,8 +40,7 @@ export const RestaurantContainer: React.FunctionComponent = () => {
     api
       .getRestaurantInfo(id)
       .then((result) => {
-        //Mock....
-        setRestaurantInfo(result);
+        setRestaurantInfo(mapRestaurantInfoFromApiToViewModel(result));
       })
       .catch((error) => {
         // Snackbar error
@@ -41,18 +51,16 @@ export const RestaurantContainer: React.FunctionComponent = () => {
   const handleSave = (restaurantInfo: RestaurantInfo) => {
     if (id) {
       handleEdit(restaurantInfo);
-    }
-    else {
+    } else {
       handleCreate(restaurantInfo);
     }
   };
 
   const handleCreate = (restaurantInfo: RestaurantInfo) => {
     api
-      .createRestaurantInfo(restaurantInfo)
-      .then((result) => {
-        // Snackbar error
-        alert('Added Restaurant info');
+      .createRestaurantInfo(mapRestaurantInfoFromViewModelToApi(restaurantInfo))
+      .then(() => {
+        history.push(switchRoutes.restaurantList);
       })
       .catch((error) => {
         // Snackbar error
@@ -62,10 +70,9 @@ export const RestaurantContainer: React.FunctionComponent = () => {
 
   const handleEdit = (restaurantInfo: RestaurantInfo) => {
     api
-      .updateRestaurantInfo(restaurantInfo)
-      .then((result) => {
-        // Snackbar error
-        alert('Updated Restaurant info');
+      .updateRestaurantInfo(mapRestaurantInfoFromViewModelToApi(restaurantInfo))
+      .then(() => {
+        history.push(switchRoutes.restaurantList);
       })
       .catch((error) => {
         // Snackbar error
@@ -76,9 +83,8 @@ export const RestaurantContainer: React.FunctionComponent = () => {
   const handleDelete = (id: string) => {
     api
       .deleteRestaurantInfo(id)
-      .then((result) => {
-        // Snackbar error
-        alert('Delete Restaurant info');
+      .then(() => {
+        history.push(switchRoutes.restaurantList);
       })
       .catch((error) => {
         // Snackbar error

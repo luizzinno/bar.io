@@ -38,7 +38,7 @@ export const RestaurantComponent: React.FunctionComponent<Props> = (props) => {
             color='primary'
             aria-label='back home'
             className={icon}
-            onClick={() => history.push(switchRoutes.selectionModule)}>
+            onClick={() => history.push(switchRoutes.restaurantList)}>
             <CloseIcon fontSize='large' />
           </IconButton>
         }
