@@ -1,7 +1,7 @@
 import { GraphQLResolver } from "common/models";
-import { menuRepository } from "dals";
+import { barInfoRepository, menuCategoryRepository, productPortionTypeRepository } from "dals";
+import { mapMenuFromModelToApi } from "./menu.mapper";
 import { Menu } from "./menu.model";
-
 
 interface MenuResolver {
     Query: {
@@ -11,6 +11,11 @@ interface MenuResolver {
 
 export const menuResolver: MenuResolver = {
     Query: {
-        getMenu: async (parent, { }, context): Promise<Menu> => await menuRepository.getMenu()
+        getMenu: async (parent, { }, context): Promise<Menu> => {
+            const portionTypes = await productPortionTypeRepository.getProductPortionTypes();
+            const menuCategories = await menuCategoryRepository.getMenuCategories();
+            const restaurantInfo = await barInfoRepository.getBarInfo();
+            return mapMenuFromModelToApi(restaurantInfo, menuCategories, portionTypes);
+        }
     }
 }

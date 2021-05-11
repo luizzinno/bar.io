@@ -7,7 +7,7 @@ export const menuTypeDefs = gql`
     }  
 
     type RestaurantInfo {
-        infoA: String
+        infoA: String!
         infoB: String
         infoC: String
     }

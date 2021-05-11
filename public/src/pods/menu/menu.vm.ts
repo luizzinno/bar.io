@@ -33,4 +33,5 @@ export const createEmptyMenu = (): Menu => ({
 export const createEmptyRestaurantInfo = (): RestaurantInfo => ({
   infoA: '',
   infoB: '',
+  infoC: '',
 });
