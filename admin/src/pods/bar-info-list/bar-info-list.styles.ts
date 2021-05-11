@@ -1,31 +1,36 @@
 import { css } from 'emotion';
+import { theme } from 'core/theme';
 
-export const card = css`
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
+export const root = css`
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 1rem;
 
-export const title = css`
-  text-align: center;
-`;
-
-export const list = css`
-  width: 90%;
-  border-radius: 2em;
-
-  margin-bottom: 2mm;
-  background: #dddd;
-
-  ul {
-    list-style: none;
-    cursor: pointer;
+  ${theme.breakpoints.up('sm')} {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.5rem;
   }
 
-  li {
-    font-weight: bold;
-    padding: 0.2em;
+  ${theme.breakpoints.up('md')} {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  ${theme.breakpoints.up('lg')} {
+    width: 75%;
+  }
+`;
+
+export const items = css`
+  background-color: ${theme.palette.background.paper};
+  border-radius: ${theme.shape.borderRadius}px;
+  overflow: hidden;
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%),
+    0px 1px 3px 0px rgb(0 0 0 / 12%);
+
+  &:hover {
+    background-color: ${theme.palette.background.default};
+    box-shadow: 0px -2px 1px -1px rgb(0 0 0 / 20%), 0px -1px 1px 0px rgb(0 0 0 / 14%),
+      0px -1px 3px 0px rgb(0 0 0 / 12%);
+    filter: brightness(0.975);
   }
 `;
