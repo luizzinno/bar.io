@@ -19,7 +19,6 @@ export interface Props {
 
 export const BarInfoListComponent: React.FunctionComponent<Props> = (props) => {
   const { infoList } = props;
-  console.log(infoList);
   const {
     root,
     items,

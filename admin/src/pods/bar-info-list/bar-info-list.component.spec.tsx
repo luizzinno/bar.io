@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { screen } from '@testing-library/react';
+import { renderWithRouter } from 'common/components/test';
+import { Route } from 'react-router-dom';
 import { BarInfoListComponent, Props } from './bar-info-list.component';
 
 describe('pods/bar-info-list/bar-info-list.component specs', () => {
@@ -19,45 +20,23 @@ describe('pods/bar-info-list/bar-info-list.component specs', () => {
           infoC: 'Twitter',
         },
       ],
-      onSelect: jest.fn(),
     };
 
     // Act
-    render(<BarInfoListComponent {...props} />);
+    const {} = renderWithRouter(
+      <BarInfoListComponent {...props} />,
+      <>
+        <Route path={'/test-link'} component={() => <h1>Test route destination</h1>} />
+      </>,
+    );
 
     const list = screen.getAllByRole('list');
     const listitems = screen.getAllByRole('listitem');
+    const headings = screen.getAllByRole('heading')
 
     // Assert
-    expect(list).toHaveLength(2);
-    expect(listitems).toHaveLength(6);
-  });
-  it('should call onSelect property when it click on the list', () => {
-    // Arrange
-    const props: Props = {
-      infoList: [
-        {
-          infoA: 'My name',
-          infoB: 'My address',
-          infoC: 'Facebook',
-        },
-        {
-          infoA: 'My name 2',
-          infoB: 'My address 2',
-          infoC: 'Twitter',
-        },
-      ],
-      onSelect: jest.fn(),
-    };
-
-    // Act
-    render(<BarInfoListComponent {...props} />);
-
-    const list = screen.getAllByRole('list');
-
-    userEvent.click(list[0]);
-
-    // Assert
-    expect(props.onSelect).toHaveBeenCalled();
+    expect(list).toHaveLength(1);
+    expect(listitems).toHaveLength(2);
+    expect(headings).toHaveLength(6);
   });
 });
