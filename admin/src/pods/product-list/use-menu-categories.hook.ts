@@ -3,24 +3,24 @@ import produce from 'immer';
 import React from 'react';
 
 interface UseMenuCategoriesHook {
-  categories: Array<MenuCategory>;
-  setCategories: (categories: Array<MenuCategory>) => void;
-  selectedCategoryId: number;
-  setSelectedCategoryId: (id: number) => void;
-  updateSelectedCategoryProducts: (products: Array<Product>) => void;
-  getProductsByCategoryId: (id: number) => Array<Product>;
+  categories: MenuCategory[];
+  setCategories: (categories: MenuCategory[]) => void;
+  selectedCategoryId: string;
+  setSelectedCategoryId: (id: string) => void;
+  updateSelectedCategoryProducts: (products: Product[]) => void;
+  getProductsByCategoryId: (id: string) => Product[];
 }
 
 export const useMenuCategories = (
-  cat: Array<MenuCategory>,
-  categoryId: number,
+  cat: MenuCategory[],
+  categoryId: string,
 ): UseMenuCategoriesHook => {
-  const getProductsByCategoryId = (id: number): Array<Product> =>
+  const getProductsByCategoryId = (id: string): Product[] =>
     categories.filter((c) => c.id === id)[0]?.products ?? [];
-  const [selectedCategoryId, setSelectedCategoryId] = React.useState<number>(categoryId);
-  const [categories, setCategories] = React.useState<Array<MenuCategory>>(cat);
+  const [selectedCategoryId, setSelectedCategoryId] = React.useState<string>(categoryId);
+  const [categories, setCategories] = React.useState<MenuCategory[]>(cat);
 
-  const updateSelectedCategoryProducts = (prods: Array<Product>) => {
+  const updateSelectedCategoryProducts = (prods: Product[]) => {
     const newCategories = produce(categories, (draft) => {
       draft.find((c) => c.id === selectedCategoryId).products = prods;
     });

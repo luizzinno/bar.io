@@ -36,7 +36,7 @@ describe('pods/bar-info/bar-info.component specs', () => {
 
     const buttonList = screen.getAllByRole('button');
 
-    userEvent.click(buttonList[0]);
+    userEvent.click(buttonList[2]);
 
     // Assert
     waitFor(() => {

@@ -1,13 +1,15 @@
 import React, { FC } from 'react';
 import { hot } from 'react-hot-loader/root';
 import { RouterComponent } from 'core/router';
-import { ThemeProviderComponent } from 'core/theme';
+import { ThemeProviderComponent, ThemeContextProvider } from 'core/theme';
 
 const App: FC = () => {
   return (
-    <ThemeProviderComponent>
-      <RouterComponent />
-    </ThemeProviderComponent>
+    <ThemeContextProvider>
+      <ThemeProviderComponent>
+        <RouterComponent />
+      </ThemeProviderComponent>
+    </ThemeContextProvider>
   );
 };
 

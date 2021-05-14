@@ -2,13 +2,21 @@
 import { BarInfo } from './bar-info.api-model';
 
 //Mock
-import { mockBarInfo } from './bar-info.mock.data';
+import { mockBarInfo, mockBarInfoList } from './bar-info.mock.data';
 
 export const getBarInfo = async (): Promise<BarInfo> =>
   new Promise((resolve) => {
     setTimeout(() => {
       // mock call
       resolve(mockBarInfo);
+    }, 500);
+  });
+
+export const getBarInfoList = async (): Promise<BarInfo[]> =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      // mock call
+      resolve(mockBarInfoList);
     }, 500);
   });
 

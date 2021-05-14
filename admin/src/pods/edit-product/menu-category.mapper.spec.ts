@@ -1,34 +1,34 @@
 import * as apiModel from 'core/api';
-import { mapMenuCategoryApiModelsToViewModels } from './menu-category.mapper';
+import { mapMenuCategoryListFromApiToViewModel } from './menu-category.mapper';
 import * as viewModel from './menu-category.vm';
 
 describe('Menu category mappers tests', () => {
   it('should map to a view model when a valid api models are passed', () => {
     //Arrange
-    const models: Array<apiModel.MenuCategory> = [
+    const models: apiModel.MenuCategory[] = [
       {
-        id: 10,
+        id: '10',
         name: 'Test category I',
         products: [
           {
-            id: 21,
+            id: '21',
             name: 'Test product I',
             description: 'Description 1',
-            portionTypeId: 0,
+            portionTypeId: '',
             portions: [],
             visible: true,
           },
         ],
       },
       {
-        id: 11,
+        id: '11',
         name: 'Test category II',
         products: [
           {
-            id: 25,
+            id: '25',
             name: 'Test product II',
             description: 'Description 2',
-            portionTypeId: 0,
+            portionTypeId: '',
             portions: [],
             visible: false,
           },
@@ -37,16 +37,16 @@ describe('Menu category mappers tests', () => {
     ];
 
     //Act
-    const result = mapMenuCategoryApiModelsToViewModels(models);
+    const result = mapMenuCategoryListFromApiToViewModel(models);
 
     //Assert
-    const expectedResult: Array<viewModel.MenuCategory> = [
+    const expectedResult: viewModel.MenuCategory[] = [
       {
-        id: 10,
+        id: '10',
         name: 'Test category I',
       },
       {
-        id: 11,
+        id: '11',
         name: 'Test category II',
       },
     ];
@@ -55,30 +55,30 @@ describe('Menu category mappers tests', () => {
   });
   it('should map to an empty view model when an empty api model list is passed', () => {
     //Arrange
-    const models: Array<apiModel.MenuCategory> = [];
+    const models: apiModel.MenuCategory[] = [];
 
     //Act
-    const result = mapMenuCategoryApiModelsToViewModels(models);
+    const result = mapMenuCategoryListFromApiToViewModel(models);
 
     //Assert
     expect(result).toStrictEqual([]);
   });
   it('should map to an empty view model when an undefined api model list is passed', () => {
     //Arrange
-    const models: Array<apiModel.MenuCategory> = undefined;
+    const models: apiModel.MenuCategory[] = undefined;
 
     //Act
-    const result = mapMenuCategoryApiModelsToViewModels(models);
+    const result = mapMenuCategoryListFromApiToViewModel(models);
 
     //Assert
     expect(result).toStrictEqual([]);
   });
   it('should map to an empty view model when a null api model list is passed', () => {
     //Arrange
-    const models: Array<apiModel.MenuCategory> = null;
+    const models: apiModel.MenuCategory[] = null;
 
     //Act
-    const result = mapMenuCategoryApiModelsToViewModels(models);
+    const result = mapMenuCategoryListFromApiToViewModel(models);
 
     //Assert
     expect(result).toStrictEqual([]);

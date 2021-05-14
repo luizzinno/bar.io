@@ -20,6 +20,12 @@ const validationSchema: ValidationSchema = {
         message: 'La categoría del producto es obligatoria',
       },
     ],
+    portionTypeId: [
+      {
+        validator: Validators.required,
+        message: 'El tipo de ración es obligatorio',
+      },
+    ],
   },
 };
 

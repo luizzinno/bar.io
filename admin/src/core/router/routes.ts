@@ -5,10 +5,11 @@ interface SwitchRoutes {
   login: string;
   dashboard: string;
   barInfo: string;
+  barInfoList: string;
   categoriesList: string;
   productList: string;
   editProduct: string;
-  productPortionList: string;
+  productPortionTypes: string;
   editPortions: string;
   qrCode: string;
 }
@@ -18,10 +19,11 @@ export const switchRoutes: SwitchRoutes = {
   login: '/login',
   dashboard: '/dashboard',
   barInfo: '/barInfo',
+  barInfoList: '/barInfoList',
   categoriesList: '/categories',
   productList: '/products',
   editProduct: '/product/:productId?',
-  productPortionList: '/productPortionList',
+  productPortionTypes: '/productPortionTypes',
   editPortions: '/editPortions/:typeId',
   qrCode: '/qrCode',
 };

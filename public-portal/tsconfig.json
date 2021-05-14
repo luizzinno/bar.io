@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "declaration": false,
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "jsx": "preserve",
+    "noLib": false,
+    "allowJs": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "outDir": "./dist",
+    "baseUrl": "./src/",
+    "paths": {
+      "common": ["common"],
+      "core": ["core"],
+      "layouts": ["layouts"],
+      "pods": ["pods"],
+      "common-app": ["common-app"]
+    },
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true
+  },
+  "include": ["./src/**/*", "./global.types.d.ts"],
+  "exclude": ["node_modules"]
+}

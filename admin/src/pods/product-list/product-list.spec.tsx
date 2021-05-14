@@ -6,43 +6,43 @@ describe('ProductListComponent tests', () => {
   it('should show only the category dropdown when nothing is selected', () => {
     //Arrange
     const props = {
-      selectedCategoryId: 0,
+      selectedCategoryId: null,
       categories: [
         {
-          id: 1,
+          id: '1',
           value: 'Cat 1',
         },
         {
-          id: 2,
+          id: '2',
           value: 'Cat 2',
         },
         {
-          id: 3,
+          id: '3',
           value: 'Cat 3',
         },
       ],
       products: [
         {
-          id: 3,
+          id: '3',
           value: 'Prod 2.1',
           visible: false,
         },
         {
-          id: 4,
+          id: '4',
           value: 'Prod 2.2',
           visible: true,
         },
       ],
-      onChangeCategory: (id: number) => {
+      onChangeCategory: (id: string) => {
         return;
       },
-      onEditProduct: (id: number) => {
+      onEditProduct: (id: string) => {
         return;
       },
-      onDeleteProduct: (id: number) => {
+      onDeleteProduct: (id: string) => {
         return;
       },
-      onChangeProductVisibility: (id: number) => {
+      onChangeProductVisibility: (id: string) => {
         return;
       },
       onReorderProducts: (startIndex: number, endIndex: number) => {
@@ -63,38 +63,38 @@ describe('ProductListComponent tests', () => {
 
     //Assert
     expect(select).toBeInTheDocument();
-    expect(buttons.length).toBe(1);
+    expect(buttons.length).toBe(2);
   });
   it('should show the selected category, the add product button and a message saying there are not items \
       when selected a category without products', () => {
     //Arrange
     const props = {
-      selectedCategoryId: 2,
+      selectedCategoryId: '2',
       categories: [
         {
-          id: 1,
+          id: '1',
           value: 'Cat 1',
         },
         {
-          id: 2,
+          id: '2',
           value: 'Cat 2',
         },
         {
-          id: 3,
+          id: '3',
           value: 'Cat 3',
         },
       ],
       products: [],
-      onChangeCategory: (id: number) => {
+      onChangeCategory: (id: string) => {
         return;
       },
-      onEditProduct: (id: number) => {
+      onEditProduct: (id: string) => {
         return;
       },
-      onDeleteProduct: (id: number) => {
+      onDeleteProduct: (id: string) => {
         return;
       },
-      onChangeProductVisibility: (id: number) => {
+      onChangeProductVisibility: (id: string) => {
         return;
       },
       onReorderProducts: (startIndex: number, endIndex: number) => {
@@ -123,43 +123,43 @@ describe('ProductListComponent tests', () => {
       when selected a category with products', () => {
     //Arrange
     const props = {
-      selectedCategoryId: 2,
+      selectedCategoryId: '2',
       categories: [
         {
-          id: 1,
+          id: '1',
           value: 'Cat 1',
         },
         {
-          id: 2,
+          id: '2',
           value: 'Cat 2',
         },
         {
-          id: 3,
+          id: '3',
           value: 'Cat 3',
         },
       ],
       products: [
         {
-          id: 3,
+          id: '3',
           value: 'Prod 2.1',
           visible: false,
         },
         {
-          id: 4,
+          id: '4',
           value: 'Prod 2.2',
           visible: true,
         },
       ],
-      onChangeCategory: (id: number) => {
+      onChangeCategory: (id: string) => {
         return;
       },
-      onEditProduct: (id: number) => {
+      onEditProduct: (id: string) => {
         return;
       },
-      onDeleteProduct: (id: number) => {
+      onDeleteProduct: (id: string) => {
         return;
       },
-      onChangeProductVisibility: (id: number) => {
+      onChangeProductVisibility: (id: string) => {
         return;
       },
       onReorderProducts: (startIndex: number, endIndex: number) => {

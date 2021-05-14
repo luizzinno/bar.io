@@ -11,25 +11,25 @@ describe('EditProductComponent tests', () => {
     const props = {
       categories: [
         {
-          id: 1,
+          id: '1',
           name: 'Category I',
         },
         {
-          id: 2,
+          id: '2',
           name: 'Category II',
         },
         {
-          id: 3,
+          id: '3',
           name: 'Category III',
         },
       ],
       product: createEmptyProductVm(),
-      portionTypes: [{ id: 1, name: 'Única' }],
-      portions: [{ id: 1, name: 'Única' }],
+      portionTypes: [{ id: '1', name: 'Única' }],
+      portions: [{ id: '1', name: 'Única' }],
       onSave: (product: Product) => {
         return;
       },
-      onChangeCategory: (categoryId: number) => {
+      onChangeCategory: (categoryId: string) => {
         return;
       },
       onChangeName: (name: string) => {
@@ -38,10 +38,10 @@ describe('EditProductComponent tests', () => {
       onChangeDescription: (description: string) => {
         return;
       },
-      onChangePortionPrice: (id: number, price: number) => {
+      onChangePortionPrice: (id: string, price: number) => {
         return;
       },
-      onChangePortionType: (id: number) => {
+      onChangePortionType: (id: string) => {
         return;
       },
       onCancel: () => {
@@ -55,51 +55,57 @@ describe('EditProductComponent tests', () => {
     //Assert
     const title = screen.getByRole('heading');
     expect(title).toHaveTextContent('Añadir producto');
-    const name = screen.getByText('Nombre');
+    const name = screen.getAllByText('Nombre')[0];
     expect(name).toBeInTheDocument();
-    const description = screen.getByText('Descripción');
+    const description = screen.getAllByText('Descripción')[0];
     expect(description).toBeInTheDocument();
-    const category = screen.getByText('Categoría');
+    const category = screen.getAllByText('Categoría')[0];
     expect(category).toBeInTheDocument();
-    const portionType = screen.getByText('Ración');
+    const portionType = screen.getAllByText('Ración')[0];
     expect(portionType).toBeInTheDocument();
     const buttons = screen.getAllByRole('button');
-    expect(buttons.length).toBe(4);
-    expect(buttons[2]).toHaveTextContent('Guardar');
+    expect(buttons.length).toBe(5);
     expect(buttons[3]).toHaveTextContent('Cancelar');
+    expect(buttons[4]).toHaveTextContent('Guardar');
   });
   it('should be in edit mode when an existing product is passed', () => {
     //Arrange
     const props = {
       categories: [
         {
-          id: 1,
+          id: '1',
           name: 'Category I',
         },
         {
-          id: 2,
+          id: '2',
           name: 'Category II',
         },
         {
-          id: 3,
+          id: '3',
           name: 'Category III',
         },
       ],
       product: {
-        id: 12,
+        id: '12',
         name: 'Test product',
         description: 'New description',
         visible: true,
-        categoryId: 2,
-        portionTypeId: 1,
-        portionPrices: [0, 15],
+        categoryId: '2',
+        portionTypeId: '1',
+        portions: [
+          {
+            id: '1',
+            name: 'Única',
+            price: 10,
+          }
+        ],
       },
-      portionTypes: [{ id: 1, name: 'Única' }],
-      portions: [{ id: 1, name: 'Única' }],
+      portionTypes: [{ id: '1', name: 'Única' }],
+      portions: [{ id: '1', name: 'Única' }],
       onSave: (product: Product) => {
         return;
       },
-      onChangeCategory: (categoryId: number) => {
+      onChangeCategory: (categoryId: string) => {
         return;
       },
       onChangeName: (name: string) => {
@@ -108,10 +114,10 @@ describe('EditProductComponent tests', () => {
       onChangeDescription: (description: string) => {
         return;
       },
-      onChangePortionPrice: (id: number, price: number) => {
+      onChangePortionPrice: (id: string, price: number) => {
         return;
       },
-      onChangePortionType: (id: number) => {
+      onChangePortionType: (id: string) => {
         return;
       },
       onCancel: () => {
@@ -125,58 +131,69 @@ describe('EditProductComponent tests', () => {
     //Assert
     const title = screen.getByRole('heading');
     expect(title).toHaveTextContent("Editar 'Test product'");
-    const name = screen.getByText('Nombre');
+    const name = screen.getAllByText('Nombre')[0];
     expect(name).toBeInTheDocument();
-    const description = screen.getByText('Descripción');
+    const description = screen.getAllByText('Descripción')[0];
     expect(description).toBeInTheDocument();
     const fields = screen.getAllByRole('textbox');
     expect(fields[0]).toHaveValue('Test product');
     expect(fields[1]).toHaveValue('New description');
-    const category = screen.getByText('Categoría');
+    const category = screen.getAllByText('Categoría')[0];
     expect(category).toBeInTheDocument();
-    const portionType = screen.getByText('Ración');
+    const portionType = screen.getAllByText('Ración')[0];
     expect(portionType).toBeInTheDocument();
     const price = screen.getByText('Precio - Única');
     expect(price).toBeInTheDocument();
-    const priceField = screen.getByDisplayValue('15');
+    const priceField = screen.getByDisplayValue('10');
     expect(priceField).toBeInTheDocument();
     const buttons = screen.getAllByRole('button');
-    expect(buttons.length).toBe(4);
-    expect(buttons[0]).toHaveTextContent('Category II');
-    expect(buttons[1]).toHaveTextContent('Única');
-    expect(buttons[2]).toHaveTextContent('Guardar');
+    expect(buttons.length).toBe(5);
+    expect(buttons[1]).toHaveTextContent('Category II');
+    expect(buttons[2]).toHaveTextContent('Única');
     expect(buttons[3]).toHaveTextContent('Cancelar');
+    expect(buttons[4]).toHaveTextContent('Guardar');
   });
   it('should call onSave when the save button is clicked in', async () => {
     //Arrange
     const props = {
       categories: [
         {
-          id: 1,
+          id: '1',
           name: 'Category I',
         },
         {
-          id: 2,
+          id: '2',
           name: 'Category II',
         },
         {
-          id: 3,
+          id: '3',
           name: 'Category III',
         },
       ],
       product: {
-        id: 12,
+        id: '12',
         name: 'Test product',
         description: 'New description',
         visible: true,
-        categoryId: 2,
-        portionTypeId: 1,
-        portionPrices: [0, 15],
+        categoryId: '2',
+        portionTypeId: '1',
+        portions: [
+          {
+            id: '1',
+            name: 'Portion 1',
+            price: 10,
+          },
+          {
+            id: '2',
+            name: 'Portion 2',
+            price: 15,
+          },
+        ],
       },
-      portionTypes: [{ id: 1, name: 'Única' }],
-      portions: [{ id: 1, name: 'Única' }],
+      portionTypes: [{ id: '1', name: 'Única' }],
+      portions: [{ id: '1', name: 'Única' }],
       onSave: jest.fn(),
-      onChangeCategory: (categoryId: number) => {
+      onChangeCategory: (categoryId: string) => {
         return;
       },
       onChangeName: (name: string) => {
@@ -185,10 +202,10 @@ describe('EditProductComponent tests', () => {
       onChangeDescription: (description: string) => {
         return;
       },
-      onChangePortionPrice: (id: number, price: number) => {
+      onChangePortionPrice: (id: string, price: number) => {
         return;
       },
-      onChangePortionType: (id: number) => {
+      onChangePortionType: (id: string) => {
         return;
       },
       onCancel: () => {
@@ -201,7 +218,7 @@ describe('EditProductComponent tests', () => {
 
     //Act
     render(<EditProductComponent {...props} />);
-    const saveButton = screen.getAllByRole('button')[2];
+    const saveButton = screen.getAllByRole('button')[4];
     userEvent.click(saveButton);
 
     //Assert
@@ -212,31 +229,31 @@ describe('EditProductComponent tests', () => {
     const props = {
       categories: [
         {
-          id: 1,
+          id: '1',
           name: 'Category I',
         },
         {
-          id: 2,
+          id: '2',
           name: 'Category II',
         },
         {
-          id: 3,
+          id: '3',
           name: 'Category III',
         },
       ],
       product: {
-        id: 12,
+        id: '12',
         name: 'Test product',
         description: 'New description',
         visible: true,
-        categoryId: 2,
-        portionTypeId: 1,
-        portionPrices: [0, 15],
+        categoryId: '2',
+        portionTypeId: '1',
+        portions: [{ id: '1', name: 'Única', price: 15 }],
       },
-      portionTypes: [{ id: 1, name: 'Única' }],
-      portions: [{ id: 1, name: 'Única' }],
+      portionTypes: [{ id: '1', name: 'Única' }],
+      portions: [{ id: '1', name: 'Única' }],
       onSave: jest.fn(),
-      onChangeCategory: (categoryId: number) => {
+      onChangeCategory: (categoryId: string) => {
         return;
       },
       onChangeName: (name: string) => {
@@ -245,10 +262,10 @@ describe('EditProductComponent tests', () => {
       onChangeDescription: (description: string) => {
         return;
       },
-      onChangePortionPrice: (id: number, price: number) => {
+      onChangePortionPrice: (id: string, price: number) => {
         return;
       },
-      onChangePortionType: (id: number) => {
+      onChangePortionType: (id: string) => {
         return;
       },
       onCancel: jest.fn(),

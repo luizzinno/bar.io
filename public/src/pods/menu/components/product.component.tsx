@@ -1,7 +1,7 @@
-import { Card, CardContent } from '@material-ui/core';
 import React from 'react';
 import { Product } from '../menu.vm';
 import * as classes from './product.styles';
+import { useTheme } from '@material-ui/core/styles';
 
 interface ProductComponentProps {
   productIndex: string;
@@ -10,38 +10,39 @@ interface ProductComponentProps {
 
 export const ProductComponent: React.FunctionComponent<ProductComponentProps> = (props) => {
   const { productIndex, product } = props;
+  const theme = useTheme();
   return (
-    <Card className={classes.container}>
+    <>
       {product.portions.length > 1 ? (
         <>
-          <CardContent>
-            <div>
-              <strong>{product.name}</strong>
+          <strong>{product.name}</strong>
               {product.description !== '' && (
                 <p className={classes.description}>{product.description}</p>
               )}
-            </div>
             {product?.portions.map((p, index) => (
               <div key={`portion-${productIndex}-${index}`} className={classes.product}>
-                <div className={classes.portion}>{p.name}</div>
-                <div className={classes.price}>{p.price}</div>
+                <dt className={classes.portion}>{p.name}</dt>
+                <dd className={classes.price} style={{ color: theme.palette.primary.main }}>
+                  {p.price}
+                </dd>
               </div>
             ))}
-          </CardContent>
+          </dl>
         </>
       ) : (
-        <CardContent>
-          <div className={classes.product}>
-            <div className={classes.portion}>
+        <>
+          <dl className={classes.product}>
+            <dt className={classes.portion}>
               <strong>{product.name}</strong>
               {product.description !== '' && (
                 <p className={classes.description}>{product.description}</p>
               )}
-            </div>
-            <div className={classes.price}>{product.portions[0].price}</div>
-          </div>
-        </CardContent>
+            <dd className={classes.price} style={{ color: theme.palette.primary.main }}>
+              {product.portions[0].price}
+            </dd>
+          </dl>
+        </>
       )}
-    </Card>
+    </>
   );
 };
