@@ -17,7 +17,9 @@ export const ProductComponent: React.FunctionComponent<ProductComponentProps> = 
           <CardContent>
             <div>
               <strong>{product.name}</strong>
-              <p className={classes.description}>{product.description}</p>
+              {product.description !== '' && (
+                <p className={classes.description}>{product.description}</p>
+              )}
             </div>
             {product?.portions.map((p, index) => (
               <div key={`portion-${productIndex}-${index}`} className={classes.product}>
@@ -32,7 +34,9 @@ export const ProductComponent: React.FunctionComponent<ProductComponentProps> = 
           <div className={classes.product}>
             <div className={classes.portion}>
               <strong>{product.name}</strong>
-              <p className={classes.description}>{product.description}</p>
+              {product.description !== '' && (
+                <p className={classes.description}>{product.description}</p>
+              )}
             </div>
             <div className={classes.price}>{product.portions[0].price}</div>
           </div>
