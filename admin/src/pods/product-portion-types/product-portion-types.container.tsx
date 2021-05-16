@@ -89,7 +89,11 @@ export const ProductPortionTypesContainer: React.FunctionComponent = () => {
     history.push(routes.editPortions(id.toString()));
   };
 
-  const handleCancel = () => setSelectedProductPortionTypeId('');
+  const handleCancel = () => {
+    setSelectedProductPortionTypeId('');
+    setAdding(false);
+  };
+
   const handleAdd = () => {
     setSelectedProductPortionTypeId('');
     setAdding(true);

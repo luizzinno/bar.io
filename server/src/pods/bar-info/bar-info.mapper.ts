@@ -6,11 +6,11 @@ export const mapFromBarInfoModelToApiModel = (
 ): apiModel.BarInfo =>
   !!barInfo
     ? {
-        id: barInfo._id,
-        infoA: barInfo.infoA,
-        infoB: barInfo.infoB,
-        infoC: barInfo.infoC,
-      }
+      id: barInfo?._id ?? '',
+      infoA: barInfo?.infoA ?? '',
+      infoB: barInfo?.infoB ?? '',
+      infoC: barInfo?.infoC ?? '',
+    }
     : null;
 
 export const mapFromBarInfoApiModelToModel = (
@@ -18,10 +18,10 @@ export const mapFromBarInfoApiModelToModel = (
 ): model.BarInfo =>
   !!barInfo
     ? {
-        _id: barInfo.id,
-        infoA: barInfo.infoA,
-        infoB: barInfo.infoB,
-        infoC: barInfo.infoC,
-      }
+      _id: barInfo?.id ?? '',
+      infoA: barInfo?.infoA ?? '',
+      infoB: barInfo?.infoB ?? '',
+      infoC: barInfo?.infoC ?? '',
+    }
     : null;
 

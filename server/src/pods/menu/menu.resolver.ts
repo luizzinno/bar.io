@@ -1,6 +1,6 @@
 import { GraphQLResolver } from "common/models";
 import { barInfoRepository, menuCategoryRepository, productPortionTypeRepository } from "dals";
-import { mapMenuFromModelToApi } from "./menu.mapper";
+import { mapMenuFromModelToApiModel } from "./menu.mapper";
 import { Menu } from "./menu.model";
 
 interface MenuResolver {
@@ -15,7 +15,7 @@ export const menuResolver: MenuResolver = {
             const portionTypes = await productPortionTypeRepository.getProductPortionTypes();
             const menuCategories = await menuCategoryRepository.getMenuCategories();
             const restaurantInfo = await barInfoRepository.getBarInfo();
-            return mapMenuFromModelToApi(restaurantInfo, menuCategories, portionTypes);
+            return mapMenuFromModelToApiModel(restaurantInfo, menuCategories, portionTypes);
         }
     }
 }

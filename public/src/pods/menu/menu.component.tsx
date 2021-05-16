@@ -29,9 +29,9 @@ export const MenuComponent: React.FunctionComponent<MenuComponentProps> = (props
         ))}
       </TextField>
       <HeaderComponent
-        infoA={restaurantInfo.infoA}
-        infoB={restaurantInfo.infoB}
-        infoC={restaurantInfo.infoC}
+        infoA={restaurantInfo?.infoA ?? ''}
+        infoB={restaurantInfo?.infoB ?? ''}
+        infoC={restaurantInfo?.infoC ?? ''}
       />
       <MenuListComponent categories={categories} />
     </>

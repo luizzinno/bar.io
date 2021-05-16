@@ -24,7 +24,7 @@ export const MenuListComponent: React.FunctionComponent<MenuListProps> = (props)
             expanded={expanded === `category${index}`}
             onChange={handleChange(`category${index}`)}>
             <AccordionSummary aria-controls={`category${index}-content`}>
-              <Typography variant="h3">{category.name}</Typography>
+              <Typography variant='h3'>{category.name}</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <SubmenuCategoryComponent categoryIndex={index} products={category.products} />

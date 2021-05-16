@@ -13,22 +13,22 @@ export const menuTypeDefs = gql`
     }
 
     type Category {
-        name: String
+        name: String!
         products: [MenuProduct]!
     } 
 
     type MenuProduct {
-        name: String
+        name: String!
         description: String
         portions: [MenuPortion]!
     }   
 
     type MenuPortion {
-        name: String
-        price: Float
+        name: String!
+        price: Float!
     }
 
     extend type Query {
-        getMenu: Menu
+        getMenu: Menu!
     }
 `;

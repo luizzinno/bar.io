@@ -6,10 +6,10 @@ export const mapFromMenuCategoryModelToApiModel = (
 ): apiModel.MenuCategory =>
   !!menuCategory
     ? {
-      id: menuCategory._id,
-      name: menuCategory.name,
+      id: menuCategory?._id ?? '',
+      name: menuCategory?.name ?? '',
       products:
-        menuCategory.products?.map((p) => mapFromProductModelToApiModel(p)) ??
+        menuCategory?.products?.map((p) => mapFromProductModelToApiModel(p)) ??
         [],
     }
     : null;
@@ -19,13 +19,13 @@ export const mapFromProductModelToApiModel = (
 ): apiModel.Product =>
   !!product
     ? {
-      id: product._id,
-      description: product.description,
-      name: product.name,
-      portionTypeId: product.portionTypeId,
-      visible: product.visible,
+      id: product?._id ?? '',
+      description: product?.description ?? '',
+      name: product?.name ?? '',
+      portionTypeId: product?.portionTypeId ?? '',
+      visible: product?.visible ?? false,
       portions:
-        product.portions?.map((p) => mapFromPortionModelToApiModel(p)) ?? [],
+        product?.portions?.map((p) => mapFromPortionModelToApiModel(p)) ?? [],
     }
     : null;
 
@@ -34,8 +34,8 @@ export const mapFromPortionModelToApiModel = (
 ): apiModel.Portion =>
   !!portion
     ? {
-      id: portion._id,
-      price: portion.price,
+      id: portion?._id ?? '',
+      price: portion?.price ?? 0,
     }
     : null;
 
@@ -44,10 +44,10 @@ export const mapFromMenuCategoryApiModelToModel = (
 ): model.MenuCategory =>
   !!menuCategory
     ? {
-      _id: menuCategory.id,
-      name: menuCategory.name,
+      _id: menuCategory?.id ?? '',
+      name: menuCategory?.name ?? '',
       products:
-        menuCategory.products?.map((p) => mapFromProductApiModelToModel(p)) ??
+        menuCategory?.products?.map((p) => mapFromProductApiModelToModel(p)) ??
         [],
     }
     : null;
@@ -57,13 +57,13 @@ export const mapFromProductApiModelToModel = (
 ): model.Product =>
   !!product
     ? {
-      _id: product.id,
-      description: product.description,
-      name: product.name,
-      portionTypeId: product.portionTypeId,
-      visible: product.visible,
+      _id: product?.id ?? '',
+      description: product?.description ?? '',
+      name: product?.name ?? '',
+      portionTypeId: product?.portionTypeId ?? '',
+      visible: product?.visible ?? false,
       portions:
-        product.portions?.map((p) => mapFromPortionApiModelToModel(p)) ?? [],
+        product?.portions?.map((p) => mapFromPortionApiModelToModel(p)) ?? [],
     }
     : null;
 
@@ -72,7 +72,7 @@ export const mapFromPortionApiModelToModel = (
 ): model.Portion =>
   !!portion
     ? {
-      _id: portion.id,
-      price: portion.price,
+      _id: portion?.id ?? '',
+      price: portion?.price ?? 0,
     }
     : null;
