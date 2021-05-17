@@ -3,11 +3,21 @@ import { mockAdministratorList } from './administrator-list.api-mock';
 
 let administratorList = [...mockAdministratorList];
 
-export const getAdministratorList = (): Promise<AdministratorEntityApi[]> => {
-  return Promise.resolve(administratorList);
+export const getAdministratorList = async (): Promise<AdministratorEntityApi[]> => {
+  return await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(administratorList);
+    }, 500);
+  });
 };
 
-export const deleteAdministrator = (id: string): Promise<boolean> => {
-  administratorList = administratorList.filter((administrator) => administrator.id !== id);
-  return Promise.resolve(true);
+export const deleteAdministrator = async (row: AdministratorEntityApi): Promise<boolean> => {
+  // administratorList = administratorList.filter((administrator) => administrator.id !== id);
+  // return Promise.resolve(true);
+  return await new Promise((resolve) => {
+    setTimeout(() => {
+      administratorList.splice(administratorList.indexOf(row), 1);
+      resolve(true);
+    }, 500);
+  });
 };

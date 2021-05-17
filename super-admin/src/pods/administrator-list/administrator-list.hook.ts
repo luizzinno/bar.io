@@ -9,14 +9,6 @@ export const administratorList = () => {
   >([]);
 
   const handleloadAdministratorList = () => {
-    // try {
-    //   const administratorListModel = await getAdministratorList();
-    //   const administrationListVm = mapAdministratorListFromApiToVm(administratorListModel);
-    //   setAdministratorListCollection(administrationListVm);
-    // } catch (error) {
-    //   console.log(error);
-    // }
-
     getAdministratorList()
       .then((administratorList) => {
         const administrationListVm = mapAdministratorListFromApiToVm(administratorList);

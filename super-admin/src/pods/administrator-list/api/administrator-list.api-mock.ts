@@ -11,4 +11,9 @@ export const mockAdministratorList: AdministratorEntityApi[] = [
     name: 'Manuel López',
     email: 'manuel@hotmail.com',
   },
+  {
+    id: '3',
+    name: 'Antonio López',
+    email: 'antonio@hotmail.com',
+  },
 ];

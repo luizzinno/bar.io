@@ -1,18 +1,15 @@
 import React from 'react';
-import { AdministratorListComponent } from './administrator-list.component';
-import { administratorList } from './administrator-list.hook';
-import { deleteAdministrator } from './api';
 import { useHistory } from 'react-router-dom';
 import { linkRoutes } from 'core/router';
+import { deleteAdministrator } from './api';
+import { administratorList } from './administrator-list.hook';
+import { AdministratorListComponent } from './administrator-list.component';
+import * as viewModel from './administrator-list.vm';
 
 const headers = ['Nombre', 'Email', 'Actions'];
 
 export const AdministratorListContainer: React.FunctionComponent = () => {
-  const {
-    administratorListCollection,
-    handleloadAdministratorList,
-    setAdministratorListCollection,
-  } = administratorList();
+  const { administratorListCollection, handleloadAdministratorList } = administratorList();
 
   const history = useHistory();
 
@@ -20,12 +17,16 @@ export const AdministratorListContainer: React.FunctionComponent = () => {
     handleloadAdministratorList();
   }, []);
 
+  const handleCreateAdministrator = () => {
+    history.push(linkRoutes.createAdministrator);
+  };
+
   const handleEdit = (id: string) => {
     history.push(linkRoutes.editAdministrator(id));
   };
 
-  const handleDelete = async (id: string) => {
-    await deleteAdministrator(id);
+  const handleDelete = async (row: viewModel.AdministratorEntityVm) => {
+    await deleteAdministrator(row);
     handleloadAdministratorList();
   };
 
@@ -33,7 +34,7 @@ export const AdministratorListContainer: React.FunctionComponent = () => {
     <AdministratorListComponent
       headers={headers}
       administratorListCollection={administratorListCollection}
-      setAdministratorListCollection={setAdministratorListCollection}
+      onCreateAdministrator={handleCreateAdministrator}
       onEdit={handleEdit}
       onDelete={handleDelete}
     />
