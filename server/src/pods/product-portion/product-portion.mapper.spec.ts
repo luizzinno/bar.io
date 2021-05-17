@@ -252,7 +252,7 @@ describe('Product portion type mapper tests', () => {
         const result = mapFromProductPortionTypeModelToApiModel(model);
 
         //Assert
-        const expectedResult: model.ProductPortionType = {
+        const expectedResult: apiModel.ProductPortionType = {
             id: '',
             name: '',
             portions: [

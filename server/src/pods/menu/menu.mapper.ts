@@ -1,22 +1,35 @@
-import { BarInfo, MenuCategory, ProductPortionType } from "dals";
-import { Menu } from "./menu.model";
+import { BarInfo, MenuCategory, ProductPortionType, Product, Portion } from "dals";
+import { Category, Menu, RestaurantInfo, MenuProduct, ProductPortion } from "./menu.model";
 
-export const mapMenuFromModelToApiModel = (restaurantInfo: BarInfo, menuCategories: MenuCategory[], portionTypes: ProductPortionType[]): Menu => ({
-    restaurantInfo: {
-        infoA: restaurantInfo?.infoA ?? '',
-        infoB: restaurantInfo?.infoB ?? '',
-        infoC: restaurantInfo?.infoC ?? '',
-    },
-    categories: menuCategories?.map(mc => ({
-        name: mc?.name ?? '',
-        products: mc?.products?.filter(pr => pr.visible).map(pr => ({
-            name: pr?.name ?? '',
-            description: pr?.description ?? '',
-            portions: pr?.portions?.map(p => ({
-                name: portionTypes?.find(t => t._id.toString() === pr.portionTypeId?.toString()
-                )?.portions?.find(po => po._id.toString() === p._id.toString())?.name ?? '',
-                price: p?.price ?? 0,
-            })) ?? []
-        })) ?? []
-    })) ?? []
+export const mapMenuFromModelToApiModel = (barInfo: BarInfo, menuCategories: MenuCategory[], portionTypes: ProductPortionType[]): Menu => ({
+    restaurantInfo: mapRestaurantInfoFromModelToApiModel(barInfo),
+    categories: mapMenuCategoriesFromModelToApiModel(menuCategories, portionTypes)
 });
+
+const mapRestaurantInfoFromModelToApiModel = (barInfo: BarInfo): RestaurantInfo => ({
+    infoA: barInfo?.infoA ?? '',
+    infoB: barInfo?.infoB ?? '',
+    infoC: barInfo?.infoC ?? '',
+});
+
+const mapMenuCategoriesFromModelToApiModel = (menuCategories: MenuCategory[], portionTypes: ProductPortionType[]): Category[] => menuCategories ? menuCategories.map(mc => mapMenuCategoryFromModelToApiModel(mc, portionTypes)) : []
+
+const mapMenuCategoryFromModelToApiModel = (menuCategory: MenuCategory, portionTypes: ProductPortionType[]): Category => ({
+    name: menuCategory?.name ?? '',
+    products: menuCategory?.products ? mapProductsFromModelToApiModel(menuCategory.products, portionTypes) : [],
+});
+
+const mapProductsFromModelToApiModel = (products: Product[], portionTypes: ProductPortionType[]): MenuProduct[] =>
+    products ? products.filter(pr => pr.visible).map(p => mapProductFromModelToApiModel(p, portionTypes)) : [];
+
+const mapProductFromModelToApiModel = (product: Product, portionTypes: ProductPortionType[]): MenuProduct => ({
+    name: product?.name ?? '',
+    description: product?.description ?? '',
+    portions: product?.portions ? mapPortionsFromModelToApiModel(product.portions, portionTypes.find(t => t._id === product.portionTypeId)) : []
+});
+
+const mapPortionsFromModelToApiModel = (portions: Portion[], portionType: ProductPortionType): ProductPortion[] =>
+    portions ? portions.map(p => ({
+        name: portionType?.portions ? portionType.portions.find(tp => tp._id === p._id)?.name ?? '' : '',
+        price: p?.price ?? 0,
+    })) : []
