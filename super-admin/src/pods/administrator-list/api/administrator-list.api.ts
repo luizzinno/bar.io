@@ -12,8 +12,6 @@ export const getAdministratorList = async (): Promise<AdministratorEntityApi[]> 
 };
 
 export const deleteAdministrator = async (row: AdministratorEntityApi): Promise<boolean> => {
-  // administratorList = administratorList.filter((administrator) => administrator.id !== id);
-  // return Promise.resolve(true);
   return await new Promise((resolve) => {
     setTimeout(() => {
       administratorList.splice(administratorList.indexOf(row), 1);
