@@ -6,7 +6,7 @@ import { administratorList } from './administrator-list.hook';
 import { AdministratorListComponent } from './administrator-list.component';
 import * as viewModel from './administrator-list.vm';
 
-const headers = ['Nombre', 'Email', 'Actions'];
+const headers = ['Nombre', 'Email', 'Teléfono', 'Acciones'];
 
 export const AdministratorListContainer: React.FunctionComponent = () => {
   const { administratorListCollection, handleloadAdministratorList } = administratorList();

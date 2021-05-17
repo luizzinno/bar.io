@@ -13,4 +13,5 @@ const mapAdministratorFromApiToVm = (
   id: administrator.id,
   name: administrator.name,
   email: administrator.email,
+  phone: administrator.phone,
 });
