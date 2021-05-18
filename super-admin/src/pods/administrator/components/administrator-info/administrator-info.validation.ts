@@ -1,4 +1,5 @@
 import { ValidationSchema, Validators } from '@lemoncode/fonk';
+import { isNumber } from '@lemoncode/fonk-is-number-validator';
 import { createFormikValidation } from '@lemoncode/fonk-formik';
 
 const validationSchema: ValidationSchema = {
@@ -26,12 +27,12 @@ const validationSchema: ValidationSchema = {
     ],
     numberPhone: [
       {
-        validator: Validators.required,
-        message: 'Por favor complete este campo obligatorio',
+        validator: isNumber.validator,
+        message: 'Proporcione un número de teléfono válido',
       },
       {
         validator: Validators.pattern,
-        customArgs: { pattern: /^[0-9]{2,3}-? ?[0-9]{6,7}$/ },
+        customArgs: { pattern: /^[6|7|8|9]{1}([\d]{2}[-]*){3}[\d]{2}$/ },
         message: 'Proporcione un número de teléfono válido',
       },
     ],
