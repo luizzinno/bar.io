@@ -20,7 +20,9 @@ export const AdministratorContainer: React.FunctionComponent = () => {
   );
 
   React.useEffect(() => {
-    onLoadAdministratorInfo(id);
+    if (id) {
+      onLoadAdministratorInfo(id);
+    }
   }, []);
 
   const onLoadAdministratorInfo = async (id: string) => {
@@ -75,11 +77,11 @@ export const AdministratorContainer: React.FunctionComponent = () => {
       });
   };
   return (
-    <AdministratorComponent 
-      administratorInfo={administratorInfo} 
+    <AdministratorComponent
+      administratorInfo={administratorInfo}
       onEdit={handleEdit}
       onDelete={handleDelete}
       onResetPassword={handleReset}
-      />
-      );
+    />
+  );
 };
