@@ -55,9 +55,18 @@ export const AdministratorListComponent: React.FunctionComponent<Props> = (props
   };
 
   const handleSearch = (searchValue: string) => {
+    const removeAccents = (str) => {
+      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    };
+
     if (searchValue !== '') {
       const newList = administratorListCollection.filter((administratorList) => {
-        if (administratorList.name.includes(searchValue)) return administratorList.name;
+        if (
+          removeAccents(administratorList.name.toLowerCase()).includes(
+            removeAccents(searchValue.toLowerCase()),
+          )
+        )
+          return administratorList.name;
       });
       setList([...newList]);
     } else {
