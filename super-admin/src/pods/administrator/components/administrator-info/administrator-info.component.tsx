@@ -7,6 +7,10 @@ import { formValidation } from './administrator-info.validation';
 //VM
 import { AdministratorInfo } from './administrator-info.vm';
 
+//Router
+import { useHistory } from 'react-router-dom';
+import { switchRoutes } from 'core/router';
+
 //Component
 import { TextFieldComponent } from 'common/components';
 
@@ -22,6 +26,8 @@ interface Props {
 
 export const AdministratorInfoComponent: React.FC<Props> = (props) => {
   const { info, onEdit, onDelete } = props;
+  const history = useHistory();
+
   return (
     <>
       <Formik
@@ -54,9 +60,7 @@ export const AdministratorInfoComponent: React.FC<Props> = (props) => {
                   color='secondary'
                   size='large'
                   fullWidth={true}
-                  onClick={() => {
-                    onDelete(info.id);
-                  }}>
+                  onClick={() => history.push(switchRoutes.selectionModule)}>
                   Cancel
                 </Button>
               </Grid>

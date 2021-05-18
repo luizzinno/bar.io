@@ -79,7 +79,7 @@ export const AdministratorContainer: React.FunctionComponent = () => {
       administratorInfo={administratorInfo} 
       onEdit={handleEdit}
       onDelete={handleDelete}
-      onResetPassworld={handleReset}
+      onResetPassword={handleReset}
       />
       );
 };
