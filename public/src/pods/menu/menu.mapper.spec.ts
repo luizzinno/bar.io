@@ -7,9 +7,9 @@ describe('Menu mapper tests', () => {
     // Arrange
     const menuApiModel = {
       restaurantInfo: {
-        name: 'The Restaurant',
-        description: 'A nice restaurant',
-        telephone: '951123123',
+        infoA: 'The Restaurant',
+        infoB: 'A nice restaurant',
+        infoC: '951123123',
       },
       categories: [
         {
@@ -37,9 +37,9 @@ describe('Menu mapper tests', () => {
 
     const expectedMenuViewModel = {
       restaurantInfo: {
-        name: 'The Restaurant',
-        description: 'A nice restaurant',
-        telephone: '951123123',
+        infoA: 'The Restaurant',
+        infoB: 'A nice restaurant',
+        infoC: '951123123',
       },
       categories: [
         {
@@ -71,18 +71,18 @@ describe('Menu mapper tests', () => {
     // Arrange
     const menuApiModel = {
       restaurantInfo: {
-        name: 'The Restaurant',
-        description: 'A nice restaurant',
-        telephone: '951123123',
+        infoA: 'The Restaurant',
+        infoB: 'A nice restaurant',
+        infoC: '951123123',
       },
       categories: null,
     };
 
     const expectedMenuViewModel = {
       restaurantInfo: {
-        name: 'The Restaurant',
-        description: 'A nice restaurant',
-        telephone: '951123123',
+        infoA: 'The Restaurant',
+        infoB: 'A nice restaurant',
+        infoC: '951123123',
       },
       categories: [],
     };
@@ -97,14 +97,14 @@ describe('Menu mapper tests', () => {
     // Arrange
     const menuApiModel = {
       restaurantInfo: {
-        name: 'The Restaurant',
+        infoA: 'The Restaurant',
       },
       categories: undefined,
     };
 
     const expectedMenuViewModel = {
       restaurantInfo: {
-        name: 'The Restaurant',
+        infoA: 'The Restaurant',
       },
       categories: [],
     };

@@ -3,12 +3,8 @@ import * as apiClient from '../client';
 import { MenuCategory } from './menu-categories.model';
 import { Product } from './product.model';
 
-export const getMenuCategories = async (
-  withProducts: boolean = false,
-): Promise<MenuCategory[]> =>
-  (await apiClient.request<MenuCategory[]>(
-    withProducts
-      ? gql`
+export const getMenuCategories = async (): Promise<MenuCategory[]> =>
+  await apiClient.request<MenuCategory[]>(gql`
           query {
             getMenuCategories {
               id
@@ -26,16 +22,8 @@ export const getMenuCategories = async (
               }
             }
           }
-        `
-      : gql`
-          query {
-            getMenuCategories {
-              id
-              name
-            }
-          }
-        `,
-  )) ?? [];
+       `
+  ) ?? [];
 
 export const getMenuCategoryById = async (id: string): Promise<MenuCategory> =>
   await apiClient.request<MenuCategory>(

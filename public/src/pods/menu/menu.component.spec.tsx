@@ -7,9 +7,9 @@ describe('MenuComponent tests', () => {
     // Arrange
     const props = {
       restaurantInfo: {
-        name: 'The Restaurant',
-        description: 'A nice restaurant',
-        telephone: '951123123',
+        infoA: 'The Restaurant',
+        infoB: 'A nice restaurant',
+        infoC: '951123123',
       },
       categories: [
         {
@@ -40,15 +40,13 @@ describe('MenuComponent tests', () => {
 
     // Act
     render(<MenuComponent {...props} />);
-    const headerTelephone = screen.getByLabelText(
-      props.restaurantInfo.telephone.split('').join('.'),
-    );
+    const telephone = screen.getByText(props.restaurantInfo.infoC);
     const menuCategories = props.categories
       .map((c) => c.name)
       .map((name) => screen.getByText(name));
 
     // Assert
-    expect(headerTelephone).toBeInTheDocument();
+    expect(telephone).toBeInTheDocument();
     menuCategories.map((c) => expect(c).toBeInTheDocument());
   });
 });

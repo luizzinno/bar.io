@@ -16,8 +16,13 @@ import {
   saveProductPortion,
   saveProductPortionType,
 } from 'core/api';
+import {
+  AlertSnackbarComponent,
+  HorizontalPosition,
+  Severity,
+  VerticalPosition,
+} from 'common-app/components/alert-snackbar';
 import { useHistory, useParams } from 'react-router-dom';
-import { switchRoutes } from 'core/router';
 
 interface Params {
   typeId: string;
@@ -30,13 +35,18 @@ export const EditPortionsContainer: React.FunctionComponent = () => {
   );
   const [editedProductPortionId, setEditedProductPortionId] = React.useState<string>('');
   const [isAdding, setAdding] = React.useState<boolean>(false);
+  const [error, setError] = React.useState<string>(null);
   const { typeId } = useParams<Params>();
   const history = useHistory();
 
   const getProductPortionType = async () => {
-    const productPortionType = await getProductPortionTypeById(typeId);
-    setProductPortionType(productPortionType);
-    setListItems(mapProductPortionListFromApiModelToListItem(productPortionType.portions));
+    try {
+      const productPortionType = await getProductPortionTypeById(typeId);
+      setProductPortionType(productPortionType);
+      setListItems(mapProductPortionListFromApiModelToListItem(productPortionType.portions));
+    } catch (error) {
+      setError('Error retrieving portion type');
+    }
   };
 
   React.useEffect(() => {
@@ -49,20 +59,36 @@ export const EditPortionsContainer: React.FunctionComponent = () => {
   const onReorder = async (startIndex, endIndex) => {
     const productPortions = productPortionType.portions;
     const reorderedPortions = reorder(productPortions, startIndex, endIndex);
-    await saveProductPortionType({ ...productPortionType, portions: reorderedPortions });
+    try {
+      await saveProductPortionType({ ...productPortionType, portions: reorderedPortions });
+    } catch (error) {
+      setError('Error saving portion type');
+    }
+
     await getProductPortionType();
   };
 
   const onSave = async (name: string, id?: string) => {
     setAdding(false);
     setEditedProductPortionId('');
-    await saveProductPortion({ id: id, name: name }, productPortionType.id);
+
+    try {
+      await saveProductPortion({ id: id, name: name }, productPortionType.id);
+    } catch (error) {
+      setError('Error saving portion');
+    }
+
     await getProductPortionType();
   };
 
   const onEdit = (id: string) => setEditedProductPortionId(id);
   const onDelete = async (id: string) => {
-    await deleteProductPortion(id);
+    try {
+      await deleteProductPortion(id);
+    } catch (error) {
+      setError('Error deleting portion');
+    }
+
     await getProductPortionType();
   };
 
@@ -75,35 +101,50 @@ export const EditPortionsContainer: React.FunctionComponent = () => {
     setEditedProductPortionId('');
   };
 
+  const onCloseErrorAlert = () => {
+    setError(null);
+  };
+
   return (
-    <Card className={classes.container}>
-      <CardHeader
-        component='h1'
-        title={`Editar ${productPortionType.name}`}
-        action={
-          <IconButton
-            color='primary'
-            aria-label='back home'
-            className={classes.icon}
-            onClick={() => history.goBack()}>
-            <ArrowBackIcon fontSize='large' />
-          </IconButton>
-        }
-      />
-      <CardContent>
-        <SortableListComponent
-          isAdding={isAdding}
-          items={listItems}
-          itemTypeName={`${productPortionType.name}`}
-          editItemId={editedProductPortionId}
-          onSave={onSave}
-          onEdit={onEdit}
-          onDelete={onDelete}
-          onReorder={onReorder}
-          onCancel={onCancel}
-          onAdd={onAdd}
+    <>
+      <Card className={classes.container}>
+        <CardHeader
+          component='h1'
+          title={`Editar ${productPortionType.name}`}
+          action={
+            <IconButton
+              color='primary'
+              aria-label='back home'
+              className={classes.icon}
+              onClick={() => history.goBack()}>
+              <ArrowBackIcon fontSize='large' />
+            </IconButton>
+          }
         />
-      </CardContent>
-    </Card>
+        <CardContent>
+          <SortableListComponent
+            isAdding={isAdding}
+            items={listItems}
+            itemTypeName={`${productPortionType.name}`}
+            editItemId={editedProductPortionId}
+            onSave={onSave}
+            onEdit={onEdit}
+            onDelete={onDelete}
+            onReorder={onReorder}
+            onCancel={onCancel}
+            onAdd={onAdd}
+          />
+        </CardContent>
+      </Card>
+      <AlertSnackbarComponent
+        open={!!error}
+        message={error}
+        onClose={onCloseErrorAlert}
+        severity={Severity.ERROR}
+        autoHideDuration={6000}
+        vertical={VerticalPosition.TOP}
+        horizontal={HorizontalPosition.CENTER}
+      />
+    </>
   );
 };

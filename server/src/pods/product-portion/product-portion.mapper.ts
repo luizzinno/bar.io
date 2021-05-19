@@ -6,9 +6,9 @@ export const mapFromProductPortionModelToApiModel = (
 ): apiModel.ProductPortion =>
   !!portion
     ? {
-        id: portion._id,
-        name: portion.name,
-      }
+      id: portion?._id ?? '',
+      name: portion?.name ?? '',
+    }
     : null;
 
 export const mapFromProductPortionTypeModelToApiModel = (
@@ -16,13 +16,13 @@ export const mapFromProductPortionTypeModelToApiModel = (
 ): apiModel.ProductPortionType =>
   !!productPortionType
     ? {
-        id: productPortionType._id,
-        name: productPortionType.name,
-        portions:
-          productPortionType.portions?.map((p) =>
-            mapFromProductPortionModelToApiModel(p)
-          ) ?? [],
-      }
+      id: productPortionType?._id ?? '',
+      name: productPortionType?.name ?? '',
+      portions:
+        productPortionType?.portions?.map((p) =>
+          mapFromProductPortionModelToApiModel(p)
+        ) ?? [],
+    }
     : null;
 
 export const mapFromProductPortionApiModelToModel = (
@@ -30,9 +30,9 @@ export const mapFromProductPortionApiModelToModel = (
 ): model.ProductPortion =>
   !!portion
     ? {
-        _id: portion.id,
-        name: portion.name,
-      }
+      _id: portion?.id ?? '',
+      name: portion?.name ?? '',
+    }
     : null;
 
 export const mapFromProductPortionTypeApiModelToModel = (
@@ -40,11 +40,11 @@ export const mapFromProductPortionTypeApiModelToModel = (
 ): model.ProductPortionType =>
   !!productPortionType
     ? {
-        _id: productPortionType.id,
-        name: productPortionType.name,
-        portions:
-          productPortionType.portions?.map((p) =>
-            mapFromProductPortionApiModelToModel(p)
-          ) ?? [],
-      }
+      _id: productPortionType?.id ?? '',
+      name: productPortionType?.name ?? '',
+      portions:
+        productPortionType?.portions?.map((p) =>
+          mapFromProductPortionApiModelToModel(p)
+        ) ?? [],
+    }
     : null;

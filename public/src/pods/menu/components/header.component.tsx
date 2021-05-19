@@ -4,21 +4,26 @@ import { Typography } from '@material-ui/core';
 import RestaurantIcon from '@material-ui/icons/Restaurant';
 
 interface HeaderProps {
-  name: string;
-  description?: string;
-  telephone?: string;
+  infoA: string;
+  infoB?: string;
+  infoC?: string;
 }
 
 export const HeaderComponent: React.FunctionComponent<HeaderProps> = (props: HeaderProps) => {
-  const { name, description, telephone } = props;
+  const { infoA, infoB, infoC } = props;
   return (
     <div className={classes.header}>
-      <Typography variant="h1" color={'primary'}>{name}</Typography>
-      {!!description && <Typography variant="h2" color={'secondary'}><RestaurantIcon /> {description}</Typography>}
-      {!!telephone && (
+      <Typography variant='h1' color={'primary'}>
+        {infoA}
+      </Typography>
+      {infoB && (
+        <Typography variant='h2' color={'secondary'}>
+          <RestaurantIcon /> {infoB}
+        </Typography>
+      )}
+      {infoC && (
         <dl className={classes.telephone}>
-          <dt>Teléfono de reservas:</dt>
-          <dd aria-label={telephone.split('').join('.')}>{telephone}</dd>
+          <dd>{infoC}</dd>
         </dl>
       )}
     </div>

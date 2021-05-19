@@ -5,7 +5,7 @@ import {
   VerticalPosition,
 } from 'common-app/alert-snackbar';
 import React from 'react';
-import { loadMenu } from './api';
+import { getMenu } from './api';
 import { MenuComponent } from './menu.component';
 import { mapMenuApiModelToViewModel } from './menu.mapper';
 import { createEmptyMenu, Menu } from './menu.vm';
@@ -13,11 +13,7 @@ import { ThemeContext } from 'core/theme';
 import { Theme } from 'core/theme/theme.vm';
 import { meat, fish } from 'core/theme';
 
-interface MenuContainerProps {
-  menuId: string;
-}
-
-export const MenuContainer: React.FunctionComponent<MenuContainerProps> = ({ menuId }) => {
+export const MenuContainer: React.FunctionComponent = () => {
   const [menu, setMenu] = React.useState<Menu>(createEmptyMenu());
   const [error, setError] = React.useState<string>(null);
   const themeContext = React.useContext(ThemeContext);
@@ -26,7 +22,7 @@ export const MenuContainer: React.FunctionComponent<MenuContainerProps> = ({ men
 
   const onLoadMenu = async () => {
     try {
-      const menu = await loadMenu(menuId);
+      const menu = await getMenu();
       setMenu(mapMenuApiModelToViewModel(menu));
     } catch (error) {
       setMenu(createEmptyMenu());
