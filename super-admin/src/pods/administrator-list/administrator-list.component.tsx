@@ -22,7 +22,7 @@ import { switchRoutes, linkRoutes } from 'core/router';
 import { useHistory } from 'react-router-dom';
 
 interface Props {
-  administratorListCollection: viewModel.AdministratorEntityVm[];
+  administratorList: viewModel.AdministratorEntityVm[];
   headers: string[];
   onCreateAdministrator: () => void;
   onEdit: (event: any) => void;
@@ -30,7 +30,7 @@ interface Props {
 }
 
 export const AdministratorListComponent: React.FunctionComponent<Props> = (props) => {
-  const { headers, administratorListCollection, onCreateAdministrator, onEdit, onDelete } = props;
+  const { headers, administratorList, onCreateAdministrator, onEdit, onDelete } = props;
   const { container, icon } = classes;
   const history = useHistory();
 
@@ -39,11 +39,11 @@ export const AdministratorListComponent: React.FunctionComponent<Props> = (props
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
-  const [list, setList] = React.useState([...administratorListCollection]);
+  const [list, setList] = React.useState([...administratorList]);
 
   React.useEffect(() => {
-    setList([...administratorListCollection]);
-  }, [administratorListCollection]);
+    setList([...administratorList]);
+  }, [administratorList]);
 
   const handleChangePage = (newPage) => {
     setPage(newPage);
@@ -60,7 +60,7 @@ export const AdministratorListComponent: React.FunctionComponent<Props> = (props
     };
 
     if (searchValue !== '') {
-      const newList = administratorListCollection.filter((administratorList) => {
+      const newList = administratorList.filter((administratorList) => {
         if (
           removeAccents(administratorList.name.toLowerCase()).includes(
             removeAccents(searchValue.toLowerCase()),
@@ -70,9 +70,11 @@ export const AdministratorListComponent: React.FunctionComponent<Props> = (props
       });
       setList([...newList]);
     } else {
-      setList([...administratorListCollection]);
+      setList([...administratorList]);
     }
   };
+
+  const handleBackPage = () => history.push(switchRoutes.selectionModule);
 
   return (
     <Card className={container}>
@@ -83,7 +85,7 @@ export const AdministratorListComponent: React.FunctionComponent<Props> = (props
             color='primary'
             aria-label='back home'
             className={icon}
-            onClick={() => history.push(switchRoutes.selectionModule)}>
+            onClick={handleBackPage}>
             <CloseIcon fontSize='large' />
           </IconButton>
         </div>
