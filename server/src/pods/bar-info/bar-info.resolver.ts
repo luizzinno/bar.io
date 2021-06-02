@@ -8,22 +8,22 @@ import {
 
 interface BarInfoResolver {
   Query: {
-    getBarInfoById: GraphQLResolver<BarInfo, { id: string }>;
+    getBarInfo: GraphQLResolver<BarInfo>;
   };
   Mutation: {
-    saveBarInfo: GraphQLResolver<BarInfo, { barInfo: BarInfo }>;
+    saveBarInfo: GraphQLResolver<boolean, { barInfo: BarInfo }>;
   };
 }
 
 export const barInfoResolver: BarInfoResolver = {
   Query: {
-    getBarInfoById: async (parent, { id }, context): Promise<BarInfo> =>
-      mapFromBarInfoModelToApiModel(await barInfoRepository.getBarInfoById(id)),
+    getBarInfo: async (parent, { }, context): Promise<BarInfo> =>
+      mapFromBarInfoModelToApiModel(await barInfoRepository.getBarInfo()),
   },
   Mutation: {
-    saveBarInfo: async (parent, { barInfo }, context): Promise<BarInfo> =>
-      mapFromBarInfoModelToApiModel(
-        await barInfoRepository.saveBarInfo(mapFromBarInfoApiModelToModel(barInfo))
-      ),
+    saveBarInfo: async (parent, { barInfo }, context): Promise<boolean> => {
+      await barInfoRepository.saveBarInfo(mapFromBarInfoApiModelToModel(barInfo));
+      return true;
+    },
   },
 };

@@ -20,6 +20,12 @@ import {
   mapProductFromApiToViewModel,
   mapProductFromViewToApiModel,
 } from './product.mapper';
+import {
+  AlertSnackbarComponent,
+  HorizontalPosition,
+  Severity,
+  VerticalPosition,
+} from 'common-app/components/alert-snackbar';
 import { Product } from './product.vm';
 import produce from 'immer';
 
@@ -32,6 +38,7 @@ export const EditProductContainer: React.FunctionComponent = () => {
   const [categories, setCategories] = React.useState<MenuCategory[]>([]);
   const [product, setProduct] = React.useState<Product>(createEmptyProductVm());
   const [portionTypes, setPortionTypes] = React.useState<ProductPortionType[]>([]);
+  const [error, setError] = React.useState<string>(null);
   const history = useHistory();
 
   const onChangeName = (name: string) => setProduct({ ...product, name: name });
@@ -51,46 +58,70 @@ export const EditProductContainer: React.FunctionComponent = () => {
   };
 
   const onChangePortionType = async (portionTypeId: string) => {
-    const productPortionType = await getProductPortionTypeById(portionTypeId);
-    setProduct({
-      ...product,
-      portionTypeId,
-      portions: productPortionType.portions.map((p) => ({ ...p, price: 0.0 })),
-    });
+    try {
+      const productPortionType = await getProductPortionTypeById(portionTypeId);
+      setProduct({
+        ...product,
+        portionTypeId,
+        portions: productPortionType.portions.map((p) => ({ ...p, price: 0.0 })),
+      });
+    } catch (error) {
+      setError('Error retrieving portion type');
+    }
   };
 
   const onSave = (p: Product) => {
-    saveProduct(mapProductFromViewToApiModel({ ...p, visible: false }), p.categoryId).then(() =>
-      history.push(routes.productList),
-    );
+    try {
+      saveProduct(mapProductFromViewToApiModel({ ...p, visible: false }), p.categoryId).then(() =>
+        history.push(routes.productList),
+      );
+    } catch (error) {
+      setError('Error saving product');
+    }
   };
 
   const onCancel = () => history.goBack();
 
+  const onCloseErrorAlert = () => {
+    setError(null);
+  };
+
   const getProductInfo = async () => {
-    if (!!productId) {
-      const product = await getProductById(productId);
-      if (!!product) {
-        const categoryId = (await getMenuCategoryByProductId(product.id))?.id;
-        const productPortionType = await getProductPortionTypeById(product.portionTypeId);
-        const productViewModel = mapProductFromApiToViewModel(product);
+    try {
+      if (!!productId) {
+        const product = await getProductById(productId);
+        if (!!product) {
+          const categoryId = (await getMenuCategoryByProductId(product.id))?.id;
+          const productPortionType = await getProductPortionTypeById(product.portionTypeId);
+          const productViewModel = mapProductFromApiToViewModel(product);
 
-        productViewModel.portions.map(
-          (p) => (p.name = productPortionType.portions?.find((s) => s.id === p.id)?.name ?? ''),
-        );
+          productViewModel.portions.map(
+            (p) => (p.name = productPortionType.portions?.find((s) => s.id === p.id)?.name ?? ''),
+          );
 
-        setProduct({
-          ...productViewModel,
-          categoryId: categoryId,
-        });
+          setProduct({
+            ...productViewModel,
+            categoryId: categoryId,
+          });
+        }
       }
+    } catch (error) {
+      setError('Error getting product');
     }
 
-    const menuCategories = await getMenuCategories();
-    setCategories(mapMenuCategoryListFromApiToViewModel(menuCategories));
+    try {
+      const menuCategories = await getMenuCategories();
+      setCategories(mapMenuCategoryListFromApiToViewModel(menuCategories));
+    } catch (error) {
+      setError('Error getting categories');
+    }
 
-    const portionTypes = await getProductPortionTypes();
-    setPortionTypes(portionTypes);
+    try {
+      const portionTypes = await getProductPortionTypes();
+      setPortionTypes(portionTypes);
+    } catch (error) {
+      setError('Error getting portion types');
+    }
   };
 
   React.useEffect(() => {
@@ -113,6 +144,15 @@ export const EditProductContainer: React.FunctionComponent = () => {
         onChangeName={onChangeName}
         onChangeDescription={onChangeDescription}
         onChangePortionPrice={onChangePortionPrice}
+      />
+      <AlertSnackbarComponent
+        open={!!error}
+        message={error}
+        onClose={onCloseErrorAlert}
+        severity={Severity.ERROR}
+        autoHideDuration={6000}
+        vertical={VerticalPosition.TOP}
+        horizontal={HorizontalPosition.CENTER}
       />
     </div>
   );

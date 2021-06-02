@@ -4,20 +4,20 @@ export interface MenuCategoryRepositoryContract {
   getMenuCategories: () => Promise<MenuCategory[]>;
   getMenuCategoryById: (id: string) => Promise<MenuCategory>;
   getMenuCategoryByProductId: (productId: string) => Promise<MenuCategory>;
-  saveMenuCategory: (menuCategory: MenuCategory) => Promise<boolean>;
-  saveMenuCategories: (menuCategories: MenuCategory[]) => Promise<boolean>;
+  saveMenuCategory: (menuCategory: MenuCategory) => Promise<void>;
+  saveMenuCategories: (menuCategories: MenuCategory[]) => Promise<void>;
   getProductById: (id: string) => Promise<Product>;
   saveProduct: (product: Product, categoryId?: string) => Promise<string>;
   saveProducts: (
     categoryId: string,
     products: Product[]
-  ) => Promise<boolean>;
-  deleteMenuCategory: (id: string) => Promise<boolean>;
-  deleteProduct: (id: string) => Promise<boolean>;
+  ) => Promise<void>;
+  deleteMenuCategory: (id: string) => Promise<void>;
+  deleteProduct: (id: string) => Promise<void>;
   removeProductPortionFromProducts: (
     productPortionId: string
-  ) => Promise<boolean>;
+  ) => Promise<void>;
   removeProductPortionTypeFromProducts: (
     productPortionTypeId: string
-  ) => Promise<boolean>;
+  ) => Promise<void>;
 }

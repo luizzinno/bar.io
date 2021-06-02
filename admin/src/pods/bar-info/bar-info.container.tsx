@@ -25,12 +25,12 @@ import {
 export const BarInfoContainer: React.FunctionComponent = () => {
   const history = useHistory();
   const [error, setError] = React.useState<string>(null);
-  const [barInfo, setbarInfo] = React.useState<BarInfo>(createEmptyBarInfo());
+  const [barInfo, setBarInfo] = React.useState<BarInfo>(createEmptyBarInfo());
 
   React.useEffect(() => {
     if (history.location.state !== undefined) {
       const bar: BarInfo = history.location.state as BarInfo;
-      setbarInfo(bar);
+      setBarInfo(bar);
     } else {
       onLoadBarInfo();
     }
@@ -38,29 +38,22 @@ export const BarInfoContainer: React.FunctionComponent = () => {
 
   const onLoadBarInfo = async () => {
     getBarInfo()
-    .then((result) => {
-      //Mock....
-      setbarInfo(mapBarInfoFromApiToVm(result));
-    })
-    .catch((error) => {
-      // Snackbar error
-      // alert('Error to load bar info');
-      setError('Error to load bar info');
-    });
+      .then((result) => {
+        setBarInfo(mapBarInfoFromApiToVm(result));
+      })
+      .catch((error) => {
+        setError('Error to load bar info');
+      });
   };
 
   const handleSave = (barInfo: BarInfo) => {
     saveBarInfo(barInfo)
-    .then((result) => {
-      // Snackbar error
-      // alert('Updated Bar info');
-      setError('Updated Bar info');
-    })
-    .catch((error) => {
-      // Snackbar error
-      // alert('Error to update bar info');
-      setError('Error to update bar info');
-    });
+      .then((result) => {
+        setError('Updated Bar info');
+      })
+      .catch((error) => {
+        setError('Error to update bar info');
+      });
   };
 
   const handleCancel = () => {

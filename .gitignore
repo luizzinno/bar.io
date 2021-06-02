@@ -45,6 +45,7 @@ junit.xml
 *.log
 *.orig
 /typings
+report.**.json
 
 # System Files
 .DS_Store

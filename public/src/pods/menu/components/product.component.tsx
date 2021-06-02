@@ -16,8 +16,10 @@ export const ProductComponent: React.FunctionComponent<ProductComponentProps> = 
       {product.portions.length > 1 ? (
         <>
           <strong>{product.name}</strong>
-          <p className={classes.description}>{product.description}</p>
           <dl>
+            {product.description !== '' && (
+              <p className={classes.description}>{product.description}</p>
+            )}
             {product?.portions.map((p, index) => (
               <div key={`portion-${productIndex}-${index}`} className={classes.product}>
                 <dt className={classes.portion}>{p.name}</dt>
@@ -33,7 +35,9 @@ export const ProductComponent: React.FunctionComponent<ProductComponentProps> = 
           <dl className={classes.product}>
             <dt className={classes.portion}>
               <strong>{product.name}</strong>
-              <p className={classes.description}>{product.description}</p>
+                {product.description !== '' && (
+                  <p className={classes.description}>{product.description}</p>
+                )}
             </dt>
             <dd className={classes.price} style={{ color: theme.palette.primary.main }}>
               {product.portions[0].price}

@@ -47,6 +47,18 @@ export const saveProductPortionType = async (
     { productPortionType: productPortionType },
   );
 
+export const saveProductPortionTypes = async (
+  productPortionTypes: ProductPortionType[],
+): Promise<boolean> =>
+  await apiClient.request<boolean>(
+    gql`
+        mutation($productPortionTypes: [ProductPortionTypeInput]!) {
+          saveProductPortionTypes(productPortionTypes: $productPortionTypes)
+        }
+      `,
+    { productPortionTypes: productPortionTypes },
+  );
+
 export const saveProductPortion = async (
   productPortion: ProductPortion,
   productPortionTypeId?: string,
@@ -78,7 +90,7 @@ export const deleteProductPortion = async (id: string): Promise<boolean> => {
   await apiClient.request<boolean>(
     gql`
       mutation($id: ID!) {
-        deleteProductPortion(ID: $ID)
+        deleteProductPortion(id: $id)
       }
     `,
     { id: id },
