@@ -3,16 +3,14 @@ import { AdministratorEntityVm } from './administrator-list.vm';
 import { getAdministratorList } from './api';
 import { mapAdministratorListFromApiToVm } from './administrator-list.mapper';
 
-export const administratorList = () => {
-  const [administratorListCollection, setAdministratorListCollection] = React.useState<
-    AdministratorEntityVm[]
-  >([]);
+export const administratorListHook = () => {
+  const [administratorList, setAdministratorList] = React.useState<AdministratorEntityVm[]>([]);
 
   const handleloadAdministratorList = () => {
     getAdministratorList()
       .then((administratorList) => {
         const administrationListVm = mapAdministratorListFromApiToVm(administratorList);
-        setAdministratorListCollection(administrationListVm);
+        setAdministratorList(administrationListVm);
       })
       .catch((error) => {
         console.log(error);
@@ -20,8 +18,8 @@ export const administratorList = () => {
   };
 
   return {
-    administratorListCollection,
+    administratorList,
     handleloadAdministratorList,
-    setAdministratorListCollection,
+    setAdministratorList,
   };
 };
