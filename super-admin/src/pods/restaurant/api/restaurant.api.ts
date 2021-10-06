@@ -13,6 +13,14 @@ export const getRestaurantInfo = async (id: string): Promise<RestaurantInfo> =>
     }, 500);
   });
 
+export const createRestaurantInfo = async (restaurantInfo: RestaurantInfo): Promise<boolean> =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      // mock call
+      resolve(true);
+    }, 500);
+  });
+
 export const updateRestaurantInfo = async (restaurantInfo: RestaurantInfo): Promise<boolean> =>
   new Promise((resolve) => {
     setTimeout(() => {

@@ -8,7 +8,6 @@ import {
   AdministratorScene,
   RestaurantListScene,
   RestaurantScene,
-  EditRestaurantScene,
 } from 'scenes/superAdmin';
 
 export const RouterComponent: React.FunctionComponent = () => {
@@ -30,7 +29,7 @@ export const RouterComponent: React.FunctionComponent = () => {
         <Route exact={true} path={switchRoutes.editAdministrator} component={AdministratorScene} />
         <Route exact={true} path={switchRoutes.restaurantList} component={RestaurantListScene} />
         <Route exact={true} path={switchRoutes.createRestaurant} component={RestaurantScene} />
-        <Route exact={true} path={switchRoutes.editRestaurant} component={EditRestaurantScene} />
+        <Route exact={true} path={switchRoutes.editRestaurant} component={RestaurantScene} />
       </Switch>
     </Router>
   );
