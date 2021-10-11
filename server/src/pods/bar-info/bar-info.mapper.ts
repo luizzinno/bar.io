@@ -13,6 +13,13 @@ export const mapFromBarInfoModelToApiModel = (
     }
     : null;
 
+export const mapFromBarInfoModelCollectionToApiModel = (
+  barInfoList: model.BarInfo[]
+): apiModel.BarInfo[] =>
+  !!barInfoList
+    ? barInfoList.map(item => mapFromBarInfoModelToApiModel(item))
+    : [];
+
 export const mapFromBarInfoApiModelToModel = (
   barInfo: apiModel.BarInfo
 ): model.BarInfo =>

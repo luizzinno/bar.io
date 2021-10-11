@@ -10,6 +10,9 @@ export const barInfoTypeDefs = gql`
 
   extend type Query {
     getBarInfo: BarInfo
+    getBarInfoById: BarInfo
+    getBarInfoByInfoA: BarInfo
+    getBarInfoList: [BarInfo]
   }
 
   input BarInfoInput {
