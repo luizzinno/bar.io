@@ -53,8 +53,8 @@ export const TableFooterComponent: React.FC<Props> = (props) => {
           count={length}
           rowsPerPage={rowsPerPage}
           page={page > 0 && length === rowsPerPage ? 0 : page}
-          onChangePage={onChangePage}
-          onChangeRowsPerPage={onChangeRowsPerPage}
+          onPageChange={onChangePage}
+          onRowsPerPageChange={onChangeRowsPerPage}
           classes={{
             selectRoot: classes.selectRoot,
             actions: classes.actions,
