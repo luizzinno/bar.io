@@ -1,6 +1,10 @@
 import * as apiModel from './bar-info.model';
 import * as model from 'dals/bar-info/bar-info.model';
-import { mapFromBarInfoApiModelToModel, mapFromBarInfoModelToApiModel } from './bar-info.mapper';
+import {
+    mapFromBarInfoApiModelToModel,
+    mapFromBarInfoModelToApiModel,
+    mapFromBarInfoModelCollectionToApiModel,
+} from './bar-info.mapper';
 
 describe('BarInfo mapper tests', () => {
     it('should map from model to api model', () => {
@@ -137,6 +141,46 @@ describe('BarInfo mapper tests', () => {
             infoB: '',
             infoC: '',
         }
+
+        expect(result).toEqual(expectedModel);
+    });
+
+    // Specs collection mapper
+    it('should map from model collection to api model', () => {
+        //Arrange
+        const model: model.BarInfo[] = [
+            {
+                _id: '1',
+                infoA: 'Nombre del restaurante',
+                infoB: 'Dirección del restaurante',
+                infoC: 'Teléfono del restaurante',
+            },
+            {
+                _id: '2',
+                infoA: 'Nombre del restaurante',
+                infoB: 'Dirección del restaurante',
+                infoC: 'Teléfono del restaurante',
+            },
+        ];
+
+        //Act
+        const result = mapFromBarInfoModelCollectionToApiModel(model);
+
+        //Assert
+        const expectedModel: apiModel.BarInfo[] = [
+            {
+                id: '1',
+                infoA: 'Nombre del restaurante',
+                infoB: 'Dirección del restaurante',
+                infoC: 'Teléfono del restaurante',
+            },
+            {
+                id: '2',
+                infoA: 'Nombre del restaurante',
+                infoB: 'Dirección del restaurante',
+                infoC: 'Teléfono del restaurante',
+            },
+        ];
 
         expect(result).toEqual(expectedModel);
     });
