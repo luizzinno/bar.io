@@ -19,16 +19,16 @@ import Grid from '@material-ui/core/Grid';
 
 interface Props {
   info: RestaurantInfo;
-  onEdit: (restaurantInfo: RestaurantInfo) => void;
+  onSave: (restaurantInfo: RestaurantInfo) => void;
   onDelete: (id: string) => void;
 }
 
 export const RestaurantInfoComponent: React.FC<Props> = (props) => {
-  const { info, onEdit, onDelete } = props;
+  const { info, onSave, onDelete } = props;
   return (
     <>
       <Formik
-        onSubmit={onEdit}
+        onSubmit={onSave}
         initialValues={info}
         enableReinitialize={true}
         validate={formValidation.validateForm}>
@@ -53,19 +53,23 @@ export const RestaurantInfoComponent: React.FC<Props> = (props) => {
             </Grid>
 
             <Grid container spacing={3}>
-              <Grid item xs={12} sm={6}>
-                <Button
-                  type='button'
-                  variant='contained'
-                  color='secondary'
-                  size='large'
-                  fullWidth={true}
-                  onClick={() => {
-                    onDelete(info.id);
-                  }}>
-                  Cancel
-                </Button>
-              </Grid>
+              {info.id ? (
+                <Grid item xs={12} sm={6}>
+                  <Button
+                    type='button'
+                    variant='contained'
+                    color='secondary'
+                    size='large'
+                    fullWidth={true}
+                    onClick={() => {
+                      onDelete(info.id);
+                    }}>
+                    Delete
+                  </Button>
+                </Grid>
+              ) : (
+                <></>
+              )}
               <Grid item xs={12} sm={6}>
                 <Button
                   type='submit'

@@ -20,8 +20,8 @@ export const baseRoutes: BaseRoutes = {
   restaurantList: '/restaurant-list',
   createAdministrator: '/create-administrator',
   editAdministrator: '/edit-administrator/:id',
-  createRestaurant: '/create-restaurant',
-  editRestaurant: '/edit-restaurant/:id',
+  createRestaurant: '/restaurant',
+  editRestaurant: '/restaurant/:id',
 };
 
 type SwitchRoutes = BaseRoutes;

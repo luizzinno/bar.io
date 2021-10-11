@@ -1,20 +1,27 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { RestaurantListComponent } from './restaurant-list.component';
 import { Restaurant, createEmpyRestaurant } from './restaurant.vm';
 import * as api from './api';
+import { linkRoutes, switchRoutes } from 'core/router';
 
 //Cabecera de la tabla
 const headers = ['Nombre', 'Email', 'Movil', 'Actions'];
 
 export const RestaurantListContainer: React.FunctionComponent = () => {
   const [restaurants, setRestaurants] = React.useState<Restaurant[]>(createEmpyRestaurant());
+  const history = useHistory();
 
   React.useEffect(() => {
     onLoadRestaurants();
   }, []);
 
+  const handleCreate = () => {
+    history.push(switchRoutes.createRestaurant);
+  }
+
   const handleEdit = (row: Restaurant) => {
-    alert('Editar ' + row.id);
+    history.push(linkRoutes.editRestaurant(row.id));
   };
 
   const handleDelete = (row: Restaurant) => {
@@ -51,6 +58,7 @@ export const RestaurantListContainer: React.FunctionComponent = () => {
     <RestaurantListComponent
       headers={headers}
       restaurants={restaurants}
+      onCreate={handleCreate}
       onEdit={handleEdit}
       onDelete={handleDelete}
     />

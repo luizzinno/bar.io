@@ -6,12 +6,14 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import Button from '@material-ui/core/Button';
 
 //Common
 import { SearchContainer } from 'common/components/search';
 import { TableContainer } from 'common/components/table';
 //CSS
 import * as classes from 'common/styles/modules.styles';
+import * as classesPropias from './restaurant-list.styles';
 
 //Router
 import { switchRoutes } from 'core/router';
@@ -23,12 +25,13 @@ import { Restaurant } from './restaurant.vm';
 interface Props {
   headers: string[];
   restaurants: Restaurant[];
+  onCreate: () => void;
   onEdit: (event: any) => void;
   onDelete: (event: any) => void;
 }
 
 export const RestaurantListComponent: React.FunctionComponent<Props> = (props) => {
-  const { headers, restaurants, onEdit, onDelete } = props;
+  const { headers, restaurants, onCreate, onEdit, onDelete } = props;
   const { container, icon } = classes;
   const history = useHistory();
   //Search
@@ -90,6 +93,11 @@ export const RestaurantListComponent: React.FunctionComponent<Props> = (props) =
           onEdit={onEdit}
           onDelete={onDelete}
         />
+        <div className={classesPropias.container}>
+          <Button type='button' variant='contained' color='primary' onClick={() => onCreate()}>
+            Nuevo
+          </Button>
+        </div>
       </CardContent>
     </Card>
   );
