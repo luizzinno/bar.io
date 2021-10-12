@@ -10,6 +10,10 @@ import { isValidLogin } from './api/login-api';
 //Vm
 import { Login } from './login.vm';
 
+
+//Context
+import { userContext, Role } from 'core/user';
+
 //Component
 import { LoginComponent } from './login.component';
 import {
@@ -20,13 +24,26 @@ import {
 } from 'common-app/components/alert-snackbar';
 
 export const LoginContainer: React.FunctionComponent = () => {
+  const { setUser } = React.useContext(userContext);
   const history = useHistory();
   const [error, setError] = React.useState<string>(null);
 
-  const loginSucceeded = (userName: string, isValid: boolean): void => {
-    if (isValid) {
+  const loginSucceeded = (email: string, role: Role): void => {
+    if (role !== Role.NONE) {
+      setUser({
+        email,
+        role,
+        barId: 0, //mocked bar id
+      });
+
+      //User is superadmin
+      if (role === Role.SUPERADMIN) {
+        history.push(routes.barInfoList);
+      } else {
         history.push(routes.dashboard);
+      }
     } else {
+      // Snackbar error
       setError('Invalid login');
     }
   };

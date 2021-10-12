@@ -5,7 +5,6 @@ import { renderWithRouter } from 'common/components/test';
 import { Route } from 'react-router-dom';
 import { DashboardItemProps } from 'common/components';
 import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
-import userEvent from '@testing-library/user-event';
 
 describe('HeaderComponent spec', () => {
   it('"HTML elements" should be displayed without drawer', () => {
@@ -13,6 +12,7 @@ describe('HeaderComponent spec', () => {
     const props = {
       name: 'test title',
       hasDrawer: false,
+      hasReturnToList: false,
     };
 
     // Act
@@ -27,11 +27,13 @@ describe('HeaderComponent spec', () => {
     expect(titleElemet).toHaveTextContent('test title');
     expect(buttons.length).toBe(1);
   });
+
   it('"HTML elements" should be displayed with drawer', () => {
     // Arrange
     const props = {
       name: 'test name',
       hasDrawer: true,
+      hasReturnToList: false,
       item: {
         icon: PeopleAltIcon,
         title: 'test name',
@@ -56,5 +58,41 @@ describe('HeaderComponent spec', () => {
     expect(titleElemet).toBeInTheDocument();
     expect(titleElemet).toHaveTextContent('test name');
     expect(buttons.length).toBe(2);
+  });
+
+  it('Return to bar list button should not be displayed', () => {
+    // Arrange
+    const props = {
+      name: 'test title',
+      hasDrawer: false,
+      hasReturnToList: false,
+    };
+
+    // Act
+    render(<HeaderComponent {...props} />);
+    const buttons = screen.getAllByRole('button');
+    const returnButton = screen.queryByLabelText('return to bar list');
+
+    // Assert
+    expect(buttons.length).toBe(1);
+    expect(returnButton).toBeNull();
+  });
+
+  it('Return to bar list button should not be displayed', () => {
+    // Arrange
+    const props = {
+      name: 'test title',
+      hasDrawer: false,
+      hasReturnToList: true,
+    };
+
+    // Act
+    render(<HeaderComponent {...props} />);
+    const buttons = screen.getAllByRole('button');
+    const returnButton = screen.queryByLabelText('return to bar list');
+
+    // Assert
+    expect(buttons.length).toBe(2);
+    expect(returnButton).toBeInTheDocument();
   });
 });

@@ -1,7 +1,7 @@
 import React from 'react';
 
 //Api
-import * as api from './api';
+import { getBarInfo, saveBarInfo } from 'core/api';
 
 //Router
 import { useHistory } from 'react-router-dom';
@@ -37,8 +37,7 @@ export const BarInfoContainer: React.FunctionComponent = () => {
   }, []);
 
   const onLoadBarInfo = async () => {
-    api
-      .getBarInfo()
+    getBarInfo()
       .then((result) => {
         setBarInfo(mapBarInfoFromApiToVm(result));
       })
@@ -48,8 +47,7 @@ export const BarInfoContainer: React.FunctionComponent = () => {
   };
 
   const handleSave = (barInfo: BarInfo) => {
-    api
-      .saveBarInfo(barInfo)
+    saveBarInfo(barInfo)
       .then((result) => {
         setError('Updated Bar info');
       })
