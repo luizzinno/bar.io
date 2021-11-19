@@ -1,7 +1,6 @@
 import React from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
-// TODO: fix path stuff
-import { formatSlugFromUrlParam } from "../../common/helpers/slug.helpers";
+import { formatSlugFromUrlParam } from "common/helpers/slug.helpers";
 
 interface Props {
   slug: string;
