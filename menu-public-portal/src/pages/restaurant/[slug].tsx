@@ -1,6 +1,7 @@
 import React from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { formatSlugFromUrlParam } from "common/helpers/slug.helpers";
+import { RestaurantContainer } from "pods/restaurant";
 
 interface Props {
   slug: string;
@@ -8,7 +9,7 @@ interface Props {
 
 export const BarPage: React.FunctionComponent<Props> = (props) => {
   const { slug } = props;
-  return <h1>Carta de {slug}</h1>;
+  return <RestaurantContainer restauranteName={slug} />;
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {

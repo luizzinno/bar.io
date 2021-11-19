@@ -16,7 +16,7 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <h5 className={styles.title}>Listado restaurantes</h5>
 
-        <Link href="/restaurante/papulinos">Papulinos</Link>
+        <Link href="/restaurant/papulinos">Papulinos</Link>
       </main>
 
       <footer className={styles.footer}>
