@@ -9,7 +9,7 @@ interface Props {
 
 export const BarPage: React.FunctionComponent<Props> = (props) => {
   const { slug } = props;
-  return <RestaurantContainer restauranteName={slug} />;
+  return <RestaurantContainer restaurantName={slug} />;
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {

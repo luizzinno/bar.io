@@ -1,11 +1,16 @@
 import React from "react";
+import * as classes from "./restaurant.styles";
 
 interface Props {
-  nombreRestaurante: string;
+  restaurantName: string;
 }
 
 export const RestaurantComponent: React.FC<Props> = (props) => {
-  const { nombreRestaurante } = props;
+  const { restaurantName } = props;
 
-  return <h1>Carta de {nombreRestaurante}</h1>;
+  return (
+    <>
+      <h1 className={classes.testh1}>Carta de {restaurantName}</h1>
+    </>
+  );
 };

@@ -1,11 +1,12 @@
 import React from "react";
+import { RestaurantComponent } from "./restaurant.component";
 
 interface Props {
-  restauranteName: string;
+  restaurantName: string;
 }
 
 export const RestaurantContainer: React.FC<Props> = (props) => {
-  const { restauranteName: nombreRestaurante } = props;
+  const { restaurantName } = props;
 
-  return <h1>Carta de {nombreRestaurante}</h1>;
+  return <RestaurantComponent restaurantName={restaurantName} />;
 };
