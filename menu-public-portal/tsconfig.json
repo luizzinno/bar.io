@@ -24,6 +24,6 @@
       "common-app": ["common-app"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "config/test/jest.js"],
   "exclude": ["node_modules"]
 }
