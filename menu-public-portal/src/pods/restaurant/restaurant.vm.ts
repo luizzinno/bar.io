@@ -5,8 +5,9 @@ interface PriceByRation {
 
 interface Items {
   name: string;
+  description?: string;
   price?: number;
-  priceByRation: PriceByRation[];
+  priceByRation?: PriceByRation[];
 }
 
 interface CategoryEntry {
