@@ -14,7 +14,12 @@ export const RestaurantContainer: React.FC<Props> = (props) => {
     React.useState<RestaurantInfo>(emptyRestaurantInfo);
 
   React.useEffect(() => {
-    if (restaurantName !== undefined) {
+    const isAllRight = (restaurantMenuInfo): boolean =>
+      restaurantMenuInfo !== undefined &&
+      restaurantMenuInfo !== null &&
+      Object.keys(restaurantMenuInfo).length > 0;
+
+    if (isAllRight(restaurantMenuInfo)) {
       getRestaurantMenu().then(setRestaurantMenuInfo);
     }
   }, []);
