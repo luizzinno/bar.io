@@ -1,7 +1,10 @@
 import { RestaurantInfo } from "./restaurant.vm";
 import { restaurantMockData } from "./restaurant.mock";
 
-// TODO: Manolo
-export const getRestaurantMenu = async (): Promise<RestaurantInfo> => {
-  return restaurantMockData;
+export const getRestaurantMenu = async (
+  restaurantName
+): Promise<RestaurantInfo[]> => {
+  return await restaurantMockData.filter(
+    (restaurant) => restaurant.nameParams === restaurantName
+  );
 };

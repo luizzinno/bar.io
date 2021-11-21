@@ -13,7 +13,7 @@ const RationComponent: React.FC<PropsRation> = (props) => {
       {ration.map((item) => (
         <li key={item.rationName}>
           <p>{item.rationName}</p>
-          <p>Price: {item.price} €</p>
+          <p>Precio: {item.price} €</p>
         </li>
       ))}
     </>
@@ -32,7 +32,7 @@ export const ItemsComponent: React.FC<PropsItemsComponent> = (props) => {
         <li key={item.name}>
           <p>{item.name}</p>
           {item.description ? <p>Descripción: {item.description}</p> : null}
-          {item.price ? <p>Price: {item.price} €</p> : null}
+          {item.price ? <p>Precio: {item.price} €</p> : null}
           {item.priceByRation ? (
             <ul>
               <RationComponent ration={item.priceByRation} />

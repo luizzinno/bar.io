@@ -9,19 +9,15 @@ interface Props {
 
 export const RestaurantContainer: React.FC<Props> = (props) => {
   const { restaurantName } = props;
+  const restaurantNameWithOutBar = restaurantName.substring(1);
 
   const [restaurantMenuInfo, setRestaurantMenuInfo] =
     React.useState<RestaurantInfo>(emptyRestaurantInfo);
 
   React.useEffect(() => {
-    const isAllRight = (restaurantMenuInfo): boolean =>
-      restaurantMenuInfo !== undefined &&
-      restaurantMenuInfo !== null &&
-      Object.keys(restaurantMenuInfo).length > 0;
-
-    if (isAllRight(restaurantMenuInfo)) {
-      getRestaurantMenu().then(setRestaurantMenuInfo);
-    }
+    getRestaurantMenu(restaurantNameWithOutBar).then((restaurantMenuInfo) =>
+      setRestaurantMenuInfo(restaurantMenuInfo[0])
+    );
   }, []);
 
   return (
