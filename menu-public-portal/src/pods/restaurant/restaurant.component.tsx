@@ -6,7 +6,7 @@ interface PropsRation {
   ration: PriceByRation[];
 }
 
-const PriceByRationComponent: React.FC<PropsRation> = (props) => {
+const RationComponent: React.FC<PropsRation> = (props) => {
   const { ration } = props;
   return (
     <>
@@ -20,10 +20,10 @@ const PriceByRationComponent: React.FC<PropsRation> = (props) => {
   );
 };
 
-interface PropsSubItemComponent {
+interface PropsItemsComponent {
   items: Items[];
 }
-export const SubItemComponent: React.FC<PropsSubItemComponent> = (props) => {
+export const ItemsComponent: React.FC<PropsItemsComponent> = (props) => {
   const { items } = props;
 
   return (
@@ -35,7 +35,7 @@ export const SubItemComponent: React.FC<PropsSubItemComponent> = (props) => {
           {item.price ? <p>Price: {item.price} €</p> : null}
           {item.priceByRation ? (
             <ul>
-              <PriceByRationComponent ration={item.priceByRation} />
+              <RationComponent ration={item.priceByRation} />
             </ul>
           ) : null}
         </li>
@@ -63,7 +63,7 @@ export const RestaurantComponent: React.FC<Props> = (props) => {
           <li key={item.name}>
             <h3>{item.name}</h3>
             <ul>
-              <SubItemComponent items={item.items} />
+              <ItemsComponent items={item.items} />
             </ul>
           </li>
         ))}
