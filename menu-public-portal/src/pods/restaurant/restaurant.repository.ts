@@ -5,6 +5,6 @@ export const getRestaurantMenu = async (
   restaurantName
 ): Promise<RestaurantInfo[]> => {
   return await restaurantMockData.filter(
-    (restaurant) => restaurant.nameParams === restaurantName
+    (restaurant) => restaurant.urlName === restaurantName
   );
 };

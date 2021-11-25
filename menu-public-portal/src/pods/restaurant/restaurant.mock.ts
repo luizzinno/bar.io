@@ -3,7 +3,7 @@ import { RestaurantInfo } from "./restaurant.vm";
 export const restaurantMockData: RestaurantInfo[] = [
   {
     name: "Papulinos",
-    nameParams: "papulinos",
+    urlName: "papulinos",
     heading1: "Las mejores carnes a la brasa",
     heading2: "Teléfono de Contacto: 952 28 38 49",
     menu: [

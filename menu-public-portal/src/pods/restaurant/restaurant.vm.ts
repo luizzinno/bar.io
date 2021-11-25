@@ -17,7 +17,7 @@ interface CategoryEntry {
 
 export interface RestaurantInfo {
   name: string;
-  nameParams: string;
+  urlName: string;
   heading1: string;
   heading2: string;
   menu: CategoryEntry[];
@@ -25,7 +25,7 @@ export interface RestaurantInfo {
 
 export const emptyRestaurantInfo = (): RestaurantInfo => ({
   name: "",
-  nameParams: "",
+  urlName: "",
   heading1: "",
   heading2: "",
   menu: [],
