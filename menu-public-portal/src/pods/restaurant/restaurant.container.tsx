@@ -16,7 +16,7 @@ export const RestaurantContainer: React.FC<Props> = (props) => {
 
   React.useEffect(() => {
     getRestaurantMenu(restaurantNameWithOutBar).then((restaurantMenuInfo) =>
-      setRestaurantMenuInfo(restaurantMenuInfo[0])
+      setRestaurantMenuInfo(restaurantMenuInfo)
     );
   }, []);
 
