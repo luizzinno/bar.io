@@ -10,7 +10,7 @@ export interface Items {
   priceByRation?: PriceByRation[];
 }
 
-interface CategoryEntry {
+export interface CategoryEntry {
   name: string;
   items: Items[];
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import { RestaurantComponent } from "./restaurant.component";
+import { mapFromRestaurantApiToRestaurantVm } from "./restaurant.mapper";
 import { getRestaurantMenu } from "./restaurant.repository";
 import { RestaurantInfo, emptyRestaurantInfo } from "./restaurant.vm";
 
@@ -16,7 +17,9 @@ export const RestaurantContainer: React.FC<Props> = (props) => {
 
   React.useEffect(() => {
     getRestaurantMenu(restaurantNameWithOutBar).then((restaurantMenuInfo) =>
-      setRestaurantMenuInfo(restaurantMenuInfo)
+      setRestaurantMenuInfo(
+        mapFromRestaurantApiToRestaurantVm(restaurantMenuInfo)
+      )
     );
   }, []);
 
