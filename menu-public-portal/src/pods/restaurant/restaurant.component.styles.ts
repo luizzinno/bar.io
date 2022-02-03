@@ -9,3 +9,15 @@ export const headingContainer = css`
 export const testh1 = css`
   color: blue;
 `;
+
+export const dishesContainer = css`
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px; // Todo use relative margin mui
+`;
+
+export const rationDishContainer = css`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px; // Todo use relative margin mui
+`;
