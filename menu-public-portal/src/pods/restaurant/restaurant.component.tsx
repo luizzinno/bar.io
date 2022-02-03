@@ -87,17 +87,6 @@ export const RestaurantComponent: React.FC<Props> = (props) => {
           </Accordion>
         ))}
       </div>
-
-      <ul>
-        {menu.map((item) => (
-          <li key={item.name}>
-            <h3>{item.name}</h3>
-            <ul>
-              <DishesComponent items={item.items} />
-            </ul>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 };
