@@ -1,5 +1,6 @@
+import { Typography } from "@mui/material";
 import React from "react";
-import * as classes from "./restaurant.styles";
+import * as classes from "./restaurant.component.styles";
 import { RestaurantInfo, Items, PriceByRation } from "./restaurant.vm";
 
 interface PropsRation {
@@ -54,10 +55,16 @@ export const RestaurantComponent: React.FC<Props> = (props) => {
   const { name, heading1, heading2, menu } = restaurantMenuInfo;
 
   return (
-    <>
-      <h1 className={classes.testh1}>Carta de {name}</h1>
-      <h2>{heading1}</h2>
-      <h2>{heading2}</h2>
+    <div className={classes.headingContainer}>
+      <Typography variant="h3" component="h1">
+        Carta de {name}
+      </Typography>
+      <Typography variant="h5" component="h2">
+        {heading1}
+      </Typography>
+      <Typography variant="h5" component="h2">
+        {heading2}
+      </Typography>
       <ul>
         {menu.map((item) => (
           <li key={item.name}>
@@ -68,6 +75,6 @@ export const RestaurantComponent: React.FC<Props> = (props) => {
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 };
