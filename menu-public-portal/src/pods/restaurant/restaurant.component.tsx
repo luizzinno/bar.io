@@ -3,9 +3,10 @@ import React from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
 import * as classes from "./restaurant.component.styles";
 import { RestaurantInfo, Items, PriceByRation } from "./restaurant.vm";
+import { AccordionSummaryStyled } from "common/components";
 
 interface PropsRation {
   ration: PriceByRation[];
@@ -69,18 +70,18 @@ export const RestaurantComponent: React.FC<Props> = (props) => {
       <Typography variant="h3" component="h1">
         Carta de {name}
       </Typography>
-      <Typography variant="h5" component="h2">
+      <Typography variant="h6" component="h2">
         {heading1}
       </Typography>
-      <Typography variant="h5" component="h2">
+      <Typography variant="h6" component="h2">
         {heading2}
       </Typography>
       <div>
         {menu.map((item) => (
           <Accordion>
-            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <AccordionSummaryStyled>
               <Typography>{item.name}</Typography>
-            </AccordionSummary>
+            </AccordionSummaryStyled>
             <AccordionDetails>
               <DishesComponent items={item.items} />
             </AccordionDetails>
