@@ -7,18 +7,24 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import * as classes from "./restaurant.component.styles";
 import { RestaurantInfo, Items, PriceByRation } from "./restaurant.vm";
 import { AccordionSummaryStyled } from "common/components";
+import { useTheme } from "@mui/material/styles";
 
 interface PropsRation {
   ration: PriceByRation[];
 }
 
 const RationComponent: React.FC<PropsRation> = (props) => {
+  const theme = useTheme();
   const { ration } = props;
+
   return (
     <>
       <div>
         {ration.map((item) => (
-          <div key={item.rationName} className={classes.rationDishContainer}>
+          <div
+            key={item.rationName}
+            className={classes.rationDishContainer(theme)}
+          >
             <Typography>{item.rationName}</Typography>
             <Typography>Precio: {item.price} €</Typography>
           </div>
@@ -33,9 +39,10 @@ interface PropsItemsComponent {
 }
 export const DishesComponent: React.FC<PropsItemsComponent> = (props) => {
   const { items } = props;
+  const theme = useTheme();
 
   return (
-    <div className={classes.dishesContainer}>
+    <div className={classes.dishesContainer(theme)}>
       {items.map((item) => (
         <div key={item.name}>
           <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
