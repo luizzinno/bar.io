@@ -46,9 +46,7 @@ export const DishesComponent: React.FC<PropsItemsComponent> = (props) => {
           ) : null}
           {item.price ? <Typography>Precio: {item.price} €</Typography> : null}
           {item.priceByRation ? (
-            <ul>
-              <RationComponent ration={item.priceByRation} />
-            </ul>
+            <RationComponent ration={item.priceByRation} />
           ) : null}
         </div>
       ))}

@@ -3,12 +3,15 @@ import { styled } from "@mui/material/styles";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
+// TODO: MarginBottom use relative spacing from theme
+// color: "white",
 export const AccordionSummaryStyled = styled((props) => (
   <MuiAccordionSummary
     {...props}
-    sx={{ color: "white" }}
+    sx={{ marginBottom: "2px" }}
     expandIcon={<ExpandMoreIcon sx={{ color: "#FFFFFF" }} />}
   />
 ))(({ theme }) => ({
-  backgroundColor: theme.palette.background.default,
+  color: theme.palette.primary.contrastText,
+  backgroundColor: theme.palette.primary.main,
 }));
