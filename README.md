@@ -25,6 +25,18 @@
 </p>
 <br />
 
+## Getting started
+
+To run the project
+
+```bash
+cd menu-public-portal
+```
+
+```bash
+npm run dev
+```
+
 <!-- TABLE OF CONTENTS -->
 
 ## Table of Contents
