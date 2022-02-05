@@ -68,7 +68,7 @@ export const RestaurantComponent: React.FC<Props> = (props) => {
   return (
     <div className={classes.headingContainer}>
       <Typography variant="h3" component="h1">
-        Carta de {name}
+        {name}
       </Typography>
       <Typography variant="h6" component="h2">
         {heading1}
