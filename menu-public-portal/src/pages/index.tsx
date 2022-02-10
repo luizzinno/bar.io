@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Link from "next/link";
 import Head from "next/head";
 import { routes } from "core/router";
-import Typography from '@mui/material/Typography';
+import Typography from "@mui/material/Typography";
 
 const Home: NextPage = () => {
   return (
@@ -18,10 +18,12 @@ const Home: NextPage = () => {
 
       <main>
         <Typography variant="h5" component="h5">
-        Listado restaurantes
+          Listado restaurantes
         </Typography>
 
         <Link href={routes.restaurant("papulinos")}>Papulinos</Link>
+
+        <Link href={routes.restaurant("hermanosalba")}>Hermanos Alba</Link>
       </main>
 
       <footer>

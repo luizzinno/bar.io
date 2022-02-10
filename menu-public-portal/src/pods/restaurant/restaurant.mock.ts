@@ -1,6 +1,6 @@
 import { RestaurantInfo } from "./restaurant.vm";
 
-export const restaurantMockData: RestaurantInfo = {
+const papulinosFutureJSON: RestaurantInfo = {
   name: "Papulinos",
   urlName: "papulinos",
   heading1: "Las mejores carnes a la brasa",
@@ -379,3 +379,34 @@ export const restaurantMockData: RestaurantInfo = {
     },
   ],
 };
+
+const hermanosAlbaFutureJSON: RestaurantInfo = {
+  name: "Hermanos Alba",
+  urlName: "hermanosalba",
+  heading1: "La tradición de nuestra bahía",
+  heading2: "Teléfono de Contacto: 951 33 18 03",
+  menu: [
+    {
+      name: "Entrantes",
+      items: [
+        {
+          name: "Anchoa 0,0 limpia en case sobre tosta de pan cristal y tomate (unidad)",
+          price: 2.5,
+        },
+        {
+          name: "Boqueron en vinagre hecho en casa XL (unidad)",
+          price: 1.5,
+        },
+        {
+          name: "Nuestra rusa rica en aove",
+          price: 8,
+        },
+      ],
+    },
+  ],
+};
+
+export const restaurantMockData: RestaurantInfo[] = [
+  papulinosFutureJSON,
+  hermanosAlbaFutureJSON,
+];
