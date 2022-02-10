@@ -17,13 +17,10 @@ export const RestaurantContainer: React.FC<Props> = (props) => {
     React.useState<RestaurantInfo>(emptyRestaurantInfo);
 
   React.useEffect(() => {
-    getRestaurantMenu(restaurantNameWithOutBar).then(
-      (restaurantMenuInfo) =>
-        // Right now working just with VM onmock
-        // on next step we will start working with API => Mapper => VM
-        setRestaurantMenuInfo(restaurantMenuInfo)
-
-      // Set theme
+    getRestaurantMenu(restaurantNameWithOutBar).then((restaurantMenuInfo) =>
+      // Right now working just with VM onmock
+      // on next step we will start working with API => Mapper => VM
+      setRestaurantMenuInfo(restaurantMenuInfo)
     );
   }, []);
 
