@@ -4,7 +4,7 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { ThemeProvider } from "@mui/material/styles";
-import { theme, fishTheme } from "core/theme";
+import { defaultTheme, fishTheme } from "core/theme";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

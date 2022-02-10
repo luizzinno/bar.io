@@ -1,8 +1,10 @@
 import { RestaurantInfo } from "./restaurant.vm";
+import { defaultTheme, fishTheme } from "core/theme";
 
 const papulinosFutureJSON: RestaurantInfo = {
   name: "Papulinos",
   urlName: "papulinos",
+  theme: defaultTheme,
   heading1: "Las mejores carnes a la brasa",
   heading2: "Teléfono de Contacto: 952 28 38 49",
   menu: [
@@ -383,6 +385,7 @@ const papulinosFutureJSON: RestaurantInfo = {
 const hermanosAlbaFutureJSON: RestaurantInfo = {
   name: "Hermanos Alba",
   urlName: "hermanosalba",
+  theme: fishTheme,
   heading1: "La tradición de nuestra bahía",
   heading2: "Teléfono de Contacto: 951 33 18 03",
   menu: [
