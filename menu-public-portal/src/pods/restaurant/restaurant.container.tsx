@@ -27,6 +27,8 @@ export const RestaurantContainer: React.FC<Props> = (props) => {
     );
   }, []);
 
+  // TODO: discuss whether we should chane theme change on APP
+  // or keep it at restaurant level
   return (
     <ThemeProvider theme={restaurantMenuInfo.theme}>
       <RestaurantComponent
