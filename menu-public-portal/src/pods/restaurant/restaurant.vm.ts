@@ -11,6 +11,7 @@ export interface Items {
   description?: string;
   price?: number;
   priceByRation?: PriceByRation[];
+  unit?: string;
 }
 
 export interface CategoryEntry {

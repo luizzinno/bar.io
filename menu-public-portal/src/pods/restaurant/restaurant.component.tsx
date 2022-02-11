@@ -19,18 +19,18 @@ const RationComponent: React.FC<PropsRation> = (props) => {
 
   return (
     <>
-        {ration.map((item) => (
-          <div
-            key={item.rationName} className={classes.dishContainer(theme)}
-            >
-              <div className={classes.rationText(theme)}>
-                <Typography className={classes.rationIndent(theme)}>{item.rationName}</Typography>
-              </div>
-            <div className={classes.dishPrice(theme)}>
-              <Typography>{item.price} €</Typography>
-            </div>
+      {ration.map((item) => (
+        <div key={item.rationName} className={classes.dishContainer(theme)}>
+          <div className={classes.rationText(theme)}>
+            <Typography className={classes.rationIndent(theme)}>
+              {item.rationName}
+            </Typography>
           </div>
-        ))}
+          <div className={classes.dishPrice(theme)}>
+            <Typography>{item.price} €</Typography>
+          </div>
+        </div>
+      ))}
     </>
   );
 };
@@ -43,7 +43,6 @@ export const DishesComponent: React.FC<PropsItemsComponent> = (props) => {
   const theme = useTheme();
 
   return (
-
     <div className={classes.dishesContainer(theme)}>
       {items.map((item) => (
         <div className={classes.dishContainer(theme)}>
@@ -53,21 +52,23 @@ export const DishesComponent: React.FC<PropsItemsComponent> = (props) => {
             </Typography>
             {item.description ? (
               <Typography>{item.description}</Typography>
-                ) : null }
+            ) : null}
             {item.priceByRation ? (
               <RationComponent ration={item.priceByRation} />
-          ) : null }
+            ) : null}
           </div>
-          {item.price ? 
+          {item.price ? (
             <div className={classes.dishPrice(theme)}>
-              <Typography>{item.price} €</Typography>
+              <Typography>
+                {item.price} €{item.unit}
+              </Typography>
             </div>
-           : null }
+          ) : null}
         </div>
       ))}
     </div>
- )};
-
+  );
+};
 
 interface Props {
   restaurantName: string;
