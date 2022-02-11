@@ -19,21 +19,21 @@ export interface CategoryEntry {
 }
 
 // this belongs to API
-//export type ThemeName = "default" | "fish";
+export type ThemeName = "default" | "fish";
 
 export interface RestaurantInfo {
   name: string;
   urlName: string;
   heading1: string;
   heading2: string;
-  theme: Theme;
+  theme: ThemeName;
   menu: CategoryEntry[];
 }
 
 export const emptyRestaurantInfo = (): RestaurantInfo => ({
   name: "",
   urlName: "",
-  theme: defaultTheme,
+  theme: "default",
   heading1: "",
   heading2: "",
   menu: [],
