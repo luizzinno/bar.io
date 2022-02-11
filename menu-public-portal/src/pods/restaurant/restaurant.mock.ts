@@ -4,7 +4,7 @@ import { defaultTheme, fishTheme } from "core/theme";
 const papulinosFutureJSON: RestaurantInfo = {
   name: "Papulinos",
   urlName: "papulinos",
-  theme: "default",
+  theme: "meat",
   heading1: "Las mejores carnes a la brasa",
   heading2: "Teléfono de Contacto: 952 28 38 49",
   menu: [

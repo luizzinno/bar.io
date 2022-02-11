@@ -1,1 +1,1 @@
-export type ThemeName = "default" | "fish";
+export type ThemeName = "default" | "fish" | "meat";
