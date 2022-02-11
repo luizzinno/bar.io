@@ -2,21 +2,30 @@ import React from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { formatSlugFromUrlParam } from "common/helpers/slug.helpers";
 import { RestaurantContainer } from "pods/restaurant";
+import { getRestaurantMenu } from "pods/restaurant/restaurant.repository";
+import { RestaurantInfo } from "pods/restaurant/restaurant.vm";
 
 interface Props {
   slug: string;
+  menu: RestaurantInfo;
 }
 
 export const BarPage: React.FunctionComponent<Props> = (props) => {
-  const { slug } = props;
-  return <RestaurantContainer restaurantName={slug} />;
+  const { slug, menu } = props;
+  return <RestaurantContainer restaurantName={slug} menu={menu} />;
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const slug = formatSlugFromUrlParam(context.params.slug as string);
 
+  // TODO Add error un handling
+  const restaurantNameWithOutBar = slug.substring(1);
+
+  const menu = await getRestaurantMenu(restaurantNameWithOutBar);
+
   return {
-    props: { slug },
+    props: { slug, menu },
+    revalidate: 600, // Seconds,  move this to a const or env const
   };
 };
 
