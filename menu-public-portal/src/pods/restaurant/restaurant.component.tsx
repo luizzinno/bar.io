@@ -19,18 +19,18 @@ const RationComponent: React.FC<PropsRation> = (props) => {
 
   return (
     <>
-        {ration.map((item) => (
-          <div
-            key={item.rationName} className={classes.dishContainer(theme)}
-            >
-              <div className={classes.rationText(theme)}>
-                <Typography className={classes.rationIndent(theme)}>{item.rationName}</Typography>
-              </div>
-            <div className={classes.dishPrice(theme)}>
-              <Typography>{item.price} €</Typography>
-            </div>
+      {ration.map((item) => (
+        <div key={item.rationName} className={classes.dishContainer(theme)}>
+          <div className={classes.rationText(theme)}>
+            <Typography className={classes.rationIndent(theme)}>
+              {item.rationName}
+            </Typography>
           </div>
-        ))}
+          <div className={classes.dishPrice(theme)}>
+            <Typography>{item.price} €</Typography>
+          </div>
+        </div>
+      ))}
     </>
   );
 };
@@ -43,31 +43,30 @@ export const DishesComponent: React.FC<PropsItemsComponent> = (props) => {
   const theme = useTheme();
 
   return (
-
     <div className={classes.dishesContainer(theme)}>
       {items.map((item) => (
-        <div className={classes.dishContainer(theme)}>
-          <div key={item.name} className={classes.fullWidth(theme)}>
+        <div key={item.name} className={classes.dishContainer(theme)}>
+          <div className={classes.fullWidth(theme)}>
             <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
               {item.name}
             </Typography>
             {item.description ? (
               <Typography>{item.description}</Typography>
-                ) : null }
+            ) : null}
             {item.priceByRation ? (
               <RationComponent ration={item.priceByRation} />
-          ) : null }
+            ) : null}
           </div>
-          {item.price ? 
+          {item.price ? (
             <div className={classes.dishPrice(theme)}>
               <Typography>{item.price} €</Typography>
             </div>
-           : null }
+          ) : null}
         </div>
       ))}
     </div>
- )};
-
+  );
+};
 
 interface Props {
   restaurantName: string;
