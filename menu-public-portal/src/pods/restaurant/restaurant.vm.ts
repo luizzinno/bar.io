@@ -1,5 +1,5 @@
-import { Theme } from "@mui/material";
-import { defaultTheme } from "core/theme";
+
+import { defaultTheme, ThemeName } from "core/theme";
 
 export interface PriceByRation {
   rationName: string;
@@ -11,15 +11,13 @@ export interface Items {
   description?: string;
   price?: number;
   priceByRation?: PriceByRation[];
+  unit?: string;
 }
 
 export interface CategoryEntry {
   name: string;
   items: Items[];
 }
-
-// this belongs to API
-export type ThemeName = "default" | "fish";
 
 export interface RestaurantInfo {
   name: string;

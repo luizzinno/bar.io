@@ -59,7 +59,9 @@ export const DishesComponent: React.FC<PropsItemsComponent> = (props) => {
           </div>
           {item.price ? (
             <div className={classes.dishPrice(theme)}>
-              <Typography>{item.price} €</Typography>
+              <Typography>
+                {item.price} €{item.unit}
+              </Typography>
             </div>
           ) : null}
         </div>

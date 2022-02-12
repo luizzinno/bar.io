@@ -3,8 +3,7 @@ import { RestaurantComponent } from "./restaurant.component";
 import { getRestaurantMenu } from "./restaurant.repository";
 import { RestaurantInfo, emptyRestaurantInfo } from "./restaurant.vm";
 import { ThemeProvider } from "@mui/material/styles";
-import { defaultTheme } from "core/theme";
-import { chooseTheme } from "./restaurant.mapper";
+import { chooseTheme, defaultTheme } from "core/theme";
 
 interface Props {
   restaurantName: string;
