@@ -11,8 +11,9 @@ export const defaultTheme = createTheme({
     },
   },
   typography: {
+    fontFamily: "Dosis",
     h3: {
-      borderBottom: "3px solid #C04A6D",
+      borderBottom: "3px solid #C5B100",
     },
   },
 });

@@ -1,13 +1,14 @@
-import { collapseClasses, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import React from "react";
 import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-
+import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
+import PlaceIcon from "@mui/icons-material/Place";
 import * as classes from "./restaurant.component.styles";
 import { RestaurantInfo, Items, PriceByRation } from "./restaurant.vm";
 import { AccordionSummaryStyled } from "common/components";
 import { useTheme } from "@mui/material/styles";
+import Link from "next/link";
 
 interface PropsRation {
   ration: PriceByRation[];
@@ -76,20 +77,44 @@ interface Props {
 }
 
 export const RestaurantComponent: React.FC<Props> = (props) => {
-  const { restaurantName, restaurantMenuInfo } = props;
-  const { name, heading1, heading2, menu } = restaurantMenuInfo;
+  const { restaurantMenuInfo } = props;
+  const { name, phone, address, locationUrl, description, menu } =
+    restaurantMenuInfo;
 
   return (
     <div className={classes.headingContainer}>
-      <Typography variant="h3" component="h1">
-        {name}
-      </Typography>
-      <Typography variant="h6" component="h2">
-        {heading1}
-      </Typography>
-      <Typography variant="h6" component="h2">
-        {heading2}
-      </Typography>
+      <div className={classes.headerIndent}>
+        <div className={classes.rowIndent}>
+          <Typography
+            variant="h6"
+            component="h2"
+            className={classes.typographyHeader}
+          >
+            {phone}
+          </Typography>
+          <PhoneEnabledIcon className={classes.colorIcon} />
+        </div>
+        <div className={classes.rowIndent}>
+          <Typography
+            variant="h6"
+            component="h2"
+            className={classes.typographyHeader}
+          >
+            {address}
+          </Typography>
+          <Link href={locationUrl}>
+            <a target="_blank">
+              <PlaceIcon className={classes.colorIcon} />
+            </a>
+          </Link>
+        </div>
+        <Typography variant="h3" component="h1">
+          {name}
+        </Typography>
+        <Typography variant="h6" component="h2">
+          {description}
+        </Typography>
+      </div>
       <div>
         {menu.map((item) => (
           <Accordion>

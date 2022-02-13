@@ -1,5 +1,4 @@
-
-import { defaultTheme, ThemeName } from "core/theme";
+import { ThemeName } from "core/theme";
 
 export interface PriceByRation {
   rationName: string;
@@ -22,8 +21,10 @@ export interface CategoryEntry {
 export interface RestaurantInfo {
   name: string;
   urlName: string;
-  heading1: string;
-  heading2: string;
+  phone: string;
+  address: string;
+  locationUrl: string;
+  description: string;
   theme: ThemeName;
   menu: CategoryEntry[];
 }
@@ -32,7 +33,9 @@ export const emptyRestaurantInfo = (): RestaurantInfo => ({
   name: "",
   urlName: "",
   theme: "default",
-  heading1: "",
-  heading2: "",
+  phone: "",
+  address: "",
+  locationUrl: "",
+  description: "",
   menu: [],
 });
