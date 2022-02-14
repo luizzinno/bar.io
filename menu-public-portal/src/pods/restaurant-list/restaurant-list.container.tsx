@@ -1,17 +1,13 @@
 import * as React from "react";
 import { RestaurantList } from "./restaurant-list.component";
-import { getRestaurantList } from "./restaurant-list.repository";
 import { RestaurantInfo } from "./restaurant-list.vm";
 
-const RestaurantListContainer: React.FC = () => {
-  const [restaurantList, setRestaurantList] = React.useState<RestaurantInfo[]>(
-    []
-  );
+interface Props {
+  restaurantList: RestaurantInfo[];
+}
 
-  React.useEffect(() => {
-    getRestaurantList().then(setRestaurantList);
-  }, []);
-
+const RestaurantListContainer: React.FC<Props> = (props) => {
+  const { restaurantList } = props;
   return <RestaurantList restaurantList={restaurantList} />;
 };
 

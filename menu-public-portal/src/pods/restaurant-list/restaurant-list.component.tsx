@@ -1,15 +1,8 @@
+import Link from "next/link";
 import Head from "next/head";
 import { routes } from "core/router";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import { RestaurantInfo } from "./restaurant-list.vm";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Link from "next/link";
-import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
-import PlaceIcon from "@mui/icons-material/Place";
-
 interface Props {
   restaurantList: RestaurantInfo[];
 }
@@ -18,38 +11,13 @@ const RestaurantList: React.FC<Props> = (props) => {
   const { restaurantList } = props;
 
   const restaurantElements = restaurantList.map((restaurant) => {
-    const { name, urlName, address, description, locationUrl, phone } =
-      restaurant;
+    const { name, urlName } = restaurant;
     return (
-      <>
-        <Card sx={{ maxWidth: 345 }} key={name}>
-          <CardContent>
-            <Typography variant="h6" component="h2">
-              {phone}
-            </Typography>
-            <PhoneEnabledIcon sx={{ color: "secondary.main" }} />
-            <Typography variant="h6" component="h2">
-              {address}
-            </Typography>
-            <Link href={locationUrl}>
-              <a target="_blank">
-                <PlaceIcon sx={{ color: "secondary.main" }} />
-              </a>
-            </Link>
-            <Typography variant="h3" component="h1">
-              {name}
-            </Typography>
-            <Typography variant="h6" component="h2">
-              {description}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button variant="contained" href={routes.restaurant(urlName)}>
-              VER CARTA
-            </Button>
-          </CardActions>
-        </Card>
-      </>
+      <li key={name}>
+        <Link href={routes.restaurant(urlName)}>
+          <a>{name}</a>
+        </Link>
+      </li>
     );
   });
 
