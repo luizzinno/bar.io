@@ -1,5 +1,4 @@
 import { RestaurantInfo } from "./restaurant.vm";
-import { defaultTheme, fishTheme } from "core/theme";
 
 const papulinosFutureJSON: RestaurantInfo = {
   name: "Papulinos",
