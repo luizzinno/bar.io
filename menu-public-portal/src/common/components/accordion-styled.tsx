@@ -2,8 +2,9 @@ import * as React from "react";
 import { styled } from "@mui/material/styles";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { AccordionSummaryProps } from "@mui/material/AccordionSummary";
 
-export const AccordionSummaryStyled = styled((props) => (
+export const AccordionSummaryStyled = styled((props: AccordionSummaryProps) => (
   <MuiAccordionSummary
     {...props}
     expandIcon={<ExpandMoreIcon sx={{ color: "text.secondary" }} />}
