@@ -4,21 +4,21 @@ import { RestaurantInfo } from "pods/restaurant-list/restaurant-list.vm";
 import { getRestaurantList } from "pods/restaurant-list/";
 
 export const getStaticProps: GetStaticProps = async () => {
-  const restaurantList: RestaurantInfo[] = await getRestaurantList();
+  const restaurantCollection: RestaurantInfo[] = await getRestaurantList();
 
   return {
-    props: { restaurantList },
+    props: { restaurantCollection },
     revalidate: 600,
   };
 };
 
 interface Props {
-  restaurantList: RestaurantInfo[];
+  restaurantCollection: RestaurantInfo[];
 }
 
 const Home: NextPage<Props> = (props) => {
-  const { restaurantList } = props;
-  return <RestaurantListContainer restaurantList={restaurantList} />;
+  const { restaurantCollection } = props;
+  return <RestaurantListContainer restaurantCollection={restaurantCollection} />;
 };
 
 export default Home;
