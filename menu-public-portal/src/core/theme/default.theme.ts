@@ -5,14 +5,18 @@ export const defaultTheme = createTheme({
     primary: {
       main: "#000000",
     },
+    secondary: {
+      main: "#C5B100",
+    },
     text: {
       primary: "#000000",
       secondary: "#FFFFFF",
     },
   },
   typography: {
+    fontFamily: "Dosis",
     h3: {
-      borderBottom: "3px solid #C04A6D",
+      borderBottom: "3px solid #C5B100",
     },
   },
 });
