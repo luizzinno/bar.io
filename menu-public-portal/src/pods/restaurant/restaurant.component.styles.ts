@@ -22,10 +22,6 @@ export const rowIndent = css`
   justify-content: center;
 `;
 
-export const colorIcon = css`
-  fill: #c5b100;
-`;
-
 export const fullWidth = (theme: Theme) => css`
   width: 100%;
 `;

@@ -5,6 +5,9 @@ export const fishTheme = createTheme({
     primary: {
       main: "#0D0043",
     },
+    secondary: {
+      main: "#35A7CB",
+    },
     text: {
       primary: "#0D0043",
       secondary: "#FFFFFF",
@@ -13,7 +16,7 @@ export const fishTheme = createTheme({
   typography: {
     fontFamily: "Dosis",
     h3: {
-      borderBottom: "3px solid #C5B100",
+      borderBottom: "3px solid #35A7CB",
     },
   },
 });

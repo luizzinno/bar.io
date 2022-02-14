@@ -77,6 +77,7 @@ interface Props {
 }
 
 export const RestaurantComponent: React.FC<Props> = (props) => {
+  const theme = useTheme();
   const { restaurantMenuInfo } = props;
   const { name, phone, address, locationUrl, description, menu } =
     restaurantMenuInfo;
@@ -92,7 +93,7 @@ export const RestaurantComponent: React.FC<Props> = (props) => {
           >
             {phone}
           </Typography>
-          <PhoneEnabledIcon className={classes.colorIcon} />
+          <PhoneEnabledIcon sx={{ color: "secondary.main" }} />
         </div>
         <div className={classes.rowIndent}>
           <Typography
@@ -104,7 +105,7 @@ export const RestaurantComponent: React.FC<Props> = (props) => {
           </Typography>
           <Link href={locationUrl}>
             <a target="_blank">
-              <PlaceIcon className={classes.colorIcon} />
+              <PlaceIcon sx={{ color: "secondary.main" }} />
             </a>
           </Link>
         </div>
