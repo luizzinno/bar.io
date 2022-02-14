@@ -45,8 +45,8 @@ export const DishesComponent: React.FC<PropsItemsComponent> = (props) => {
   return (
     <div className={classes.dishesContainer(theme)}>
       {items.map((item) => (
-        <div className={classes.dishContainer(theme)}>
-          <div key={item.name} className={classes.fullWidth(theme)}>
+        <div key={item.name} className={classes.dishContainer(theme)}>
+          <div className={classes.fullWidth(theme)}>
             <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
               {item.name}
             </Typography>
