@@ -1,13 +1,14 @@
+import * as React from "react";
 import { RestaurantList } from "./restaurant-list.component";
 import { RestaurantInfo } from "./restaurant-list.vm";
-//TODO get restaurantList from API
-const restaurantList: RestaurantInfo[] = [
-  { name: "Papulinos", urlName: "papulinos" },
-  { name: "Hermanos Alba", urlName: "hermanosalba" },
-];
 
-const RestaurantListContainer: React.FC = () => {
-  return <RestaurantList restaurantList={restaurantList} />;
+interface Props {
+  restaurantCollection: RestaurantInfo[];
+}
+
+const RestaurantListContainer: React.FC<Props> = (props) => {
+  const { restaurantCollection } = props;
+  return <RestaurantList restaurantList={restaurantCollection} />;
 };
 
 export { RestaurantListContainer };

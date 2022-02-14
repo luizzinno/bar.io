@@ -1,9 +1,8 @@
 import React from "react";
 import { RestaurantComponent } from "./restaurant.component";
-import { getRestaurantMenu } from "./restaurant.repository";
-import { RestaurantInfo, emptyRestaurantInfo } from "./restaurant.vm";
+import { RestaurantInfo} from "./restaurant.vm";
 import { ThemeProvider } from "@mui/material/styles";
-import { chooseTheme, defaultTheme } from "core/theme";
+import { chooseTheme, } from "core/theme";
 
 interface Props {
   restaurantName: string;
