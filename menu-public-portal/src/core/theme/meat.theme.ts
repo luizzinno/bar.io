@@ -1,12 +1,9 @@
 import { createTheme } from "@mui/material/styles";
 
-export const fishTheme = createTheme({
+export const meatTheme = createTheme({
   palette: {
     primary: {
-      main: "#0D0043",
-    },
-    secondary: {
-      main: "#35A7CB",
+      main: "#700000",
     },
     text: {
       primary: "#232323",
@@ -14,9 +11,8 @@ export const fishTheme = createTheme({
     },
   },
   typography: {
-    fontFamily: "Dosis",
     h3: {
-      borderBottom: "3px solid #35A7CB",
+      borderBottom: "3px solid #EB1B1B",
     },
   },
 });
