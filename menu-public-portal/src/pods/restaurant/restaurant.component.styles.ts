@@ -19,7 +19,12 @@ export const typographyHeader = css`
 
 export const rowIndent = css`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+export const accordion = css`
+  margin-top: 1rem;
 `;
 
 export const fullWidth = (theme: Theme) => css`

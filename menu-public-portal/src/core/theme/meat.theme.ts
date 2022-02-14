@@ -5,6 +5,9 @@ export const meatTheme = createTheme({
     primary: {
       main: "#700000",
     },
+    secondary: {
+      main: "#EB1B1B",
+    },
     text: {
       primary: "#232323",
       secondary: "#FFFFFF",

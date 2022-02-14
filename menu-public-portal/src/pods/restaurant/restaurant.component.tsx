@@ -9,6 +9,7 @@ import { RestaurantInfo, Items, PriceByRation } from "./restaurant.vm";
 import { AccordionSummaryStyled } from "common/components";
 import { useTheme } from "@mui/material/styles";
 import Link from "next/link";
+import { CleaningServices } from "@mui/icons-material";
 
 interface PropsRation {
   ration: PriceByRation[];
@@ -46,8 +47,8 @@ export const DishesComponent: React.FC<PropsItemsComponent> = (props) => {
   return (
     <div className={classes.dishesContainer(theme)}>
       {items.map((item) => (
-        <div key={item.name} className={classes.dishContainer(theme)}>
-          <div className={classes.fullWidth(theme)}>
+        <div className={classes.dishContainer(theme)}>
+          <div key={item.name} className={classes.fullWidth(theme)}>
             <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
               {item.name}
             </Typography>
@@ -87,7 +88,7 @@ export const RestaurantComponent: React.FC<Props> = (props) => {
       <div className={classes.headerIndent}>
         <div className={classes.rowIndent}>
           <Typography
-            variant="h6"
+            variant="subtitle1"
             component="h2"
             className={classes.typographyHeader}
           >
@@ -97,7 +98,7 @@ export const RestaurantComponent: React.FC<Props> = (props) => {
         </div>
         <div className={classes.rowIndent}>
           <Typography
-            variant="h6"
+            variant="subtitle2"
             component="h2"
             className={classes.typographyHeader}
           >
@@ -112,11 +113,11 @@ export const RestaurantComponent: React.FC<Props> = (props) => {
         <Typography variant="h3" component="h1">
           {name}
         </Typography>
-        <Typography variant="h6" component="h2">
+        <Typography variant="subtitle2" component="h2">
           {description}
         </Typography>
       </div>
-      <div>
+      <div className = {classes.accordion}>
         {menu.map((item) => (
           <Accordion>
             <AccordionSummaryStyled>
