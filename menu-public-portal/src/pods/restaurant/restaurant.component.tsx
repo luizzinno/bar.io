@@ -71,12 +71,11 @@ export const DishesComponent: React.FC<PropsItemsComponent> = (props) => {
 };
 
 interface Props {
-  restaurantName: string;
   restaurantMenuInfo: RestaurantInfo;
 }
 
 export const RestaurantComponent: React.FC<Props> = (props) => {
-  const { restaurantName, restaurantMenuInfo } = props;
+  const { restaurantMenuInfo } = props;
   const { name, heading1, heading2, menu } = restaurantMenuInfo;
 
   return (
@@ -92,7 +91,7 @@ export const RestaurantComponent: React.FC<Props> = (props) => {
       </Typography>
       <div>
         {menu.map((item) => (
-          <Accordion>
+          <Accordion key={item.name}>
             <AccordionSummaryStyled>
               <Typography>{item.name}</Typography>
             </AccordionSummaryStyled>
