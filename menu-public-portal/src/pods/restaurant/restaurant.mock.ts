@@ -8,7 +8,7 @@ const papulinosFutureJSON: RestaurantInfo = {
   address: "Calle Malasaña, 42 - Málaga",
   locationUrl:
     "https://www.google.com/maps/place/PAPULINOS/@36.726131,-4.42737,15z/data=!4m2!3m1!1s0x0:0xe25c1bc2d9bf5e99?sa=X&ved=2ahUKEwj_nuWFyvf1AhVjxYUKHTQ1ARgQ_BJ6BAg4EAU",
-  theme: "default",
+  theme: "meat",
   description: "Las mejores carnes a la brasa",
   menu: [
     {
