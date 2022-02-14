@@ -6,13 +6,12 @@ import { getRestaurantMenu } from "pods/restaurant/restaurant.repository";
 import { RestaurantInfo } from "pods/restaurant/restaurant.vm";
 
 interface Props {
-  slug: string;
   menu: RestaurantInfo;
 }
 
 export const BarPage: React.FunctionComponent<Props> = (props) => {
-  const { slug, menu } = props;
-  return <RestaurantContainer restaurantName={slug} menu={menu} />;
+  const { menu } = props;
+  return <RestaurantContainer menu={menu} />;
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
