@@ -1,12 +1,17 @@
+import * as React from "react";
 import { RestaurantList } from "./restaurant-list.component";
+import { getRestaurantList } from "./restaurant-list.repository";
 import { RestaurantInfo } from "./restaurant-list.vm";
-//TODO get restaurantList from API
-const restaurantList: RestaurantInfo[] = [
-  { name: "Papulinos", urlName: "papulinos" },
-  { name: "Hermanos Alba", urlName: "hermanosalba" },
-];
 
 const RestaurantListContainer: React.FC = () => {
+  const [restaurantList, setRestaurantList] = React.useState<RestaurantInfo[]>(
+    []
+  );
+
+  React.useEffect(() => {
+    getRestaurantList().then(setRestaurantList);
+  }, []);
+
   return <RestaurantList restaurantList={restaurantList} />;
 };
 

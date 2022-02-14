@@ -1,5 +1,5 @@
 
-import { defaultTheme, ThemeName } from "core/theme";
+import { ThemeName } from "core/theme";
 
 export interface PriceByRation {
   rationName: string;
