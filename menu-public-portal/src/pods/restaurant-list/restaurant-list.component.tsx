@@ -13,7 +13,7 @@ const RestaurantList: React.FC<Props> = (props) => {
   const restaurantElements = restaurantList.map((restaurant) => {
     const { name, urlName } = restaurant;
     return (
-      <li key={urlName}>
+      <li key={name}>
         <Link href={routes.restaurant(urlName)}>
           <a>{name}</a>
         </Link>
