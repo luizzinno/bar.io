@@ -9,7 +9,6 @@ export const headingContainer = css`
 `;
 
 export const accordion = css`
-  width: 100%;
   @media (min-width: ${defaultTheme.breakpoints.values.sm}px) {
     width: 80%;
   }
@@ -21,9 +20,43 @@ export const accordion = css`
   }
 `;
 
-export const footer = css`
+export const menuDate = css`
+  width: 100%;
+  font-weight: bold;
+  font-size: .60rem;
+  text-align: right;
+  @media (min-width: ${defaultTheme.breakpoints.values.sm}px) {
+    width: 80%;
+  }
+  @media (min-width: ${defaultTheme.breakpoints.values.md}px) {
+    width: 60%;
+  }
+  @media (min-width: ${defaultTheme.breakpoints.values.lg}px) {
+    width: 50%;
+  }
+`;
+
+export const footerNoOfficial = css`
   display: flex;
   margin-top: 1rem;
+  @media (min-width: ${defaultTheme.breakpoints.values.sm}px) {
+    width: 80%;
+  }
+  @media (min-width: ${defaultTheme.breakpoints.values.md}px) {
+    width: 60%;
+  }
+  @media (min-width: ${defaultTheme.breakpoints.values.lg}px) {
+    width: 50%;
+  }
+`;
+
+export const footerOfficial = css`
+  display: flex;
+  margin-top: 1rem;
+`;
+
+export const groupsIcon = css`
+  margin-left: 0.5rem;
 `;
 
 export const fullWidth = (theme: Theme) => css`

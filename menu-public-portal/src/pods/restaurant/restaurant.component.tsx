@@ -91,7 +91,7 @@ export const RestaurantComponent: React.FC<Props> = (props) => {
       </Typography>
       <div className={classes.accordion}>
         {menu.map((item) => (
-          <Accordion key={item.name}>
+          <Accordion key={item.name} children={""}>
             <AccordionSummaryStyled>
               <Typography>{item.name}</Typography>
             </AccordionSummaryStyled>
@@ -102,23 +102,31 @@ export const RestaurantComponent: React.FC<Props> = (props) => {
         ))}
       </div>
       {official ? (
-        <div className={classes.footer}>
+        <div className={classes.footerOfficial}>
           <HowToRegIcon sx={{ color: "#009846" }} />
-          <Typography variant="subtitle2" component="h2">
+          <Typography
+            variant="body2"
+            component="h2"
+            className={classes.groupsIcon}
+          >
             Esta carta ha sido creada por el propietario del restaurante
           </Typography>
         </div>
       ) : (
-        <div className={classes.footer}>
+        <div className={classes.footerNoOfficial}>
           <GroupsIcon sx={{ color: "#980000" }} />
-          <Typography variant="subtitle2" component="h2">
+          <Typography
+            variant="body2"
+            component="h2"
+            className={classes.groupsIcon}
+          >
             Esta carta ha sido creada por la comunidad, si eres el propiertario
             del restaurante puedes actualizarla de forma gratuita, ponte en
-            contacto con nosotros en info@gastrobar.net
+            contacto con nosotros en <a href="#">info@gastrobar.net</a>
           </Typography>
         </div>
       )}
-      <Typography variant="subtitle2" component="h2">
+      <Typography variant="caption" component="h2" className={classes.menuDate}>
         {menuDate}
       </Typography>
     </div>
