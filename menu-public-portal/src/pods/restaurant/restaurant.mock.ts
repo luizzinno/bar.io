@@ -659,6 +659,23 @@ const estacionTerminoFutureJSON: RestaurantInfo = {
         },
       ],
     },
+    {
+      name: "Pescados",
+      items: [
+        {
+          name: "Bacalao Poché en su Pil-Pil",
+          price: 14.25,
+        },
+        {
+          name: "Filetes de Salmonete con Salsa de Hinojo",
+          price: 14.25,
+        },
+        {
+          name: "Salmón a la Pimienta Verde",
+          price: 14.25,
+        },
+      ],
+    },
   ],
 };
 
