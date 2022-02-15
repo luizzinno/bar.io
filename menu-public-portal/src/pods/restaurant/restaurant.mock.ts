@@ -552,8 +552,9 @@ const estacionTerminoFutureJSON: RestaurantInfo = {
   name: "Estación Término",
   urlName: "estacionTermino",
   theme: "default",
-  phone: "+34952401096",
-  address: "Plaza del Señorío, Edificio Garcia Lorca, 8 29730 Málaga",
+  phone: "952 40 10 96",
+  address:
+    "Plaza del Señorío, 8, Edificio Garcia Lorca, 29730 Rincón de la Victoria, Málaga",
   locationUrl:
     "https://www.google.com/maps/place/Estaci%C3%B3n+T%C3%A9rmino+Restaurante/@36.7166232,-4.2816961,15z/data=!4m5!3m4!1s0x0:0xdfb3fd3416c42c60!8m2!3d36.7166232!4d-4.2816961",
   description: "",
