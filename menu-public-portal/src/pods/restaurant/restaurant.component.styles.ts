@@ -1,5 +1,6 @@
 import { css } from "@emotion/css";
 import { Theme } from "@mui/material/styles";
+import { defaultTheme } from "core/theme";
 
 export const headingContainer = css`
   display: flex;
@@ -7,8 +8,22 @@ export const headingContainer = css`
   align-items: center;
 `;
 
+export const accordion = css`
+  width: 100%;
+  @media (min-width: ${defaultTheme.breakpoints.values.sm}px) {
+    width: 80%;
+  }
+  @media (min-width: ${defaultTheme.breakpoints.values.md}px) {
+    width: 60%;
+  }
+  @media (min-width: ${defaultTheme.breakpoints.values.lg}px) {
+    width: 50%;
+  }
+`;
+
 export const footer = css`
   display: flex;
+  margin-top: 1rem;
 `;
 
 export const fullWidth = (theme: Theme) => css`

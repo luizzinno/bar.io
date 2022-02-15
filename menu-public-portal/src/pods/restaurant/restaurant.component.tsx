@@ -7,7 +7,7 @@ import { RestaurantInfo, Items, PriceByRation } from "./restaurant.vm";
 import { AccordionSummaryStyled } from "common/components";
 import { useTheme } from "@mui/material/styles";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
-import GroupsIcon from '@mui/icons-material/Groups';
+import GroupsIcon from "@mui/icons-material/Groups";
 
 interface PropsRation {
   ration: PriceByRation[];
@@ -89,7 +89,7 @@ export const RestaurantComponent: React.FC<Props> = (props) => {
       <Typography variant="h6" component="h2">
         {heading2}
       </Typography>
-      <div>
+      <div className={classes.accordion}>
         {menu.map((item) => (
           <Accordion key={item.name}>
             <AccordionSummaryStyled>
@@ -110,7 +110,7 @@ export const RestaurantComponent: React.FC<Props> = (props) => {
         </div>
       ) : (
         <div className={classes.footer}>
-          <GroupsIcon sx={{color: "#980000"}}/>
+          <GroupsIcon sx={{ color: "#980000" }} />
           <Typography variant="subtitle2" component="h2">
             Esta carta ha sido creada por la comunidad, si eres el propiertario
             del restaurante puedes actualizarla de forma gratuita, ponte en
