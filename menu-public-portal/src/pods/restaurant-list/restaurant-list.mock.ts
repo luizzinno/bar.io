@@ -21,7 +21,30 @@ const hermanosAlbaFutureJSON: RestaurantInfo = {
   description: "La tradición de nuestra bahía",
 };
 
+const estacionTerminoFutureJSON: RestaurantInfo = {
+  name: "Estación Término",
+  urlName: "estacionTermino",
+  phone: "+34952401096",
+  address: "Plaza del Señorío, Edificio Garcia Lorca, 8 29730 Málaga",
+  locationUrl:
+    "https://www.google.com/maps/place/Estaci%C3%B3n+T%C3%A9rmino+Restaurante/@36.7166232,-4.2816961,15z/data=!4m5!3m4!1s0x0:0xdfb3fd3416c42c60!8m2!3d36.7166232!4d-4.2816961",
+  description: "",
+}
+
+const palubaFutureJSON: RestaurantInfo = {
+  name: "Paluba II",
+  urlName: "paluba",
+  phone: "606 629 069",
+  address:
+    "Rotonda del Motorista, La Granja, Avenida Juan Carlos I, 11405 Jerez de la Frontera, Cádiz",
+  locationUrl:
+    "https://www.google.com/maps/place/Cervecer%C3%ADa+Paluba/@36.6934059,-6.1025559,15z/data=!4m5!3m4!1s0x0:0x88ff8889eecfff0e!8m2!3d36.6934065!4d-6.1025711",
+  description: "Cervecería & Urban Food",
+};
+
 export const restaurantListMockData: RestaurantInfo[] = [
   papulinosFutureJSON,
   hermanosAlbaFutureJSON,
+  estacionTerminoFutureJSON,
+  palubaFutureJSON,
 ];
