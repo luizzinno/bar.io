@@ -1,9 +1,7 @@
-import { collapseClasses, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import React from "react";
 import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-
 import * as classes from "./restaurant.component.styles";
 import { RestaurantInfo, Items, PriceByRation } from "./restaurant.vm";
 import { AccordionSummaryStyled } from "common/components";
@@ -71,14 +69,13 @@ export const DishesComponent: React.FC<PropsItemsComponent> = (props) => {
 };
 
 interface Props {
-  restaurantName: string;
   restaurantMenuInfo: RestaurantInfo;
 }
 
 export const RestaurantComponent: React.FC<Props> = (props) => {
-  const { restaurantName, restaurantMenuInfo } = props;
-  const { name, heading1, heading2, menu } = restaurantMenuInfo;
-
+  const { restaurantMenuInfo } = props;
+  const { name, heading1, heading2, menu, menuDate, official } =
+    restaurantMenuInfo;
   return (
     <div className={classes.headingContainer}>
       <Typography variant="h3" component="h1">
@@ -92,7 +89,7 @@ export const RestaurantComponent: React.FC<Props> = (props) => {
       </Typography>
       <div>
         {menu.map((item) => (
-          <Accordion>
+          <Accordion key={item.name}>
             <AccordionSummaryStyled>
               <Typography>{item.name}</Typography>
             </AccordionSummaryStyled>
@@ -102,6 +99,22 @@ export const RestaurantComponent: React.FC<Props> = (props) => {
           </Accordion>
         ))}
       </div>
+      {official ? (
+        <div className={classes.footer}>
+          <Typography variant="subtitle2" component="h2">
+            Esta carta ha sido creada por el propietario del restaurante
+          </Typography>
+        </div>
+      ) : (
+        <div className={classes.footer}>
+          <Typography variant="subtitle2" component="h2">
+            Esta carta ha sido creada por la comunidad, si eres el propiertario
+            del restaurante puedes actualizarla de forma gratuita, ponte en
+            contacto con nosotros en info@gastrobar.net
+          </Typography>
+        </div>
+      )}
+      <p>{menuDate}</p>
     </div>
   );
 };

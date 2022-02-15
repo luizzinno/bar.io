@@ -6,6 +6,8 @@ const papulinosFutureJSON: RestaurantInfo = {
   theme: "meat",
   heading1: "Las mejores carnes a la brasa",
   heading2: "Teléfono de Contacto: 952 28 38 49",
+  menuDate: new Date("2022-02-14").toDateString(),
+  official: false,
   menu: [
     {
       name: "Ensaladas",
@@ -387,6 +389,8 @@ const hermanosAlbaFutureJSON: RestaurantInfo = {
   theme: "fish",
   heading1: "La tradición de nuestra bahía",
   heading2: "Teléfono de Contacto: 951 33 18 03",
+  menuDate: new Date("2022-02-14").toDateString(),
+  official: false,
   menu: [
     {
       name: "Entrantes",

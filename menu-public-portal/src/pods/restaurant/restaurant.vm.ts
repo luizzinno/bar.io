@@ -1,4 +1,3 @@
-
 import { ThemeName } from "core/theme";
 
 export interface PriceByRation {
@@ -26,6 +25,8 @@ export interface RestaurantInfo {
   heading2: string;
   theme: ThemeName;
   menu: CategoryEntry[];
+  menuDate: string;
+  official: boolean;
 }
 
 export const emptyRestaurantInfo = (): RestaurantInfo => ({
@@ -35,4 +36,6 @@ export const emptyRestaurantInfo = (): RestaurantInfo => ({
   heading1: "",
   heading2: "",
   menu: [],
+  menuDate: new Date("2022-02-14").toDateString(),
+  official: false,
 });
