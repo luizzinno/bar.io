@@ -621,6 +621,44 @@ const estacionTerminoFutureJSON: RestaurantInfo = {
         },
       ],
     },
+    {
+      name: "Carnes",
+      items: [
+        {
+          name: "Pincho de Cordero a la Moruna",
+          price: 10.75,
+        },
+        {
+          name: "Lápices de pollo a la Pimienta Verde",
+          price: 12.75,
+        },
+        {
+          name: "Pastel de Carne con Salsa de Frambuesas",
+          price: 11.75,
+        },
+        {
+          name: "Solomillo de Cerdo al Estilo E.T",
+          price: 13.25,
+        },
+        {
+          name: "Albóndigas a la Moruna",
+          price: 12.75,
+        },
+        {
+          name: "Solomillo de Ternera",
+          price: 20,
+        },
+        {
+          name: "Codillo de Cerdo al Horno",
+          price: 13.25,
+        },
+        {
+          name: "Bobotie",
+          description: "Pastel de Carne Sudafricano",
+          price: 11.75,
+        },
+      ],
+    },
   ],
 };
 
