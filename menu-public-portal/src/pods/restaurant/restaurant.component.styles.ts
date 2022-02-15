@@ -8,7 +8,7 @@ export const headingContainer = css`
 `;
 
 export const footer = css`
-  width: 60%;
+  display: flex;
 `;
 
 export const fullWidth = (theme: Theme) => css`

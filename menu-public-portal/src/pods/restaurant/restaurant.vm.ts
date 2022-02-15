@@ -36,6 +36,6 @@ export const emptyRestaurantInfo = (): RestaurantInfo => ({
   heading1: "",
   heading2: "",
   menu: [],
-  menuDate: new Date("2022-02-14").toDateString(),
+  menuDate: new Date("2022-02-14").toISOString(),
   official: false,
 });
