@@ -21,8 +21,10 @@ export interface CategoryEntry {
 export interface RestaurantInfo {
   name: string;
   urlName: string;
-  heading1: string;
-  heading2: string;
+  phone: string;
+  address: string;
+  locationUrl: string;
+  description: string;
   theme: ThemeName;
   menu: CategoryEntry[];
   menuDate: string;
@@ -33,8 +35,10 @@ export const emptyRestaurantInfo = (): RestaurantInfo => ({
   name: "",
   urlName: "",
   theme: "default",
-  heading1: "",
-  heading2: "",
+  phone: "",
+  address: "",
+  locationUrl: "",
+  description: "",
   menu: [],
   menuDate: new Date("2022-02-14").toISOString(),
   official: false,

@@ -2,12 +2,15 @@ import { Typography } from "@mui/material";
 import React from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
+import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
+import PlaceIcon from "@mui/icons-material/Place";
 import * as classes from "./restaurant.component.styles";
 import { RestaurantInfo, Items, PriceByRation } from "./restaurant.vm";
 import { AccordionSummaryStyled } from "common/components";
 import { useTheme } from "@mui/material/styles";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import GroupsIcon from "@mui/icons-material/Groups";
+import Link from "next/link";
 
 interface PropsRation {
   ration: PriceByRation[];
@@ -45,8 +48,8 @@ export const DishesComponent: React.FC<PropsItemsComponent> = (props) => {
   return (
     <div className={classes.dishesContainer(theme)}>
       {items.map((item) => (
-        <div key={item.name} className={classes.dishContainer(theme)}>
-          <div className={classes.fullWidth(theme)}>
+        <div className={classes.dishContainer(theme)}>
+          <div key={item.name} className={classes.fullWidth(theme)}>
             <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
               {item.name}
             </Typography>
@@ -75,23 +78,56 @@ interface Props {
 }
 
 export const RestaurantComponent: React.FC<Props> = (props) => {
+  const theme = useTheme();
   const { restaurantMenuInfo } = props;
-  const { name, heading1, heading2, menu, menuDate, official } =
-    restaurantMenuInfo;
+  const {
+    name,
+    phone,
+    address,
+    locationUrl,
+    description,
+    menu,
+    menuDate,
+    official,
+  } = restaurantMenuInfo;
+
   return (
     <div className={classes.headingContainer}>
-      <Typography variant="h3" component="h1">
-        {name}
-      </Typography>
-      <Typography variant="h6" component="h2">
-        {heading1}
-      </Typography>
-      <Typography variant="h6" component="h2">
-        {heading2}
-      </Typography>
+      <div className={classes.headerIndent}>
+        <div className={classes.rowIndent}>
+          <Typography
+            variant="subtitle1"
+            component="h2"
+            className={classes.typographyHeader}
+          >
+            {phone}
+          </Typography>
+          <PhoneEnabledIcon sx={{ color: "secondary.main" }} />
+        </div>
+        <div className={classes.rowIndent}>
+          <Typography
+            variant="subtitle2"
+            component="h2"
+            className={classes.typographyHeader}
+          >
+            {address}
+          </Typography>
+          <Link href={locationUrl}>
+            <a target="_blank">
+              <PlaceIcon sx={{ color: "secondary.main" }} />
+            </a>
+          </Link>
+        </div>
+        <Typography variant="h3" component="h1">
+          {name}
+        </Typography>
+        <Typography variant="subtitle2" component="h2">
+          {description}
+        </Typography>
+      </div>
       <div className={classes.accordion}>
         {menu.map((item) => (
-          <Accordion key={item.name} children={""}>
+          <Accordion key={item.name}>
             <AccordionSummaryStyled>
               <Typography>{item.name}</Typography>
             </AccordionSummaryStyled>

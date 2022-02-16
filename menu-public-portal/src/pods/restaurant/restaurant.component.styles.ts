@@ -9,6 +9,7 @@ export const headingContainer = css`
 `;
 
 export const accordion = css`
+  margin-top: 1rem;
   @media (min-width: ${defaultTheme.breakpoints.values.sm}px) {
     width: 80%;
   }
@@ -38,7 +39,7 @@ export const menuDate = css`
 
 export const footerNoOfficial = css`
   display: flex;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   @media (min-width: ${defaultTheme.breakpoints.values.sm}px) {
     width: 80%;
   }
@@ -57,6 +58,23 @@ export const footerOfficial = css`
 
 export const groupsIcon = css`
   margin-left: 0.5rem;
+`;
+
+
+export const headerIndent = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const typographyHeader = css`
+  padding-right: 1rem;
+`;
+
+export const rowIndent = css`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 `;
 
 export const fullWidth = (theme: Theme) => css`

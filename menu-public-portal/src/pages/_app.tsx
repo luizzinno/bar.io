@@ -1,8 +1,7 @@
 import type { AppProps } from "next/app";
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
+import "@fontsource/dosis/400.css";
+import "@fontsource/dosis/500.css";
+import "@fontsource/dosis/600.css";
 import { ThemeProvider } from "@mui/material/styles";
 import { defaultTheme } from "core/theme";
 
