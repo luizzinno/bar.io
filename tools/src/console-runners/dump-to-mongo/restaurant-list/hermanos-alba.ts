@@ -22,6 +22,8 @@ export const restaurant: RestaurantInfo = {
       items: [
         {
           name: 'Anchoa 0,0 limpia en case sobre tosta de pan cristal y tomate (unidad)',
+          price: 2.5,
+          // TODO: Remove this priceByRation
           priceByRation: [
             {
               rationName: rationsDefinitions.halfRation,
