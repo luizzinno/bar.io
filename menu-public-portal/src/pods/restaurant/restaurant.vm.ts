@@ -40,6 +40,6 @@ export const emptyRestaurantInfo = (): RestaurantInfo => ({
   locationUrl: "",
   description: "",
   menu: [],
-  menuDate: new Date("2022-02-14").toISOString(),
+  menuDate: "Actualizada el 14 de Febrero de 2022",
   official: false,
 });

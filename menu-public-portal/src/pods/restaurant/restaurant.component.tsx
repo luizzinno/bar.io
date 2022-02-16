@@ -8,9 +8,9 @@ import * as classes from "./restaurant.component.styles";
 import { RestaurantInfo, Items, PriceByRation } from "./restaurant.vm";
 import { AccordionSummaryStyled } from "common/components";
 import { useTheme } from "@mui/material/styles";
-import HowToRegIcon from "@mui/icons-material/HowToReg";
-import GroupsIcon from "@mui/icons-material/Groups";
 import Link from "next/link";
+import { CommunityMenuFooter } from "./components/communityMenuFooter.component";
+import { OfficialMenuFooter } from "./components/officialMenuFooter.component";
 
 interface PropsRation {
   ration: PriceByRation[];
@@ -137,31 +137,7 @@ export const RestaurantComponent: React.FC<Props> = (props) => {
           </Accordion>
         ))}
       </div>
-      {official ? (
-        <div className={classes.footerOfficial}>
-          <HowToRegIcon sx={{ color: "#009846" }} />
-          <Typography
-            variant="body2"
-            component="h2"
-            className={classes.groupsIcon}
-          >
-            Esta carta ha sido creada por el propietario del restaurante
-          </Typography>
-        </div>
-      ) : (
-        <div className={classes.footerNoOfficial}>
-          <GroupsIcon sx={{ color: "#980000" }} />
-          <Typography
-            variant="body2"
-            component="h2"
-            className={classes.groupsIcon}
-          >
-            Esta carta ha sido creada por la comunidad, si eres el propiertario
-            del restaurante puedes actualizarla de forma gratuita, ponte en
-            contacto con nosotros en <a href="#">info@gastrobar.net</a>
-          </Typography>
-        </div>
-      )}
+      {official ? <OfficialMenuFooter /> : <CommunityMenuFooter />}
       <Typography variant="caption" component="h2" className={classes.menuDate}>
         {menuDate}
       </Typography>

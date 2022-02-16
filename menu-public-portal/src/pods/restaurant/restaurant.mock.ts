@@ -391,7 +391,7 @@ const hermanosAlbaFutureJSON: RestaurantInfo = {
   urlName: "hermanosalba",
   theme: "fish",
   menuDate: "Actualizada el 14 de Febrero de 2022",
-  official: true,
+  official: false,
   phone: "951 33 18 03",
   address: "Calle Salvador Allende, 15 - Málaga",
   locationUrl:
