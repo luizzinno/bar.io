@@ -723,7 +723,6 @@ const palubaFutureJSON: RestaurantInfo = {
         {
           name: "Grolsch Radler",
           price: 1.3,
-
           description:
             "Una mezcla de 40% de cerveza Grolsch y zumo de frutas. Carácter refrescante propio de una Radler; con la calidad y tradición propias de Grolsch. Con una mezcla de 40% de cerveza Grolsch y zumo de frutas, y elaborada solo con ingredientes naturales, Grolsch Radler tiene un sabor dulce y un regusto muy ligero, con el sabor refrescante que le aporta el limón.",
         },
