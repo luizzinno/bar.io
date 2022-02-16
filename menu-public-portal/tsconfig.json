@@ -30,6 +30,6 @@
       "common-app": ["common-app"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "config/test/jest.js", "src/pods/restaurant/components/communityMenuFooter.component.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }
