@@ -1,0 +1,2 @@
+// método run asíncrono
+
