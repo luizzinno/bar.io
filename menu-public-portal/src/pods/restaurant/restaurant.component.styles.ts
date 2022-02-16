@@ -1,11 +1,65 @@
 import { css } from "@emotion/css";
 import { Theme } from "@mui/material/styles";
+import { defaultTheme } from "core/theme";
 
 export const headingContainer = css`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
+
+export const accordion = css`
+  margin-top: 1rem;
+  @media (min-width: ${defaultTheme.breakpoints.values.sm}px) {
+    width: 80%;
+  }
+  @media (min-width: ${defaultTheme.breakpoints.values.md}px) {
+    width: 60%;
+  }
+  @media (min-width: ${defaultTheme.breakpoints.values.lg}px) {
+    width: 50%;
+  }
+`;
+
+export const menuDate = css`
+  width: 100%;
+  font-weight: bold;
+  font-size: .60rem;
+  text-align: right;
+  @media (min-width: ${defaultTheme.breakpoints.values.sm}px) {
+    width: 80%;
+  }
+  @media (min-width: ${defaultTheme.breakpoints.values.md}px) {
+    width: 60%;
+  }
+  @media (min-width: ${defaultTheme.breakpoints.values.lg}px) {
+    width: 50%;
+  }
+`;
+
+export const footerNoOfficial = css`
+  display: flex;
+  margin-top: 1.5rem;
+  @media (min-width: ${defaultTheme.breakpoints.values.sm}px) {
+    width: 80%;
+  }
+  @media (min-width: ${defaultTheme.breakpoints.values.md}px) {
+    width: 60%;
+  }
+  @media (min-width: ${defaultTheme.breakpoints.values.lg}px) {
+    width: 50%;
+  }
+`;
+
+export const footerOfficial = css`
+  display: flex;
+  margin-top: 1rem;
+`;
+
+export const groupsIcon = css`
+  margin-left: 0.5rem;
+`;
+
 
 export const headerIndent = css`
   display: flex;
@@ -21,10 +75,6 @@ export const rowIndent = css`
   display: flex;
   justify-content: space-between;
   width: 100%;
-`;
-
-export const accordion = css`
-  margin-top: 1rem;
 `;
 
 export const fullWidth = (theme: Theme) => css`
