@@ -6,7 +6,7 @@
   "scripts": {
     "prestart": "sh ./create-dev-env.sh",
     "start": "run-p type-check:watch console-runners start:local-db",
-    "console-runners": "npm run type-check && nodemon --no-stdin --exec npx babel-node -r dotenv/config --extensions \".ts\" src/console-runners/index.ts",
+    "console-runners": "npm run type-check && nodemon --no-stdin --exec babel-node -r dotenv/config --extensions \".ts\" src/console-runners/index.ts",
     "start:local-db": "docker-compose up -d",
     "remove:local-db": "docker-compose down",
     "type-check": "tsc --noEmit",

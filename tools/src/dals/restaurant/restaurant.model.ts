@@ -1,6 +1,8 @@
-import { ObjectId } from "mongodb";
+import { ObjectId } from 'mongodb';
 
-export interface PriceByRation {
+export interface SubItemPrice {
+  _id: ObjectId;
+  rationTypedId: ObjectId;
   rationName: string;
   price: number;
 }
@@ -9,23 +11,39 @@ export interface Items {
   name: string;
   description?: string;
   price?: number;
-  priceByRation?: PriceByRation[];
+  priceByRation?: SubItemPrice[];
   unit?: string;
 }
 
-export interface CategoryEntry {
+export interface ItemsByCategory {
+  _id: ObjectId;
   name: string;
   items: Items[];
 }
 
+export type RestaurantTheme = 'fish' | 'meat';
+
+interface CategoryDefinition {
+  _id: ObjectId;
+  name: string;
+  order: number;
+}
+
+interface RationDefinition {
+  _id: ObjectId;
+  name: string;
+  types: string[];
+}
 export interface Restaurant {
   _id: ObjectId;
   name: string;
-  urlName: string;
   phone: string;
   address: string;
   locationUrl: string;
   description: string;
-  theme: string;
-  menu: CategoryEntry[];
+  urlName: string;
+  theme: RestaurantTheme;
+  categoriesDefinitions: CategoryDefinition[];
+  rationsDefinitions: RationDefinition[];
+  menu: ItemsByCategory[];
 }

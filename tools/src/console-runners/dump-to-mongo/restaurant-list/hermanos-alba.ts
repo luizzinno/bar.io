@@ -4,13 +4,13 @@ import { ObjectId } from 'mongodb';
 export const restaurant: Restaurant = {
   _id: new ObjectId(),
   name: 'Hermanos Alba',
-  urlName: 'hermanosalba',
-  theme: 'fish',
   phone: '951 33 18 03',
   address: 'Calle Salvador Allende, 15 - Málaga',
   locationUrl:
     'https://www.google.com/maps/place/Restaurante+Hermanos+Alba/@36.7199358,-4.3637038,15z/data=!4m2!3m1!1s0x0:0x20b21ada1121ce03?sa=X&ved=2ahUKEwj_8pDWyff1AhUkSvEDHeBgAOEQ_BJ6BAhOEAU',
   description: 'La tradición de nuestra bahía',
+  urlName: 'hermanosalba',
+  theme: 'fish',
   menu: [
     {
       name: 'Entrantes',
