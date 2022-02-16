@@ -555,12 +555,14 @@ const hermanosAlbaFutureJSON: RestaurantInfo = {
 const estacionTerminoFutureJSON: RestaurantInfo = {
   name: "Estación Término",
   urlName: "estacionTermino",
-  theme: "default",
   phone: "952 40 10 96",
   address:
     "Plaza del Señorío, 8, Edificio Garcia Lorca, 29730 Rincón de la Victoria, Málaga",
   locationUrl:
     "https://www.google.com/maps/place/Estaci%C3%B3n+T%C3%A9rmino+Restaurante/@36.7166232,-4.2816961,15z/data=!4m5!3m4!1s0x0:0xdfb3fd3416c42c60!8m2!3d36.7166232!4d-4.2816961",
+  theme: "default",
+  official: false,
+  menuDate: "Actualizada el 15 de Febrero de 2022",
   description: "",
   menu: [
     {
@@ -687,12 +689,14 @@ const estacionTerminoFutureJSON: RestaurantInfo = {
 const palubaFutureJSON: RestaurantInfo = {
   name: "Paluba II",
   urlName: "paluba",
-  theme: "default",
   phone: "606 629 069",
   address:
     "Rotonda del Motorista, La Granja, Avenida Juan Carlos I, 11405 Jerez de la Frontera, Cádiz",
   locationUrl:
     "https://www.google.com/maps/place/Cervecer%C3%ADa+Paluba/@36.6934059,-6.1025559,15z/data=!4m5!3m4!1s0x0:0x88ff8889eecfff0e!8m2!3d36.6934065!4d-6.1025711",
+  theme: "default",
+  official: false,
+  menuDate: "Actualizada el 15 de Febrero de 2022",
   description: "Cervecería & Urban Food",
   menu: [
     {
