@@ -1,6 +1,6 @@
 import React from "react";
 import { RestaurantComponent } from "./restaurant.component";
-import { RestaurantInfo, emptyRestaurantInfo } from "./restaurant.vm";
+import { RestaurantInfo } from "./restaurant.vm";
 import { ThemeProvider } from "@mui/material/styles";
 import { chooseTheme } from "core/theme";
 
@@ -15,9 +15,7 @@ export const RestaurantContainer: React.FC<Props> = (props) => {
   // or keep it at restaurant level
   return (
     <ThemeProvider theme={chooseTheme(menu.theme)}>
-      <RestaurantComponent
-        restaurantMenuInfo={menu}
-      />
+      <RestaurantComponent restaurantMenuInfo={menu} />
     </ThemeProvider>
   );
 };

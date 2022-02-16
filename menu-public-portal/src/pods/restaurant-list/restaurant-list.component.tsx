@@ -67,8 +67,7 @@ const RestaurantList: React.FC<Props> = (props) => {
         <Typography variant="h5" component="h5">
           Listado restaurantes
         </Typography>
-
-        <ul>{restaurantElements}</ul>
+        {restaurantElements}
       </main>
 
       <footer>

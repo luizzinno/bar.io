@@ -3,11 +3,11 @@ import "@fontsource/dosis/400.css";
 import "@fontsource/dosis/500.css";
 import "@fontsource/dosis/600.css";
 import { ThemeProvider } from "@mui/material/styles";
-import { fishTheme } from "core/theme";
+import { defaultTheme } from "core/theme";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={fishTheme}>
+    <ThemeProvider theme={defaultTheme}>
       <Component {...pageProps} />
     </ThemeProvider>
   );
