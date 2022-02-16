@@ -1,8 +1,13 @@
-import { Restaurant } from 'dals';
 import { ObjectId } from 'mongodb';
+import { RestaurantInfo } from 'pods/restaurant';
 
-export const restaurant: Restaurant = {
-  _id: new ObjectId(),
+// TODO: Sacar a fichero comun donde esten los restaurant-list .ts
+export const rationsDefinitions = {
+  halfRation: '½ Ración',
+  ration: 'Ración',
+};
+
+export const restaurant: RestaurantInfo = {
   name: 'Hermanos Alba',
   phone: '951 33 18 03',
   address: 'Calle Salvador Allende, 15 - Málaga',
@@ -17,7 +22,12 @@ export const restaurant: Restaurant = {
       items: [
         {
           name: 'Anchoa 0,0 limpia en case sobre tosta de pan cristal y tomate (unidad)',
-          price: 2.5,
+          priceByRation: [
+            {
+              rationName: rationsDefinitions.halfRation,
+              price: 2.5,
+            },
+          ],
         },
         {
           name: 'Boqueron en vinagre hecho en casa XL (unidad)',

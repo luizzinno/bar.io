@@ -1,5 +1,6 @@
 import { RestaurantInfo } from "./restaurant.vm";
 
+
 const papulinosFutureJSON: RestaurantInfo = {
   name: "Papulinos",
   urlName: "papulinos",
