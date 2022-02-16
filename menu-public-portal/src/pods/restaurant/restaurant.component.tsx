@@ -9,7 +9,8 @@ import { RestaurantInfo, Items, PriceByRation } from "./restaurant.vm";
 import { AccordionSummaryStyled } from "common/components";
 import { useTheme } from "@mui/material/styles";
 import Link from "next/link";
-import { CleaningServices } from "@mui/icons-material";
+import { CommunityMenuFooter } from "./components/communityMenuFooter.component";
+import { OfficialMenuFooter } from "./components/officialMenuFooter.component";
 
 interface PropsRation {
   ration: PriceByRation[];
@@ -79,8 +80,16 @@ interface Props {
 export const RestaurantComponent: React.FC<Props> = (props) => {
   const theme = useTheme();
   const { restaurantMenuInfo } = props;
-  const { name, phone, address, locationUrl, description, menu } =
-    restaurantMenuInfo;
+  const {
+    name,
+    phone,
+    address,
+    locationUrl,
+    description,
+    menu,
+    menuDate,
+    official,
+  } = restaurantMenuInfo;
 
   return (
     <div className={classes.headingContainer}>
@@ -116,7 +125,7 @@ export const RestaurantComponent: React.FC<Props> = (props) => {
           {description}
         </Typography>
       </div>
-      <div className = {classes.accordion}>
+      <div className={classes.accordion}>
         {menu.map((item) => (
           <Accordion key={item.name}>
             <AccordionSummaryStyled>
@@ -128,6 +137,10 @@ export const RestaurantComponent: React.FC<Props> = (props) => {
           </Accordion>
         ))}
       </div>
+      {official ? <OfficialMenuFooter /> : <CommunityMenuFooter />}
+      <Typography variant="caption" component="h2" className={classes.menuDate}>
+        {menuDate}
+      </Typography>
     </div>
   );
 };

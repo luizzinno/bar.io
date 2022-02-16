@@ -8,6 +8,8 @@ const papulinosFutureJSON: RestaurantInfo = {
   locationUrl:
     "https://www.google.com/maps/place/PAPULINOS/@36.726131,-4.42737,15z/data=!4m2!3m1!1s0x0:0xe25c1bc2d9bf5e99?sa=X&ved=2ahUKEwj_nuWFyvf1AhVjxYUKHTQ1ARgQ_BJ6BAg4EAU",
   theme: "meat",
+  menuDate: "Actualizada el 14 de Febrero de 2022",
+  official: false,
   description: "Las mejores carnes a la brasa",
   menu: [
     {
@@ -388,6 +390,8 @@ const hermanosAlbaFutureJSON: RestaurantInfo = {
   name: "Hermanos Alba",
   urlName: "hermanosalba",
   theme: "fish",
+  menuDate: "Actualizada el 14 de Febrero de 2022",
+  official: false,
   phone: "951 33 18 03",
   address: "Calle Salvador Allende, 15 - Málaga",
   locationUrl:

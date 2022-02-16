@@ -27,6 +27,8 @@ export interface RestaurantInfo {
   description: string;
   theme: ThemeName;
   menu: CategoryEntry[];
+  menuDate: string;
+  official: boolean;
 }
 
 export const emptyRestaurantInfo = (): RestaurantInfo => ({
@@ -38,4 +40,6 @@ export const emptyRestaurantInfo = (): RestaurantInfo => ({
   locationUrl: "",
   description: "",
   menu: [],
+  menuDate: "Actualizada el 14 de Febrero de 2022",
+  official: false,
 });
