@@ -1002,7 +1002,7 @@ const palubaFutureJSON: RestaurantInfo = {
             "Primer piso de ensaladilla de pollo desmenuzado. Segundo piso de queso, jamón york y huevo",
         },
         {
-          name: "Sandiwch Club",
+          name: "Sandwich Club",
           price: 5,
           description:
             "Dos pisos de pollo, jamón york, bacon, queso Edam, lechuga, tomate y mayonesa",
