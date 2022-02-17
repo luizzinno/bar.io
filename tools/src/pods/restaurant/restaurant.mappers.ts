@@ -64,7 +64,7 @@ const mapFromItemApiToItemModel = (data: apiModel.Item): model.Item => ({
   priceByRation: data.priceByRation
     ? mapFromPriceByRationToSubItemPrice(data.priceByRation)
     : null,
-  unit: data.unit,
+  unit: data.unit ? data.unit : null,
 });
 
 const mapListFromCategoryEntryToItemsByCategory = (
