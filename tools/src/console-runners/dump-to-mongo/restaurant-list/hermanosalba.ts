@@ -1,11 +1,4 @@
-import { ObjectId } from 'mongodb';
 import { RestaurantInfo } from 'pods/restaurant';
-
-// TODO: Sacar a fichero comun donde esten los restaurant-list .ts
-export const rationsDefinitions = {
-  halfRation: '½ Ración',
-  ration: 'Ración',
-};
 
 export const restaurant: RestaurantInfo = {
   name: 'Hermanos Alba',
@@ -16,6 +9,8 @@ export const restaurant: RestaurantInfo = {
   description: 'La tradición de nuestra bahía',
   urlName: 'hermanosalba',
   theme: 'fish',
+  menuDate: '',
+  official: false,
   menu: [
     {
       name: 'Entrantes',
@@ -23,13 +18,6 @@ export const restaurant: RestaurantInfo = {
         {
           name: 'Anchoa 0,0 limpia en case sobre tosta de pan cristal y tomate (unidad)',
           price: 2.5,
-          // TODO: Remove this priceByRation
-          priceByRation: [
-            {
-              rationName: rationsDefinitions.halfRation,
-              price: 2.5,
-            },
-          ],
         },
         {
           name: 'Boqueron en vinagre hecho en casa XL (unidad)',

@@ -1,21 +1,26 @@
-import { RestaurantTheme } from "common-app/models";
+import { RestaurantTheme } from 'common-app/models';
 
-export interface PriceByRation {
-  rationName: string;
+export interface RationType {
+  unit: string;
   price: number;
 }
 
-export interface Items {
+export interface PriceByRation {
+  rationName: string;
+  rationsTypes: RationType[];
+}
+
+export interface Item {
   name: string;
   description?: string;
   price?: number;
-  priceByRation?: PriceByRation[];
+  priceByRation?: PriceByRation;
   unit?: string;
 }
 
 export interface CategoryEntry {
   name: string;
-  items: Items[];
+  items: Item[];
 }
 
 export interface RestaurantInfo {

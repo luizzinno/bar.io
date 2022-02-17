@@ -1,14 +1,16 @@
 import { ObjectId } from 'mongodb';
 import { RestaurantTheme } from 'common-app/models';
 
-export interface SubItemPrice {
-  _id: ObjectId;
-  rationTypedId: ObjectId;
-  rationName: string;
+export interface RationType {
+  unit: string;
   price: number;
 }
+export interface SubItemPrice {
+  rationName: string;
+  rationsTypes: RationType[];
+}
 
-export interface Items {
+export interface Item {
   name: string;
   description?: string;
   price?: number;
@@ -17,21 +19,13 @@ export interface Items {
 }
 
 export interface ItemsByCategory {
-  _id: ObjectId;
-  name: string;
-  items: Items[];
-}
-
-export interface CategoryDefinition {
-  _id: ObjectId;
-  name: string;
-  order: number;
+  categoryName: string;
+  items: Item[];
 }
 
 export interface RationDefinition {
-  _id: ObjectId;
   name: string;
-  types: string[]; // TODO: Comprobar de donde sacar info
+  units: string[];
 }
 
 export interface Restaurant {
@@ -43,9 +37,8 @@ export interface Restaurant {
   description: string;
   urlName: string;
   theme: RestaurantTheme;
-  categoriesDefinitions: CategoryDefinition[];
   rationsDefinitions: RationDefinition[];
   menu: ItemsByCategory[];
-  menuDate: Date;
+  menuDate: string;
   official: boolean;
 }
