@@ -3,15 +3,7 @@ import { connectToDBServer, disconnectFromDbServer } from 'core/servers';
 import { envConstants } from 'core/constants';
 import { mapRestaurantFromApiToModel } from 'pods/restaurant/restaurant.mappers';
 import { restaurantDbRepository } from 'dals';
-import { Question } from 'inquirer';
-
-const inputQuestions: Question[] = [
-  {
-    name: 'file',
-    type: 'input',
-    message: 'Insert restaurant: ',
-  },
-];
+import { inputQuestions } from '../questions';
 
 export const run = async () => {
   try {
