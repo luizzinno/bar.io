@@ -1,16 +1,18 @@
 import { RestaurantInfo } from "./restaurant.vm";
 
 const papulinosFutureJSON: RestaurantInfo = {
+  // TODO: change official from true to false before production
   name: "Papulinos",
   urlName: "papulinos",
   phone: "952 28 38 49",
   address: "Calle Malasaña, 42 - Málaga",
   locationUrl:
     "https://www.google.com/maps/place/PAPULINOS/@36.726131,-4.42737,15z/data=!4m2!3m1!1s0x0:0xe25c1bc2d9bf5e99?sa=X&ved=2ahUKEwj_nuWFyvf1AhVjxYUKHTQ1ARgQ_BJ6BAg4EAU",
-  theme: "meat",
+  communitySourceUrl: "http://papulinos.com/carta/",
+  official: true,
   menuDate: "Actualizada el 14 de Febrero de 2022",
-  official: false,
   description: "Las mejores carnes a la brasa",
+  theme: "meat",
   menu: [
     {
       name: "Ensaladas",
@@ -90,69 +92,84 @@ const papulinosFutureJSON: RestaurantInfo = {
         },
         {
           name: "Chorizo Ibérico",
-          priceByRation: [
-            {
-              rationName: "½ Ración",
-              price: 3.6,
-            },
-            {
-              rationName: "Ración",
-              price: 5.6,
-            },
-          ],
+          priceByRation: {
+            rationName: "Raciones",
+            rationsTypes: [
+              {
+                unit: "½ Ración",
+                price: 3.6,
+              },
+              {
+                unit: "Ración",
+                price: 5.6,
+              },
+            ],
+          },
         },
         {
           name: "Salchichón Ibérico",
-          priceByRation: [
-            {
-              rationName: "½ Ración",
-              price: 3.6,
-            },
-            {
-              rationName: "Ración",
-              price: 5.6,
-            },
-          ],
+          priceByRation: {
+            rationName: "Raciones",
+            rationsTypes: [
+              {
+                unit: "½ Ración",
+                price: 3.6,
+              },
+              {
+                unit: "Ración",
+                price: 5.6,
+              },
+            ],
+          },
         },
         {
           name: "Queso de Oveja",
           description: "Curado en Manteca de Cerdo Ibérico",
-          priceByRation: [
-            {
-              rationName: "½ Ración",
-              price: 5.5,
-            },
-            {
-              rationName: "Ración",
-              price: 9,
-            },
-          ],
+          priceByRation: {
+            rationName: "Raciones",
+            rationsTypes: [
+              {
+                unit: "½ Ración",
+                price: 5.5,
+              },
+              {
+                unit: "Ración",
+                price: 9,
+              },
+            ],
+          },
         },
         {
           name: "Lomito Ibérico",
-          priceByRation: [
-            {
-              rationName: "½ Ración",
-              price: 6,
-            },
-            {
-              rationName: "Ración",
-              price: 9.5,
-            },
-          ],
+          priceByRation: {
+            rationName: "Raciones",
+            rationsTypes: [
+              {
+                unit: "½ Ración",
+                price: 6,
+              },
+              {
+                unit: "Ración",
+                price: 8.5,
+              },
+            ],
+          },
         },
         {
           name: "Surtido Ibérico",
-          priceByRation: [
-            {
-              rationName: "½ Ración",
-              price: 8,
-            },
-            {
-              rationName: "Ración",
-              price: 11,
-            },
-          ],
+          priceByRation: {
+            rationName: "Raciones",
+            rationsTypes: [
+              {
+                unit: "½ Ración",
+                price: 8,
+              },
+              {
+                unit: "Ración",
+                price: 11,
+              },
+            ],
+          },
         },
       ],
     },
@@ -282,16 +299,19 @@ const papulinosFutureJSON: RestaurantInfo = {
         },
         {
           name: "Alitas de Pollo",
-          priceByRation: [
-            {
-              rationName: "½ Ración (3 unidades)",
-              price: 5.9,
-            },
-            {
-              rationName: "Ración (5 unidades)",
-              price: 9.5,
-            },
-          ],
+          priceByRation: {
+            rationName: "Raciones",
+            rationsTypes: [
+              {
+                unit: "½ Ración",
+                price: 5.9,
+              },
+              {
+                unit: "Ración",
+                price: 9.5,
+              },
+            ],
+          },
         },
         {
           name: "Patita de Chivo en su Jugo al Horno",
@@ -389,14 +409,16 @@ const papulinosFutureJSON: RestaurantInfo = {
 const hermanosAlbaFutureJSON: RestaurantInfo = {
   name: "Hermanos Alba",
   urlName: "hermanosalba",
-  theme: "fish",
-  menuDate: "Actualizada el 14 de Febrero de 2022",
-  official: false,
   phone: "951 33 18 03",
   address: "Calle Salvador Allende, 15 - Málaga",
   locationUrl:
     "https://www.google.com/maps/place/Restaurante+Hermanos+Alba/@36.7199358,-4.3637038,15z/data=!4m2!3m1!1s0x0:0x20b21ada1121ce03?sa=X&ved=2ahUKEwj_8pDWyff1AhUkSvEDHeBgAOEQ_BJ6BAhOEAU",
+  menuDate: "Actualizada el 14 de Febrero de 2022",
+  communitySourceUrl:
+    "https://www.hermanosalba.com/_files/ugd/e7dd90_9fa99b00428b4754a7ff716eccc73fa3.pdf",
+  official: false,
   description: "La tradición de nuestra bahía",
+  theme: "fish",
   menu: [
     {
       name: "Entrantes",
