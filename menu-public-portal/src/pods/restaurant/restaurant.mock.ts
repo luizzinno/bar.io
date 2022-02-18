@@ -1,6 +1,6 @@
 import { RestaurantInfo } from "./restaurant.vm";
 
-export const papulinosFutureJSON: RestaurantInfo = {
+const papulinosFutureJSON: RestaurantInfo = {
   name: "Papulinos",
   urlName: "papulinos",
   phone: "952 28 38 49",

@@ -3,7 +3,7 @@ import { connectToDBServer, disconnectFromDbServer } from 'core/servers';
 import { envConstants } from 'core/constants';
 import { mapRestaurantFromApiToModel } from 'pods/restaurant/restaurant.mappers';
 import { restaurantDbRepository } from 'dals';
-import { inputQuestions } from '../questions';
+import { inputQuestions } from './questions';
 
 export const run = async () => {
   try {

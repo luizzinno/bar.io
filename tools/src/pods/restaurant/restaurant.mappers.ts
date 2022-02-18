@@ -1,6 +1,7 @@
 import { ObjectId } from 'mongodb';
 import * as model from 'dals';
 import * as apiModel from './restaurant.api-model';
+import { mapToCollection } from 'common/mappers';
 
 export const reduceCategoryEntryListToRationDefinitionList = (
   data: apiModel.CategoryEntry[]
@@ -38,7 +39,7 @@ export const reduceCategoryEntryListToRationDefinitionList = (
 const mapListFromRationTypeApiToRationTypeMode = (
   data: apiModel.RationType[]
 ): model.RationType[] =>
-  Array.isArray(data) ? data.map(mapFromRationTypeApiToRationTypeMode) : [];
+  mapToCollection(data, mapFromRationTypeApiToRationTypeMode);
 
 const mapFromRationTypeApiToRationTypeMode = (
   data: apiModel.RationType
@@ -55,7 +56,7 @@ const mapFromPriceByRationToSubItemPrice = (
 });
 
 const mapListFromItemApiToItemModel = (data: apiModel.Item[]): model.Item[] =>
-  Array.isArray(data) ? data.map(mapFromItemApiToItemModel) : [];
+  mapToCollection(data, mapFromItemApiToItemModel);
 
 const mapFromItemApiToItemModel = (data: apiModel.Item): model.Item => ({
   name: data.name,
@@ -70,7 +71,7 @@ const mapFromItemApiToItemModel = (data: apiModel.Item): model.Item => ({
 const mapListFromCategoryEntryToItemsByCategory = (
   data: apiModel.CategoryEntry[]
 ): model.ItemsByCategory[] =>
-  Array.isArray(data) ? data.map(mapFromCategoryEntryToItemsByCategory) : [];
+  mapToCollection(data, mapFromCategoryEntryToItemsByCategory);
 
 const mapFromCategoryEntryToItemsByCategory = (
   data: apiModel.CategoryEntry
