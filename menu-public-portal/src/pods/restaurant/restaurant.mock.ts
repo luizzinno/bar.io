@@ -1,7 +1,6 @@
 import { RestaurantInfo } from "./restaurant.vm";
 
 const papulinosFutureJSON: RestaurantInfo = {
-  // TODO: change official from true to false before production
   name: "Papulinos",
   urlName: "papulinos",
   phone: "952 28 38 49",
@@ -9,7 +8,7 @@ const papulinosFutureJSON: RestaurantInfo = {
   locationUrl:
     "https://www.google.com/maps/place/PAPULINOS/@36.726131,-4.42737,15z/data=!4m2!3m1!1s0x0:0xe25c1bc2d9bf5e99?sa=X&ved=2ahUKEwj_nuWFyvf1AhVjxYUKHTQ1ARgQ_BJ6BAg4EAU",
   communitySourceUrl: "http://papulinos.com/carta/",
-  official: true,
+  official: false,
   menuDate: "Actualizada el 14 de Febrero de 2022",
   description: "Las mejores carnes a la brasa",
   theme: "meat",
@@ -717,7 +716,7 @@ const palubaFutureJSON: RestaurantInfo = {
   locationUrl:
     "https://www.google.com/maps/place/Cervecer%C3%ADa+Paluba/@36.6934059,-6.1025559,15z/data=!4m5!3m4!1s0x0:0x88ff8889eecfff0e!8m2!3d36.6934065!4d-6.1025711",
   theme: "default",
-  official: false,
+  official: true,
   menuDate: "Actualizada el 15 de Febrero de 2022",
   description: "Cervecería & Urban Food",
   menu: [

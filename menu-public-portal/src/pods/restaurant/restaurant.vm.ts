@@ -29,8 +29,8 @@ export interface RestaurantInfo {
   address: string;
   locationUrl: string;
   menuDate: string;
-  communitySourceUrl: string;
-  official: boolean; 
+  communitySourceUrl?: string;
+  official: boolean;
   description: string;
   theme: ThemeName;
   menu: CategoryEntry[];
