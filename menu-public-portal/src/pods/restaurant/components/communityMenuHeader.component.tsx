@@ -11,8 +11,13 @@ export const CommunityMenuHeader: React.FunctionComponent<Props> = (props) => {
   return (
     <div className={classes.footerNoOfficial}>
       <GroupsIcon sx={{ color: "#980000" }} />
-      <Typography variant="subtitle2" component="h2" className={classes.groupsIcon}>
-        {menuDate} por la comunidad
+      <Typography
+        variant="subtitle2"
+        component="h2"
+        className={classes.groupsIcon}
+      >
+        {menuDate} por la comunidad (carta orientativa, , si encuentras alguna
+        entrada desfasada, nos lo puedes comunicar: info@gastrocarta.net)
       </Typography>
     </div>
   );

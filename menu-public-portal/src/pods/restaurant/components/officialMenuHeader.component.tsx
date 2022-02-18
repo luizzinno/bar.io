@@ -1,4 +1,4 @@
-import CheckIcon from '@mui/icons-material/Check';
+import CheckIcon from "@mui/icons-material/Check";
 import * as classes from "../restaurant.component.styles";
 import { Typography } from "@mui/material";
 
@@ -16,7 +16,8 @@ export const OfficialMenuHeader: React.FunctionComponent<Props> = (props) => {
         component="h2"
         className={classes.groupsIcon}
       >
-        {menuDate} por el establecimiento
+        {menuDate} por el establecimiento (carta orientativa, si encuentras
+        alguna entrada desfasada, nos lo puedes comunicar: info@gastrocarta.net)
       </Typography>
     </div>
   );
