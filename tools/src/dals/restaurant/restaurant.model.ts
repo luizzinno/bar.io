@@ -31,14 +31,15 @@ export interface RationDefinition {
 export interface Restaurant {
   _id: ObjectId;
   name: string;
+  urlName: string;
   phone: string;
   address: string;
   locationUrl: string;
+  menuDate: Date;
+  communitySourceUrl: string;
+  official: boolean;
   description: string;
-  urlName: string;
   theme: RestaurantTheme;
   rationsDefinitions: RationDefinition[];
   menu: ItemsByCategory[];
-  menuDate: string;
-  official: boolean;
 }

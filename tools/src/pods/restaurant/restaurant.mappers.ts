@@ -5,35 +5,37 @@ import { mapToCollection } from 'common/mappers';
 
 export const reduceCategoryEntryListToRationDefinitionList = (
   data: apiModel.CategoryEntry[]
-) => {
-  const rations = data
-    .map((category) => category.items)
-    .reduce((a, c) => [...a, ...c], [])
-    .filter((x) => x.priceByRation)
-    .reduce((a, c) => {
-      if (!a[c.priceByRation.rationName]) {
-        return {
-          ...a,
-          [c.priceByRation.rationName]: c.priceByRation.rationsTypes.map(
-            (x) => x.unit
-          ),
-        };
-      } else {
-        return {
-          ...a,
-          [c.priceByRation.rationName]: [
-            ...new Set([
-              ...a[c.priceByRation.rationName],
-              ...c.priceByRation.rationsTypes.map((x) => x.unit),
-            ]),
-          ],
-        };
-      }
-    }, {});
+): model.RationDefinition[] => {
+  if (Array.isArray(data)) {
+    const rations = data
+      .map((category) => category.items)
+      .reduce((a, c) => [...a, ...c], [])
+      .filter((x) => x.priceByRation)
+      .reduce((a, c) => {
+        if (!a[c.priceByRation.rationName]) {
+          return {
+            ...a,
+            [c.priceByRation.rationName]: c.priceByRation.rationsTypes.map(
+              (x) => x.unit
+            ),
+          };
+        } else {
+          return {
+            ...a,
+            [c.priceByRation.rationName]: [
+              ...new Set([
+                ...a[c.priceByRation.rationName],
+                ...c.priceByRation.rationsTypes.map((x) => x.unit),
+              ]),
+            ],
+          };
+        }
+      }, {});
 
-  return Object.keys(rations).reduce((a, key) => {
-    return [...a, { name: key, units: rations[key] }];
-  }, []);
+    return Object.keys(rations).reduce((a, key) => {
+      return [...a, { name: key, units: rations[key] }];
+    }, []);
+  } else return [];
 };
 
 const mapListFromRationTypeApiToRationTypeMode = (
@@ -85,18 +87,19 @@ const mapFromCategoryEntryToItemsByCategory = (
 export const mapRestaurantFromApiToModel = (
   restaurant: apiModel.RestaurantInfo
 ): model.Restaurant => ({
-  _id: new ObjectId(),
+  _id: restaurant._id,
   name: restaurant.name,
+  urlName: restaurant.urlName,
   phone: restaurant.phone,
   address: restaurant.address,
   locationUrl: restaurant.locationUrl,
+  menuDate: restaurant.menuDate,
+  communitySourceUrl: restaurant.communitySourceUrl,
   description: restaurant.description,
-  urlName: restaurant.urlName,
   theme: restaurant.theme,
   rationsDefinitions: reduceCategoryEntryListToRationDefinitionList(
     restaurant.menu
   ),
   menu: mapListFromCategoryEntryToItemsByCategory(restaurant.menu),
-  menuDate: restaurant.menuDate,
   official: restaurant.official,
 });

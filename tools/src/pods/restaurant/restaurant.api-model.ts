@@ -1,4 +1,5 @@
 import { RestaurantTheme } from 'common-app/models';
+import { ObjectId } from 'mongodb';
 
 export interface RationType {
   unit: string;
@@ -24,14 +25,16 @@ export interface CategoryEntry {
 }
 
 export interface RestaurantInfo {
+  _id: ObjectId;
   name: string;
+  urlName: string;
   phone: string;
   address: string;
   locationUrl: string;
+  menuDate: Date;
+  communitySourceUrl: string;
+  official: boolean;
   description: string;
-  urlName: string;
   theme: RestaurantTheme;
   menu: CategoryEntry[];
-  menuDate: string;
-  official: boolean;
 }

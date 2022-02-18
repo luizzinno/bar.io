@@ -1,16 +1,19 @@
+import { ObjectId } from 'mongodb';
 import { RestaurantInfo } from 'pods/restaurant';
 
 export const restaurant: RestaurantInfo = {
+  _id: new ObjectId(),
   name: 'Papulinos',
   urlName: 'papulinos',
   phone: '952 28 38 49',
   address: 'Calle Malasaña, 42 - Málaga',
   locationUrl:
     'https://www.google.com/maps/place/PAPULINOS/@36.726131,-4.42737,15z/data=!4m2!3m1!1s0x0:0xe25c1bc2d9bf5e99?sa=X&ved=2ahUKEwj_nuWFyvf1AhVjxYUKHTQ1ARgQ_BJ6BAg4EAU',
-  theme: 'meat',
-  menuDate: 'Actualizada el 14 de Febrero de 2022',
+  menuDate: new Date('2022-02-14'),
+  communitySourceUrl: 'http://papulinos.com/carta/',
   official: false,
   description: 'Las mejores carnes a la brasa',
+  theme: 'meat',
   menu: [
     {
       name: 'Ensaladas',
