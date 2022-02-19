@@ -94,14 +94,14 @@ export const restaurant: RestaurantInfo = {
         {
           name: 'Chorizo Ibérico',
           priceByRation: {
-            rationName: 'Bocadillos',
+            rationName: 'Raciones',
             rationsTypes: [
               {
-                unit: 'Pitufo',
+                unit: '½ Ración',
                 price: 3.6,
               },
               {
-                unit: 'Bollo',
+                unit: 'Ración',
                 price: 5.6,
               },
             ],
@@ -137,10 +137,6 @@ export const restaurant: RestaurantInfo = {
                 unit: 'Ración',
                 price: 9,
               },
-              {
-                unit: 'bocadillo',
-                price: 3,
-              },
             ],
           },
         },
@@ -156,10 +152,6 @@ export const restaurant: RestaurantInfo = {
               {
                 unit: 'Ración',
                 price: 9.5,
-              },
-              {
-                unit: 'Tapa',
-                price: 1.2,
               },
             ],
           },
