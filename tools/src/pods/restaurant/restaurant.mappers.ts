@@ -1,86 +1,91 @@
-import { ObjectId } from 'mongodb';
 import * as model from 'dals';
 import * as apiModel from './restaurant.api-model';
 import { mapToCollection } from 'common/mappers';
 
 export const reduceCategoryEntryListToRationDefinitionList = (
-  data: apiModel.CategoryEntry[]
+  category: apiModel.CategoryEntry[]
 ): model.RationDefinition[] => {
-  if (Array.isArray(data)) {
-    const rations = data
-      .map((category) => category.items)
-      .reduce((a, c) => [...a, ...c], [])
-      .filter((x) => x.priceByRation)
-      .reduce((a, c) => {
-        if (!a[c.priceByRation.rationName]) {
+  if (Array.isArray(category)) {
+    const rations = category
+      .map((category: apiModel.CategoryEntry) => category.items)
+      .reduce(
+        (acc: apiModel.Item[], item: apiModel.Item[]) => [...acc, ...item],
+        []
+      )
+      .filter((item: apiModel.Item) => item.priceByRation)
+      .reduce((acc, item: apiModel.Item) => {
+        if (!acc[item.priceByRation.rationName]) {
           return {
-            ...a,
-            [c.priceByRation.rationName]: c.priceByRation.rationsTypes.map(
-              (x) => x.unit
-            ),
+            ...acc,
+            [item.priceByRation.rationName]:
+              item.priceByRation.rationsTypes.map(
+                (rationType: apiModel.RationType) => rationType.unit
+              ),
           };
         } else {
           return {
-            ...a,
-            [c.priceByRation.rationName]: [
+            ...acc,
+            [item.priceByRation.rationName]: [
               ...new Set([
-                ...a[c.priceByRation.rationName],
-                ...c.priceByRation.rationsTypes.map((x) => x.unit),
+                ...acc[item.priceByRation.rationName],
+                ...item.priceByRation.rationsTypes.map(
+                  (rationType: apiModel.RationType) => rationType.unit
+                ),
               ]),
             ],
           };
         }
       }, {});
 
-    return Object.keys(rations).reduce((a, key) => {
-      return [...a, { name: key, units: rations[key] }];
+    return Object.keys(rations).reduce((acc, key) => {
+      return [...acc, { name: key, units: rations[key] }];
     }, []);
   } else return [];
 };
 
 const mapListFromRationTypeApiToRationTypeMode = (
-  data: apiModel.RationType[]
+  rationType: apiModel.RationType[]
 ): model.RationType[] =>
-  mapToCollection(data, mapFromRationTypeApiToRationTypeMode);
+  mapToCollection(rationType, mapFromRationTypeApiToRationTypeMode);
 
 const mapFromRationTypeApiToRationTypeMode = (
-  data: apiModel.RationType
+  rationType: apiModel.RationType
 ): model.RationType => ({
-  unit: data.unit,
-  price: data.price,
+  unit: rationType.unit,
+  price: rationType.price,
 });
 
 const mapFromPriceByRationToSubItemPrice = (
-  data: apiModel.PriceByRation
+  priceByRation: apiModel.PriceByRation
 ): model.SubItemPrice => ({
-  rationName: data.rationName,
-  rationsTypes: mapListFromRationTypeApiToRationTypeMode(data.rationsTypes),
+  rationName: priceByRation.rationName,
+  rationsTypes: mapListFromRationTypeApiToRationTypeMode(priceByRation.rationsTypes),
 });
 
-const mapListFromItemApiToItemModel = (data: apiModel.Item[]): model.Item[] =>
-  mapToCollection(data, mapFromItemApiToItemModel);
+const mapListFromItemApiToItemModel = (item: apiModel.Item[]): model.Item[] =>
+  mapToCollection(item, mapFromItemApiToItemModel);
 
-const mapFromItemApiToItemModel = (data: apiModel.Item): model.Item => ({
-  name: data.name,
-  description: data.description,
-  price: data.price ? data.price : null,
-  priceByRation: data.priceByRation
-    ? mapFromPriceByRationToSubItemPrice(data.priceByRation)
+const mapFromItemApiToItemModel = (item: apiModel.Item): model.Item => ({
+  name: item.name,
+  description: item.description,
+  price: item.price ? item.price : null,
+  priceByRation: item.priceByRation
+    ? mapFromPriceByRationToSubItemPrice(item.priceByRation)
     : null,
-  unit: data.unit ? data.unit : null,
+  unit: item.unit ? item.unit : null,
 });
 
 const mapListFromCategoryEntryToItemsByCategory = (
-  data: apiModel.CategoryEntry[]
+  category: apiModel.CategoryEntry[]
 ): model.ItemsByCategory[] =>
-  mapToCollection(data, mapFromCategoryEntryToItemsByCategory);
+  mapToCollection(category, mapFromCategoryEntryToItemsByCategory);
 
 const mapFromCategoryEntryToItemsByCategory = (
-  data: apiModel.CategoryEntry
+  category: apiModel.CategoryEntry
 ): model.ItemsByCategory => {
   return {
-    categoryName: data.name,
-    items: mapListFromItemApiToItemModel(data.items),
+    categoryName: category.name,
+    items: mapListFromItemApiToItemModel(category.items),
   };
 };
 
