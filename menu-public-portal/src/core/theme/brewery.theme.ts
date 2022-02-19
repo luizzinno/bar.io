@@ -3,10 +3,10 @@ import { createTheme } from "@mui/material/styles";
 export const breweryTheme = createTheme({
   palette: {
     primary: {
-      main: "#128400",
+      main: "#CE9C1B",
     },
     secondary: {
-      main: "#EB1B1B",
+      main: "#862447",
     },
     text: {
       primary: "#232323",
@@ -15,7 +15,7 @@ export const breweryTheme = createTheme({
   },
   typography: {
     h3: {
-      borderBottom: "3px solid #EB1B1B",
+      borderBottom: "3px solid #862447",
     },
   },
 });

@@ -11,7 +11,7 @@ const papulinosFutureJSON: RestaurantInfo = {
   official: false,
   menuDate: "Actualizada el 14 de Febrero de 2022",
   description: "Las mejores carnes a la brasa",
-  theme: "meat",
+  theme: "italian",
   menu: [
     {
       name: "Ensaladas",
