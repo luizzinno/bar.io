@@ -26,7 +26,7 @@ svg {
   margin: 2% auto;
   cursor: pointer;
   position: fixed;
-  top: 2%;
+  top: 12%;
   right: 4%;
   width: 25px;
   height: 25px;
@@ -59,7 +59,21 @@ svg {
   flex-flow: column;
   align-content: center;
   justify-content: center;
-  margin: 1rem;
+  margin: .5rem;
+}
+
+.abaoutus {
+  display: flex;
+  justify-content: center;
+  background-color: #00a825;
+  margin: .5rem;
+}
+
+.abaoutus > p {
+  color: white;
+  font-size: 1.2rem;
+  padding: 0.5rem 0;
+  font-weight: 400;
 }
 
 .title {

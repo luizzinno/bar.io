@@ -66,7 +66,7 @@ const RestaurantList: React.FC<Props> = (props) => {
 
       <main className={classes.main}>
         <div className={classes.credits}>
-          <Link href="./static/about.html">
+          <Link href="about.html">
             <a target="_blank" className={classes.anchor}>
               <Typography
                 variant="caption"
