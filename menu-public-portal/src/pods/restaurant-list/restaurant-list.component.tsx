@@ -9,6 +9,9 @@ import CardContent from "@mui/material/CardContent";
 import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
 import PlaceIcon from "@mui/icons-material/Place";
 import Button from "@mui/material/Button";
+import { ClassNames } from "@emotion/react";
+import * as classes from "./restaurant.list.component.styles";
+import { collapseClasses } from "@mui/material";
 interface Props {
   restaurantList: RestaurantInfo[];
 }
@@ -20,7 +23,7 @@ const RestaurantList: React.FC<Props> = (props) => {
     const { name, urlName, address, description, locationUrl, phone } =
       restaurant;
     return (
-      <Card sx={{ maxWidth: 345 }} key={name}>
+      <Card sx={{ maxWidth: 345 }} key={name} className={classes.card}>
         <CardContent>
           <Typography variant="h6" component="h2">
             {phone}
@@ -61,10 +64,27 @@ const RestaurantList: React.FC<Props> = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <Typography variant="h5" component="h5">
-          Listado restaurantes
-        </Typography>
+      <main className={classes.main}>
+        <div className={classes.credits}>
+          <Link href="./static/about.html">
+            <a target="_blank" className={classes.anchor}>
+              <Typography
+                variant="caption"
+                component="h5"
+                className={classes.aboutus}
+              >
+                quienes somos
+              </Typography>
+            </a>
+          </Link>
+          <Typography
+            variant="caption"
+            component="h5"
+            className={classes.gastrocarta}
+          >
+            gastrocarta.net
+          </Typography>
+        </div>
         {restaurantElements}
       </main>
 
