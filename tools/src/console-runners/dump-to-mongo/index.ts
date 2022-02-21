@@ -12,11 +12,19 @@ export const run = async () => {
     const { file } = await prompt(inputQuestions);
     const { restaurant } = require(`./restaurant-list/${file}`);
 
-    await restaurantDbRepository.saveRestaurant(
-      mapRestaurantFromApiToModel(restaurant)
+    const restaurantModel = await restaurantDbRepository.getRestaurantByUrlName(
+      file
     );
 
-    console.log('Restaurant created:', { restaurant: file });
+    if (restaurantModel) {
+      throw 'Restaurant with this name exist in data base';
+    } else {
+      await restaurantDbRepository.saveRestaurant(
+        mapRestaurantFromApiToModel(restaurant)
+      );
+
+      console.log('Restaurant created:', { restaurant: file });
+    }
 
     await disconnectFromDbServer();
   } catch (error) {

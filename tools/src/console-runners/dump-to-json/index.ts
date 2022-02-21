@@ -16,7 +16,7 @@ export const run = async () => {
     );
 
     if (restaurant) {
-      fs.writeFileSync(`./public/${file}.json`, JSON.stringify(restaurant));
+      fs.writeFileSync(`../menu-public-portal/public/${file}.json`, JSON.stringify(restaurant, null, 2));
 
       console.log('Restaurant created:', { restaurant: file });
     } else {
