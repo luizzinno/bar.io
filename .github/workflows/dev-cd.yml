@@ -13,9 +13,6 @@ env:
 jobs:
   cd:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: menu-public-portal
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
