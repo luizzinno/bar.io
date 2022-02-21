@@ -2,11 +2,6 @@ name: Branch Deployment workflow
 
 on:
   workflow_dispatch:
-    inputs:
-      frontBranchName:
-        description: 'Front branch name'
-        required: true
-        default: 'vnext'
   push:
     branches:
       - vnext
