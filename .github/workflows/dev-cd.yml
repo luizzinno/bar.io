@@ -6,6 +6,10 @@ on:
     branches:
       - vnext
 
+env:
+  VERCEL_PROJECT_ID: ${{ secrets.DEV_VERCEL_PROJECT_ID }}
+  VERCEL_ORG_ID: ${{ secrets.DEV_VERCEL_ORG_ID }}
+
 jobs:
   cd:
     runs-on: ubuntu-latest
@@ -15,9 +19,5 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      - name: Install
-        run: npm install
-      - name: Build
-        run: npm run build
       - name: Deploy
         run: vercel -t ${{ secrets.DEV_VERCEL_TOKEN }}
