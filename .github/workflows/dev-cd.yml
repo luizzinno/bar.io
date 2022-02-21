@@ -6,10 +6,10 @@ on:
       frontBranchName:
         description: 'Front branch name'
         required: true
-        default: 'develop'
+        default: 'vnext'
   push:
     branches:
-      - develop
+      - vnext
 
 jobs:
   cd:
