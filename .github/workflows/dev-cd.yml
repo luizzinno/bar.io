@@ -1,0 +1,26 @@
+name: Branch Deployment workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      frontBranchName:
+        description: 'Front branch name'
+        required: true
+        default: 'develop'
+  push:
+    branches:
+      - develop
+
+jobs:
+  cd:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: menu-public-portal
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Build
+        run: npm run build
+      - name: Deploy
+        run: vercel -t ${{ secrets.DEV_VERCEL_TOKEN }}
