@@ -2,7 +2,7 @@ import { mapToCollection } from './collection.mapper';
 
 describe('common/mappers/collection.mapper spec', () => {
   describe('mapToCollection', () => {
-    it('shoudl return empty array when it feeds collectio equals undefined', () => {
+    it('should return empty array when it feeds collectio equals undefined', () => {
       //Arrange
       const value = undefined;
 
@@ -20,7 +20,7 @@ describe('common/mappers/collection.mapper spec', () => {
       expect(result).toEqual(valores);
     });
 
-    it('shoudl return empty array when it feeds collectio equals null', () => {
+    it('should return empty array when it feeds collectio equals null', () => {
       //Arrange
       const value = null;
 

@@ -29,7 +29,7 @@ export interface RestaurantApi {
   phone: string;
   address: string;
   locationUrl: string;
-  menuDate: Date;
+  menuDate: string;
   communitySourceUrl: string;
   official: boolean;
   description: string;

@@ -1,573 +1,573 @@
 {
-    "_id": "6213681acecdcbdeaf529042",
-    "name": "Papulinos",
-    "urlName": "papulinos",
-    "phone": "952 28 38 49",
-    "address": "Calle Malasaña, 42 - Málaga",
-    "locationUrl": "https://www.google.com/maps/place/PAPULINOS/@36.726131,-4.42737,15z/data=!4m2!3m1!1s0x0:0xe25c1bc2d9bf5e99?sa=X&ved=2ahUKEwj_nuWFyvf1AhVjxYUKHTQ1ARgQ_BJ6BAg4EAU",
-    "menuDate": "2022-02-14T00:00:00.000Z",
-    "communitySourceUrl": "http://papulinos.com/carta/",
-    "description": "Las mejores carnes a la brasa",
-    "theme": "meat",
-    "rationsDefinitions": [
+  "_id": "62137ea45dfffad8cc90650f",
+  "name": "Papulinos",
+  "urlName": "papulinos",
+  "phone": "952 28 38 49",
+  "address": "Calle Malasaña, 42 - Málaga",
+  "locationUrl": "https://www.google.com/maps/place/PAPULINOS/@36.726131,-4.42737,15z/data=!4m2!3m1!1s0x0:0xe25c1bc2d9bf5e99?sa=X&ved=2ahUKEwj_nuWFyvf1AhVjxYUKHTQ1ARgQ_BJ6BAg4EAU",
+  "menuDate": "2022-02-14T00:00:00.000Z",
+  "communitySourceUrl": "http://papulinos.com/carta/",
+  "description": "Las mejores carnes a la brasa",
+  "theme": "meat",
+  "rationsDefinitions": [
+    {
+      "name": "Raciones",
+      "units": [
+        "½ Ración",
+        "Ración"
+      ]
+    }
+  ],
+  "menu": [
+    {
+      "categoryName": "Ensaladas",
+      "items": [
         {
-            "name": "Raciones",
-            "units": [
-                "½ Ración",
-                "Ración"
-            ]
+          "name": "De la Casa",
+          "description": "Lechuga, tomate, maiz, remolacha, zanahoria, atún",
+          "price": 8,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Especial",
+          "description": "Lechuga, tomate, manzana, palmito, espárragos, nueces, pasas, salsa rosa",
+          "price": 10,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Queso de Cabra",
+          "description": "Lechuga, tomate, maiz, remolacha, zanahoria, atún",
+          "price": 12,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Cogollos de Lechuga a la Cordobesa",
+          "description": "Cortados en cuartos y aliñados con ajo, aceite y pimientos asados",
+          "price": 5.5,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Tomate",
+          "description": null,
+          "price": 5,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Tomate con Atún",
+          "description": null,
+          "price": 7,
+          "priceByRation": null,
+          "unit": null
         }
-    ],
-    "menu": [
+      ]
+    },
+    {
+      "categoryName": "Entrantes",
+      "items": [
         {
-            "categoryName": "Ensaladas",
-            "items": [
-                {
-                    "name": "De la Casa",
-                    "description": "Lechuga, tomate, maiz, remolacha, zanahoria, atún",
-                    "price": 8,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Especial",
-                    "description": "Lechuga, tomate, manzana, palmito, espárragos, nueces, pasas, salsa rosa",
-                    "price": 10,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Queso de Cabra",
-                    "description": "Lechuga, tomate, maiz, remolacha, zanahoria, atún",
-                    "price": 12,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Cogollos de Lechuga a la Cordobesa",
-                    "description": "Cortados en cuartos y aliñados con ajo, aceite y pimientos asados",
-                    "price": 5.5,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Tomate",
-                    "description": null,
-                    "price": 5,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Tomate con Atún",
-                    "description": null,
-                    "price": 7,
-                    "priceByRation": null,
-                    "unit": null
-                }
-            ]
+          "name": "Porra de la Casa",
+          "description": null,
+          "price": 3.8,
+          "priceByRation": null,
+          "unit": null
         },
         {
-            "categoryName": "Entrantes",
-            "items": [
-                {
-                    "name": "Porra de la Casa",
-                    "description": null,
-                    "price": 3.8,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Migas Caseras",
-                    "description": null,
-                    "price": 3.5,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Anchoa Lolin (unidad)",
-                    "description": "Tosta de pan, tomate triturado y aceite de oliva",
-                    "price": 1.7,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Pulpo a la gallega",
-                    "description": null,
-                    "price": 14,
-                    "priceByRation": null,
-                    "unit": null
-                }
-            ]
+          "name": "Migas Caseras",
+          "description": null,
+          "price": 3.5,
+          "priceByRation": null,
+          "unit": null
         },
         {
-            "categoryName": "Entrantes a la Brasa",
-            "items": [
-                {
-                    "name": "Chorizo Jalapeño (picante)",
-                    "description": null,
-                    "price": 3.4,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Chorizo Criollo",
-                    "description": null,
-                    "price": 3.4,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Morcilla de Burgos",
-                    "description": null,
-                    "price": 4.3,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Pata de Pulpo",
-                    "description": null,
-                    "price": 14,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Chorizo Ibérico",
-                    "description": null,
-                    "price": null,
-                    "priceByRation": {
-                        "rationName": "Raciones",
-                        "rationsTypes": [
-                            {
-                                "unit": "½ Ración",
-                                "price": 3.6
-                            },
-                            {
-                                "unit": "Ración",
-                                "price": 5.6
-                            }
-                        ]
-                    },
-                    "unit": null
-                },
-                {
-                    "name": "Salchichón Ibérico",
-                    "description": null,
-                    "price": null,
-                    "priceByRation": {
-                        "rationName": "Raciones",
-                        "rationsTypes": [
-                            {
-                                "unit": "½ Ración",
-                                "price": 3.6
-                            },
-                            {
-                                "unit": "Ración",
-                                "price": 5.6
-                            }
-                        ]
-                    },
-                    "unit": null
-                },
-                {
-                    "name": "Queso de Oveja",
-                    "description": "Curado en Manteca de Cerdo Ibérico",
-                    "price": null,
-                    "priceByRation": {
-                        "rationName": "Raciones",
-                        "rationsTypes": [
-                            {
-                                "unit": "½ Ración",
-                                "price": 5.5
-                            },
-                            {
-                                "unit": "Ración",
-                                "price": 9
-                            }
-                        ]
-                    },
-                    "unit": null
-                },
-                {
-                    "name": "Lomito Ibérico",
-                    "description": null,
-                    "price": null,
-                    "priceByRation": {
-                        "rationName": "Raciones",
-                        "rationsTypes": [
-                            {
-                                "unit": "½ Ración",
-                                "price": 6
-                            },
-                            {
-                                "unit": "Ración",
-                                "price": 9.5
-                            }
-                        ]
-                    },
-                    "unit": null
-                },
-                {
-                    "name": "Surtido Ibérico",
-                    "description": null,
-                    "price": null,
-                    "priceByRation": {
-                        "rationName": "Raciones",
-                        "rationsTypes": [
-                            {
-                                "unit": "½ Ración",
-                                "price": 8
-                            },
-                            {
-                                "unit": "Ración",
-                                "price": 11
-                            }
-                        ]
-                    },
-                    "unit": null
-                }
-            ]
+          "name": "Anchoa Lolin (unidad)",
+          "description": "Tosta de pan, tomate triturado y aceite de oliva",
+          "price": 1.7,
+          "priceByRation": null,
+          "unit": null
         },
         {
-            "categoryName": "Tostas a la Brasa",
-            "items": [
-                {
-                    "name": "Tosta al Pil-Pil",
-                    "description": "Langostino con salsa al pil-pil",
-                    "price": 8,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Tosta de Queso de Cabra",
-                    "description": "Rulo de queso de cabra con mermelada de tomate",
-                    "price": null,
-                    "priceByRation": null,
-                    "unit": null
-                }
-            ]
-        },
-        {
-            "categoryName": "Guarnición",
-            "items": [
-                {
-                    "name": "Patata Asada",
-                    "description": null,
-                    "price": 2.8,
-                    "priceByRation": null,
-                    "unit": null
-                }
-            ]
-        },
-        {
-            "categoryName": "Salsas Adicionales",
-            "items": [
-                {
-                    "name": "A la Pimienta",
-                    "description": null,
-                    "price": 2,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Queso Azul",
-                    "description": null,
-                    "price": 2,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Miel y Mostaza",
-                    "description": null,
-                    "price": 2,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Champiñones",
-                    "description": null,
-                    "price": 2,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Chile Dulce",
-                    "description": null,
-                    "price": 2,
-                    "priceByRation": null,
-                    "unit": null
-                }
-            ]
-        },
-        {
-            "categoryName": "Carnes a la Brasa",
-            "items": [
-                {
-                    "name": "Costilla de Cerdo",
-                    "description": null,
-                    "price": 11,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Costillitas de Cerdo al Infierno",
-                    "description": null,
-                    "price": 11,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Solomillo de Cerdo",
-                    "description": null,
-                    "price": 11.5,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Brocheta de Solomillo de Cerdo",
-                    "description": null,
-                    "price": 11.5,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Presa Ibérica de Cerdo de Jabugo",
-                    "description": null,
-                    "price": 15.5,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Codillo de Cerdo en su Jugo al Horno",
-                    "description": null,
-                    "price": 12,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Cochinillo de Cerdo Segoviano al Horno",
-                    "description": "1/4 para dos personas",
-                    "price": 35,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Entrecot Añojo Irlandés",
-                    "description": null,
-                    "price": 16,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Solomillo de Añojo Irlandés",
-                    "description": null,
-                    "price": 20,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Brocheta Solomillo de Añojo",
-                    "description": null,
-                    "price": 15.5,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Centro Chuletón Añojo Irlandés",
-                    "description": null,
-                    "price": 28,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Chuletitas de Cordero Lechal",
-                    "description": null,
-                    "price": 17.5,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Pierna de Cordero Lechal al Horno",
-                    "description": null,
-                    "price": 18,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Paletilla de Cordero Lechal al Horno",
-                    "description": null,
-                    "price": 21,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Filete de Pavo Aliñado",
-                    "description": null,
-                    "price": 9.5,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Pinchito de Pollo",
-                    "description": null,
-                    "price": 3.6,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Brocheta de Pollo",
-                    "description": null,
-                    "price": 10.5,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Pechuga de Pollo",
-                    "description": null,
-                    "price": 9,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Alitas de Pollo",
-                    "description": null,
-                    "price": null,
-                    "priceByRation": {
-                        "rationName": "Raciones",
-                        "rationsTypes": [
-                            {
-                                "unit": "½ Ración",
-                                "price": 5.9
-                            },
-                            {
-                                "unit": "Ración",
-                                "price": 9.5
-                            }
-                        ]
-                    },
-                    "unit": null
-                },
-                {
-                    "name": "Patita de Chivo en su Jugo al Horno",
-                    "description": null,
-                    "price": 18,
-                    "priceByRation": null,
-                    "unit": null
-                }
-            ]
-        },
-        {
-            "categoryName": "Pescados a la Brasa",
-            "items": [
-                {
-                    "name": "Chuleta de Atún (Ventresca)",
-                    "description": null,
-                    "price": 11.5,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Pez Espada",
-                    "description": null,
-                    "price": 11.5,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Calamar",
-                    "description": null,
-                    "price": 16,
-                    "priceByRation": null,
-                    "unit": null
-                }
-            ]
-        },
-        {
-            "categoryName": "Hamburguesas a la Brasa",
-            "items": [
-                {
-                    "name": "Filete de Hamburguesa",
-                    "description": "Mixta, Hereford, Pollo, Picante",
-                    "price": 5,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Hamburguesa Mixta",
-                    "description": "Pan, Carne de Cerdo y Hereford, Queso Cheddar, Tomate Natural, Lechuga y Cebolla caramelizada con Patatas Chips",
-                    "price": 9,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Hamburguesa Hereford",
-                    "description": "Pan, Carne Hereford, Queso Cheddar, Tomate Natural, Lechuga y Cebolla caramelizada con Patatas Chips",
-                    "price": 9.5,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Hamburguesa de Queso de Cabra",
-                    "description": "Pan, Carne de Hereford, Queso de Cabra, Lechuga, Tomate Natural, Cebolla Caramelizada y Nueces con Patatas Chips",
-                    "price": 10,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Hamburguesa Picante",
-                    "description": "Pan, Carne de Cerdo y Hereford, Queso Cheddar, Lechuga, Tomate y Cebolla Frita y ali-oli con Patatas Chips",
-                    "price": 8,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Hamburguesa de Pollo",
-                    "description": "Pan, Carne de Pollo, Queso Cheddar, Lechuga, Tomate y Cebolla caramelizada con Patatas Chips",
-                    "price": 8.5,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Hamburguesa de Soja",
-                    "description": "Pan, Soja, Queso Cheddar, Tomate Natural, Lechuga y Cebolla Caramelizada con Patatas Chips",
-                    "price": 9.5,
-                    "priceByRation": null,
-                    "unit": null
-                }
-            ]
-        },
-        {
-            "categoryName": "Sugerencias",
-            "items": [
-                {
-                    "name": "Pinchito de Cordero",
-                    "description": null,
-                    "price": 6.5,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Entrecot de Angus Americano",
-                    "description": null,
-                    "price": 16,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Rabo de Toro al Vino Tino",
-                    "description": null,
-                    "price": 16,
-                    "priceByRation": null,
-                    "unit": null
-                },
-                {
-                    "name": "Bacalao a la Riojana",
-                    "description": null,
-                    "price": 14.5,
-                    "priceByRation": null,
-                    "unit": null
-                }
-            ]
+          "name": "Pulpo a la gallega",
+          "description": null,
+          "price": 14,
+          "priceByRation": null,
+          "unit": null
         }
-    ],
-    "official": false
+      ]
+    },
+    {
+      "categoryName": "Entrantes a la Brasa",
+      "items": [
+        {
+          "name": "Chorizo Jalapeño (picante)",
+          "description": null,
+          "price": 3.4,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Chorizo Criollo",
+          "description": null,
+          "price": 3.4,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Morcilla de Burgos",
+          "description": null,
+          "price": 4.3,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Pata de Pulpo",
+          "description": null,
+          "price": 14,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Chorizo Ibérico",
+          "description": null,
+          "price": null,
+          "priceByRation": {
+            "rationName": "Raciones",
+            "rationsTypes": [
+              {
+                "unit": "½ Ración",
+                "price": 3.6
+              },
+              {
+                "unit": "Ración",
+                "price": 5.6
+              }
+            ]
+          },
+          "unit": null
+        },
+        {
+          "name": "Salchichón Ibérico",
+          "description": null,
+          "price": null,
+          "priceByRation": {
+            "rationName": "Raciones",
+            "rationsTypes": [
+              {
+                "unit": "½ Ración",
+                "price": 3.6
+              },
+              {
+                "unit": "Ración",
+                "price": 5.6
+              }
+            ]
+          },
+          "unit": null
+        },
+        {
+          "name": "Queso de Oveja",
+          "description": "Curado en Manteca de Cerdo Ibérico",
+          "price": null,
+          "priceByRation": {
+            "rationName": "Raciones",
+            "rationsTypes": [
+              {
+                "unit": "½ Ración",
+                "price": 5.5
+              },
+              {
+                "unit": "Ración",
+                "price": 9
+              }
+            ]
+          },
+          "unit": null
+        },
+        {
+          "name": "Lomito Ibérico",
+          "description": null,
+          "price": null,
+          "priceByRation": {
+            "rationName": "Raciones",
+            "rationsTypes": [
+              {
+                "unit": "½ Ración",
+                "price": 6
+              },
+              {
+                "unit": "Ración",
+                "price": 9.5
+              }
+            ]
+          },
+          "unit": null
+        },
+        {
+          "name": "Surtido Ibérico",
+          "description": null,
+          "price": null,
+          "priceByRation": {
+            "rationName": "Raciones",
+            "rationsTypes": [
+              {
+                "unit": "½ Ración",
+                "price": 8
+              },
+              {
+                "unit": "Ración",
+                "price": 11
+              }
+            ]
+          },
+          "unit": null
+        }
+      ]
+    },
+    {
+      "categoryName": "Tostas a la Brasa",
+      "items": [
+        {
+          "name": "Tosta al Pil-Pil",
+          "description": "Langostino con salsa al pil-pil",
+          "price": 8,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Tosta de Queso de Cabra",
+          "description": "Rulo de queso de cabra con mermelada de tomate",
+          "price": null,
+          "priceByRation": null,
+          "unit": null
+        }
+      ]
+    },
+    {
+      "categoryName": "Guarnición",
+      "items": [
+        {
+          "name": "Patata Asada",
+          "description": null,
+          "price": 2.8,
+          "priceByRation": null,
+          "unit": null
+        }
+      ]
+    },
+    {
+      "categoryName": "Salsas Adicionales",
+      "items": [
+        {
+          "name": "A la Pimienta",
+          "description": null,
+          "price": 2,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Queso Azul",
+          "description": null,
+          "price": 2,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Miel y Mostaza",
+          "description": null,
+          "price": 2,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Champiñones",
+          "description": null,
+          "price": 2,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Chile Dulce",
+          "description": null,
+          "price": 2,
+          "priceByRation": null,
+          "unit": null
+        }
+      ]
+    },
+    {
+      "categoryName": "Carnes a la Brasa",
+      "items": [
+        {
+          "name": "Costilla de Cerdo",
+          "description": null,
+          "price": 11,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Costillitas de Cerdo al Infierno",
+          "description": null,
+          "price": 11,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Solomillo de Cerdo",
+          "description": null,
+          "price": 11.5,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Brocheta de Solomillo de Cerdo",
+          "description": null,
+          "price": 11.5,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Presa Ibérica de Cerdo de Jabugo",
+          "description": null,
+          "price": 15.5,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Codillo de Cerdo en su Jugo al Horno",
+          "description": null,
+          "price": 12,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Cochinillo de Cerdo Segoviano al Horno",
+          "description": "1/4 para dos personas",
+          "price": 35,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Entrecot Añojo Irlandés",
+          "description": null,
+          "price": 16,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Solomillo de Añojo Irlandés",
+          "description": null,
+          "price": 20,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Brocheta Solomillo de Añojo",
+          "description": null,
+          "price": 15.5,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Centro Chuletón Añojo Irlandés",
+          "description": null,
+          "price": 28,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Chuletitas de Cordero Lechal",
+          "description": null,
+          "price": 17.5,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Pierna de Cordero Lechal al Horno",
+          "description": null,
+          "price": 18,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Paletilla de Cordero Lechal al Horno",
+          "description": null,
+          "price": 21,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Filete de Pavo Aliñado",
+          "description": null,
+          "price": 9.5,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Pinchito de Pollo",
+          "description": null,
+          "price": 3.6,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Brocheta de Pollo",
+          "description": null,
+          "price": 10.5,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Pechuga de Pollo",
+          "description": null,
+          "price": 9,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Alitas de Pollo",
+          "description": null,
+          "price": null,
+          "priceByRation": {
+            "rationName": "Raciones",
+            "rationsTypes": [
+              {
+                "unit": "½ Ración",
+                "price": 5.9
+              },
+              {
+                "unit": "Ración",
+                "price": 9.5
+              }
+            ]
+          },
+          "unit": null
+        },
+        {
+          "name": "Patita de Chivo en su Jugo al Horno",
+          "description": null,
+          "price": 18,
+          "priceByRation": null,
+          "unit": null
+        }
+      ]
+    },
+    {
+      "categoryName": "Pescados a la Brasa",
+      "items": [
+        {
+          "name": "Chuleta de Atún (Ventresca)",
+          "description": null,
+          "price": 11.5,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Pez Espada",
+          "description": null,
+          "price": 11.5,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Calamar",
+          "description": null,
+          "price": 16,
+          "priceByRation": null,
+          "unit": null
+        }
+      ]
+    },
+    {
+      "categoryName": "Hamburguesas a la Brasa",
+      "items": [
+        {
+          "name": "Filete de Hamburguesa",
+          "description": "Mixta, Hereford, Pollo, Picante",
+          "price": 5,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Hamburguesa Mixta",
+          "description": "Pan, Carne de Cerdo y Hereford, Queso Cheddar, Tomate Natural, Lechuga y Cebolla caramelizada con Patatas Chips",
+          "price": 9,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Hamburguesa Hereford",
+          "description": "Pan, Carne Hereford, Queso Cheddar, Tomate Natural, Lechuga y Cebolla caramelizada con Patatas Chips",
+          "price": 9.5,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Hamburguesa de Queso de Cabra",
+          "description": "Pan, Carne de Hereford, Queso de Cabra, Lechuga, Tomate Natural, Cebolla Caramelizada y Nueces con Patatas Chips",
+          "price": 10,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Hamburguesa Picante",
+          "description": "Pan, Carne de Cerdo y Hereford, Queso Cheddar, Lechuga, Tomate y Cebolla Frita y ali-oli con Patatas Chips",
+          "price": 8,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Hamburguesa de Pollo",
+          "description": "Pan, Carne de Pollo, Queso Cheddar, Lechuga, Tomate y Cebolla caramelizada con Patatas Chips",
+          "price": 8.5,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Hamburguesa de Soja",
+          "description": "Pan, Soja, Queso Cheddar, Tomate Natural, Lechuga y Cebolla Caramelizada con Patatas Chips",
+          "price": 9.5,
+          "priceByRation": null,
+          "unit": null
+        }
+      ]
+    },
+    {
+      "categoryName": "Sugerencias",
+      "items": [
+        {
+          "name": "Pinchito de Cordero",
+          "description": null,
+          "price": 6.5,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Entrecot de Angus Americano",
+          "description": null,
+          "price": 16,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Rabo de Toro al Vino Tino",
+          "description": null,
+          "price": 16,
+          "priceByRation": null,
+          "unit": null
+        },
+        {
+          "name": "Bacalao a la Riojana",
+          "description": null,
+          "price": 14.5,
+          "priceByRation": null,
+          "unit": null
+        }
+      ]
+    }
+  ],
+  "official": false
 }

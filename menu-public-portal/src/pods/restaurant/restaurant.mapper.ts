@@ -1,59 +1,16 @@
 import * as restaurantApi from "./api/api.model";
 import * as restaurantVm from "./restaurant.vm";
 import { mapToCollection } from "common/mappers";
+import { emptyRestaurantInfo } from "./restaurant.vm";
 
-const mapDatefromApiToModel = (date: Date): string => {
-  const date1 = new Date(date);
-  const day = date1.getDate();
-  const year = date1.getUTCFullYear();
-  const month = date1.getMonth() + 1;
-  let monthFromNumberToDate = "";
+export const mapDatefromApiToModel = (date: string): string => {
+  const dateToDateFormat = new Date(date);
+  const day = dateToDateFormat.getDate();
+  const year = dateToDateFormat.getUTCFullYear();
+  const month = dateToDateFormat.toLocaleString("es-ES", { month: "long" });
 
-  switch (month) {
-    case 1:
-      monthFromNumberToDate = "Enero";
-      break;
-    case 2:
-      monthFromNumberToDate = "Febrero";
-      break;
-    case 3:
-      monthFromNumberToDate = "Marzo";
-      break;
-    case 4:
-      monthFromNumberToDate = "Abril";
-      break;
-    case 5:
-      monthFromNumberToDate = "Mayo";
-      break;
-    case 6:
-      monthFromNumberToDate = "Junio";
-      break;
-    case 7:
-      monthFromNumberToDate = "Julio";
-      break;
-    case 8:
-      monthFromNumberToDate = "Agosto";
-      break;
-    case 9:
-      monthFromNumberToDate = "Septiembre";
-      break;
-    case 10:
-      monthFromNumberToDate = "Octubre";
-      break;
-    case 11:
-      monthFromNumberToDate = "Noviembre";
-      break;
-    case 12:
-      monthFromNumberToDate = "Diciembre";
-      break;
-    default:
-      break;
-  }
-
-  return `Actualizada el ${day} de ${monthFromNumberToDate} de ${year}`;
+  return `Actualizada el ${day} de ${month} de ${year}`;
 };
-
-console.log(mapDatefromApiToModel(new Date()));
 
 const mapListFromRationTypeApiToRationTypeVm = (
   rationType: restaurantApi.RationType[]
@@ -106,16 +63,20 @@ const mapFromCategoryEntryApitoCategoryEntryVm = (
 
 export const mapFromRestaurantApiToRestaurantVm = (
   restaurantApi: restaurantApi.RestaurantApi
-): restaurantVm.RestaurantInfo => ({
-  name: restaurantApi.name,
-  urlName: restaurantApi.urlName,
-  phone: restaurantApi.phone,
-  address: restaurantApi.address,
-  locationUrl: restaurantApi.locationUrl,
-  menuDate: mapDatefromApiToModel(restaurantApi.menuDate),
-  communitySourceUrl: restaurantApi.communitySourceUrl,
-  official: restaurantApi.official,
-  description: restaurantApi.description,
-  theme: restaurantApi.theme,
-  menu: mapListFromCategoryEntryApitoCategoryEntryVm(restaurantApi.menu),
-});
+): restaurantVm.RestaurantInfo => {
+  if (restaurantApi !== undefined && restaurantApi !== null) {
+    return {
+      name: restaurantApi.name,
+      urlName: restaurantApi.urlName,
+      phone: restaurantApi.phone,
+      address: restaurantApi.address,
+      locationUrl: restaurantApi.locationUrl,
+      menuDate: mapDatefromApiToModel(restaurantApi.menuDate),
+      communitySourceUrl: restaurantApi.communitySourceUrl,
+      official: restaurantApi.official,
+      description: restaurantApi.description,
+      theme: restaurantApi.theme,
+      menu: mapListFromCategoryEntryApitoCategoryEntryVm(restaurantApi.menu),
+    };
+  } else return emptyRestaurantInfo();
+};
