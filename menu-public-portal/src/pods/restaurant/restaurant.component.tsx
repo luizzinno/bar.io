@@ -1,28 +1,41 @@
 import { Typography } from "@mui/material";
 import React from "react";
 import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
+import PlaceIcon from "@mui/icons-material/Place";
 import * as classes from "./restaurant.component.styles";
 import { RestaurantInfo, Items, PriceByRation } from "./restaurant.vm";
+import { AccordionSummaryStyled } from "common/components";
+import { useTheme } from "@mui/material/styles";
+import Link from "next/link";
+import { CommunityMenuFooter } from "./components/communityMenuFooter.component";
+import { OfficialMenuFooter } from "./components/officialMenuFooter.component";
+import { CommunityMenuHeader } from "./components/communityMenuHeader.component";
+import { OfficialMenuHeader } from "./components/officialMenuHeader.component";
 
 interface PropsRation {
-  ration: PriceByRation[];
+  ration: PriceByRation;
 }
 
 const RationComponent: React.FC<PropsRation> = (props) => {
+  const theme = useTheme();
   const { ration } = props;
+
   return (
     <>
-      <div>
-        {ration.map((item) => (
-          <div key={item.rationName} className={classes.rationDishContainer}>
-            <Typography>{item.rationName}</Typography>
-            <Typography>Precio: {item.price} €</Typography>
+      {ration.rationsTypes.map((item) => (
+        <div key={item.unit} className={classes.dishContainer(theme)}>
+          <div className={classes.rationText(theme)}>
+            <Typography className={classes.rationIndent(theme)}>
+              {item.unit}
+            </Typography>
           </div>
-        ))}
-      </div>
+          <div className={classes.dishPrice(theme)}>
+            <Typography>{item.price} €</Typography>
+          </div>
+        </div>
+      ))}
     </>
   );
 };
@@ -32,22 +45,29 @@ interface PropsItemsComponent {
 }
 export const DishesComponent: React.FC<PropsItemsComponent> = (props) => {
   const { items } = props;
+  const theme = useTheme();
 
   return (
-    <div className={classes.dishesContainer}>
+    <div className={classes.dishesContainer(theme)}>
       {items.map((item) => (
-        <div key={item.name}>
-          <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
-            {item.name}
-          </Typography>
-          {item.description ? (
-            <Typography>Descripción: {item.description}</Typography>
-          ) : null}
-          {item.price ? <Typography>Precio: {item.price} €</Typography> : null}
-          {item.priceByRation ? (
-            <ul>
+        <div className={classes.dishContainer(theme)} key={item.name}>
+          <div className={classes.fullWidth(theme)}>
+            <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
+              {item.name}
+            </Typography>
+            {item.description ? (
+              <Typography>{item.description}</Typography>
+            ) : null}
+            {item.priceByRation ? (
               <RationComponent ration={item.priceByRation} />
-            </ul>
+            ) : null}
+          </div>
+          {item.price ? (
+            <div className={classes.dishPrice(theme)}>
+              <Typography>
+                {item.price} €{item.unit}
+              </Typography>
+            </div>
           ) : null}
         </div>
       ))}
@@ -56,37 +76,82 @@ export const DishesComponent: React.FC<PropsItemsComponent> = (props) => {
 };
 
 interface Props {
-  restaurantName: string;
   restaurantMenuInfo: RestaurantInfo;
 }
 
 export const RestaurantComponent: React.FC<Props> = (props) => {
-  const { restaurantName, restaurantMenuInfo } = props;
-  const { name, heading1, heading2, menu } = restaurantMenuInfo;
+  const { restaurantMenuInfo } = props;
+  const {
+    name,
+    phone,
+    address,
+    locationUrl,
+    description,
+    communitySourceUrl,
+    menu,
+    menuDate,
+    official,
+  } = restaurantMenuInfo;
 
   return (
     <div className={classes.headingContainer}>
-      <Typography variant="h3" component="h1">
-        Carta de {name}
-      </Typography>
-      <Typography variant="h5" component="h2">
-        {heading1}
-      </Typography>
-      <Typography variant="h5" component="h2">
-        {heading2}
-      </Typography>
-      <div>
+      {official ? (
+        <OfficialMenuHeader menuDate={menuDate} />
+      ) : (
+        <CommunityMenuHeader menuDate={menuDate} />
+      )}
+      <div className={classes.headerIndent}>
+        <div className={classes.rowIndent}>
+          <Typography
+            variant="subtitle1"
+            component="h2"
+            className={classes.typographyHeader}
+          >
+            {phone}
+          </Typography>
+          <PhoneEnabledIcon sx={{ color: "secondary.main" }} />
+        </div>
+        <div className={classes.rowIndent}>
+          <Typography
+            variant="subtitle2"
+            component="h2"
+            className={classes.typographyHeader}
+          >
+            {address}
+          </Typography>
+          <Link href={locationUrl}>
+            <a target="_blank">
+              <PlaceIcon sx={{ color: "secondary.main" }} />
+            </a>
+          </Link>
+        </div>
+        <Typography variant="h3" component="h1">
+          {name}
+        </Typography>
+        <Typography variant="subtitle2" component="h2">
+          {description}
+        </Typography>
+      </div>
+      <div className={classes.accordion}>
         {menu.map((item) => (
-          <Accordion>
-            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Accordion key={item.name}>
+            <AccordionSummaryStyled>
               <Typography>{item.name}</Typography>
-            </AccordionSummary>
+            </AccordionSummaryStyled>
             <AccordionDetails>
               <DishesComponent items={item.items} />
             </AccordionDetails>
           </Accordion>
         ))}
       </div>
+      {official ? (
+        <OfficialMenuFooter />
+      ) : (
+        <CommunityMenuFooter communitySourceUrl={communitySourceUrl} />
+      )}
+      <Typography variant="caption" component="h2" className={classes.menuDate}>
+        {menuDate}
+      </Typography>
     </div>
   );
 };

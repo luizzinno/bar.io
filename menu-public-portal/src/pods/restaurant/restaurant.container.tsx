@@ -1,32 +1,21 @@
 import React from "react";
 import { RestaurantComponent } from "./restaurant.component";
-import { mapFromRestaurantApiToRestaurantVm } from "./restaurant.mapper";
-import { getRestaurantMenu } from "./restaurant.repository";
-import { RestaurantInfo, emptyRestaurantInfo } from "./restaurant.vm";
+import { RestaurantInfo } from "./restaurant.vm";
+import { ThemeProvider } from "@mui/material/styles";
+import { chooseTheme } from "core/theme";
 
 interface Props {
-  restaurantName: string;
+  menu: RestaurantInfo;
 }
 
 export const RestaurantContainer: React.FC<Props> = (props) => {
-  const { restaurantName } = props;
-  const restaurantNameWithOutBar = restaurantName.substring(1);
+  const { menu } = props;
 
-  const [restaurantMenuInfo, setRestaurantMenuInfo] =
-    React.useState<RestaurantInfo>(emptyRestaurantInfo);
-
-  React.useEffect(() => {
-    getRestaurantMenu(restaurantNameWithOutBar).then((restaurantMenuInfo) =>
-      setRestaurantMenuInfo(
-        mapFromRestaurantApiToRestaurantVm(restaurantMenuInfo)
-      )
-    );
-  }, []);
-
+  // TODO: discuss whether we should chane theme change on APP
+  // or keep it at restaurant level
   return (
-    <RestaurantComponent
-      restaurantName={restaurantName}
-      restaurantMenuInfo={restaurantMenuInfo}
-    />
+    <ThemeProvider theme={chooseTheme(menu.theme)}>
+      <RestaurantComponent restaurantMenuInfo={menu} />
+    </ThemeProvider>
   );
 };
