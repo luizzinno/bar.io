@@ -24,7 +24,7 @@ export const accordion = css`
 export const menuDate = css`
   width: 100%;
   font-weight: bold;
-  font-size: .60rem;
+  font-size: 0.6rem;
   text-align: right;
   @media (min-width: ${defaultTheme.breakpoints.values.sm}px) {
     width: 80%;
@@ -39,6 +39,7 @@ export const menuDate = css`
 
 export const footerNoOfficial = css`
   display: flex;
+  justify-content: center;
   margin-top: 1.5rem;
   @media (min-width: ${defaultTheme.breakpoints.values.sm}px) {
     width: 80%;
@@ -56,15 +57,25 @@ export const footerOfficial = css`
   margin-top: 1rem;
 `;
 
+export const headerOfficial = css`
+  display: flex;
+  margin-top: 1rem;
+  justify-content: center;
+  background-color: #009846;
+  color: white;
+  padding: 0.5rem 1rem;
+  width: 100%;
+`;
+
 export const groupsIcon = css`
   margin-left: 0.5rem;
 `;
-
 
 export const headerIndent = css`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 2rem;
 `;
 
 export const typographyHeader = css`
@@ -110,6 +121,8 @@ export const dishPrice = (theme: Theme) => css`
 
 export const rationText = (theme: Theme) => css`
   width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const rationIndent = (theme: Theme) => css`

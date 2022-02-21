@@ -7,10 +7,11 @@ const papulinosFutureJSON: RestaurantInfo = {
   address: "Calle Malasaña, 42 - Málaga",
   locationUrl:
     "https://www.google.com/maps/place/PAPULINOS/@36.726131,-4.42737,15z/data=!4m2!3m1!1s0x0:0xe25c1bc2d9bf5e99?sa=X&ved=2ahUKEwj_nuWFyvf1AhVjxYUKHTQ1ARgQ_BJ6BAg4EAU",
-  theme: "meat",
-  menuDate: "Actualizada el 14 de Febrero de 2022",
+  communitySourceUrl: "http://papulinos.com/carta/",
   official: false,
+  menuDate: "Actualizada el 14 de Febrero de 2022",
   description: "Las mejores carnes a la brasa",
+  theme: "meat",
   menu: [
     {
       name: "Ensaladas",
@@ -90,69 +91,84 @@ const papulinosFutureJSON: RestaurantInfo = {
         },
         {
           name: "Chorizo Ibérico",
-          priceByRation: [
-            {
-              rationName: "½ Ración",
-              price: 3.6,
-            },
-            {
-              rationName: "Ración",
-              price: 5.6,
-            },
-          ],
+          priceByRation: {
+            rationName: "Raciones",
+            rationsTypes: [
+              {
+                unit: "½ Ración",
+                price: 3.6,
+              },
+              {
+                unit: "Ración",
+                price: 5.6,
+              },
+            ],
+          },
         },
         {
           name: "Salchichón Ibérico",
-          priceByRation: [
-            {
-              rationName: "½ Ración",
-              price: 3.6,
-            },
-            {
-              rationName: "Ración",
-              price: 5.6,
-            },
-          ],
+          priceByRation: {
+            rationName: "Raciones",
+            rationsTypes: [
+              {
+                unit: "½ Ración",
+                price: 3.6,
+              },
+              {
+                unit: "Ración",
+                price: 5.6,
+              },
+            ],
+          },
         },
         {
           name: "Queso de Oveja",
           description: "Curado en Manteca de Cerdo Ibérico",
-          priceByRation: [
-            {
-              rationName: "½ Ración",
-              price: 5.5,
-            },
-            {
-              rationName: "Ración",
-              price: 9,
-            },
-          ],
+          priceByRation: {
+            rationName: "Raciones",
+            rationsTypes: [
+              {
+                unit: "½ Ración",
+                price: 5.5,
+              },
+              {
+                unit: "Ración",
+                price: 9,
+              },
+            ],
+          },
         },
         {
           name: "Lomito Ibérico",
-          priceByRation: [
-            {
-              rationName: "½ Ración",
-              price: 6,
-            },
-            {
-              rationName: "Ración",
-              price: 9.5,
-            },
-          ],
+          priceByRation: {
+            rationName: "Raciones",
+            rationsTypes: [
+              {
+                unit: "½ Ración",
+                price: 6,
+              },
+              {
+                unit: "Ración",
+                price: 8.5,
+              },
+            ],
+          },
         },
         {
           name: "Surtido Ibérico",
-          priceByRation: [
-            {
-              rationName: "½ Ración",
-              price: 8,
-            },
-            {
-              rationName: "Ración",
-              price: 11,
-            },
-          ],
+          priceByRation: {
+            rationName: "Raciones",
+            rationsTypes: [
+              {
+                unit: "½ Ración",
+                price: 8,
+              },
+              {
+                unit: "Ración",
+                price: 11,
+              },
+            ],
+          },
         },
       ],
     },
@@ -282,16 +298,19 @@ const papulinosFutureJSON: RestaurantInfo = {
         },
         {
           name: "Alitas de Pollo",
-          priceByRation: [
-            {
-              rationName: "½ Ración (3 unidades)",
-              price: 5.9,
-            },
-            {
-              rationName: "Ración (5 unidades)",
-              price: 9.5,
-            },
-          ],
+          priceByRation: {
+            rationName: "Raciones",
+            rationsTypes: [
+              {
+                unit: "½ Ración",
+                price: 5.9,
+              },
+              {
+                unit: "Ración",
+                price: 9.5,
+              },
+            ],
+          },
         },
         {
           name: "Patita de Chivo en su Jugo al Horno",
@@ -389,14 +408,16 @@ const papulinosFutureJSON: RestaurantInfo = {
 const hermanosAlbaFutureJSON: RestaurantInfo = {
   name: "Hermanos Alba",
   urlName: "hermanosalba",
-  theme: "fish",
-  menuDate: "Actualizada el 14 de Febrero de 2022",
-  official: false,
   phone: "951 33 18 03",
   address: "Calle Salvador Allende, 15 - Málaga",
   locationUrl:
     "https://www.google.com/maps/place/Restaurante+Hermanos+Alba/@36.7199358,-4.3637038,15z/data=!4m2!3m1!1s0x0:0x20b21ada1121ce03?sa=X&ved=2ahUKEwj_8pDWyff1AhUkSvEDHeBgAOEQ_BJ6BAhOEAU",
+  menuDate: "Actualizada el 14 de Febrero de 2022",
+  communitySourceUrl:
+    "https://www.hermanosalba.com/_files/ugd/e7dd90_9fa99b00428b4754a7ff716eccc73fa3.pdf",
+  official: false,
   description: "La tradición de nuestra bahía",
+  theme: "fish",
   menu: [
     {
       name: "Entrantes",
@@ -560,6 +581,7 @@ const estacionTerminoFutureJSON: RestaurantInfo = {
     "Plaza del Señorío, 8, Edificio Garcia Lorca, 29730 Rincón de la Victoria, Málaga",
   locationUrl:
     "https://www.google.com/maps/place/Estaci%C3%B3n+T%C3%A9rmino+Restaurante/@36.7166232,-4.2816961,15z/data=!4m5!3m4!1s0x0:0xdfb3fd3416c42c60!8m2!3d36.7166232!4d-4.2816961",
+  communitySourceUrl: "https://www.estacion-termino.es/carta/",
   theme: "default",
   official: false,
   menuDate: "Actualizada el 15 de Febrero de 2022",
@@ -695,7 +717,7 @@ const palubaFutureJSON: RestaurantInfo = {
   locationUrl:
     "https://www.google.com/maps/place/Cervecer%C3%ADa+Paluba/@36.6934059,-6.1025559,15z/data=!4m5!3m4!1s0x0:0x88ff8889eecfff0e!8m2!3d36.6934065!4d-6.1025711",
   theme: "default",
-  official: false,
+  official: true,
   menuDate: "Actualizada el 15 de Febrero de 2022",
   description: "Cervecería & Urban Food",
   menu: [

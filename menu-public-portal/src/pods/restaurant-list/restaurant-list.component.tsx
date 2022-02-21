@@ -20,35 +20,33 @@ const RestaurantList: React.FC<Props> = (props) => {
     const { name, urlName, address, description, locationUrl, phone } =
       restaurant;
     return (
-      <>
-        <Card sx={{ maxWidth: 345 }} key={name}>
-          <CardContent>
-            <Typography variant="h6" component="h2">
-              {phone}
-            </Typography>
-            <PhoneEnabledIcon sx={{ color: "secondary.main" }} />
-            <Typography variant="h6" component="h2">
-              {address}
-            </Typography>
-            <Link href={locationUrl}>
-              <a target="_blank">
-                <PlaceIcon sx={{ color: "secondary.main" }} />
-              </a>
-            </Link>
-            <Typography variant="h3" component="h1">
-              {name}
-            </Typography>
-            <Typography variant="h6" component="h2">
-              {description}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button variant="contained" href={routes.restaurant(urlName)}>
-              VER CARTA
-            </Button>
-          </CardActions>
-        </Card>
-      </>
+      <Card sx={{ maxWidth: 345 }} key={name}>
+        <CardContent>
+          <Typography variant="h6" component="h2">
+            {phone}
+          </Typography>
+          <PhoneEnabledIcon sx={{ color: "secondary.main" }} />
+          <Typography variant="h6" component="h2">
+            {address}
+          </Typography>
+          <Link href={locationUrl}>
+            <a target="_blank">
+              <PlaceIcon sx={{ color: "secondary.main" }} />
+            </a>
+          </Link>
+          <Typography variant="h3" component="h1">
+            {name}
+          </Typography>
+          <Typography variant="h6" component="h2">
+            {description}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button variant="contained" href={routes.restaurant(urlName)}>
+            VER CARTA
+          </Button>
+        </CardActions>
+      </Card>
     );
   });
 
