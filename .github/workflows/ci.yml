@@ -1,67 +1,17 @@
 name: Continuos Integration workflow
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+on: pull_request
 
 jobs:
-  ci-public:
+  ci-menu-public-portal:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: public
+        working-directory: menu-public-portal
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Install
-        run: npm install
-      - name: Build
-        run: npm run build
-      - name: Tests
-        run: npm test
-  ci-admin:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: admin
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Install
-        run: npm install
-      - name: Build
-        run: npm run build
-      - name: Tests
-        run: npm test
-  ci-superAdmin:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: super-admin
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Install
-        run: npm install
-      - name: Build
-        run: npm run build
-      - name: Tests
-        run: npm test
-  ci-server:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: server
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Install
-        run: npm install
-      - name: Build
-        run: npm run build
+        run: npm ci
       - name: Tests
         run: npm test
