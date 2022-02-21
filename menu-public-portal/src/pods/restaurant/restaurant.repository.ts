@@ -1,12 +1,11 @@
 import { RestaurantInfo } from "./restaurant.vm";
-import { restaurantMockData } from "./restaurant.mock";
+import { getRestaurantByName } from "./api/restaurant.api";
+import { mapFromRestaurantApiToRestaurantVm } from "./restaurant.mapper";
 
 export const getRestaurantMenu = async (
   restaurantName: string
 ): Promise<RestaurantInfo> => {
-  const restaurant = restaurantMockData.find(
-    (restaurant) => restaurant.urlName === restaurantName
-  );
+  const restaurant = await getRestaurantByName(mapFromRestaurantApiToRestaurantVm(restaurantName));
 
-  return await restaurant;
+  return restaurant;
 };

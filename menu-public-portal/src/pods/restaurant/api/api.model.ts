@@ -1,24 +1,38 @@
-export interface PriceByRation {
-  rationName: string;
+import { ThemeName } from "core/theme";
+
+export interface RationType {
+  unit: string;
   price: number;
 }
+export interface PriceByRation {
+  rationName: string;
+  rationsTypes: RationType[];
+}
 
-export interface Items {
+export interface Item {
   name: string;
   description?: string;
   price?: number;
-  priceByRation?: PriceByRation[];
+  priceByRation?: PriceByRation;
+  unit?: string;
 }
 
 export interface CategoryEntry {
   name: string;
-  items: Items[];
+  items: Item[];
 }
 
-export interface RestaurantInfoGlobal {
+export interface RestaurantApi {
+  _id: string;
   name: string;
   urlName: string;
-  heading1: string;
-  heading2: string;
+  phone: string;
+  address: string;
+  locationUrl: string;
+  menuDate: Date;
+  communitySourceUrl: string;
+  official: boolean;
+  description: string;
+  theme: ThemeName;
   menu: CategoryEntry[];
 }

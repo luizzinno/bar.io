@@ -1,21 +1,25 @@
 import { ThemeName } from "core/theme";
 
-export interface PriceByRation {
-  rationName: string;
+export interface RationType {
+  unit: string;
   price: number;
 }
+export interface PriceByRation {
+  rationName: string;
+  rationsTypes: RationType[];
+}
 
-export interface Items {
+export interface Item {
   name: string;
   description?: string;
   price?: number;
-  priceByRation?: PriceByRation[];
+  priceByRation?: PriceByRation;
   unit?: string;
 }
 
 export interface CategoryEntry {
   name: string;
-  items: Items[];
+  items: Item[];
 }
 
 export interface RestaurantInfo {
@@ -24,22 +28,24 @@ export interface RestaurantInfo {
   phone: string;
   address: string;
   locationUrl: string;
+  menuDate: string;
+  communitySourceUrl?: string;
+  official: boolean;
   description: string;
   theme: ThemeName;
   menu: CategoryEntry[];
-  menuDate: string;
-  official: boolean;
 }
 
 export const emptyRestaurantInfo = (): RestaurantInfo => ({
   name: "",
   urlName: "",
-  theme: "default",
   phone: "",
   address: "",
   locationUrl: "",
-  description: "",
-  menu: [],
-  menuDate: "Actualizada el 14 de Febrero de 2022",
+  menuDate: "",
+  communitySourceUrl: "",
   official: false,
+  description: "",
+  theme: "default",
+  menu: [],
 });

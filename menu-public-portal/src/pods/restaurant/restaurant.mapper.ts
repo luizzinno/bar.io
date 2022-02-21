@@ -1,11 +1,67 @@
-export {};
+import * as restaurantApi from "./api/api.model";
+import * as restaurantVm from "./restaurant.vm";
+import { mapToCollection } from "common/mappers";
 
-// TODO: Not in use now since we are directly using mock viewModel JSON
-// once we have a repo model we will apply this mock
-/*
+const mapListFromRationTypeApiToRationTypeVm = (
+  rationType: restaurantApi.RationType[]
+): restaurantVm.RationType[] =>
+  mapToCollection(rationType, mapFromRationTypeApiToRationTypeVm);
+
+const mapFromRationTypeApiToRationTypeVm = (
+  rationType: restaurantApi.RationType
+): restaurantVm.RationType => ({
+  unit: rationType.unit,
+  price: rationType.price,
+});
+
+const mapFromPriceByRationApiToPriceByRationVm = (
+  priceByRation: restaurantApi.PriceByRation
+): restaurantVm.PriceByRation => ({
+  rationName: priceByRation.rationName,
+  rationsTypes: mapListFromRationTypeApiToRationTypeVm(
+    priceByRation.rationsTypes
+  ),
+});
+
+const mapListFromItemsApiToItemsVm = (
+  items: restaurantApi.Item[]
+): restaurantVm.Item[] => mapToCollection(items, mapFromItemsApiToItemsVm);
+
+const mapFromItemsApiToItemsVm = (
+  item: restaurantApi.Item
+): restaurantVm.Item => ({
+  name: item.name,
+  description: item.description,
+  price: item.price ? item.price : null,
+  priceByRation: item.priceByRation
+    ? mapFromPriceByRationApiToPriceByRationVm(item.priceByRation)
+    : null,
+  unit: item.unit ? item.unit : null,
+});
+
+const mapListFromCategoryEntryApitoCategoryEntryVm = (
+  category: restaurantApi.CategoryEntry[]
+): restaurantVm.CategoryEntry[] =>
+  mapToCollection(category, mapFromCategoryEntryApitoCategoryEntryVm);
+
+const mapFromCategoryEntryApitoCategoryEntryVm = (
+  category: restaurantApi.CategoryEntry
+): restaurantApi.CategoryEntry => ({
+  name: category.name,
+  items: mapListFromItemsApiToItemsVm(category.items),
+});
+
 export const mapFromRestaurantApiToRestaurantVm = (
-  restaurantApi: restaurantApi.RestaurantInfoGlobal
+  restaurantApi: restaurantApi.RestaurantApi
 ): restaurantVm.RestaurantInfo => ({
-  ...restaurantApi,
-  theme: chooseTheme(restaurantApi.),
-});*/
+  name: restaurantApi.name,
+  urlName: restaurantApi.urlName,
+  phone: restaurantApi.phone,
+  address: restaurantApi.address,
+  locationUrl: restaurantApi.locationUrl,
+  description: restaurantApi.description,
+  theme: restaurantApi.theme,
+  menu: mapListFromCategoryEntryApitoCategoryEntryVm(restaurantApi.menu),
+  menuDate: restaurantApi.menuDate.toDateString(),
+  official: restaurantApi.official,
+});
