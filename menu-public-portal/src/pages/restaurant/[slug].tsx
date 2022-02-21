@@ -19,9 +19,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   // TODO Add error un handling
   const restaurantNameWithOutBar = slug.substring(1);
-
   const menu = await getRestaurantMenu(restaurantNameWithOutBar);
-
+  
   return {
     props: { slug, menu },
     revalidate: 600, // Seconds,  move this to a const or env const

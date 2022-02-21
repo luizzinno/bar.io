@@ -2,6 +2,7 @@ import GroupsIcon from "@mui/icons-material/Groups";
 import * as classes from "../restaurant.component.styles";
 import { Typography } from "@mui/material";
 
+
 export const CommunityMenuFooter: React.FunctionComponent = () => {
   return (
     <div className={classes.footerNoOfficial}>

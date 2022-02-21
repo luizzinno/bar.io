@@ -46,8 +46,8 @@ const mapListFromCategoryEntryApitoCategoryEntryVm = (
 
 const mapFromCategoryEntryApitoCategoryEntryVm = (
   category: restaurantApi.CategoryEntry
-): restaurantApi.CategoryEntry => ({
-  name: category.name,
+): restaurantVm.CategoryEntry => ({
+  name: category.categoryName,
   items: mapListFromItemsApiToItemsVm(category.items),
 });
 
@@ -59,9 +59,10 @@ export const mapFromRestaurantApiToRestaurantVm = (
   phone: restaurantApi.phone,
   address: restaurantApi.address,
   locationUrl: restaurantApi.locationUrl,
+  menuDate: restaurantApi.menuDate.toString(),
+  communitySourceUrl: restaurantApi.communitySourceUrl,
+  official: restaurantApi.official,
   description: restaurantApi.description,
   theme: restaurantApi.theme,
   menu: mapListFromCategoryEntryApitoCategoryEntryVm(restaurantApi.menu),
-  menuDate: restaurantApi.menuDate.toDateString(),
-  official: restaurantApi.official,
 });

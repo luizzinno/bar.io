@@ -5,15 +5,17 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
 import PlaceIcon from "@mui/icons-material/Place";
 import * as classes from "./restaurant.component.styles";
-import { RestaurantInfo, Items, PriceByRation } from "./restaurant.vm";
+import { RestaurantInfo, Item, PriceByRation } from "./restaurant.vm";
 import { AccordionSummaryStyled } from "common/components";
 import { useTheme } from "@mui/material/styles";
 import Link from "next/link";
 import { CommunityMenuFooter } from "./components/communityMenuFooter.component";
 import { OfficialMenuFooter } from "./components/officialMenuFooter.component";
+import { CommunityMenuHeader } from "./components/communityMenuHeader.component";
+import { OfficialMenuHeader } from "./components/officialMenuHeader.component";
 
 interface PropsRation {
-  ration: PriceByRation[];
+  ration: PriceByRation;
 }
 
 const RationComponent: React.FC<PropsRation> = (props) => {
@@ -22,11 +24,11 @@ const RationComponent: React.FC<PropsRation> = (props) => {
 
   return (
     <>
-      {ration.map((item) => (
-        <div key={item.rationName} className={classes.dishContainer(theme)}>
+      {ration.rationsTypes.map((item) => (
+        <div key={item.unit} className={classes.dishContainer(theme)}>
           <div className={classes.rationText(theme)}>
             <Typography className={classes.rationIndent(theme)}>
-              {item.rationName}
+              {item.unit}
             </Typography>
           </div>
           <div className={classes.dishPrice(theme)}>
@@ -39,7 +41,7 @@ const RationComponent: React.FC<PropsRation> = (props) => {
 };
 
 interface PropsItemsComponent {
-  items: Items[];
+  items: Item[];
 }
 export const DishesComponent: React.FC<PropsItemsComponent> = (props) => {
   const { items } = props;
@@ -48,8 +50,8 @@ export const DishesComponent: React.FC<PropsItemsComponent> = (props) => {
   return (
     <div className={classes.dishesContainer(theme)}>
       {items.map((item) => (
-        <div className={classes.dishContainer(theme)}>
-          <div key={item.name} className={classes.fullWidth(theme)}>
+        <div className={classes.dishContainer(theme)} key={item.name}>
+          <div className={classes.fullWidth(theme)}>
             <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
               {item.name}
             </Typography>
@@ -78,7 +80,6 @@ interface Props {
 }
 
 export const RestaurantComponent: React.FC<Props> = (props) => {
-  const theme = useTheme();
   const { restaurantMenuInfo } = props;
   const {
     name,
@@ -86,6 +87,7 @@ export const RestaurantComponent: React.FC<Props> = (props) => {
     address,
     locationUrl,
     description,
+    communitySourceUrl,
     menu,
     menuDate,
     official,
@@ -93,6 +95,11 @@ export const RestaurantComponent: React.FC<Props> = (props) => {
 
   return (
     <div className={classes.headingContainer}>
+      {official ? (
+        <OfficialMenuHeader menuDate={menuDate} />
+      ) : (
+        <CommunityMenuHeader menuDate={menuDate} />
+      )}
       <div className={classes.headerIndent}>
         <div className={classes.rowIndent}>
           <Typography

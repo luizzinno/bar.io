@@ -5,7 +5,7 @@ import { mapFromRestaurantApiToRestaurantVm } from "./restaurant.mapper";
 export const getRestaurantMenu = async (
   restaurantName: string
 ): Promise<RestaurantInfo> => {
-  const restaurant = await getRestaurantByName(mapFromRestaurantApiToRestaurantVm(restaurantName));
-
-  return restaurant;
+  const restaurant = await getRestaurantByName(restaurantName);
+  
+  return mapFromRestaurantApiToRestaurantVm(restaurant);
 };
