@@ -1,236 +1,72 @@
+:root {
+  font-size: 10px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,600;1,400&display=swap');
 * {
   margin: 0;
   padding: 0;
-  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   font-weight: 100;
-  font-size: 1rem;
-  color: #242415;
-}
-@media (min-width: 550px) {
-  * {
-    font-size: 1.2rem;
-  }
-}
-@media (min-width: 1024px) {
-  * {
-    font-size: 1.3rem;
-  }
-}
-@media (min-width: 1228px) {
-  * {
-    font-size: 1.4rem;
-  }
-}
-svg {
-  fill: #242415;
-  margin: 2% auto;
-  cursor: pointer;
-  position: fixed;
-  top: 12%;
-  right: 4%;
-  width: 25px;
-  height: 25px;
-}
-.logo {
-  overflow: hidden;
-  width: 100%;
-  text-align: center;
-  margin-top: 2rem;
+  font-size: 1.4rem;
+  color: #232323;
 }
 
-.img-logo {
-  width: 250px;
+header.about-us-container {
+  width: 67.2%;
+  height: 25vw;
+  margin-top: 6.4vw;
+  display: block;
+  font-variant-caps: normal;
 }
 
-.txt-logo {
-  font-weight: 900;
-  font-size: 1.1rem;
-  letter-spacing: 0.07rem;
-}
-
-.container {
-  width: 80%;
-  margin: 5% auto;
-}
-
-.component {
-  width: 95%;
-  display: flex;
-  flex-flow: column;
-  align-content: center;
-  justify-content: center;
-  margin: .5rem;
-}
-
-.abaoutus {
-  display: flex;
-  justify-content: center;
-  background-color: #00a825;
-  margin: .5rem;
-}
-
-.abaoutus > p {
-  color: white;
-  font-size: 1.2rem;
-  padding: 0.5rem 0;
+h2.about-us-header {
+  font-size: 5vw;
   font-weight: 400;
+  text-align: right;
 }
 
-.title {
-  font-weight: 500;
-  border-bottom: 1px solid #242415;
-}
-.card-container {
-  padding-bottom: 5%;
+
+hr.about-us-underline {
+  width: 67.2vw;
+  border-top: 0.08vw solid #00a825;
+  border-radius: 0.02vw;
 }
 
-.card {
-  display: flex;
-  flex-flow: row nowrap;
-  gap: 5%;
-  justify-items: last baseline;
-  align-items: center;
-  padding: 10% 0 0 2%;
-  width: 95%;
-}
-.avatar {
-  border-radius: 50%;
-  border: 2px solid #242415;
-  overflow: hidden;
-  max-width: 70px;
-  max-height: 70px;
-  flex: 30%;
+main.main-container {
+  width: 87.5vw;
+  margin: 0 6.25vw;
 }
 
-.info-user {
-  flex: 70%;
-}
-.name-card {
-  font-size: 0.9rem;
-  font-weight: 500;
-  border-bottom: 5px solid #242415;
-}
-.txt-card {
-  font-size: 0.6rem;
-  text-align: justify;
+div.team-member-title-container {
+  width: 67.2vw;
+  margin-left: 32.8vw;
 }
 
-.subtitle {
-  text-transform: uppercase;
-  font-size: 0.7rem;
-  font-weight: 500;
-  margin: 4% 0 1%;
+h3.team-member-name {
+  font-size: 4.375vw;
+  color: #232323;
 }
-.txt {
-  font-size: 0.6rem;
-  text-align: justify;
-  /* margin: 2% 0 0; */
+
+h4.team-member-role {
+  font-size: 3.75vw;
+  color: #00a825;
 }
-.footer {
-  display: flex;
-  flex-flow: column;
+
+p.about-us-description,
+p.team-member-description {
+  font-size: 4.375vw;
+  color: #232323;
+  margin-bottom: 16vw;
+}
+
+img.team-member-avatar {
   width: 100%;
-  min-width: 320px;
-  padding: 10% 0 0;
+  margin: 6.4vw 0;
 }
 
-.imgFooter {
-  max-width: 140px;
-  padding: 2% 0;
-  align-self: center;
-}
-
-.menuFooter {
-  list-style: none;
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-self: center;
-  padding: 0;
-}
-
-.itemMenuFooter {
-  padding: 2% 4%;
-}
-
-.linkMenuFooter {
-  text-decoration: none;
-  color: #242415;
-  font-size: 0.7rem;
-}
-
-.copyFooter {
-  justify-self: flex-end;
-  font-size: 0.4rem;
-  color: #242415;
-  padding: 3%;
-  align-self: flex-end;
-}
-@media (min-width: 550px) {
-  svg {
-    width: 35px;
-    height: 35px;
-  }
-  .img-logo {
-    width: 275px;
-  }
-  .txt-logo {
-    font-size: 1.8rem;
-    font-weight: 500;
-  }
-  .card-container {
-    padding: 2% 0 0;
-  }
-  .card {
-    width: 75%;
-    margin: 0 auto;
-    padding: 6% 0;
-  }
-  .avatar {
-    max-width: 85px;
-    min-height: 85px;
-  }
-
-  .txt-card {
-    padding: 2% 0;
-  }
-  .txt-license {
-    padding: 5% 0;
-    width: 100%;
-  }
-}
-@media (min-width: 1024px) {
-  .card-container {
-    padding: 3% 0 0;
-  }
-  .card {
-    padding: 4% 0;
-  }
-}
-@media (min-width: 1228px) {
-  .img-logo {
-    width: 300px;
-  }
-  .container {
-    width: 70%;
-  }
-  .card-container {
-    display: flex;
-    flex-flow: row wrap;
-  }
-  .card {
-    width: 40%;
-    justify-items: last baseline;
-    align-items: flex-start;
-  }
-  .avatar {
-    max-width: 100px;
-    min-height: 100px;
-  }
-  .imgFooter {
-    max-width: 160px;
-  }
-  .copyFooter {
-    padding: 2%;
-  }
+hr.team-member-overline {
+  margin-bottom: 2.4vw;
+  border-top: 0.08vw solid #00a825;
+  border-radius: 0.02vw;
 }

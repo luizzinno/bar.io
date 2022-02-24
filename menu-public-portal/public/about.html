@@ -4,14 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Page - Gastro Carta - Lemoncode</title>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="./about.styles.css" />
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
@@ -29,6 +21,11 @@
     </script>
   </head>
   <body>
+    <header class="about-us-container">
+      <h2 class="about-us-header">quienes somos</h2>
+      <hr class="about-us-underline">
+    </header>
+    <!--
     <svg
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
@@ -54,19 +51,27 @@
     c2.74,0,4.971-2.229,4.971-4.972V38.252c0-0.312-0.031-0.63-0.092-0.941C53.471,36.904,53.271,36.533,52.979,36.245z"
       />
     </svg>
-    <div class="abaoutus">
-      <p>quienes somos</p>
-    </div>
-    <div class="card">
-      <img
-        class="avatar"
+    -->
+    <main class="main-container">
+      <article class="about-us-description-container">
+        <p class="about-us-description">
+          In id rhoncus massa, sed pretium augue. Pellentesque et nisi quis
+          lectus consequat vestibulum. Ut tincidunt nulla non ex facilisis
+          tristique. Morbi nisl justo, fermentum quis diam id, aliquet elementum
+          ipsum. Sed dolor eros, volutpat et tortor sed, sagittis venenatis est.
+          Phasellus elementum mattis eleifend. Phasellus bibendum purus vitae ex
+          accumsan elementum.
+        </p>
+      </article>
+      <article class="team-member-container">
+        <hr class="team-member-overline">
+        <h3 class="team-member-name">Luis Comi</h3>
+        <h4 class="team-member-role">UX / CSS</h4>
+        <img class="team-member-avatar"
         src="./assets/luis-comi.jpg"
         alt="Luis Comi"
-      />
-
-      <div class="info-user">
-        <h4 class="name-card">Luis Comi</h4>
-        <p class="txt-card">
+        />
+        <p class="team-member-description">
           Since finish an unnemployed course about web design and
           development, I realize the web was the present and future of the
           information, I finished the Multimedia Degree and started to work
@@ -75,37 +80,64 @@
           healt issues, but now it's all right! Thanks to Lemoncode
           knowledge, and realunch of my mark newfile as UX and frontend.
         </p>
-      </div>
-    </div>
-    <div class="card">
+      </article>
+
+      <article class="team-member-container">
+        <hr class="team-member-overline">
+        <h3 class="team-member-name">Manuel Dorado Serrano</h3>
+        <h4 class="team-member-role">ROLE</h4>
+        <img class="team-member-avatar"
+        src="./assets/manueldorado.png"
+        alt="Manuel Dorado Serrano"
+        />
+        <p class="team-member-description">
+          Junior Front End, Starting in the world of web programming. In
+          love with video games and open to learning new things every day.
+        </p>
+      </article>
+
+      <article class="team-member-container">
+        <hr class="team-member-overline">
+        <h3 class="team-member-name">Braulio Díez</h3>
+        <h4 class="team-member-role">ROLE</h4>
+        <img class="team-member-avatar"
+        src="./assets/braulio-diez.png"
+        alt="Braulio Díez"
+        />
+        <p class="team-member-description">
+          JavaScript / Typescript developer (old hand coming from .net
+          background), trainer, writter and speaker. More than 20 years
+          involved on international projects.
+        </p>
+      </article>
+    </main>
+        <!--
+    <div>
       <img
-        class="avatar"
         src="./assets/manueldorado.png"
         alt="Manuel Dorado Serrano"
       />
-      <div class="info-user">
-        <h4 class="name-card">Manuel Dorado Serrano</h4>
-        <p class="txt-card">
+      <div>
+        <h4></h4>
+        <p>
           Junior Front End, Starting in the world of web programming. In
           love with video games and open to learning new things every day.
         </p>
       </div>
     </div>
-    <div class="card">
+    <div>
       <img
-        class="avatar"
         src="./assets/braulio-diez.png"
         alt="Braulio Díez"
       />
       <div class="info-user">
-        <h4 class="name-card">Braulio Díez</h4>
-        <p class="txt-card">
-          JavaScript / Typescript developer (old hand coming from .net
-          background), trainer, writter and speaker. More than 20 years
-          involved on international projects.
+        <h4></h4>
+        <p>
+          
         </p>
       </div>
     </div>
+    -->
   </div>
   </body>
 </html>
